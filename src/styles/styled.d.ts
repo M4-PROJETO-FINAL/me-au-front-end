@@ -3,27 +3,23 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
-      contrastTextWhite: string;
-      contrastTextBlack: string;
-
       primary: string;
       secondary: string;
-      tertiary: string;
+      gray1: string;
+      gray2: string;
+      gray3: string;
+      gray4: string;
 
-      placeholder: string;
-      lightBorder: string;
+      success: string;
       red: string;
 
-      brandGreen: string;
-      LocationGreen: string;
-      buttonGreen: string;
-      textGreen: string;
-      lightGreen: string;
-      lighterGreen: string;
-      lightGreenTransparent: string;
+      aquaLight: string;
+      aquaLighter: string;
+      aquaDark: string;
 
-      cartBackground: string;
-      cartLightBackground: string;
+      orange: string;
+      orangeLight: string;
+      orangeLighter: string;
 
       body: string;
       backgroundTransparent: string;
