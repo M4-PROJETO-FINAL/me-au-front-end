@@ -1,6 +1,31 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+:root {
+	--white: 255, 255, 255; // #ffff
+
+    --black: 0,0,0; // #000
+
+    --gray1: 33, 37, 41; // #212529
+    --gray2: 52, 58, 64; // #343A40
+    --gray3: 173, 181, 189; // #ADB5BD
+    --gray4:  233, 236, 239; // #E9ECEF
+
+    --success: 86, 207, 142; // #56CF8E
+    --red: 255, 0, 0; // #ff0000
+
+    --aquaLight: 101, 193, 188; // #65C1BC
+    --aquaLighter: 210, 237, 236; // #D2EDEC
+    --aquaDark: 70, 135, 131; // #468783
+
+    --orange: 255, 137, 71; // #FF8947
+    --orangeLight: 255, 221, 202; // #FFDDCA
+    --logoOrange: 255, 245, 239; // #FFF5EF;
+    --orangeLighter: 255, 237, 228; // #FFEDE4
+
+    --bodyBackground: 247, 246, 243; // #f7f6f3
+    --backgroundTransparent: 0, 0, 0, 0.32;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -31,6 +56,8 @@ body {
 	line-height: 1;
     -webkit-font-smoothing: antialiased;
 
+    font-family: 'Nunito', sans-serif;
+
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -39,7 +66,7 @@ body {
 
     transition: all 0.25s linear;
 
-    background: ${(props) => props.theme.colors.body};
+    background: rgba(var(--bodyBackground), 1);
 }
 ol, ul {
 	list-style: none;
