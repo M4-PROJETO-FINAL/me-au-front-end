@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
+
 import Accommodation from "../pages/Accommodations";
-import Reservation from "../pages/Reservation";
 import Contact from "../pages/Contact";
+import Home from "../pages/Home";
+import Reservation from "../pages/Reservation";
 
 export const AppRoutes = () => {
   // eslint-disable-next-line react/react-in-jsx-scope

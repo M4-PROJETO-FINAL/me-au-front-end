@@ -1,5 +1,11 @@
+import ReservationContextProvider from "../../contexts/ReservationContext";
+
 const Reservation = () => {
-  return <div>Reservation</div>;
+  return (
+    <ReservationContextProvider>
+      <div>Reservation</div>
+    </ReservationContextProvider>
+  );
 };
 
 export default Reservation;
