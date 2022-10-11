@@ -1,5 +1,11 @@
+import CustomerReviews from "../../components/CustomerReviews";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <CustomerReviews />
+    </div>
+  );
 };
 
 export default Home;

@@ -1,4 +1,3 @@
-import CustomerReviews from "./components/CustomerReviews";
 import Header from "./components/Header";
 import UserContextProvider from "./contexts/UserContext";
 import { AppRoutes } from "./routes";
@@ -9,9 +8,8 @@ function App() {
     <>
       <GlobalStyle />
       <UserContextProvider>
-        {/* <AppRoutes /> */}
         <Header />
-        <CustomerReviews />
+        <AppRoutes />
       </UserContextProvider>
     </>
   );
