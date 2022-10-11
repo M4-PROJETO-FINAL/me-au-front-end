@@ -1,3 +1,4 @@
+import CustomerReviews from "./components/CustomerReviews";
 import Header from "./components/Header";
 import UserContextProvider from "./contexts/UserContext";
 import { AppRoutes } from "./routes";
@@ -10,6 +11,7 @@ function App() {
       <UserContextProvider>
         {/* <AppRoutes /> */}
         <Header />
+        <CustomerReviews />
       </UserContextProvider>
     </>
   );
