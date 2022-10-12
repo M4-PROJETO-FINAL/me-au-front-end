@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
+import { AiOutlineClose } from "react-icons/ai";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
@@ -10,8 +11,12 @@ import * as yup from "yup";
 import Logo from "../../assets/logoMeAuBGCWhite.png";
 import { LoginContainer, FormInputs, FormStyled } from "./styles";
 
-export default function FormDialog() {
-  const [open, setOpen] = React.useState(false);
+interface IPropsFormLogin {
+  openFormLogin: boolean;
+  handleClose: () => void;
+}
+
+const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
   const formSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
     password: yup.string().required("Campo obrigatório"),
@@ -23,14 +28,6 @@ export default function FormDialog() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const onSubmitFunction = (data) => {
     // Aqui chama o contexto da api de login.. E loga!
     console.log(data);
@@ -38,11 +35,11 @@ export default function FormDialog() {
   console.log(errors);
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={openFormLogin} onClose={handleClose}>
         <LoginContainer>
+          <button className="login__button-close" onClick={() => handleClose()}>
+            <AiOutlineClose />
+          </button>
           <img src={Logo} alt="Logo" />
           <div>
             <h2>Seja bem-vindo</h2>
@@ -56,6 +53,7 @@ export default function FormDialog() {
                 variant="outlined"
                 id="email"
                 size="medium"
+                InputLabelProps={{ style: { fontSize: 17 } }}
                 helperText={
                   errors.email?.message ? (errors.email.message as string) : " "
                 }
@@ -67,6 +65,7 @@ export default function FormDialog() {
                 label="Senha *"
                 variant="outlined"
                 id="password"
+                InputLabelProps={{ style: { fontSize: 17 } }}
                 helperText={
                   errors.password?.message
                     ? (errors.password.message as string)
@@ -76,20 +75,32 @@ export default function FormDialog() {
               />
             </FormInputs>
             <p className="forgot__password">Esqueceu sua senha?</p>
-            <Button type="submit" fullWidth variant="contained" color="primary">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{ fontWeight: "bold", fontSize: 16 }}
+            >
               Entrar
             </Button>
           </FormStyled>
 
-          <div>
+          <div className="login__register-container">
             <span>Ainda não tem uma conta?</span>
-            <button onClick={() => "abrir modal de cadastro"}>
+            <button
+              className="register__button"
+              onClick={() => "abrir modal de cadastro"}
+            >
               Cadastre-se aqui
             </button>
           </div>
           <div>Ou entre com:</div>
+          {/* Aqui adicionamos o googlelogin ~~ a lib já vem com o ícone! */}
         </LoginContainer>
       </Dialog>
     </div>
   );
-}
+};
+
+export default FormLogin;

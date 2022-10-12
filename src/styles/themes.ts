@@ -1,3 +1,5 @@
+import { createTheme } from "@mui/material";
+
 export const lightTheme = {
   colors: {
     primary: "#ffffff",
@@ -22,3 +24,33 @@ export const lightTheme = {
     backgroundTransparent: "#00000052",
   },
 };
+declare module "@mui/material/styles" {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
+
+export const MUITheme = createTheme({
+  typography: {
+    fontFamily: ["Nunito", "Roboto"].join(","),
+  },
+  palette: {
+    primary: {
+      main: "#65C1BC",
+      "300": "#D2EDEC",
+      "500": "#468783",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#FF8947",
+    },
+  },
+});
