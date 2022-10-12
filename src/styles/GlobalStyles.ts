@@ -26,7 +26,9 @@ const GlobalStyle = createGlobalStyle`
     --bodyBackground: 247, 246, 243; // #f7f6f3
     --backgroundTransparent: 0, 0, 0, 0.32;
 }
-
+*{
+    box-sizing: border-box;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -82,6 +84,24 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+}
+
+input {
+    border: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 `;
 
