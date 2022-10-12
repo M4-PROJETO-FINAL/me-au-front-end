@@ -1,3 +1,4 @@
+import FormLogin from "./components/FormLogin";
 import Header from "./components/Header";
 import UserContextProvider from "./contexts/UserContext";
 import { AppRoutes } from "./routes";
@@ -8,7 +9,8 @@ function App() {
     <>
       <GlobalStyle />
       <UserContextProvider>
-        <Header />
+        {/* <Header /> */}
+        <FormLogin />
         <AppRoutes />
       </UserContextProvider>
     </>
