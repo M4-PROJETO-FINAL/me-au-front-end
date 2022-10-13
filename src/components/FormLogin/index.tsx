@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,6 +18,11 @@ interface IPropsFormLogin {
 }
 
 const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const formSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
     password: yup.string().required("Campo obrigatório"),
@@ -30,9 +36,7 @@ const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
 
   const onSubmitFunction = (data) => {
     // Aqui chama o contexto da api de login.. E loga!
-    console.log(data);
   };
-  console.log(errors);
   return (
     <div>
       <Dialog open={openFormLogin} onClose={handleClose}>
@@ -42,8 +46,8 @@ const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
           </button>
           <img src={Logo} alt="Logo" />
           <div>
-            <h2>Seja bem-vindo</h2>
-            <span>Já sou cliente</span>
+            <h2>{t("Seja bem-vindo")}</h2>
+            <span>{t("Já sou cliente")}</span>
           </div>
           <FormStyled onSubmit={handleSubmit(onSubmitFunction)}>
             <FormInputs>
@@ -62,7 +66,7 @@ const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
               <TextField
                 error={!!errors.password}
                 type="password"
-                label="Senha *"
+                label={t("Senha *")}
                 variant="outlined"
                 id="password"
                 InputLabelProps={{ style: { fontSize: 17 } }}
@@ -74,7 +78,7 @@ const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
                 {...register("password")}
               />
             </FormInputs>
-            <p className="forgot__password">Esqueceu sua senha?</p>
+            <p className="forgot__password">{t("Esqueceu sua senha?")}</p>
             <Button
               type="submit"
               fullWidth
@@ -82,20 +86,26 @@ const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
               color="primary"
               sx={{ fontWeight: "bold", fontSize: 16 }}
             >
-              Entrar
+              {t("Entrar")}
             </Button>
           </FormStyled>
 
           <div className="login__register-container">
-            <span>Ainda não tem uma conta?</span>
+            <span>{t("Ainda não tem uma conta?")}</span>
             <button
               className="register__button"
               onClick={() => "abrir modal de cadastro"}
             >
-              Cadastre-se aqui
+              {t("Cadastre-se aqui")}
             </button>
           </div>
-          <div>Ou entre com:</div>
+          <div>{t("Ou entre com")}:</div>
+          <button type="button" onClick={() => changeLanguage("pt")}>
+            BR
+          </button>
+          <button type="button" onClick={() => changeLanguage("en")}>
+            IN
+          </button>
           {/* Aqui adicionamos o googlelogin ~~ a lib já vem com o ícone! */}
         </LoginContainer>
       </Dialog>
