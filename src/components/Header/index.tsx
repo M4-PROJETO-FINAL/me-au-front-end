@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { Button } from "@mui/material";
 import { motion } from "framer-motion";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
-import LogoMeAu from "../../assets/logoMeAu.png";
+import Logo from "../../assets/Group 22.svg";
+import { Button } from "../Button/style";
 import FormLogin from "../FormLogin";
 import { Container, Bandeiras } from "./styles";
 
@@ -27,7 +27,7 @@ const Header = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <img src={LogoMeAu} alt="Cat Logo" />
+        <img src={Logo} alt="Cat Logo" />
 
         <ul>
           <li>Sobre nós</li>
@@ -44,9 +44,20 @@ const Header = () => {
             <img src={bandeiraUS} alt="Bandeira dos Estados Unidos" /> ENG
           </div>
         </Bandeiras>
-        <Button variant="outlined" onClick={handleClickOpen}>
-          Login ou registro
-        </Button>
+        <div className="button--container">
+          <Button
+            backgroundColor="rgba(var(--aquaLight), 1)"
+            color="rgba(var(--white), 1)"
+            height="2.5rem"
+            width="9.1875rem"
+            fontSize=".875rem"
+            fontWeight="600"
+            borderRadius=".9375rem"
+            onClick={() => handleClickOpen()}
+          >
+            Login ou registro
+          </Button>
+        </div>
         <FormLogin openFormLogin={openFormLogin} handleClose={handleClose} />
       </Container>
     </motion.div>
