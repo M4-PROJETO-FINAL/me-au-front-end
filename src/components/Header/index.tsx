@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-// import { Button } from "@mui/material";
 import { motion } from "framer-motion";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
-import LogoMeAu from "../../assets/logoMeAu.png";
+import Logo from "../../assets/Group 22.svg";
 import { Button } from "../Button/style";
 import FormLogin from "../FormLogin";
 import { Container, Bandeiras } from "./styles";
@@ -28,7 +27,7 @@ const Header = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <img src={LogoMeAu} alt="Cat Logo" />
+        <img src={Logo} alt="Cat Logo" />
 
         <ul>
           <li>Sobre nós</li>
