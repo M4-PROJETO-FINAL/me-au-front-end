@@ -4,10 +4,11 @@
     "Já sou cliente": "I'm already a customer",
     "Campo obrigatório": "Required field",
     "Esqueceu sua senha?": "Forgot your password?",
-    "Entrar": "Entrar",
+    "Entrar": "LOGIN",
     "Senha *": "Password *",
     "Ainda não tem uma conta?": "Not have an account yet?",
     "Cadastre-se aqui": "Register here",
-    "Ou entre com": "Or enter with"
+    "Ou entre com": "Or enter with",
+    "E-mail inválido": "Invalid email address"
   }
 }
