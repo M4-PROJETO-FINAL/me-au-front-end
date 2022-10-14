@@ -23,9 +23,12 @@ const FormLogin = ({ openFormLogin, handleClose }: IPropsFormLogin) => {
     i18n.changeLanguage(lng);
   };
 
+  const ERROR_MESSAGE = t("Campo obrigatório");
+  const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
+
   const formSchema = yup.object().shape({
-    email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Campo obrigatório"),
+    email: yup.string().required(ERROR_MESSAGE).email(INVALID_EMAIL_MESSAGE),
+    password: yup.string().required(ERROR_MESSAGE),
   });
 
   const {
