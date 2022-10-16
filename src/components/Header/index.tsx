@@ -1,5 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { motion } from "framer-motion";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
@@ -11,6 +15,11 @@ import { Container, Bandeiras } from "./styles";
 
 const Header = () => {
   const [openFormLogin, setOpenFormLogin] = useState(false);
+  const [selectCountry, setSelectCountry] = useState("BR");
+  const navigate = useNavigate();
+  const handleChange = (event: SelectChangeEvent) => {
+    setSelectCountry(event.target.value as string);
+  };
 
   const handleClickOpen = () => {
     setOpenFormLogin(true);
@@ -19,6 +28,7 @@ const Header = () => {
   const handleClose = () => {
     setOpenFormLogin(false);
   };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -30,20 +40,35 @@ const Header = () => {
         <img src={Logo} alt="Cat Logo" />
 
         <ul>
-          <li>Sobre nós</li>
-          <li>Serviços</li>
-          <li>Acomodações</li>
-          <li>Contato</li>
+          <li onClick={() => navigate("/register", { replace: true })}>
+            Serviços
+          </li>
+          <li onClick={() => navigate("/accommodations", { replace: true })}>
+            Acomodações
+          </li>
+          <li onClick={() => navigate("/contact", { replace: true })}>
+            Contato
+          </li>
         </ul>
 
         <Bandeiras>
-          <div>
-            <img src={bandeiraBR} alt="Bandeira do Brasil" /> PT-BR
-          </div>
-          <div>
-            <img src={bandeiraUS} alt="Bandeira dos Estados Unidos" /> ENG
-          </div>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <Select
+              labelId="demo-select-small"
+              id="demo-select-small"
+              value={selectCountry}
+              onChange={handleChange}
+            >
+              <MenuItem value="BR">
+                <img src={bandeiraBR} alt="Bandeira do Brasil" /> PT-BR
+              </MenuItem>
+              <MenuItem value="USA">
+                <img src={bandeiraUS} alt="Bandeira dos Estados Unidos" /> ENG
+              </MenuItem>
+            </Select>
+          </FormControl>
         </Bandeiras>
+
         <div className="button--container">
           <Button
             backgroundColor="rgba(var(--aquaLight), 1)"
