@@ -11,6 +11,10 @@ export const Container = styled.div`
     font-weight: 400;
     font-size: 40px;
   }
+
+  .Gap {
+    gap: 1rem;
+  }
 `;
 
 export const About = styled.div`
@@ -68,4 +72,8 @@ export const Map = styled.div`
   margin: 2rem 0 2rem 0;
 
   width: 50rem;
+`;
+
+export const SocialIcons = styled.img`
+  cursor: pointer;
 `;

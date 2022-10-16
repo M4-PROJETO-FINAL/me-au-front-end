@@ -8,7 +8,8 @@ import Instagram from "../../assets/SocialMediaIcons/instagramIcon.svg";
 import Twitter from "../../assets/SocialMediaIcons/twitterIcon.svg";
 import Whatsapp from "../../assets/SocialMediaIcons/whatsappIcon.svg";
 import Location from "../../assets/TemporaryLocation.svg";
-import { Container, About, HappyDog, Map } from "./styles";
+import { Button } from "../../components/Button/style";
+import { Container, About, HappyDog, Map, SocialIcons } from "./styles";
 
 const Contact = () => {
   return (
@@ -40,13 +41,13 @@ const Contact = () => {
         </div>
         <img src={Location} alt="Google Map" />
       </Map>
-      <About>
+      <About className="Gap">
         <h1>Fale Conosco</h1>
         <div>
-          <img src={Instagram} alt="Instagram Icon" />
-          <img src={Facebook} alt="Facebook Icon" />
-          <img src={Twitter} alt="Twitter Icon" />
-          <img src={Whatsapp} alt="Whatsapp Icon" />
+          <SocialIcons src={Instagram} alt="Instagram Icon" />
+          <SocialIcons src={Facebook} alt="Facebook Icon" />
+          <SocialIcons src={Twitter} alt="Twitter Icon" />
+          <SocialIcons src={Whatsapp} alt="Whatsapp Icon" />
         </div>
         <Box
           component="form"
@@ -54,13 +55,33 @@ const Contact = () => {
             "& .MuiTextField-root": { m: 1, width: "40ch" },
           }}
         >
-          <TextField id="outlined-text-input" label="Nome" type="text" />
+          <TextField
+            id="outlined-text-input"
+            required
+            label="Nome"
+            type="text"
+          />
 
-          <TextField id="outlined-text-input" label="Email" type="text" />
+          <TextField
+            id="outlined-text-input"
+            required
+            label="Email"
+            type="text"
+          />
 
-          <TextField id="outlined-text-input" label="Assunto" type="text" />
+          <TextField
+            id="outlined-text-input"
+            required
+            label="Assunto"
+            type="text"
+          />
 
-          <TextField id="outlined-text-input" label="Pet" type="text" />
+          <TextField
+            id="outlined-text-input"
+            required
+            label="Pet"
+            type="text"
+          />
 
           <TextField
             id="outlined-multiline-static"
@@ -69,6 +90,19 @@ const Contact = () => {
             required
             rows={4}
           />
+
+          <Button
+            backgroundColor="rgba(var(--orange), 1)"
+            color="rgba(var(--white), 1)"
+            height="2.5rem"
+            width="9.1875rem"
+            fontSize=".875rem"
+            fontWeight="600"
+            borderRadius=".9375rem"
+            // onClick={() => handleClickOpen()}
+          >
+            Enviar
+          </Button>
         </Box>
       </About>
     </Container>
