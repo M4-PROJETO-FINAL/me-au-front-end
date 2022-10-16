@@ -28,6 +28,12 @@ export const Container = styled.div`
       font-size: 16px;
     }
   }
+
+  .button--container {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+  }
 `;
 
 export const Bandeiras = styled.div`
