@@ -11,6 +11,19 @@
     "Ou entre com": "Or enter with",
     "E-mail inválido": "Invalid email address",
     "Calendar locale": "en",
-    "Acomodações e Quartos": "Accommodations and rooms"
+    "Acomodações e Quartos": "Accommodations and rooms",
+    "Nome e sobrenome": "Name and surname *",
+    "Confirmar senha": "Confirm password *",
+    "Confirmar": "Confirm",
+    "Cadastre-se agora": "Register now",
+    "Já tem cadastro": "Already have an account?",
+    "Faça login": "Sign in ",
+    "CPF inválido": "Invalid field. Ex: 123.456.789-11",
+    "Campos nao coincidem": "Fields do not match",
+    "Senha letra maiuscula": "Password must contain at least one capital letter",
+    "Senha letra minuscula": "Password must contain at least one lowercase letter",
+    "Senha caracter especial": "The password must contain at least one special character",
+    "Senha digito": "The password must contain at least one digit",
+    "Senha oito caracteres": "Password must contain at least 8 characters"
   }
 }
