@@ -23,6 +23,7 @@ export const RoomSection = styled.section`
         width: 285px;
         height: 214px;
         border-radius: 5px;
+        cursor: pointer;
       }
     }
   }
