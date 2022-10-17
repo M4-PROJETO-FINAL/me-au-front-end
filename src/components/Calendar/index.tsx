@@ -35,7 +35,7 @@ const Calendar = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack spacing={3} sx={{ "padding-top": "100px" }}>
+      <Stack spacing={3} sx={{ "padding-top": "20px" }}>
         <DatePicker
           disablePast={true}
           views={["day"]}
