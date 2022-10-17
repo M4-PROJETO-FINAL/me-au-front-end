@@ -6,7 +6,7 @@ import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
 import Logo from "../../assets/Group 22.svg";
 import { Button } from "../Button/style";
-import FormLogin from "../FormLogin";
+import LoginAndRegister from "../LoginAndRegister";
 import { Container, Bandeiras } from "./styles";
 
 const Header = () => {
@@ -58,7 +58,10 @@ const Header = () => {
             Login ou registro
           </Button>
         </div>
-        <FormLogin openFormLogin={openFormLogin} handleClose={handleClose} />
+        <LoginAndRegister
+          openFormLogin={openFormLogin}
+          handleClose={handleClose}
+        />
       </Container>
     </motion.div>
   );
