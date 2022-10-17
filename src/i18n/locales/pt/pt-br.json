@@ -11,6 +11,19 @@
     "Ou entre com": "Ou entre com",
     "E-mail inválido": "E-mail inválido",
     "Acomodações e Quartos": "Acomodações e Quartos",
-    "Calendar locale": "pt-br"
+    "Calendar locale": "pt-br",
+    "Nome e sobrenome": "Nome e sobrenome *",
+    "Confirmar senha": "Confirmar senha *",
+    "Cadastre-se agora": "Cadastre-se agora",
+    "Confirmar": "Confirmar",
+    "Já tem cadastro": "Já tem cadastro?",
+    "Faça login": "Faça login ",
+    "CPF inválido": "Campo inválido. Ex: 123.456.789-11",
+    "Campos nao coincidem": "Os campos não coincidem",
+    "Senha letra maiuscula": "A senha deve conter ao menos uma letra maiúscula",
+    "Senha letra minuscula": "A senha deve conter ao menos uma letra minúscula",
+    "Senha caracter especial": "A senha deve conter ao menos um caracter especial",
+    "Senha digito": "A senha deve conter ao menos um dígito",
+    "Senha oito caracteres": "A senha deve conter no mínimo 8 caracteres."
   }
 }
