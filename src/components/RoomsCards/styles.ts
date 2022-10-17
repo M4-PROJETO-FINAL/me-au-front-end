@@ -125,7 +125,6 @@ export const RoomSection = styled.section`
       min-height: 275px;
       max-height: 632px;
       height: 17.5rem;
-
       gap: 15px;
 
       background-color: #ffddca;
