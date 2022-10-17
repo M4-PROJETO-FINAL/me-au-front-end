@@ -154,6 +154,7 @@ export const RoomSection = styled.section`
         width: 100%;
         height: 100%;
         border-radius: 5px;
+        cursor: pointer;
       }
 
       h3 {

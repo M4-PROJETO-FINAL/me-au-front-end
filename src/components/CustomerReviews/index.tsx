@@ -8,7 +8,7 @@ const CustomerReviews = () => {
     {
       customerName: "Rafael Mendes",
       customerImg: Customer1,
-      stars: 3.5,
+      stars: 4.5,
       reviewText:
         "Ambiente agradável, boa localização, Ótima equipe, pronta para atender. Indico e pretendo retornar! a área do banho (chuveiro) achei um pouco pequeno o espaço e escorregadio. sinal e qualidade de internet eram excelentes",
     },

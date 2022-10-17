@@ -1,59 +1,31 @@
-import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 
 import clickRoom from "../../assets/clickRoom.svg";
-import quartoCat from "../../assets/quartoCat.png";
-import quartoComp from "../../assets/quartoComp.png";
-import quartoDog from "../../assets/quartoDog.png";
+import { IRoom } from "../../pages/Accommodations";
 import { Button } from "../Button/style";
 import { RoomSection } from "./styles";
 
-interface IRoom {
-  urlImage: string;
-  title: string;
-  description: string;
-  extra?: string;
+interface ISectionRoomsProps {
+  rooms: IRoom[];
 }
 
-const SectionRooms = () => {
-  const { t } = useTranslation();
-
-  const rooms: IRoom[] = [
-    {
-      urlImage: quartoComp,
-      title: "Quarto Compartilhado",
-      description:
-        "Ótimo custo benefício, essa opção é ideal para você que deseja que o seu pet interaja com outros catioros!",
-    },
-
-    {
-      urlImage: quartoDog,
-      title: "Quarto Privativo",
-      description:
-        "Busca conforto e privacidade para o seu pet? O quarto privativo é a opção ideal!",
-      extra: "Apenas para cães",
-    },
-
-    {
-      urlImage: quartoCat,
-      title: "Quarto Privativo",
-      description:
-        "Quarto privativo de alto padrão para o seu felino aproveitar com classe!",
-      extra: "Apenas para gatos",
-    },
-  ];
-
+const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
+  const navigate = useNavigate();
   return (
     <RoomSection>
       <ul>
         {rooms.map((room, id) => (
           <li key={id}>
             <div className="divRoomCard-item-1">
-              <img src={room.urlImage} alt={room.title} />
+              <img
+                onClick={() => navigate(`/accommodations/${room.tag}`)}
+                src={room.urlImage}
+                alt={room.title}
+              />
             </div>
             <div className="divRoomCard-item-2">
               <div className="titleCardRoom">
                 <h3>{room.title}</h3>
-                {room.extra && <span>{room.extra}</span>}
               </div>
               <p>{room.description}</p>
             </div>
@@ -70,8 +42,10 @@ const SectionRooms = () => {
                   console.log("Aqui deveria abrir a pag do quarto")
                 }
               >
-                <span>Clique aqui para agendar!</span>
-                <img src={clickRoom} alt="#" />
+                <Link to={`/accommodations/${room.tag}`}>
+                  <span>Clique aqui para agendar!</span>
+                  <img src={clickRoom} alt="#" />
+                </Link>
               </Button>
             </div>
           </li>

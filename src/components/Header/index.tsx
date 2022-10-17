@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -6,11 +7,12 @@ import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
 import Logo from "../../assets/Group 22.svg";
 import { Button } from "../Button/style";
-import FormLogin from "../FormLogin";
+import LoginAndRegister from "../LoginAndRegister";
 import { Container, Bandeiras } from "./styles";
 
 const Header = () => {
   const [openFormLogin, setOpenFormLogin] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpenFormLogin(true);
@@ -27,13 +29,13 @@ const Header = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <img src={Logo} alt="Cat Logo" />
+        <img onClick={() => navigate("/")} src={Logo} alt="Cat Logo" />
 
         <ul>
           <li>Sobre nós</li>
           <li>Serviços</li>
-          <li>Acomodações</li>
-          <li>Contato</li>
+          <Link to="/accommodations/all">Acomodações</Link>
+          <Link to="/contact">Contato</Link>
         </ul>
 
         <Bandeiras>
@@ -58,7 +60,10 @@ const Header = () => {
             Login ou registro
           </Button>
         </div>
-        <FormLogin openFormLogin={openFormLogin} handleClose={handleClose} />
+        <LoginAndRegister
+          openFormLogin={openFormLogin}
+          handleClose={handleClose}
+        />
       </Container>
     </motion.div>
   );

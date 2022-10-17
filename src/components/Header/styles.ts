@@ -13,6 +13,7 @@ export const Container = styled.div`
   & > img {
     width: 249px;
     height: 91px;
+    cursor: pointer;
   }
 
   ul {
@@ -22,7 +23,8 @@ export const Container = styled.div`
 
     width: 50%;
 
-    li {
+    li,
+    a {
       font-family: "Public Sans";
       font-weight: 400;
       font-size: 16px;
