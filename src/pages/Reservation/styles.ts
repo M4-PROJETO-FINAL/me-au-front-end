@@ -104,5 +104,8 @@ export const StyledRoomSection = styled.section`
       margin-right: -20px;
       width: 200px;
     }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 `;
