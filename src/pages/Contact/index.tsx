@@ -1,5 +1,11 @@
+import CartModal from "../../components/CartModal";
+
 const Contact = () => {
-  return <div>Contact</div>;
+  return (
+    <>
+      <CartModal />;
+    </>
+  );
 };
 
 export default Contact;

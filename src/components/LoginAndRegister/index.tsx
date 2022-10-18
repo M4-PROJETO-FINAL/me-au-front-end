@@ -26,11 +26,11 @@ const LoginAndRegister = ({
 
   const handleCloseModal = () => {
     handleClose();
-    // setTimeOut necessary because the 0.25s global animation;
     setTimeout(() => {
       setIsLogin(true);
     }, 300);
   };
+
   return (
     <div>
       <Dialog open={openFormLogin} onClose={handleCloseModal}>
