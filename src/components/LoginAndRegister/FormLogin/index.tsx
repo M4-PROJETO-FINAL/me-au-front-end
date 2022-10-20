@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 
 import Logo from "../../../assets/logoMeAuBGCWhite.png";
+import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { LoginContainer } from "./styles";
 
@@ -89,7 +90,7 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
         </ButtonLink>
       </div>
       <div>{t("Ou entre com")}:</div>
-      {/* Aqui adicionamos o googlelogin ~~ a lib já vem com o ícone! */}
+      <GoogleAuthLogin />
     </LoginContainer>
   );
 };
