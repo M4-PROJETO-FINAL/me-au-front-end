@@ -6,7 +6,6 @@ export const LoginContainer = styled.div`
   align-items: center;
   gap: 10px;
   max-width: 530px;
-  height: 630px;
   width: 100%;
   padding: 1.5rem 2rem;
 
