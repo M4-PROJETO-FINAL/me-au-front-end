@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { motion, useTransform } from "framer-motion";
 import { changeLanguage } from "i18next";
 
@@ -22,6 +25,10 @@ const Header = () => {
     changeLanguage(selectedLanguage);
   }, [selectedLanguage]);
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setSelectedLanguage(event.target.value as "en" | "pt");
+  };
+
   const handleClickOpen = () => {
     setOpenFormLogin(true);
   };
@@ -29,6 +36,7 @@ const Header = () => {
   const handleClose = () => {
     setOpenFormLogin(false);
   };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -40,27 +48,29 @@ const Header = () => {
         <img onClick={() => navigate("/")} src={Logo} alt="Cat Logo" />
 
         <ul>
-          <li>{t("Sobre nós")}</li>
           <li>{t("Serviços")}</li>
           <Link to="/accommodations/all">{t("Acomodações")}</Link>
           <Link to="/contact">{t("Contato")}</Link>
         </ul>
 
         <Bandeiras>
-          <img
-            src={selectedLanguage === "pt" ? bandeiraBR : bandeiraUS}
-            alt={`Bandeira do${
-              selectedLanguage === "pt" ? " Brasil" : "s EUA"
-            }`}
-          />
-          <select
-            value={selectedLanguage}
-            onChange={(e) => setSelectedLanguage(e.target.value as "en" | "pt")}
-          >
-            <option value="pt">PT-BR</option>
-            <option value="en">ENG</option>
-          </select>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <Select
+              labelId="demo-select-small"
+              id="demo-select-small"
+              value={selectedLanguage}
+              onChange={handleChange}
+            >
+              <MenuItem value="pt">
+                <img src={bandeiraBR} alt="Bandeira do Brasil" /> PT-BR
+              </MenuItem>
+              <MenuItem value="en">
+                <img src={bandeiraUS} alt="Bandeira dos Estados Unidos" /> ENG
+              </MenuItem>
+            </Select>
+          </FormControl>
         </Bandeiras>
+
         <div className="button--container">
           <Button
             backgroundColor="rgba(var(--aquaLight), 1)"

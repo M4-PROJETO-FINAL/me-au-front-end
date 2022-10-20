@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  justify-content: space-between;
 
   padding: 0 4rem;
 
@@ -28,6 +29,12 @@ export const Container = styled.div`
       font-family: "Public Sans";
       font-weight: 400;
       font-size: 16px;
+
+      &:hover {
+        color: rgba(var(--gray3), 1);
+
+        cursor: pointer;
+      }
     }
   }
 
@@ -41,9 +48,4 @@ export const Container = styled.div`
 export const Bandeiras = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-
-  font-family: "Public Sans";
-  font-weight: 400;
-  font-size: 12px;
 `;
