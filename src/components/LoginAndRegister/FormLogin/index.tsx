@@ -1,10 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { AiOutlineClose } from "react-icons/ai";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 
@@ -17,10 +15,7 @@ interface IPropsFormLogin {
 }
 
 const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  const { t } = useTranslation();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
@@ -94,12 +89,6 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
         </ButtonLink>
       </div>
       <div>{t("Ou entre com")}:</div>
-      <button type="button" onClick={() => changeLanguage("pt")}>
-        BR
-      </button>
-      <button type="button" onClick={() => changeLanguage("en")}>
-        IN
-      </button>
       {/* Aqui adicionamos o googlelogin ~~ a lib já vem com o ícone! */}
     </LoginContainer>
   );
