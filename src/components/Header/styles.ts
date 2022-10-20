@@ -40,9 +40,7 @@ export const Container = styled.div`
 
 export const Bandeiras = styled.div`
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-
+  align-items: center;
   gap: 0.3rem;
 
   font-family: "Public Sans";

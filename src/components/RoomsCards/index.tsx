@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
 import clickRoom from "../../assets/clickRoom.svg";
@@ -11,6 +12,7 @@ interface ISectionRoomsProps {
 
 const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <RoomSection>
       <ul>
@@ -25,9 +27,9 @@ const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
             </div>
             <div className="divRoomCard-item-2">
               <div className="titleCardRoom">
-                <h3>{room.title}</h3>
+                <h3>{t(`Nome dos quartos.${room.tag}`)}</h3>
               </div>
-              <p>{room.description}</p>
+              <p>{t(`Descrição dos quartos.${room.tag}`)}</p>
             </div>
             <div className="divRoomCard-item-3">
               <Button
@@ -43,7 +45,7 @@ const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
                 }
               >
                 <Link to={`/accommodations/${room.tag}`}>
-                  <span>Clique aqui para agendar!</span>
+                  <span>{t("Clique para agendar")}</span>
                   <img src={clickRoom} alt="#" />
                 </Link>
               </Button>

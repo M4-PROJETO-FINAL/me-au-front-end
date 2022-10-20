@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
+import { changeLanguage } from "i18next";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
@@ -12,7 +14,13 @@ import { Container, Bandeiras } from "./styles";
 
 const Header = () => {
   const [openFormLogin, setOpenFormLogin] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
 
   const handleClickOpen = () => {
     setOpenFormLogin(true);
@@ -32,19 +40,26 @@ const Header = () => {
         <img onClick={() => navigate("/")} src={Logo} alt="Cat Logo" />
 
         <ul>
-          <li>Sobre nós</li>
-          <li>Serviços</li>
-          <Link to="/accommodations/all">Acomodações</Link>
-          <Link to="/contact">Contato</Link>
+          <li>{t("Sobre nós")}</li>
+          <li>{t("Serviços")}</li>
+          <Link to="/accommodations/all">{t("Acomodações")}</Link>
+          <Link to="/contact">{t("Contato")}</Link>
         </ul>
 
         <Bandeiras>
-          <div>
-            <img src={bandeiraBR} alt="Bandeira do Brasil" /> PT-BR
-          </div>
-          <div>
-            <img src={bandeiraUS} alt="Bandeira dos Estados Unidos" /> ENG
-          </div>
+          <img
+            src={selectedLanguage === "pt" ? bandeiraBR : bandeiraUS}
+            alt={`Bandeira do${
+              selectedLanguage === "pt" ? " Brasil" : "s EUA"
+            }`}
+          />
+          <select
+            value={selectedLanguage}
+            onChange={(e) => setSelectedLanguage(e.target.value as "en" | "pt")}
+          >
+            <option value="pt">PT-BR</option>
+            <option value="en">ENG</option>
+          </select>
         </Bandeiras>
         <div className="button--container">
           <Button
@@ -57,7 +72,7 @@ const Header = () => {
             borderRadius=".9375rem"
             onClick={() => handleClickOpen()}
           >
-            Login ou registro
+            {t("Login ou registro")}
           </Button>
         </div>
         <LoginAndRegister

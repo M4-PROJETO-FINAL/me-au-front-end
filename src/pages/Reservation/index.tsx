@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -16,6 +17,7 @@ interface IReservationProps {
 }
 
 const Reservation = ({ room }: IReservationProps) => {
+  const { t } = useTranslation();
   const isCatRoom = room.tag === "cats";
 
   return (
@@ -25,7 +27,7 @@ const Reservation = ({ room }: IReservationProps) => {
           <Link to="/accommodations/all">
             <FaArrowLeft size={42} />
           </Link>
-          <div className="roomTitle">{room.title}</div>
+          <div className="roomTitle">{t(`Nome dos quartos.${room.tag}`)}</div>
         </div>
 
         <div className="main">
