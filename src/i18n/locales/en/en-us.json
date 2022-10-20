@@ -6,11 +6,40 @@
     "Esqueceu sua senha?": "Forgot your password?",
     "Entrar": "LOGIN",
     "Senha *": "Password *",
-    "Ainda não tem uma conta?": "Not have an account yet?",
+    "Ainda não tem uma conta?": "Don't have an account yet?",
     "Cadastre-se aqui": "Register here",
     "Ou entre com": "Or enter with",
     "E-mail inválido": "Invalid email address",
     "Calendar locale": "en",
-    "Acomodações e Quartos": "Accommodations and rooms"
+    "Acomodações e Quartos": "Accommodations and rooms",
+    "Nome e sobrenome": "Name and surname *",
+    "Confirmar senha": "Confirm password *",
+    "Confirmar": "Confirm",
+    "Cadastre-se agora": "Register now",
+    "Já tem cadastro": "Already have an account?",
+    "Faça login": "Sign in ",
+    "CPF inválido": "Invalid field. Ex: 123.456.789-11",
+    "Campos nao coincidem": "Fields do not match",
+    "Senha letra maiuscula": "Password must contain at least one capital letter",
+    "Senha letra minuscula": "Password must contain at least one lowercase letter",
+    "Senha caracter especial": "The password must contain at least one special character",
+    "Senha digito": "The password must contain at least one digit",
+    "Senha oito caracteres": "Password must contain at least 8 characters",
+    "Nome dos quartos": {
+      "shared": "Shared room",
+      "cats": "Private room (cats)",
+      "dogs": "Private room (dogs)"
+    },
+    "Descrição dos quartos": {
+      "shared": "Our most affordable option. A great choice if you'd like your dog to interact with others and make friends",
+      "cats": "A luxurious private bedroom for your classy feline companion",
+      "dogs": "Looking for comfort and privacy for your dog friend? The private room is the ideal option"
+    },
+    "Clique para agendar": "Click here to book",
+    "Sobre nós": "About us",
+    "Serviços": "Services",
+    "Acomodações": "Accommodations",
+    "Contato": "Contact",
+    "Login ou registro": "Login or register"
   }
 }

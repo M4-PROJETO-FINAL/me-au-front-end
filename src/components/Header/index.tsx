@@ -1,24 +1,32 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
+import { changeLanguage } from "i18next";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
 import Logo from "../../assets/Group 22.svg";
 import { Button } from "../Button/style";
-import FormLogin from "../FormLogin";
+import LoginAndRegister from "../LoginAndRegister";
 import { Container, Bandeiras } from "./styles";
 
 const Header = () => {
   const [openFormLogin, setOpenFormLogin] = useState(false);
-  const [selectCountry, setSelectCountry] = useState("BR");
+  const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
+
   const handleChange = (event: SelectChangeEvent) => {
-    setSelectCountry(event.target.value as string);
+    setSelectedLanguage(event.target.value as "en" | "pt");
   };
 
   const handleClickOpen = () => {
@@ -37,18 +45,12 @@ const Header = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <img src={Logo} alt="Cat Logo" />
+        <img onClick={() => navigate("/")} src={Logo} alt="Cat Logo" />
 
         <ul>
-          <li onClick={() => navigate("/register", { replace: true })}>
-            Serviços
-          </li>
-          <li onClick={() => navigate("/accommodations", { replace: true })}>
-            Acomodações
-          </li>
-          <li onClick={() => navigate("/contact", { replace: true })}>
-            Contato
-          </li>
+          <li>{t("Serviços")}</li>
+          <Link to="/accommodations/all">{t("Acomodações")}</Link>
+          <Link to="/contact">{t("Contato")}</Link>
         </ul>
 
         <Bandeiras>
@@ -56,13 +58,13 @@ const Header = () => {
             <Select
               labelId="demo-select-small"
               id="demo-select-small"
-              value={selectCountry}
+              value={selectedLanguage}
               onChange={handleChange}
             >
-              <MenuItem value="BR">
+              <MenuItem value="pt">
                 <img src={bandeiraBR} alt="Bandeira do Brasil" /> PT-BR
               </MenuItem>
-              <MenuItem value="USA">
+              <MenuItem value="en">
                 <img src={bandeiraUS} alt="Bandeira dos Estados Unidos" /> ENG
               </MenuItem>
             </Select>
@@ -80,10 +82,13 @@ const Header = () => {
             borderRadius=".9375rem"
             onClick={() => handleClickOpen()}
           >
-            Login ou registro
+            {t("Login ou registro")}
           </Button>
         </div>
-        <FormLogin openFormLogin={openFormLogin} handleClose={handleClose} />
+        <LoginAndRegister
+          openFormLogin={openFormLogin}
+          handleClose={handleClose}
+        />
       </Container>
     </motion.div>
   );

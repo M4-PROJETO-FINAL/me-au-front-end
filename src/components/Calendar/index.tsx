@@ -28,6 +28,8 @@ const Calendar = () => {
   const [checkinDate, setCheckinDate] = React.useState<Dayjs | null>(null);
   const [checkoutDate, setCheckoutDate] = React.useState<Dayjs | null>(null);
 
+  const afterDayCheckin = dayjs(checkinDate).add(1, "day");
+
   const getDisabledDates = (date: dayjs.Dayjs | string) => {
     date = dayjs(date).format("DD/MM/YYYY");
     return blackoutDates.includes(date);
@@ -35,7 +37,7 @@ const Calendar = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack spacing={3} sx={{ "padding-top": "100px" }}>
+      <Stack spacing={3} sx={{ "padding-top": "20px" }}>
         <DatePicker
           disablePast={true}
           views={["day"]}
@@ -55,6 +57,7 @@ const Calendar = () => {
           shouldDisableDate={(date) => getDisabledDates(date)}
           InputProps={{ style: { width: "280px" } }}
           value={checkoutDate}
+          minDate={afterDayCheckin}
           onChange={(newValue) => {
             setCheckoutDate(newValue);
           }}
