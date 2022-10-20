@@ -1,12 +1,12 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 import { IProviderProps } from "../../interfaces/User";
 
 // interface IReservationContext {}
 
-export const ReservationContext = createContext({} /*as IReservationContext*/);
+const ReservationContext = createContext({} /*as IReservationContext*/);
 
-const ReservationContextProvider = ({ children }: IProviderProps) => {
+export const ReservationContextProvider = ({ children }: IProviderProps) => {
   return (
     <ReservationContext.Provider value={{}}>
       {children}
@@ -14,4 +14,4 @@ const ReservationContextProvider = ({ children }: IProviderProps) => {
   );
 };
 
-export default ReservationContextProvider;
+export const useReservationContext = () => useContext(ReservationContext);

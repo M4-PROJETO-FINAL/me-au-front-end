@@ -5,7 +5,7 @@ import quartoComp from "../../assets/RoomPictures/quartoComp.png";
 import quartoDog from "../../assets/RoomPictures/quartoDog.png";
 import SectionRooms from "../../components/RoomsCards";
 import TitleRooms from "../../components/RoomsTitles";
-import ReservationContextProvider from "../../contexts/ReservationContext";
+import { ReservationContextProvider } from "../../contexts/ReservationContext";
 import Reservation from "../Reservation";
 
 export interface IRoom {
