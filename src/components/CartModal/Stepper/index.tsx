@@ -7,6 +7,8 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
+import RegisterPet from "../RegisterPet";
+
 const steps = ["Cadastro", "Adicionais", "Confirmação"];
 
 const TimeStepper = () => {
@@ -49,7 +51,6 @@ const TimeStepper = () => {
       >
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};
-
           return (
             <Step key={label} {...stepProps}>
               <StepLabel>{label}</StepLabel>
@@ -59,6 +60,8 @@ const TimeStepper = () => {
       </Stepper>
 
       <>
+        <RegisterPet />
+
         <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
           <Button
             color="inherit"

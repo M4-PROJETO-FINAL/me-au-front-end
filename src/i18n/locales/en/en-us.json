@@ -40,6 +40,22 @@
     "Serviços": "Services",
     "Acomodações": "Accommodations",
     "Contato": "Contact",
-    "Login ou registro": "Login or register"
+    "Login ou registro": "Login or register",
+    "Cadastrar pet": {
+      "Escolha o seu pet": "Choose your pet",
+      "Cadastre o seu pet": "Register your pet",
+      "Nome": "Name",
+      "Tipo": "Type",
+      "Cachorro": "Dog",
+      "Gato": "Cat",
+      "Idade": "Age",
+      "É vacinado": "Is vaccinated?",
+      "É castrado": "Is neutered? ",
+      "É dócil": "Is docile?",
+      "Sim": "Yes",
+      "Não": "No",
+      "Selecione uma opção": "Select an option",
+      "Campo inválido": "Invalid field"
+    }
   }
 }

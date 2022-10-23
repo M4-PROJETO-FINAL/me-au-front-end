@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@mui/material";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
+import CartModal from "./components/CartModal";
 import Header from "./components/Header";
 import { UserContextProvider } from "./contexts/UserContext";
 import { AppRoutes } from "./routes";
@@ -17,6 +18,7 @@ function App() {
         <UserContextProvider>
           <ThemeProvider theme={MUITheme}>
             <Header />
+            <CartModal />
             <AppRoutes />
           </ThemeProvider>
         </UserContextProvider>
