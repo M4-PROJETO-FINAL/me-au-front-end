@@ -1,5 +1,9 @@
+import { ToastContainer } from "react-toastify";
+
 import { ThemeProvider } from "@mui/material";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./components/Header";
 import { UserContextProvider } from "./contexts/UserContext";
@@ -18,6 +22,7 @@ function App() {
           <ThemeProvider theme={MUITheme}>
             <Header />
             <AppRoutes />
+            <ToastContainer />
           </ThemeProvider>
         </UserContextProvider>
       </GoogleOAuthProvider>
