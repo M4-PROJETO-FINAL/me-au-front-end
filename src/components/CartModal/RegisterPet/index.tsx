@@ -14,6 +14,7 @@ import {
   RegisterAndChooseContainer,
   RegisterPetContainer,
   RightSideColumn,
+  TitleRegister,
 } from "./styles";
 
 interface IFormSchemaRegisterPet {
@@ -72,11 +73,11 @@ const RegisterPet = () => {
   return (
     <RegisterAndChooseContainer>
       <div>
-        <Title>Escolha seu pet</Title>
+        <TitleRegister>Escolha seu pet</TitleRegister>
         <ChoosePet />
       </div>
       <div>
-        <Title>{t("Cadastrar pet.Cadastre o seu pet")}</Title>
+        <TitleRegister>{t("Cadastrar pet.Cadastre o seu pet")}</TitleRegister>
       </div>
       <FormPetContainer onSubmit={handleSubmit(onSubmitFunction)}>
         <RegisterPetContainer>

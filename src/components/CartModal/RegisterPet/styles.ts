@@ -24,8 +24,11 @@ export const RegisterAndChooseContainer = styled.div`
 export const RegisterPetContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   padding-top: 0.8rem;
+  @media screen and (min-width: 1000px) {
+    flex-direction: row;
+  }
 `;
 export const FormPetContainer = styled.form`
   width: 98%;
@@ -34,14 +37,29 @@ export const FormPetContainer = styled.form`
 export const LeftSideColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 48%;
   gap: 0.5rem;
+
+  @media screen and (min-width: 1000px) {
+    width: 48%;
+  }
 `;
 
 export const RightSideColumn = styled.div`
   display: flex;
-  width: 48%;
   gap: 0.5rem;
-
   flex-direction: column;
+
+  @media screen and (min-width: 1000px) {
+    width: 48%;
+  }
+`;
+
+export const TitleRegister = styled.h2`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  text-align: center;
+  @media screen and (min-width: 1000px) {
+    font-size: 24px;
+  }
 `;

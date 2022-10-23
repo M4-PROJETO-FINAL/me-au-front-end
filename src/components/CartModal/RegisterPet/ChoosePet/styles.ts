@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const PetList = styled.ul`
+interface IPropsPetItem {
+  selected: boolean;
+}
+
+export const PetList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -9,19 +13,19 @@ export const PetList = styled.ul`
   width: 100%;
 `;
 
-export const PetItem = styled.li`
-  background-color: #e5c5b2;
-  width: 80%;
+export const PetItem = styled.div<IPropsPetItem>`
   max-width: 500px;
   height: 60px;
-  /* display: flex; */
+  width: 90%;
+  cursor: pointer;
+  z-index: 999;
   display: grid;
   grid-template-areas: "photo titleName icons";
   grid-template-columns: 70px auto 130px;
-  /* align-items: center; */
-  /* justify-content: space-between; */
   padding: 0.5rem;
   border-radius: 7px;
+  background-color: ${({ selected }) => (selected ? "#329892" : "#9fd4d1")};
+
   & > .image__container {
     width: 50px;
     grid-area: photo;
@@ -32,19 +36,35 @@ export const PetItem = styled.li`
 
     font-family: "Public Sans";
     font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 29px;
+    font-weight: 400;
+    font-size: 14px;
+
     justify-self: flex-start;
     align-self: center;
     color: #ffffff;
+  }
+  .pet__icon {
+    width: 26px;
+    height: 26px;
+    @media screen and (min-width: 1000px) {
+      width: auto;
+      height: auto;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    width: 80%;
+
+    & > h3 {
+      font-weight: 600;
+      font-size: 18px;
+    }
   }
 `;
 
 export const PetIcons = styled.li`
   display: flex;
   grid-area: icons;
-
+  align-items: center;
   justify-self: end;
 `;
 

@@ -15,6 +15,7 @@ const TimeStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set<number>());
   const isDesktop = useMediaQuery({ query: "(max-width: 1000px)" });
+  console.log(activeStep);
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
@@ -38,30 +39,34 @@ const TimeStepper = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Stepper
-        alternativeLabel={isDesktop ? false : true}
-        activeStep={activeStep}
-        orientation={isDesktop ? "vertical" : "horizontal"}
-        sx={{
-          "& .MuiStepConnector-line": {
-            borderColor: "#000000",
-            height: "180px",
-          },
-        }}
-      >
-        {steps.map((label, index) => {
-          const stepProps: { completed?: boolean } = {};
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+      <Box display={"flex"} flexDirection={isDesktop ? "row" : "column"}>
+        <Stepper
+          alternativeLabel={isDesktop ? false : true}
+          activeStep={activeStep}
+          orientation={isDesktop ? "vertical" : "horizontal"}
+          style={isDesktop ? { width: "20px" } : { width: "100%" }}
+          sx={{
+            "& .MuiStepConnector-line": {
+              borderColor: "#000000",
+              height: "180px",
+            },
+          }}
+        >
+          {steps.map((label, index) => {
+            const stepProps: { completed?: boolean } = {};
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+        {activeStep === 0 && <RegisterPet />}
+        {activeStep === 1 && <div>Segundo</div>}
+        {activeStep === 2 && <div>Terceiro</div>}
+      </Box>
 
       <>
-        <RegisterPet />
-
         <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
           <Button
             color="inherit"
