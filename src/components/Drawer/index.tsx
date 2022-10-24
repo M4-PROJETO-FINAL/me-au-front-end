@@ -67,6 +67,8 @@ const DrawerComp = () => {
       <Drawer
         PaperProps={{
           sx: {
+            width: "15rem",
+            alignItems: "center",
             backgroundImage:
               "linear-gradient(117deg, rgba(181,229,227,1) 0%, rgba(181,229,227,1) 5%, rgba(30,143,130,1) 100%)",
           },
