@@ -62,7 +62,7 @@ const Header = () => {
       transition={{ duration: 1 }}
     >
       <AppBar sx={{ backgroundColor: "#FFF5EF" }} position="sticky">
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Avatar
               className={styles.margin}
