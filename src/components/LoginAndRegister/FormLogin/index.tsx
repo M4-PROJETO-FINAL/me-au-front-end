@@ -3,16 +3,24 @@ import { useTranslation } from "react-i18next";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 
 import Logo from "../../../assets/logoMeAuBGCWhite.png";
+import { InputGlobal } from "../../Input";
 import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { LoginContainer } from "./styles";
 
 interface IPropsFormLogin {
   showRegisterForm: () => void;
+}
+
+interface IFormLogin {
+  name: string;
+  cpf?: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
 }
 
 const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
@@ -30,7 +38,7 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm<IFormLogin>({ resolver: yupResolver(formSchema) });
 
   const onSubmitFunction = (data) => {
     // Aqui chama o contexto da api de login.. E loga!
@@ -44,31 +52,20 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
       </div>
       <FormStyled onSubmit={handleSubmit(onSubmitFunction)}>
         <FormInputs>
-          <TextField
+          <InputGlobal
             error={!!errors.email}
             label="E-mail *"
-            variant="outlined"
-            id="email"
-            size="medium"
-            InputLabelProps={{ style: { fontSize: 17 } }}
-            helperText={
-              errors.email?.message ? (errors.email.message as string) : " "
-            }
-            {...register("email")}
+            errorMessage={errors?.email?.message}
+            register={register}
+            registerName="email"
           />
-          <TextField
+          <InputGlobal
             error={!!errors.password}
-            type="password"
             label={t("Senha *")}
-            variant="outlined"
-            id="password"
-            InputLabelProps={{ style: { fontSize: 17 } }}
-            helperText={
-              errors.password?.message
-                ? (errors.password.message as string)
-                : " "
-            }
-            {...register("password")}
+            type="password"
+            errorMessage={errors?.password?.message}
+            register={register}
+            registerName="password"
           />
         </FormInputs>
         <p className="forgot__password">{t("Esqueceu sua senha?")}</p>

@@ -40,6 +40,22 @@
     "Serviços": "Serviços",
     "Acomodações": "Acomodações",
     "Contato": "Contato",
-    "Login ou registro": "Login ou registro"
+    "Login ou registro": "Login ou registro",
+    "Cadastrar pet": {
+      "Escolha o seu pet": "Escolha o seu pet",
+      "Cadastre o seu pet": "Cadastre o seu pet",
+      "Nome": "Nome",
+      "Tipo": "Tipo",
+      "Idade": "Idade",
+      "Cachorro": "Cachorro",
+      "Gato": "Gato",
+      "É vacinado": "É vacinado?",
+      "É castrado": "É castrado?",
+      "É dócil": "É dócil?",
+      "Sim": "Sim",
+      "Não": "Não",
+      "Selecione uma opção": "Selecione uma opção",
+      "Campo inválido": "Campo inválido"
+    }
   }
 }

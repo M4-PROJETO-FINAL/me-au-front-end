@@ -13,6 +13,7 @@ export const GoogleAuthLogin = () => {
 
   const responseGmail = (userInfo: IUserInfoGmail) => {
     // A tipagem <any> será substituida pela tipagem do User
+
     const userInfoFixed: any = {
       email: userInfo.email,
       password: userInfo.sub,
