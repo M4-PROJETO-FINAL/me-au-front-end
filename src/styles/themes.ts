@@ -19,6 +19,7 @@ export const lightTheme = {
     orange: "#FF8947",
     orangeLight: "#FFDDCA",
     orangeLighter: "#FFEDE4",
+    logo: "#FFF5EF",
 
     body: "#f7f6f3",
     backgroundTransparent: "#00000052",
@@ -51,6 +52,8 @@ export const MUITheme = createTheme({
     },
     secondary: {
       main: "#FF8947",
+      "300": "#FFDDCA",
+      light: "#FFF5EF",
     },
   },
 });
