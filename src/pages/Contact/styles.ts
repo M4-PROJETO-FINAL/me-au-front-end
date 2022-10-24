@@ -24,7 +24,8 @@ export const About = styled.div`
 
   text-align: center;
 
-  width: 50rem;
+  width: 75%;
+  max-width: 50rem;
 
   padding: 2rem;
 
@@ -46,6 +47,10 @@ export const About = styled.div`
     margin: 8px;
     width: 40ch;
   }
+
+  @media screen and (max-width: 600px) {
+    margin: 3rem;
+  }
 `;
 
 export const HappyDog = styled.div`
@@ -62,6 +67,14 @@ export const HappyDog = styled.div`
     top: -3.438rem;
     left: -3.125rem;
   }
+
+  img:nth-child(2) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Map = styled.div`
@@ -71,7 +84,16 @@ export const Map = styled.div`
 
   margin: 2rem 0 2rem 0;
 
-  width: 50rem;
+  width: 75%;
+  max-width: 50rem;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const SocialIcons = styled.img`

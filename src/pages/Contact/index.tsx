@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
@@ -12,10 +14,12 @@ import { Button } from "../../components/Button/style";
 import { Container, About, HappyDog, Map, SocialIcons } from "./styles";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <About>
-        <h1>Sobre nós</h1>
+        <h1>{t("Sobre nós")}</h1>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industrys standard dummy text ever
@@ -32,7 +36,7 @@ const Contact = () => {
         <img src={PawIcon} alt="Paw Icon" />
         <img src={SmilingDog} alt="Smiling Dog" />
       </HappyDog>
-      <h1>Venha nos visitar!</h1>
+      <h1>{t("Venha nos visitar!")}</h1>
       <Map>
         <div>
           <p>São Paulo, SP</p>
@@ -42,7 +46,7 @@ const Contact = () => {
         <img src={Location} alt="Google Map" />
       </Map>
       <About className="Gap">
-        <h1>Fale Conosco</h1>
+        <h1>{t("Fale Conosco")}</h1>
         <div>
           <SocialIcons src={Instagram} alt="Instagram Icon" />
           <SocialIcons src={Facebook} alt="Facebook Icon" />
@@ -101,7 +105,7 @@ const Contact = () => {
             borderRadius=".9375rem"
             // onClick={() => handleClickOpen()}
           >
-            Enviar
+            {t("Enviar")}
           </Button>
         </Box>
       </About>
