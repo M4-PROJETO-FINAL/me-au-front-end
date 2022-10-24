@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const logo = {
+  color: "rgba(var(--logoOrange), 1)",
+};
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
