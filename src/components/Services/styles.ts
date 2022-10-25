@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import React, { FC } from "react";
-import { Flex, FlexProps } from "@react-yuki/ui";
 
 export const StyledSection = styled.section`
   margin: 2rem 0;
