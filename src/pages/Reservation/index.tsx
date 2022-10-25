@@ -2,12 +2,13 @@ import { FormEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
+import { RiCloseCircleFill } from "react-icons/ri";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TextField } from "@mui/material";
+import { TextField, Dialog } from "@mui/material";
 import * as yup from "yup";
 
 import { ReactComponent as Ball } from "../../assets/Icons/ball.svg";
@@ -18,8 +19,7 @@ import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
 import { useUserContext } from "../../contexts/UserContext";
 import { IRoom } from "../Accommodations";
-import RoomInfoTooltip from "./RoomInfoTooltip";
-import { StyledRoomSection } from "./styles";
+import { StyledRoomSection, DialogInner } from "./styles";
 
 interface IReservationProps {
   room: IRoom;
@@ -38,7 +38,6 @@ const Reservation = ({ room }: IReservationProps) => {
   const { handleCloseCartModal, isOpenCartModal, handleOpenCartModal } =
     useUserContext();
   const [openTooltip, setOpenTooltip] = useState(false);
-
   const checkLoginAndOpenModal = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Verificar se tem data e checkin selecionados --- pegar o contexto dessa data e checkin ( não consegui fazer form yup nesse calendar)
@@ -123,8 +122,28 @@ const Reservation = ({ room }: IReservationProps) => {
         handleClose={handleCloseCartModal}
         handleOpen={handleOpenCartModal}
       />
-      {openTooltip && (
-        <RoomInfoTooltip setOpenTooltip={setOpenTooltip} room={room} />
+      {openTooltip && isMobile && (
+        <Dialog open={openTooltip} onClose={() => setOpenTooltip(false)}>
+          <DialogInner>
+            <div className="closeContainer">
+              <RiCloseCircleFill
+                onClick={() => setOpenTooltip(false)}
+                size="40px"
+                color="#ff8947"
+                stroke="#ffffff"
+              />
+            </div>
+            <p>
+              Acomoda até {`${room.capacity} ${isCatRoom ? "gatos" : "cães"}`}
+            </p>
+            {isCatRoom ? <Ball /> : <Bone />}
+
+            <p>Check-in às 07h e {"\n"} checkout às 17h</p>
+            {isCatRoom ? <Ball /> : <Bone />}
+
+            <p>Incluso: {room.includedService}</p>
+          </DialogInner>
+        </Dialog>
       )}
     </>
   );
