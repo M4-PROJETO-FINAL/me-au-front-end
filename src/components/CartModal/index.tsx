@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 

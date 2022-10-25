@@ -28,7 +28,12 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
   };
 
   return (
-    <ReservationContext.Provider value={{ selectPet, selectedPet }}>
+    <ReservationContext.Provider
+      value={{
+        selectPet,
+        selectedPet,
+      }}
+    >
       {children}
     </ReservationContext.Provider>
   );
