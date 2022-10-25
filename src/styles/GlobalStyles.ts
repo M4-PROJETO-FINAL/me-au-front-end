@@ -54,21 +54,6 @@ export const swiperStyle = css`
     transition-property: transform;
   }
 
-  /* .swiper-slide .cardBackground {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 120px;
-    height: 40px;
-    background: #ff8947;
-    color: white;
-    font-weight: 600;
-    border-radius: 50px;
-    position: relative;
-    bottom: 330px;
-  } */
-
   .swiper-slide-invisible-blank {
     visibility: hidden;
   }

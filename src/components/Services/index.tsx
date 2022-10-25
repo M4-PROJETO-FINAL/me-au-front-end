@@ -24,6 +24,7 @@ const Services = () => {
 
   return (
     <StyledSection>
+      <h3>Serviços</h3>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
