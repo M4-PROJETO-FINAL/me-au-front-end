@@ -16,6 +16,7 @@ import { changeLanguage } from "i18next";
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
 import Logo from "../../assets/Group 22.svg";
+import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import DrawerComp from "../Drawer";
 import LoginAndRegister from "../LoginAndRegister";
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const styles = useStyles();
-  const [openFormLogin, setOpenFormLogin] = useState(false);
+  const { openFormLogin } = useUserContext();
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   const isTablet = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
@@ -44,14 +45,6 @@ const Header = () => {
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as "en" | "pt");
-  };
-
-  const handleClickOpen = () => {
-    setOpenFormLogin(true);
-  };
-
-  const handleClose = () => {
-    setOpenFormLogin(false);
   };
 
   return (
@@ -127,15 +120,12 @@ const Header = () => {
                     fontSize=".875rem"
                     fontWeight="600"
                     borderRadius=".9375rem"
-                    onClick={() => handleClickOpen()}
+                    onClick={() => openFormLogin()}
                   >
                     {t("Login ou registro")}
                   </Button>
                 </div>
-                <LoginAndRegister
-                  openFormLogin={openFormLogin}
-                  handleClose={handleClose}
-                />
+                <LoginAndRegister />
               </>
             )}
           </Toolbar>

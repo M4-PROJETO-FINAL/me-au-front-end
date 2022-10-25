@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField } from "@mui/material";
+import * as yup from "yup";
 
 import { ReactComponent as Ball } from "../../assets/Icons/ball.svg";
 import { ReactComponent as Bone } from "../../assets/Icons/bone.svg";
@@ -13,6 +15,7 @@ import catToyPng from "../../assets/Icons/catToy.png";
 import dogToyPng from "../../assets/Icons/dogToy.png";
 import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
+import { useUserContext } from "../../contexts/UserContext";
 import { IRoom } from "../Accommodations";
 import { StyledRoomSection } from "./styles";
 
@@ -20,21 +23,29 @@ interface IReservationProps {
   room: IRoom;
 }
 
+interface IFormDates {
+  checkin: string;
+  checkout: string;
+}
+
 const Reservation = ({ room }: IReservationProps) => {
   const { t } = useTranslation();
   const isCatRoom = room.tag === "cats";
+  const { user, openFormLogin } = useUserContext();
+  const { handleCloseCartModal, isOpenCartModal, handleOpenCartModal } =
+    useUserContext();
 
-  const [openCartModal, setOpenCartModal] = useState(false);
-  const handleOpen = () => setOpenCartModal(true);
-  const handleClose = () => setOpenCartModal(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const checkLoginAndOpenModal = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Verificar se tem data e checkin selecionados --- pegar o contexto dessa data e checkin ( não consegui fazer form yup nesse calendar)
+    if (user) {
+      handleOpenCartModal();
+      return;
+    }
 
-  const onSubmitFunction = () => {
-    handleOpen();
+    // Caso o usuário não estiver logado
+    toast.info("Faça o login para realizar o agendamento!");
+    openFormLogin();
   };
 
   return (
@@ -51,22 +62,14 @@ const Reservation = ({ room }: IReservationProps) => {
           <div className="main">
             <div className="top">
               <img src={room.urlImage} alt="" />
-              <form onSubmit={handleSubmit(onSubmitFunction)}>
+              <form onSubmit={(e) => checkLoginAndOpenModal(e)}>
                 <Calendar />
                 <TextField
                   label="Quantos pets?"
                   type="number"
                   InputProps={{ style: { width: "280px" } }}
                 />
-                <button
-                  className="reservationBtn"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleOpen();
-                  }}
-                >
-                  Agende agora mesmo!
-                </button>
+                <button className="reservationBtn">Agende agora mesmo!</button>
               </form>
             </div>
             <div className="bottom">
@@ -97,9 +100,9 @@ const Reservation = ({ room }: IReservationProps) => {
         </div>
       </StyledRoomSection>
       <CartModal
-        openCartModal={openCartModal}
-        handleClose={handleClose}
-        handleOpen={handleOpen}
+        openCartModal={isOpenCartModal}
+        handleClose={handleCloseCartModal}
+        handleOpen={handleOpenCartModal}
       />
     </>
   );

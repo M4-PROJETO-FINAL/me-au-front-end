@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import * as yup from "yup";
 
 import Logo from "../../../assets/logoMeAuBGCWhite.png";
+import { useUserContext } from "../../../contexts/UserContext";
 import { InputGlobal } from "../../Input";
 import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
@@ -26,6 +27,8 @@ interface IFormLogin {
 const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
   const { t } = useTranslation();
 
+  const { loginUser } = useUserContext();
+
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
 
@@ -41,6 +44,7 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
   } = useForm<IFormLogin>({ resolver: yupResolver(formSchema) });
 
   const onSubmitFunction = (data) => {
+    loginUser(data);
     // Aqui chama o contexto da api de login.. E loga!
   };
   return (

@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import Dialog from "@mui/material/Dialog";
 
+import { useUserContext } from "../../contexts/UserContext";
 import FormLogin from "./FormLogin";
 import FormRegister from "./FormRegister";
 import { CloseButton } from "./styles";
@@ -12,10 +13,8 @@ interface IPropsLoginAndRegister {
   handleClose: () => void;
 }
 
-const LoginAndRegister = ({
-  openFormLogin,
-  handleClose,
-}: IPropsLoginAndRegister) => {
+const LoginAndRegister = () => {
+  const { closeFormLogin, isOpenFormLogin } = useUserContext();
   const [isLogin, setIsLogin] = useState(true);
   const showRegisterForm = () => {
     setIsLogin(false);
@@ -25,7 +24,7 @@ const LoginAndRegister = ({
   };
 
   const handleCloseModal = () => {
-    handleClose();
+    closeFormLogin();
     setTimeout(() => {
       setIsLogin(true);
     }, 300);
@@ -33,7 +32,7 @@ const LoginAndRegister = ({
 
   return (
     <div>
-      <Dialog open={openFormLogin} onClose={handleCloseModal}>
+      <Dialog open={isOpenFormLogin} onClose={handleCloseModal}>
         {isLogin ? (
           <FormLogin showRegisterForm={showRegisterForm} />
         ) : (
