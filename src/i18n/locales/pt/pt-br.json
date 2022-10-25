@@ -24,6 +24,38 @@
     "Senha letra minuscula": "A senha deve conter ao menos uma letra minúscula",
     "Senha caracter especial": "A senha deve conter ao menos um caracter especial",
     "Senha digito": "A senha deve conter ao menos um dígito",
-    "Senha oito caracteres": "A senha deve conter no mínimo 8 caracteres."
+    "Senha oito caracteres": "A senha deve conter no mínimo 8 caracteres.",
+    "Nome dos quartos": {
+      "shared": "Quarto Compartilhado",
+      "cats": "Quarto privativo (gatos)",
+      "dogs": "Quarto privativo (cães)"
+    },
+    "Descrição dos quartos": {
+      "shared": "Ótimo custo benefício, essa opção é ideal para você que deseja que o seu pet interaja com outros catioros!",
+      "cats": "Quarto privativo de alto padrão para o seu felino aproveitar com classe!",
+      "dogs": "Busca conforto e privacidade para o seu cãozinho? O quarto privativo é a opção ideal!"
+    },
+    "Clique para agendar": "Clique aqui para agendar",
+    "Sobre nós": "Sobre nós",
+    "Serviços": "Serviços",
+    "Acomodações": "Acomodações",
+    "Contato": "Contato",
+    "Login ou registro": "Login ou registro",
+    "Cadastrar pet": {
+      "Escolha o seu pet": "Escolha o seu pet",
+      "Cadastre o seu pet": "Cadastre o seu pet",
+      "Nome": "Nome",
+      "Tipo": "Tipo",
+      "Idade": "Idade",
+      "Cachorro": "Cachorro",
+      "Gato": "Gato",
+      "É vacinado": "É vacinado?",
+      "É castrado": "É castrado?",
+      "É dócil": "É dócil?",
+      "Sim": "Sim",
+      "Não": "Não",
+      "Selecione uma opção": "Selecione uma opção",
+      "Campo inválido": "Campo inválido"
+    }
   }
 }

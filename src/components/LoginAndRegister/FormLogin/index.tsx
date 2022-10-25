@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { AiOutlineClose } from "react-icons/ai";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 
 import Logo from "../../../assets/logoMeAuBGCWhite.png";
+import { useUserContext } from "../../../contexts/UserContext";
+import { InputGlobal } from "../../Input";
+import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { LoginContainer } from "./styles";
 
@@ -16,11 +16,18 @@ interface IPropsFormLogin {
   showRegisterForm: () => void;
 }
 
+interface IFormLogin {
+  name: string;
+  cpf?: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  const { t } = useTranslation();
+
+  const { loginUser } = useUserContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
@@ -34,9 +41,10 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
+  } = useForm<IFormLogin>({ resolver: yupResolver(formSchema) });
 
   const onSubmitFunction = (data) => {
+    loginUser(data);
     // Aqui chama o contexto da api de login.. E loga!
   };
   return (
@@ -48,31 +56,20 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
       </div>
       <FormStyled onSubmit={handleSubmit(onSubmitFunction)}>
         <FormInputs>
-          <TextField
+          <InputGlobal
             error={!!errors.email}
             label="E-mail *"
-            variant="outlined"
-            id="email"
-            size="medium"
-            InputLabelProps={{ style: { fontSize: 17 } }}
-            helperText={
-              errors.email?.message ? (errors.email.message as string) : " "
-            }
-            {...register("email")}
+            errorMessage={errors?.email?.message}
+            register={register}
+            registerName="email"
           />
-          <TextField
+          <InputGlobal
             error={!!errors.password}
-            type="password"
             label={t("Senha *")}
-            variant="outlined"
-            id="password"
-            InputLabelProps={{ style: { fontSize: 17 } }}
-            helperText={
-              errors.password?.message
-                ? (errors.password.message as string)
-                : " "
-            }
-            {...register("password")}
+            type="password"
+            errorMessage={errors?.password?.message}
+            register={register}
+            registerName="password"
           />
         </FormInputs>
         <p className="forgot__password">{t("Esqueceu sua senha?")}</p>
@@ -94,13 +91,7 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
         </ButtonLink>
       </div>
       <div>{t("Ou entre com")}:</div>
-      <button type="button" onClick={() => changeLanguage("pt")}>
-        BR
-      </button>
-      <button type="button" onClick={() => changeLanguage("en")}>
-        IN
-      </button>
-      {/* Aqui adicionamos o googlelogin ~~ a lib já vem com o ícone! */}
+      <GoogleAuthLogin />
     </LoginContainer>
   );
 };

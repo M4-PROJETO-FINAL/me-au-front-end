@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 
@@ -11,12 +10,17 @@ import Modal from "@mui/material/Modal";
 import TimeStepper from "./Stepper";
 import { style, styleDesktop, bgBlur, ButtonCloseModal } from "./style";
 
-const CartModal = () => {
-  const [open, setOpen] = useState(false);
+interface IPropsCartModal {
+  openCartModal: boolean;
+  handleClose: () => void;
+  handleOpen: () => void;
+}
+const CartModal = ({
+  openCartModal,
+  handleClose,
+  handleOpen,
+}: IPropsCartModal) => {
   const isDesktop = useMediaQuery({ query: "(max-width: 1000px)" });
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <div>
@@ -24,7 +28,7 @@ const CartModal = () => {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
+        open={openCartModal}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -36,7 +40,7 @@ const CartModal = () => {
         }}
         style={bgBlur}
       >
-        <Fade in={open}>
+        <Fade in={openCartModal}>
           <Box sx={isDesktop ? style : styleDesktop}>
             <ButtonCloseModal onClick={handleClose}>
               <IoMdArrowBack />
