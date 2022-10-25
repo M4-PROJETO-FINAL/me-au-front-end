@@ -120,3 +120,26 @@ export const StyledRoomSection = styled.section`
     }
   }
 `;
+
+export const DialogInner = styled.div`
+  max-width: 300px;
+  /* background: red; */
+  background: #fff5ef;
+  border: #ffddca solid 5px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0px 15px 25px;
+  .closeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    svg {
+      margin-right: -17px;
+      margin-top: -2px;
+    }
+  }
+`;
