@@ -2,12 +2,34 @@ import styled from "styled-components";
 
 import { lightTheme } from "../../styles/themes";
 
+export const styleStepperMob = {
+  width: "20px",
+  position: "relative",
+  top: "10px",
+  left: "-20px",
+
+  "& .MuiStepConnector-line": {
+    height: "180px",
+  },
+}
+
+export const styleStepperDesk = {
+  width: "100%",
+  position: "static",
+  top: "0",
+  left: "0",
+
+  "& .epMYbE": {
+    marginTop: "8px"
+  }
+}
+
 export const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: "90%",
   height: 600,
   bgcolor: "background.paper",
   boxShadow: 24,
