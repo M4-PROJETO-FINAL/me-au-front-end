@@ -2,7 +2,6 @@ import { createContext, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import { IProviderProps } from "../../interfaces/User";
-import { useReservationContext } from "../ReservationContext";
 
 interface IUserContext {
   user: any;
@@ -34,10 +33,11 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const actualPage = useLocation().pathname;
 
   const loginUser = (data) => {
-    //success
-    console.log(isOpenCartModal);
-    handleOpenCartModal();
-    closeFormLogin();
+    //caso for sucesso
+    if (actualPage.includes("accommodations")) {
+      handleOpenCartModal();
+      closeFormLogin();
+    }
   };
 
   return (

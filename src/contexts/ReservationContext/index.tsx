@@ -13,10 +13,6 @@ interface IReservationContext {
 const ReservationContext = createContext({} as IReservationContext);
 
 export const ReservationContextProvider = ({ children }: IProviderProps) => {
-  const [isOpenCartModal, setIsOpenCartModal] = useState(false);
-  const handleOpenCartModal = () => setIsOpenCartModal(true);
-  const handleCloseCartModal = () => setIsOpenCartModal(false);
-
   const [selectedPet, setSelectedPet] = useState<ISelectedPet>();
   const urlPath = useLocation().pathname;
   const selectPet = (petData: ISelectedPet) => {
