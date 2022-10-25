@@ -32,7 +32,11 @@ const LoginAndRegister = () => {
 
   return (
     <div>
-      <Dialog open={isOpenFormLogin} onClose={handleCloseModal}>
+      <Dialog
+        open={isOpenFormLogin}
+        onClose={handleCloseModal}
+        disableScrollLock={true}
+      >
         {isLogin ? (
           <FormLogin showRegisterForm={showRegisterForm} />
         ) : (
