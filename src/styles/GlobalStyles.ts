@@ -66,8 +66,6 @@ body {
     width: 100vw;
     height: 100vh;
 
-    transition: all 0.25s linear;
-
     background: rgba(var(--bodyBackground), 1);
 }
 ol, ul {
