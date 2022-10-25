@@ -69,9 +69,10 @@ export const ImgPetIco = styled.img`
 `
 
 export const ImgDb = styled.img`
-    width: 100%;
+    max-width: 450px;
+    min-width: 200px;
 
-    @media screen and (max-width: 325px) {
+    @media screen and (max-width: 425px) {
             width: 140%;
         }
 

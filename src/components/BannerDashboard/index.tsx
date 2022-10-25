@@ -13,118 +13,45 @@ const BannerDashboard = () => {
 
   return (
     <ContainerDb>
-      {isMobile ? (
-        <Container
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            flexDirection: "column",
+            gap: isMobile ? "15px" : "20px",
+            maxWidth: "600px",
+            minWidth: "190px",
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: isMobile ? "15px" : "20px",
-              maxWidth: "600px",
-              minWidth: "190px",
-              position: "relative",
-              zIndex: 1,
-            }}
+          <ImgPetIco src={petIcon} />
+          <Typography
+            className="title--db"
+            variant="h4"
+            sx={{ color: lightTheme.colors.aquaLight }}
           >
-            <ImgPetIco src={petIcon} />
+            Nós estamos aqui para cuidar do seu{" "}
             <Typography
               className="title--db"
+              component="span"
               variant="h4"
-              sx={{ color: lightTheme.colors.aquaLight }}
+              sx={{ color: lightTheme.colors.orange }}
             >
-              Nós estamos aqui para cuidar do seu{" "}
-              <Typography
-                className="title--db"
-                component="span"
-                variant="h4"
-                sx={{ color: lightTheme.colors.orange }}
-              >
-                animal de estimação
-              </Typography>
+              animal de estimação
             </Typography>
-            <Typography className="subtitle--db" variant="h6">
-              Fazemos nossos clientes felizes oferecendo o tratamento e a
-              estadia que seu pet merece
-            </Typography>
-            <Box sx={{ display: "flex" }}>
-              <Box className="box--btn">
-                <Button
-                  className="btn--bg"
-                  backgroundColor="rgba(var(--orange), 1)"
-                  color="rgba(var(--white), 1)"
-                  height="2.5rem"
-                  width="100%"
-                  fontSize=".875rem"
-                  fontWeight="600"
-                  borderRadius="0.6rem"
-                >
-                  Reserve um horário
-                </Button>
-                <Button
-                  className="btn--bg border"
-                  backgroundColor="rgba(var(--white), 1)"
-                  color="rgba(var(---black), 1)"
-                  height="2.5rem"
-                  width="100%"
-                  fontSize=".875rem"
-                  fontWeight="600"
-                  borderRadius="0.6rem"
-                >
-                  Confira nossos preços
-                </Button>
-              </Box>
-              <Box className="db--mobile">
-                <ImgDb src={ImageContainer} />
-              </Box>
-            </Box>
-          </Box>
-        </Container>
-      ) : (
-        <Container
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              maxWidth: "600px",
-              minWidth: "190px",
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            <ImgPetIco src={petIcon} />
-            <Typography
-              className="title--db"
-              variant="h4"
-              sx={{ color: lightTheme.colors.aquaLight }}
-            >
-              Nós estamos aqui para cuidar do seu{" "}
-              <Typography
-                className="title--db"
-                component="span"
-                variant="h4"
-                sx={{ color: lightTheme.colors.orange }}
-              >
-                animal de estimação
-              </Typography>
-            </Typography>
-            <Typography className="subtitle--db" variant="h6">
-              Fazemos nossos clientes felizes oferecendo o tratamento e a
-              estadia que seu pet merece
-            </Typography>
-
+          </Typography>
+          <Typography className="subtitle--db" variant="h6">
+            Fazemos nossos clientes felizes oferecendo o tratamento e a estadia
+            que seu pet merece
+          </Typography>
+          <Box sx={{ display: "flex" }}>
             <Box className="box--btn">
               <Button
                 className="btn--bg"
@@ -151,12 +78,15 @@ const BannerDashboard = () => {
                 Confira nossos preços
               </Button>
             </Box>
+            {isMobile && (
+              <Box className="db--mobile">
+                <ImgDb src={ImageContainer} />
+              </Box>
+            )}
           </Box>
-          <Box>
-            <ImgDb src={ImageContainer} />
-          </Box>
-        </Container>
-      )}
+        </Box>
+        {!isMobile && <ImgDb src={ImageContainer} />}
+      </Container>
     </ContainerDb>
   );
 };
