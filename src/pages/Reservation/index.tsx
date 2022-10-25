@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,6 +15,7 @@ import dogToyPng from "../../assets/Icons/dogToy.png";
 import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
 import { IRoom } from "../Accommodations";
+import RoomInfoTooltip from "./RoomInfoTooltip";
 import { StyledRoomSection } from "./styles";
 
 interface IReservationProps {
@@ -22,9 +24,11 @@ interface IReservationProps {
 
 const Reservation = ({ room }: IReservationProps) => {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isCatRoom = room.tag === "cats";
 
   const [openCartModal, setOpenCartModal] = useState(false);
+  const [openTooltip, setOpenTooltip] = useState(false);
   const handleOpen = () => setOpenCartModal(true);
   const handleClose = () => setOpenCartModal(false);
   const {
@@ -50,7 +54,22 @@ const Reservation = ({ room }: IReservationProps) => {
 
           <div className="main">
             <div className="top">
-              <img src={room.urlImage} alt="" />
+              {isMobile && (
+                <div className="toyImgMobileContainer">
+                  <img
+                    onClick={() => setOpenTooltip(true)}
+                    className="toyImgMobile"
+                    src={isCatRoom ? catToyPng : dogToyPng}
+                    alt=""
+                  />
+                </div>
+              )}
+              <img
+                onClick={() => setOpenTooltip(true)}
+                className="roomImg"
+                src={room.urlImage}
+                alt=""
+              />
               <form onSubmit={handleSubmit(onSubmitFunction)}>
                 <Calendar />
                 <TextField
@@ -101,6 +120,9 @@ const Reservation = ({ room }: IReservationProps) => {
         handleClose={handleClose}
         handleOpen={handleOpen}
       />
+      {openTooltip && (
+        <RoomInfoTooltip setOpenTooltip={setOpenTooltip} room={room} />
+      )}
     </>
   );
 };

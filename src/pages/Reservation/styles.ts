@@ -43,8 +43,19 @@ export const StyledRoomSection = styled.section`
         align-items: center;
         max-height: none;
       }
+      .toyImgMobileContainer {
+        width: 300px;
+        display: flex;
+        justify-content: flex-end;
+        .toyImgMobile {
+          z-index: 10;
+          width: 120px;
+          margin-bottom: -55px;
+          margin-right: -40px;
+        }
+      }
 
-      img {
+      .roomImg {
         border-radius: 7px;
         max-width: 90%;
         @media screen and (max-width: 768px) {
