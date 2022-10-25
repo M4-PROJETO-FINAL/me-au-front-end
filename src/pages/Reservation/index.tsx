@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -17,6 +18,7 @@ import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
 import { useUserContext } from "../../contexts/UserContext";
 import { IRoom } from "../Accommodations";
+import RoomInfoTooltip from "./RoomInfoTooltip";
 import { StyledRoomSection } from "./styles";
 
 interface IReservationProps {
@@ -30,10 +32,12 @@ interface IFormDates {
 
 const Reservation = ({ room }: IReservationProps) => {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isCatRoom = room.tag === "cats";
   const { user, openFormLogin } = useUserContext();
   const { handleCloseCartModal, isOpenCartModal, handleOpenCartModal } =
     useUserContext();
+  const [openTooltip, setOpenTooltip] = useState(false);
 
   const checkLoginAndOpenModal = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,7 +65,22 @@ const Reservation = ({ room }: IReservationProps) => {
 
           <div className="main">
             <div className="top">
-              <img src={room.urlImage} alt="" />
+              {isMobile && (
+                <div className="toyImgMobileContainer">
+                  <img
+                    onClick={() => setOpenTooltip(true)}
+                    className="toyImgMobile"
+                    src={isCatRoom ? catToyPng : dogToyPng}
+                    alt=""
+                  />
+                </div>
+              )}
+              <img
+                onClick={() => setOpenTooltip(true)}
+                className="roomImg"
+                src={room.urlImage}
+                alt=""
+              />
               <form onSubmit={(e) => checkLoginAndOpenModal(e)}>
                 <Calendar />
                 <TextField
@@ -104,6 +123,9 @@ const Reservation = ({ room }: IReservationProps) => {
         handleClose={handleCloseCartModal}
         handleOpen={handleOpenCartModal}
       />
+      {openTooltip && (
+        <RoomInfoTooltip setOpenTooltip={setOpenTooltip} room={room} />
+      )}
     </>
   );
 };
