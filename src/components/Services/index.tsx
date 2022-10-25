@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 
 import { useMediaQuery } from "react-responsive";
 
-import { EffectCoverflow, Pagination } from "swiper";
+import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { StyledSection } from "./styles";
 
 import Banho from "../../assets/ServicesPictures/banho&tosa.png";
 import Massagem from "../../assets/ServicesPictures/massagem.png";
@@ -22,7 +23,7 @@ const Services = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   return (
-    <>
+    <StyledSection>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -41,22 +42,47 @@ const Services = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Massagem} />
+          <div className="imgContainer">
+            <img src={Massagem} />
+          </div>
+          <div className="cardBackground">
+            <h5>Massagem</h5>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Natacao} />
+          <div className="imgContainer">
+            <img src={Natacao} />
+          </div>
+          <div className="cardBackground">
+            <h5>Natação</h5>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Passeio} />
+          <div className="imgContainer">
+            <img src={Passeio} />
+          </div>
+          <div className="cardBackground">
+            <h5>Passeio</h5>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Recreacao} />
+          <div className="imgContainer">
+            <img src={Recreacao} />
+          </div>
+          <div className="cardBackground">
+            <h5>Recreação</h5>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Vacinacao} />
+          <div className="imgContainer">
+            <img src={Vacinacao} />
+          </div>
+          <div className="cardBackground">
+            <h5>Vacinação</h5>
+          </div>
         </SwiperSlide>
       </Swiper>
-    </>
+    </StyledSection>
   );
 };
 

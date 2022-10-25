@@ -8,7 +8,7 @@ export const swiperStyle = css`
     position: relative;
     overflow: hidden;
     list-style: none;
-    padding: 0;
+    padding: 30px;
     /* Fix of Webkit flickering */
     z-index: 1;
     height: 25rem;
@@ -54,7 +54,7 @@ export const swiperStyle = css`
     transition-property: transform;
   }
 
-  .swiper-slide .cardBackground {
+  /* .swiper-slide .cardBackground {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +67,7 @@ export const swiperStyle = css`
     border-radius: 50px;
     position: relative;
     bottom: 330px;
-  }
+  } */
 
   .swiper-slide-invisible-blank {
     visibility: hidden;
