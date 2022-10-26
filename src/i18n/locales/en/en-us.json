@@ -62,6 +62,19 @@
     },
     "Inscreva-se para receber nossas promoções e novidades": "Subscribe to receive our promotions and news",
     "Nossas redes": "Socials",
-    "Site desenvolvido por": "Developed by"
+    "Site desenvolvido por": "Developed by",
+    "AddServices": {
+      "Vacinação": "Vaccination",
+      "Banho": "Shower",
+      "Natação": "Swimming",
+      "Tosa Completa": "Complete Clipping",
+      "Massagem": "Massage",
+      "Ração Premium": "Premium Feed",
+      "Apenas números": "Only Numbers",
+      "Escolha os serviços adicionais!": "Choose additional services!",
+      "Quantidade": "The Amount",
+      "Precisa?": "Need?",
+      "Campo inválido": "Invalid field"
+    }
   }
 }
