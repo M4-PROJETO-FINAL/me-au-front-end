@@ -11,6 +11,7 @@ import Twitter from "../../assets/SocialMediaIcons/twitterIcon.svg";
 import Whatsapp from "../../assets/SocialMediaIcons/whatsappIcon.svg";
 import Location from "../../assets/TemporaryLocation.svg";
 import { Button } from "../../components/Button/style";
+import Developers from "../../components/Devs";
 import { Container, About, HappyDog, Map, SocialIcons } from "./styles";
 
 const Contact = () => {
@@ -109,6 +110,8 @@ const Contact = () => {
           </Button>
         </Box>
       </About>
+
+      <Developers />
     </Container>
   );
 };
