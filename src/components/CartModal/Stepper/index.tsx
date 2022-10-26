@@ -7,6 +7,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
+import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";
 import { styleStepperDesk, styleStepperMob } from "../style";
 
@@ -15,8 +16,7 @@ const steps = ["Cadastro", "Adicionais", "Confirmação"];
 const TimeStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set<number>());
-  const isDesktop = useMediaQuery({ query: "(max-width: 1000px)" });
-  console.log(activeStep);
+  const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
@@ -58,7 +58,7 @@ const TimeStepper = () => {
         </Stepper>
         {activeStep === 0 && <RegisterPet />}
         {activeStep === 1 && <div>Segundo</div>}
-        {activeStep === 2 && <div>Terceiro</div>}
+        {activeStep === 2 && <ConfirmationData />}
       </Box>
 
       <>
