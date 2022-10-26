@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
 import clickRoom from "../../assets/clickRoom.svg";
-import { IRoom } from "../../pages/Accommodations";
+import { IRoom } from "../../interfaces/Reservations";
 import { Button } from "../Button/style";
 import { RoomSection } from "./styles";
 
