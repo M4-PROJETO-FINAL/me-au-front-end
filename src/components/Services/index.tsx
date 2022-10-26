@@ -1,10 +1,8 @@
 import React, { useRef, useState } from "react";
-
 import { useMediaQuery } from "react-responsive";
 
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { StyledSection } from "./styles";
 
 import Banho from "../../assets/ServicesPictures/banho&tosa.png";
 import Massagem from "../../assets/ServicesPictures/massagem.png";
@@ -12,13 +10,14 @@ import Natacao from "../../assets/ServicesPictures/natacao.png";
 import Passeio from "../../assets/ServicesPictures/passeio.png";
 import Recreacao from "../../assets/ServicesPictures/recreacao.png";
 import Vacinacao from "../../assets/ServicesPictures/vacinacao.png";
+import { StyledSection } from "./styles";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 const Services = () => {
-  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const isTablet = useMediaQuery({ query: "(min-width: 700px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 

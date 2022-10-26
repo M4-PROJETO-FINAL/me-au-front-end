@@ -20,7 +20,7 @@ const CartModal = ({
   handleClose,
   handleOpen,
 }: IPropsCartModal) => {
-  const isDesktop = useMediaQuery({ query: "(max-width: 1000px)" });
+  const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
 
   return (
     <div>
