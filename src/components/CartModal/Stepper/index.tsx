@@ -7,15 +7,16 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
+import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";
+import { styleStepperDesk, styleStepperMob } from "../style";
 
 const steps = ["Cadastro", "Adicionais", "Confirmação"];
 
 const TimeStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set<number>());
-  const isDesktop = useMediaQuery({ query: "(max-width: 1000px)" });
-  console.log(activeStep);
+  const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
@@ -44,32 +45,27 @@ const TimeStepper = () => {
           alternativeLabel={isDesktop ? false : true}
           activeStep={activeStep}
           orientation={isDesktop ? "vertical" : "horizontal"}
-          style={isDesktop ? { width: "20px" } : { width: "100%" }}
-          sx={{
-            "& .MuiStepConnector-line": {
-              borderColor: "#000000",
-              height: "180px",
-            },
-          }}
+          sx={isDesktop ? styleStepperMob : styleStepperDesk}
         >
-          {steps.map((label, index) => {
+          {steps.map((label) => {
             const stepProps: { completed?: boolean } = {};
             return (
               <Step key={label} {...stepProps}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel>{!isDesktop && label}</StepLabel>
               </Step>
             );
           })}
         </Stepper>
         {activeStep === 0 && <RegisterPet />}
         {activeStep === 1 && <div>Segundo</div>}
-        {activeStep === 2 && <div>Terceiro</div>}
+        {activeStep === 2 && <ConfirmationData />}
       </Box>
 
       <>
         <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
           <Button
             color="inherit"
+            variant="outlined"
             disabled={activeStep === 0}
             onClick={handleBack}
             sx={{ mr: 1 }}
@@ -79,9 +75,10 @@ const TimeStepper = () => {
           <Box sx={{ flex: "1 1 auto" }} />
           <Button
             onClick={handleNext}
+            variant="contained"
             disabled={activeStep === steps.length && true}
           >
-            {activeStep === steps.length - 1 ? "Finalizar" : "Proximo"}
+            {activeStep === steps.length - 1 ? "Finalizar" : "Próximo"}
           </Button>
         </Box>
       </>

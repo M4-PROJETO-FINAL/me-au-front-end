@@ -6,16 +6,8 @@ import quartoDog from "../../assets/RoomPictures/quartoDog.png";
 import SectionRooms from "../../components/RoomsCards";
 import TitleRooms from "../../components/RoomsTitles";
 import { ReservationContextProvider } from "../../contexts/ReservationContext";
+import { IRoom } from "../../interfaces/Reservations";
 import Reservation from "../Reservation";
-
-export interface IRoom {
-  urlImage: string;
-  title: string;
-  description: string;
-  tag: "dogs" | "cats" | "shared";
-  capacity: number;
-  includedService: string;
-}
 
 const Accommodations = () => {
   const { tag } = useParams();
@@ -29,6 +21,7 @@ const Accommodations = () => {
       tag: "shared",
       capacity: 30,
       includedService: "passeios diários",
+      price: 120,
     },
 
     {
@@ -39,6 +32,7 @@ const Accommodations = () => {
       tag: "dogs",
       capacity: 2,
       includedService: "passeios diários",
+      price: 250,
     },
 
     {
@@ -49,6 +43,7 @@ const Accommodations = () => {
       tag: "cats",
       capacity: 2,
       includedService: "1 petisco por dia",
+      price: 250,
     },
   ];
 

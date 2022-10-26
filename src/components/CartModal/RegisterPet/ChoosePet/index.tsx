@@ -37,7 +37,7 @@ const PetMocked = [
 
 const ChoosePet = () => {
   const { t } = useTranslation();
-  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const { selectPet, selectedPet } = useReservationContext();
   //   PetMocked = [];
   if (!PetMocked || PetMocked.length === 0) {

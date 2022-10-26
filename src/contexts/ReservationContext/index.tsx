@@ -2,20 +2,20 @@ import { createContext, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { ISelectedPet } from "../../interfaces/Reservations";
+import { IPet } from "../../interfaces/Reservations";
 import { IProviderProps } from "../../interfaces/User";
 
 interface IReservationContext {
-  selectPet: (data: ISelectedPet) => void;
-  selectedPet?: ISelectedPet;
+  selectPet: (data: IPet) => void;
+  selectedPet?: IPet;
 }
 
 const ReservationContext = createContext({} as IReservationContext);
 
 export const ReservationContextProvider = ({ children }: IProviderProps) => {
-  const [selectedPet, setSelectedPet] = useState<ISelectedPet>();
+  const [selectedPet, setSelectedPet] = useState<IPet>();
   const urlPath = useLocation().pathname;
-  const selectPet = (petData: ISelectedPet) => {
+  const selectPet = (petData: IPet) => {
     if (petData.type === "cat" && urlPath.includes("dog")) {
       toast.error("Não é possível selecionar um gato nesse quarto");
       return;
