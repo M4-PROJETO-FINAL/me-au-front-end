@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import {
   Avatar,
   Box,
@@ -17,6 +20,7 @@ import { ContainerFooter } from "./styles";
 
 const Footer = () => {
   const isTablet = useMediaQuery("(max-width:768px)");
+  const { t } = useTranslation();
 
   return (
     <>
@@ -28,7 +32,7 @@ const Footer = () => {
             gap: isTablet ? "30px" : "0",
             marginTop: isTablet ? "50px" : "0",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "baseline",
           }}
         >
           <Box
@@ -58,7 +62,7 @@ const Footer = () => {
             }}
           >
             <Typography>
-              Inscreva-se para receber nossas promoções e novidades.
+              {t("Inscreva-se para receber nossas promoções e novidades")}.
             </Typography>
             <Box
               sx={{
@@ -70,9 +74,21 @@ const Footer = () => {
                 size="small"
                 fullWidth
                 variant="filled"
-                placeholder="Coloque seu e-mail"
+                placeholder="E-mail"
+                InputProps={{
+                  endAdornment: (
+                    <Button
+                      sx={{
+                        padding: "0",
+                        minWidth: "0",
+                      }}
+                    >
+                      <SendRoundedIcon />,
+                    </Button>
+                  ),
+                }}
               ></TextField>
-              <Button variant="contained">Enviar</Button>
+              {/* <Button variant="contained">Inscrever</Button> */}
             </Box>
           </Box>
           <Box
@@ -84,7 +100,9 @@ const Footer = () => {
             }}
           >
             <Box>
-              <Typography sx={{ fontWeight: "600" }}>Nossas redes</Typography>
+              <Typography sx={{ fontWeight: "600" }}>
+                {t("Nossas redes")}
+              </Typography>
               <Box sx={{ display: "flex" }}>
                 <Avatar src={FbIcon} sx={{ height: "30px", width: "30px" }} />
                 <Avatar src={IgIcon} sx={{ height: "30px", width: "30px" }} />
@@ -95,14 +113,21 @@ const Footer = () => {
               </Box>
             </Box>
             <Box>
-              <Typography sx={{ fontWeight: "600" }}>Fale conosco</Typography>
-              <Typography sx={{ color: lightTheme.colors.aquaLight }}>
+              <Typography sx={{ fontWeight: "600" }}>
+                {t("Fale Conosco")}
+              </Typography>
+              <Typography
+                sx={{ color: lightTheme.colors.aquaLight, fontWeight: "700" }}
+              >
                 (11) 1234-5678
               </Typography>
             </Box>
           </Box>
         </Box>
-        <Chip className="chip--footer" label="Site desenvolvido por"></Chip>
+        <Chip
+          className="chip--footer"
+          label={t("Site desenvolvido por")}
+        ></Chip>
       </ContainerFooter>
     </>
   );
