@@ -43,13 +43,17 @@ export const About = styled.div`
     height: 1.4375em;
   }
 
-  .MuiTextField-root {
-    margin: 8px;
-    width: 40ch;
-  }
-
   @media screen and (max-width: 600px) {
     margin: 3rem;
+  }
+
+  .sc-bjfHbI {
+    width: 100%;
+    max-width: 35rem;
+  }
+
+  .MuiFormControl-root-cIKZZJ {
+    margin: 0.5rem;
   }
 `;
 
