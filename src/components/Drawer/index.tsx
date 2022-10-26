@@ -60,7 +60,6 @@ const DrawerComp = () => {
   };
   const [open, setOpen] = useState(false);
   const theme = useTheme();
-  console.log(theme);
 
   return (
     <>
