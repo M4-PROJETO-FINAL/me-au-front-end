@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 
@@ -21,7 +20,7 @@ const CartModal = ({
   handleClose,
   handleOpen,
 }: IPropsCartModal) => {
-  const isDesktop = useMediaQuery({ query: "(max-width: 1000px)" });
+  const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
 
   return (
     <div>
@@ -40,6 +39,7 @@ const CartModal = ({
           },
         }}
         style={bgBlur}
+        disableScrollLock={true}
       >
         <Fade in={openCartModal}>
           <Box sx={isDesktop ? style : styleDesktop}>

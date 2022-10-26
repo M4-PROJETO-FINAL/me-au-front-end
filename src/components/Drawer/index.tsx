@@ -22,6 +22,7 @@ import { changeLanguage } from "i18next";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
+import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import { Bandeiras } from "../Header/styles";
 import LoginAndRegister from "../LoginAndRegister";
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DrawerComp = () => {
   const styles = useStyles();
-  const [openFormLogin, setOpenFormLogin] = useState(false);
+  const { openFormLogin } = useUserContext();
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   const { t } = useTranslation();
 
@@ -51,13 +52,6 @@ const DrawerComp = () => {
     setSelectedLanguage(event.target.value as "en" | "pt");
   };
 
-  const handleClickOpen = () => {
-    setOpenFormLogin(true);
-  };
-
-  const handleClose = () => {
-    setOpenFormLogin(false);
-  };
   const [open, setOpen] = useState(false);
   const theme = useTheme();
 
@@ -88,7 +82,7 @@ const DrawerComp = () => {
                   fontSize=".875rem"
                   fontWeight="600"
                   borderRadius=".9375rem"
-                  onClick={() => handleClickOpen()}
+                  onClick={() => openFormLogin()}
                 >
                   {t("Login ou registro")}
                 </Button>
@@ -166,10 +160,7 @@ const DrawerComp = () => {
         </List>
       </Drawer>
 
-      <LoginAndRegister
-        openFormLogin={openFormLogin}
-        handleClose={handleClose}
-      />
+      <LoginAndRegister />
       <IconButton onClick={() => setOpen(!open)} sx={{ color: "#65C1BC" }}>
         <MenuIcon fontSize="large" />
       </IconButton>

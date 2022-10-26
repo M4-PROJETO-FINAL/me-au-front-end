@@ -1,4 +1,4 @@
-export interface ISelectedPet {
+export interface IPet {
   id: string;
   age: number;
   isDocile: boolean;
@@ -6,4 +6,14 @@ export interface ISelectedPet {
   isVaccinated: boolean;
   name: string;
   type: string;
+}
+
+export interface IRoom {
+  urlImage: string;
+  title: string;
+  description: string;
+  tag: "dogs" | "cats" | "shared";
+  capacity: number;
+  includedService: string;
+  price: number;
 }

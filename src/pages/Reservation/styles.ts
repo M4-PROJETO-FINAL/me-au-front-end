@@ -43,8 +43,19 @@ export const StyledRoomSection = styled.section`
         align-items: center;
         max-height: none;
       }
+      .toyImgMobileContainer {
+        width: 300px;
+        display: flex;
+        justify-content: flex-end;
+        .toyImgMobile {
+          z-index: 10;
+          width: 120px;
+          margin-bottom: -55px;
+          margin-right: -40px;
+        }
+      }
 
-      img {
+      .roomImg {
         border-radius: 7px;
         max-width: 90%;
         @media screen and (max-width: 768px) {
@@ -106,6 +117,29 @@ export const StyledRoomSection = styled.section`
     }
     @media screen and (max-width: 768px) {
       display: none;
+    }
+  }
+`;
+
+export const DialogInner = styled.div`
+  max-width: 300px;
+  /* background: red; */
+  background: #fff5ef;
+  border: #ffddca solid 5px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0px 15px 25px;
+  .closeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    svg {
+      margin-right: -17px;
+      margin-top: -2px;
     }
   }
 `;
