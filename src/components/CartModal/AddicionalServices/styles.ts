@@ -5,7 +5,7 @@ export const AddServicesContainer = styled.div`
   height: 400px;
   width: 100%;
   ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); */
     background-color: #f5f5f5;
     border-radius: 10px;
   }
