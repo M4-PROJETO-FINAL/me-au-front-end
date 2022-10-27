@@ -1,16 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
 import { InputGlobal, InputSelectGlobal } from "../../Input";
-import { LeftSideColumn } from "../RegisterPet/styles";
 import {
   AddServicesContainer,
   FormServiceContainer,
-  LefSideColumn,
+  LeftSideColumn,
   RightSideColumn,
   TitleServices,
   ServicesAddContainer,
@@ -29,6 +29,8 @@ interface IFormSchemaAddServices {
 const AddicionalServices = () => {
   const { t } = useTranslation();
 
+  const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
+
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_INVALID_MESSAGE = t("AddServices.Campo inválido");
 
@@ -45,38 +47,32 @@ const AddicionalServices = () => {
   ];
 
   const formSchema = yup.object().shape({
-    vacinacao: yup.string().required(ERROR_MESSAGE),
+    vacinacao: yup.string().notRequired(),
     banho: yup
       .number()
-      .typeError(ERROR_MESSAGE)
-      .required(ERROR_MESSAGE)
-      .min(0, ERROR_INVALID_MESSAGE)
-      .max(30, ERROR_INVALID_MESSAGE),
+      .nullable()
+      .positive()
+      .transform((_, val) => (val !== "" ? Number(val) : null)),
     natacao: yup
       .number()
-      .typeError(ERROR_MESSAGE)
-      .required(ERROR_MESSAGE)
-      .min(0, ERROR_INVALID_MESSAGE)
-      .max(30, ERROR_INVALID_MESSAGE),
-
+      .nullable()
+      .positive()
+      .transform((_, val) => (val !== "" ? Number(val) : null)),
     tosaCompleta: yup
       .number()
-      .typeError(ERROR_MESSAGE)
-      .required(ERROR_MESSAGE)
-      .min(0, ERROR_INVALID_MESSAGE)
-      .max(30, ERROR_INVALID_MESSAGE),
+      .nullable()
+      .positive()
+      .transform((_, val) => (val !== "" ? Number(val) : null)),
     massagem: yup
       .number()
-      .typeError(ERROR_MESSAGE)
-      .required(ERROR_MESSAGE)
-      .min(0, ERROR_INVALID_MESSAGE)
-      .max(30, ERROR_INVALID_MESSAGE),
+      .nullable()
+      .positive()
+      .transform((_, val) => (val !== "" ? Number(val) : null)),
     racaoPremium: yup
       .number()
-      .typeError(ERROR_MESSAGE)
-      .required(ERROR_MESSAGE)
-      .min(0, ERROR_INVALID_MESSAGE)
-      .max(30, ERROR_INVALID_MESSAGE),
+      .nullable()
+      .positive()
+      .transform((_, val) => (val !== "" ? Number(val) : null)),
   });
 
   const {
@@ -102,103 +98,206 @@ const AddicionalServices = () => {
 
       <FormServiceContainer onSubmit={handleSubmit(onSubmitFunction)}>
         <ServicesAddContainer>
-          <LeftSideColumn>
-            <DivSelect>
-              <p>
-                Vacina
-                <span>(A combinar)</span>
-              </p>
-              <InputSelectGlobal
-                error={!!errors.vacinacao}
-                errorMessage={errors?.vacinacao?.message}
-                label={t("AddServices.Precisa?")}
-                registerName="vacinacao"
-                register={register}
-                options={optionsYesAndNo}
-              />
-            </DivSelect>
+          {isDesktop ? (
+            <>
+              <LeftSideColumn>
+                <DivSelect>
+                  <p>
+                    Vacina
+                    <span>(A combinar)</span>
+                  </p>
+                  <InputSelectGlobal
+                    error={!!errors.vacinacao}
+                    label="Sel."
+                    registerName="vacinacao"
+                    register={register}
+                    options={optionsYesAndNo}
+                    fontSize={13}
+                  />
+                </DivSelect>
 
-            <DivSelect>
-              <p>
-                Banho
-                <span>(R$30,00)</span>
-              </p>
-              <InputGlobal
-                error={!!errors.banho}
-                type="number"
-                label={t("AddServices.Quantidade")}
-                errorMessage={errors?.banho?.message}
-                register={register}
-                registerName="banho"
-              />
-            </DivSelect>
+                <DivSelect>
+                  <p>
+                    Banho
+                    <span>(R$30,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.banho}
+                    type="number"
+                    label="Qtd."
+                    register={register}
+                    registerName="banho"
+                    fontSize={13}
+                  />
+                </DivSelect>
 
-            <DivSelect>
-              <p>
-                Natação
-                <span>(R$50,00)</span>
-              </p>
-              <InputGlobal
-                error={!!errors.natacao}
-                type="number"
-                label={t("AddServices.Quantidade")}
-                errorMessage={errors?.natacao?.message}
-                register={register}
-                registerName="natacao"
-              />
-            </DivSelect>
-          </LeftSideColumn>
-          <RightSideColumn>
-            <DivSelect>
-              <p>
-                Tosa Completa
-                <span>(R$30,00)</span>
-              </p>
-              <InputGlobal
-                error={!!errors.tosaCompleta}
-                type="number"
-                label={t("AddServices.Quantidade")}
-                errorMessage={errors?.tosaCompleta?.message}
-                register={register}
-                registerName="tosaCompleta"
-              />
-            </DivSelect>
-            <DivSelect>
-              <p>
-                Massagem
-                <span>(R$60,00)</span>
-              </p>
-              <InputGlobal
-                error={!!errors.massagem}
-                type="number"
-                label={t("AddServices.Quantidade")}
-                errorMessage={errors?.massagem?.message}
-                register={register}
-                registerName="massagem"
-              />
-            </DivSelect>
-            <DivSelect>
-              <p>
-                Ração Premium
-                <span>(R$60,00)</span>
-              </p>
-              <InputGlobal
-                error={!!errors.racaoPremium}
-                type="number"
-                label={t("AddServices.Quantidade")}
-                errorMessage={errors?.racaoPremium?.message}
-                register={register}
-                registerName="racaoPremium"
-              />
-            </DivSelect>
-          </RightSideColumn>
+                <DivSelect>
+                  <p>
+                    Natação
+                    <span>(R$50,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.natacao}
+                    type="number"
+                    label="Qtd."
+                    register={register}
+                    registerName="natacao"
+                    fontSize={13}
+                  />
+                </DivSelect>
+              </LeftSideColumn>
+              <RightSideColumn>
+                <DivSelect>
+                  <p>
+                    Tosa Completa
+                    <span>(R$30,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.tosaCompleta}
+                    type="number"
+                    label="Qtd."
+                    register={register}
+                    registerName="tosaCompleta"
+                    fontSize={13}
+                  />
+                </DivSelect>
+                <DivSelect>
+                  <p>
+                    Massagem
+                    <span>(R$60,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.massagem}
+                    type="number"
+                    label="Qtd."
+                    register={register}
+                    registerName="massagem"
+                    fontSize={13}
+                  />
+                </DivSelect>
+                <DivSelect>
+                  <p>
+                    Ração Premium
+                    <span>(R$60,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.racaoPremium}
+                    type="number"
+                    label="Qtd."
+                    register={register}
+                    registerName="racaoPremium"
+                    fontSize={13}
+                  />
+                </DivSelect>
+              </RightSideColumn>
+            </>
+          ) : (
+            <>
+              <LeftSideColumn>
+                <DivSelect>
+                  <p>
+                    Vacina
+                    <span>(A combinar)</span>
+                  </p>
+                  <InputSelectGlobal
+                    error={!!errors.vacinacao}
+                    errorMessage={errors?.vacinacao?.message}
+                    label="Sel."
+                    registerName="vacinacao"
+                    register={register}
+                    options={optionsYesAndNo}
+                    fontSize={13}
+                  />
+                </DivSelect>
+
+                <DivSelect>
+                  <p>
+                    Banho
+                    <span>(R$30,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.banho}
+                    type="number"
+                    label={t("AddServices.Quantidade")}
+                    errorMessage={errors?.banho?.message}
+                    register={register}
+                    registerName="banho"
+                    fontSize={13}
+                  />
+                </DivSelect>
+
+                <DivSelect>
+                  <p>
+                    Natação
+                    <span>(R$50,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.natacao}
+                    type="number"
+                    label={t("AddServices.Quantidade")}
+                    errorMessage={errors?.natacao?.message}
+                    register={register}
+                    registerName="natacao"
+                    fontSize={13}
+                  />
+                </DivSelect>
+              </LeftSideColumn>
+              <RightSideColumn>
+                <DivSelect>
+                  <p>
+                    Tosa Completa
+                    <span>(R$30,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.tosaCompleta}
+                    type="number"
+                    label={t("AddServices.Quantidade")}
+                    errorMessage={errors?.tosaCompleta?.message}
+                    register={register}
+                    registerName="tosaCompleta"
+                    fontSize={13}
+                  />
+                </DivSelect>
+                <DivSelect>
+                  <p>
+                    Massagem
+                    <span>(R$60,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.massagem}
+                    type="number"
+                    label={t("AddServices.Quantidade")}
+                    errorMessage={errors?.massagem?.message}
+                    register={register}
+                    registerName="massagem"
+                    fontSize={13}
+                  />
+                </DivSelect>
+                <DivSelect>
+                  <p>
+                    Ração Premium
+                    <span>(R$60,00)</span>
+                  </p>
+                  <InputGlobal
+                    error={!!errors.racaoPremium}
+                    type="number"
+                    label={t("AddServices.Quantidade")}
+                    errorMessage={errors?.racaoPremium?.message}
+                    register={register}
+                    registerName="racaoPremium"
+                    fontSize={13}
+                  />
+                </DivSelect>
+              </RightSideColumn>
+            </>
+          )}
         </ServicesAddContainer>
         <Button
           type="submit"
           fullWidth
           variant="contained"
           color="primary"
-          sx={{ fontWeight: "bold", fontSize: 16 }}
+          sx={{ fontWeight: "bold", fontSize: 16, marginTop: 3 }}
         >
           Concluir adicionais!
         </Button>

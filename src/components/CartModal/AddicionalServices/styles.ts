@@ -27,12 +27,12 @@ export const FormServiceContainer = styled.form`
   padding-bottom: 0.2rem;
 `;
 
-export const LefSideColumn = styled.div`
+export const LeftSideColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 770px) {
     width: 48%;
   }
 `;
@@ -42,7 +42,7 @@ export const RightSideColumn = styled.div`
   gap: 0.5rem;
   flex-direction: column;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 770px) {
     width: 48%;
   }
 `;
@@ -52,7 +52,7 @@ export const ServicesAddContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
   padding-top: 0.8rem;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 770px) {
     flex-direction: row;
   }
 `;
@@ -62,7 +62,7 @@ export const TitleServices = styled.h2`
   font-weight: 700;
   font-size: 19px;
   text-align: center;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 770px) {
     font-size: 24px;
   }
 `;
@@ -86,7 +86,7 @@ export const DivSelect = styled.div`
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 770px) {
     p {
       span {
         display: flex;
@@ -101,9 +101,8 @@ export const DivSelect = styled.div`
 
     div {
       width: 100%;
-
-      label {
-        font-size: 80%;
+      div {
+        font-size: 12px;
       }
     }
   }
