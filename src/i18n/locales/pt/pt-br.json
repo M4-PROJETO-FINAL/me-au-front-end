@@ -56,6 +56,19 @@
       "Não": "Não",
       "Selecione uma opção": "Selecione uma opção",
       "Campo inválido": "Campo inválido"
+    },
+    "AddServices": {
+      "Vacinação": "Vacinação",
+      "Banho": "Banho",
+      "Natação": "Natação",
+      "Tosa Completa": "Tosa Completa",
+      "Massagem": "Massagem",
+      "Ração Premium": "Ração Premium",
+      "Apenas números": "Apenas números",
+      "Escolha os serviços adicionais!": "Escolha os serviços adicionais!",
+      "Quantidade": "Quantidade",
+      "Precisa?": "Precisa?",
+      "Campo inválido": "Campo inválido"
     }
   }
 }

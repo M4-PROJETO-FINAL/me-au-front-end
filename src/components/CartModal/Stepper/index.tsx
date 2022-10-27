@@ -7,6 +7,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
+import AddicionalServices from "../AddicionalServices/";
 import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";
 import { styleStepperDesk, styleStepperMob } from "../style";
@@ -57,7 +58,7 @@ const TimeStepper = () => {
           })}
         </Stepper>
         {activeStep === 0 && <RegisterPet />}
-        {activeStep === 1 && <div>Segundo</div>}
+        {activeStep === 1 && <AddicionalServices />}
         {activeStep === 2 && <ConfirmationData />}
       </Box>
 
