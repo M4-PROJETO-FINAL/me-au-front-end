@@ -16,7 +16,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 const Services = () => {
-  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const isTablet = useMediaQuery({ query: "(min-width: 700px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 

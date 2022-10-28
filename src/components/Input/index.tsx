@@ -10,6 +10,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   errorMessage?: string;
   registerName: string;
+  fontSize?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
 }
@@ -24,6 +25,7 @@ interface ISelectGlobal extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   errorMessage?: string;
   registerName: string;
+  fontSize?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   options: IOption[];
@@ -37,6 +39,7 @@ export const InputGlobal = ({
   registerName,
   type,
   maxLength,
+  fontSize,
 }: IInput) => {
   return (
     <TextField
@@ -46,7 +49,7 @@ export const InputGlobal = ({
       maxLength={maxLength}
       variant="outlined"
       id={registerName}
-      InputLabelProps={{ style: { fontSize: 17 } }}
+      InputLabelProps={{ style: { fontSize: `${fontSize ? fontSize : 17}px` } }}
       helperText={error ? errorMessage : " "}
       {...register(registerName)}
       InputProps={{
@@ -67,6 +70,7 @@ export const InputSelectGlobal = ({
   errorMessage,
   registerName,
   options,
+  fontSize,
 }: ISelectGlobal) => {
   return (
     <TextField
@@ -75,7 +79,7 @@ export const InputSelectGlobal = ({
       error={error}
       label={label}
       defaultValue=""
-      InputLabelProps={{ style: { fontSize: 17 } }}
+      InputLabelProps={{ style: { fontSize: `${fontSize ? fontSize : 17}px` } }}
       helperText={error ? errorMessage : " "}
       {...register(registerName)}
       InputProps={{

@@ -9,9 +9,12 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, { Dayjs } from "dayjs";
 
 import "dayjs/locale/pt-br";
+import { useReservationContext } from "../../contexts/ReservationContext";
 
 const Calendar = () => {
   const { t } = useTranslation();
+  const { checkinDate, checkoutDate, setCheckinDate, setCheckoutDate } =
+    useReservationContext();
 
   dayjs.locale(t("Calendar locale")); // use loaded locale globally
 
@@ -24,9 +27,6 @@ const Calendar = () => {
     "17/10/2022",
     "25/10/2022",
   ];
-
-  const [checkinDate, setCheckinDate] = React.useState<Dayjs | null>(null);
-  const [checkoutDate, setCheckoutDate] = React.useState<Dayjs | null>(null);
 
   const afterDayCheckin = dayjs(checkinDate).add(1, "day");
 

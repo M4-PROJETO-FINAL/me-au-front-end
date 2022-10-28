@@ -26,7 +26,7 @@ export const RegisterPetContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
   padding-top: 0.8rem;
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     flex-direction: row;
   }
 `;
@@ -39,7 +39,7 @@ export const LeftSideColumn = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     width: 48%;
   }
 `;
@@ -49,7 +49,7 @@ export const RightSideColumn = styled.div`
   gap: 0.5rem;
   flex-direction: column;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     width: 48%;
   }
 `;
@@ -59,7 +59,7 @@ export const TitleRegister = styled.h2`
   font-weight: 700;
   font-size: 19px;
   text-align: center;
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     font-size: 24px;
   }
 `;

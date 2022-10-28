@@ -46,12 +46,12 @@ export const PetItem = styled.div<IPropsPetItem>`
   .pet__icon {
     width: 26px;
     height: 26px;
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: 768px) {
       width: auto;
       height: auto;
     }
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 768px) {
     width: 80%;
 
     & > h3 {

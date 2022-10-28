@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
 import clickRoom from "../../assets/clickRoom.svg";
-import { IRoom } from "../../pages/Accommodations";
+import { useReservationContext } from "../../contexts/ReservationContext";
+import { IRoom } from "../../interfaces/Reservations";
 import { Button } from "../Button/style";
 import { RoomSection } from "./styles";
 
@@ -11,6 +12,7 @@ interface ISectionRoomsProps {
 }
 
 const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
+  const { setSelectedRoomType } = useReservationContext();
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
@@ -20,7 +22,10 @@ const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
           <li key={id}>
             <div className="divRoomCard-item-1">
               <img
-                onClick={() => navigate(`/accommodations/${room.tag}`)}
+                onClick={() => {
+                  setSelectedRoomType(room.tag);
+                  navigate(`/accommodations/${room.tag}`);
+                }}
                 src={room.urlImage}
                 alt={room.title}
               />
@@ -40,9 +45,7 @@ const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
                 fontSize=".875rem"
                 fontWeight="600"
                 borderRadius=".9375rem"
-                onClick={() =>
-                  console.log("Aqui deveria abrir a pag do quarto")
-                }
+                onClick={() => setSelectedRoomType(room.tag)}
               >
                 <Link to={`/accommodations/${room.tag}`}>
                   <span>{t("Clique para agendar")}</span>

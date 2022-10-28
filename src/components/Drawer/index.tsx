@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+// import { Link } from "react-router-dom";
 
-import { makeStyles } from "@material-ui/core/styles";
-import { flexbox } from "@material-ui/system";
 import BedIcon from "@mui/icons-material/Bed";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -17,31 +16,20 @@ import {
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useTheme } from "@mui/system";
 import { changeLanguage } from "i18next";
 
 import bandeiraBR from "../../assets/bandeiraBR.png";
 import bandeiraUS from "../../assets/bandeiraUS.png";
+import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import { Bandeiras } from "../Header/styles";
 import LoginAndRegister from "../LoginAndRegister";
 
-const useStyles = makeStyles((theme) => ({
-  font: {
-    fontFamily: "Nunito",
-    fontWeight: 500,
-  },
-  root: {
-    display: "flex",
-    alignItems: "center",
-  },
-}));
-
 const DrawerComp = () => {
-  const styles = useStyles();
-  const [openFormLogin, setOpenFormLogin] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const { openFormLogin } = useUserContext();
+  const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
 
   useEffect(() => {
     changeLanguage(selectedLanguage);
@@ -50,17 +38,6 @@ const DrawerComp = () => {
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as "en" | "pt");
   };
-
-  const handleClickOpen = () => {
-    setOpenFormLogin(true);
-  };
-
-  const handleClose = () => {
-    setOpenFormLogin(false);
-  };
-  const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  console.log(theme);
 
   return (
     <>
@@ -89,7 +66,7 @@ const DrawerComp = () => {
                   fontSize=".875rem"
                   fontWeight="600"
                   borderRadius=".9375rem"
-                  onClick={() => handleClickOpen()}
+                  onClick={() => openFormLogin()}
                 >
                   {t("Login ou registro")}
                 </Button>
@@ -167,10 +144,7 @@ const DrawerComp = () => {
         </List>
       </Drawer>
 
-      <LoginAndRegister
-        openFormLogin={openFormLogin}
-        handleClose={handleClose}
-      />
+      <LoginAndRegister />
       <IconButton onClick={() => setOpen(!open)} sx={{ color: "#65C1BC" }}>
         <MenuIcon fontSize="large" />
       </IconButton>
