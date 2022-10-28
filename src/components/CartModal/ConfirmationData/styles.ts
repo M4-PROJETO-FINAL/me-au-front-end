@@ -31,6 +31,8 @@ export const StyledConfirmationData = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 360px;
+    overflow-y: auto;
 
     @media screen and (max-width: 768px) {
       padding: 0;

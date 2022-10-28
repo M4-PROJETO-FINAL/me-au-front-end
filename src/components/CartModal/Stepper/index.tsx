@@ -7,6 +7,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
+import { useReservationContext } from "../../../contexts/ReservationContext";
 import AddicionalServices from "../AddicionalServices/";
 import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";
@@ -18,12 +19,23 @@ const TimeStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set<number>());
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
+  const { generateRequestObject } = useReservationContext();
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
   };
 
   const handleNext = () => {
+    if (activeStep === 2) {
+      const body = generateRequestObject();
+      // await api.post('/reservations', body)
+      return;
+    }
+
+    if (activeStep === 1) {
+      // mexer aqui pra fazer com que o botão "próximo" registre os serviços!
+    }
+
     let newSkipped = skipped;
 
     if (isStepSkipped(activeStep)) {

@@ -38,7 +38,7 @@ const PetMocked = [
 const ChoosePet = () => {
   const { t } = useTranslation();
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
-  const { selectPet, selectedPet } = useReservationContext();
+  const { selectPet, selectedPets } = useReservationContext();
   //   PetMocked = [];
   if (!PetMocked || PetMocked.length === 0) {
     return (
@@ -56,7 +56,7 @@ const ChoosePet = () => {
             onClick={() => {
               selectPet(pet);
             }}
-            selected={pet.id === selectedPet?.id}
+            selected={selectedPets?.map((p) => p.id).includes(pet.id) || false}
           >
             <div className="pet-image__container">
               <img src={pet.type === "cat" ? cat : dog} />
