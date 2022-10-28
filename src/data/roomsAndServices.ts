@@ -42,7 +42,7 @@ export const rooms: IRoom[] = [
 ];
 
 export const services: IService[] = [
-  { id: "1", name: "Vacina", tag: "vaccine", description: "", price: 50 },
+  { id: "1", name: "Vacina", tag: "vaccine", description: "", price: 0 },
   { id: "2", name: "Banho", tag: "bath", description: "", price: 30 },
   { id: "3", name: "Tosa", tag: "grooming", description: "", price: 30 },
   { id: "4", name: "Massagem", tag: "massage", description: "", price: 60 },

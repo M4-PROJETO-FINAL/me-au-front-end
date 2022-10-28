@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -13,6 +13,7 @@ import {
   RoomType,
 } from "../../interfaces/Reservations";
 import { IProviderProps } from "../../interfaces/User";
+import { useUserContext } from "../UserContext";
 
 interface IReservationContext {
   selectedRoomType: RoomType | "";
@@ -40,9 +41,13 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
   const [checkoutDate, setCheckoutDate] = useState<Dayjs | null>(null);
   const [petsAmount, setPetsAmount] = useState(0);
   const [services, setServices] = useState({} as IReservationServicesAmounts);
-
   const [selectedPets, setSelectedPets] = useState([] as IPet[]);
   const urlPath = useLocation().pathname;
+  const { isOpenCartModal } = useUserContext();
+
+  useEffect(() => {
+    setSelectedPets([]);
+  }, [isOpenCartModal]);
 
   const generateRequestObject = (): IReservationRequest => {
     const servicesArray: IServiceAmount[] = Object.keys(services)

@@ -1,23 +1,19 @@
 import { useTranslation } from "react-i18next";
 
-import quartoDog from "../../../assets/RoomPictures/quartoDog.png";
+import dayjs from "dayjs";
+
 import { useReservationContext } from "../../../contexts/ReservationContext";
 import {
   rooms,
   services as servicesData,
 } from "../../../data/roomsAndServices";
-import {
-  IReservationRequest,
-  IRoom,
-  IService,
-} from "../../../interfaces/Reservations";
+import { IReservationRequest } from "../../../interfaces/Reservations";
 import { StyledConfirmationData } from "./styles";
 
 const ConfirmationData = () => {
   const {
-    i18n: { language },
+    i18n: { language: lang },
   } = useTranslation();
-
   const { generateRequestObject, selectedRoomType } = useReservationContext();
 
   const reservationObject: IReservationRequest = generateRequestObject();
@@ -47,6 +43,8 @@ const ConfirmationData = () => {
     return total + serv.price * service.amount;
   }, 0);
 
+  const dateFormat = lang === "pt" ? "DD/MM/YYYY" : "MM/DD/YYYY";
+
   return (
     <StyledConfirmationData>
       <h2 className="confirmationTitle">Confirmação dos dados</h2>
@@ -60,10 +58,14 @@ const ConfirmationData = () => {
               Tipo de quarto: <span>{room.title}</span>{" "}
             </p>
             <p>
-              Data de checkin: <span>{reservationObject.checkin}</span>{" "}
+              Data de checkin:{" "}
+              <span>{dayjs(reservationObject.checkin).format(dateFormat)}</span>{" "}
             </p>
             <p>
-              Data de checkout: <span>{reservationObject.checkout}</span>{" "}
+              Data de checkout:{" "}
+              <span>
+                {dayjs(reservationObject.checkout).format(dateFormat)}
+              </span>{" "}
             </p>
             <p>
               Nº de pets: <span>{reservationObject.pets_rooms.length}</span>
@@ -72,20 +74,37 @@ const ConfirmationData = () => {
               Nº de noites: <span>{diffInDays}</span>
             </p>
             <p>
-              Total diária: <span> ${reservationPrice.toFixed(2)}</span>{" "}
+              Total diária:{" "}
+              <span>
+                {" "}
+                {lang === "pt" ? "R" : ""}${reservationPrice}
+              </span>{" "}
             </p>
           </section>
           <section className="servicesInfo">
             <p>Serviços adicionais:</p>
             {services.map((service) => (
               <p key={service.id}>
-                {service.name}: ${service.price.toFixed(2)}
+                {service.name}:{" "}
+                {service.name === "Vacina"
+                  ? "preço a combinar"
+                  : `${lang === "pt" ? "R" : ""}$${service.price} × ${
+                      reservationObject.services.find(
+                        (r) => r.service_id === service.tag,
+                      )?.amount || 0
+                    } = ${lang === "pt" ? "R" : ""}$${
+                      service.price *
+                      (reservationObject.services.find(
+                        (r) => r.service_id === service.tag,
+                      )?.amount || 0)
+                    }`}
               </p>
             ))}
           </section>
           <section className="totalInfo">
             <p>
-              <b>Total:</b> ${(servicesPrice + reservationPrice).toFixed(2)}{" "}
+              <b>Total:</b> {lang === "pt" ? "R" : ""}$
+              {servicesPrice + reservationPrice}{" "}
             </p>
           </section>
         </div>

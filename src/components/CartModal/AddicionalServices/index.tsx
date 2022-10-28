@@ -183,7 +183,7 @@ const AddicionalServices = () => {
                 <DivSelect>
                   <p>
                     Ração Premium
-                    <span>(R$60,00)</span>
+                    <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
                     error={!!errors.premiumFood}
@@ -281,7 +281,7 @@ const AddicionalServices = () => {
                 <DivSelect>
                   <p>
                     Ração Premium
-                    <span>(R$60,00)</span>
+                    <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
                     error={!!errors.premiumFood}
