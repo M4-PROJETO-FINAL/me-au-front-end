@@ -1,72 +1,49 @@
 import { useTranslation } from "react-i18next";
 
-import quartoDog from "../../../assets/RoomPictures/quartoDog.png";
-import { IRoom } from "../../../interfaces/Reservations";
+import dayjs from "dayjs";
+
+import { useReservationContext } from "../../../contexts/ReservationContext";
+import {
+  rooms,
+  services as servicesData,
+} from "../../../data/roomsAndServices";
+import { IReservationRequest } from "../../../interfaces/Reservations";
 import { StyledConfirmationData } from "./styles";
-
-interface IPetRoom {
-  pet_id: string;
-  room_id: string;
-}
-
-interface IReservationRequest {
-  checkin: string;
-  checkout: string;
-  room_type_id: string;
-  pets_rooms: IPetRoom[];
-  services: string[];
-}
 
 const ConfirmationData = () => {
   const {
-    i18n: { language },
+    i18n: { language: lang },
   } = useTranslation();
+  const { generateRequestObject, selectedRoomType } = useReservationContext();
 
-  const reservationObject: IReservationRequest = {
-    checkin: "2022-10-22",
-    checkout: "2022-10-25",
-    room_type_id: "uuid",
-    pets_rooms: [
-      {
-        pet_id: "uuid",
-        room_id: "uuid",
-      },
-      {
-        pet_id: "uuid2",
-        room_id: "uuid2",
-      },
-    ],
-    services: ["uuid", "uuid2", "uuid3"],
-  };
+  const reservationObject: IReservationRequest = generateRequestObject();
+  console.log(reservationObject);
 
   const diffInMs =
     new Date(reservationObject.checkout).getTime() -
     new Date(reservationObject.checkin).getTime();
   const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
 
-  const room: IRoom = {
-    // obtido por requisição a partir do reservationObject.room_type_id
-    urlImage: quartoDog,
-    title: "Quarto Privativo (cães)",
-    description:
-      "Busca conforto e privacidade para o seu cãozinho? O quarto privativo é a opção ideal!",
-    tag: "dogs",
-    capacity: 2,
-    includedService: "passeios diários",
-    price: 250,
-  };
+  const room = rooms.find((room) => room.tag === selectedRoomType);
 
-  const services: any = [
-    // obtido por requisição: um service pra cada id em reservationObject.services
-    { id: "1", name: "serviço 1", price: 50 },
-    { id: "2", name: "serviço 2", price: 80 },
-  ];
+  if (!room) {
+    // impossível
+    return <></>;
+  }
+
+  const services = servicesData.filter((service) =>
+    reservationObject.services.map((s) => s.service_id).includes(service.tag),
+  );
 
   const reservationPrice = room.price * diffInDays;
-  const servicesPrice = services.reduce(
-    (total, service) => total + service.price,
-    0,
-  );
+
+  const servicesPrice = reservationObject.services.reduce((total, service) => {
+    const serv = services.find((serv) => serv.tag === service.service_id);
+    if (!serv) return total; // impossível
+    return total + serv.price * service.amount;
+  }, 0);
+
+  const dateFormat = lang === "pt" ? "DD/MM/YYYY" : "MM/DD/YYYY";
 
   return (
     <StyledConfirmationData>
@@ -81,10 +58,14 @@ const ConfirmationData = () => {
               Tipo de quarto: <span>{room.title}</span>{" "}
             </p>
             <p>
-              Data de checkin: <span>{reservationObject.checkin}</span>{" "}
+              Data de checkin:{" "}
+              <span>{dayjs(reservationObject.checkin).format(dateFormat)}</span>{" "}
             </p>
             <p>
-              Data de checkout: <span>{reservationObject.checkout}</span>{" "}
+              Data de checkout:{" "}
+              <span>
+                {dayjs(reservationObject.checkout).format(dateFormat)}
+              </span>{" "}
             </p>
             <p>
               Nº de pets: <span>{reservationObject.pets_rooms.length}</span>
@@ -93,20 +74,37 @@ const ConfirmationData = () => {
               Nº de noites: <span>{diffInDays}</span>
             </p>
             <p>
-              Total diária: <span> ${reservationPrice.toFixed(2)}</span>{" "}
+              Total diária:{" "}
+              <span>
+                {" "}
+                {lang === "pt" ? "R" : ""}${reservationPrice}
+              </span>{" "}
             </p>
           </section>
           <section className="servicesInfo">
             <p>Serviços adicionais:</p>
             {services.map((service) => (
               <p key={service.id}>
-                {service.name}: ${service.price.toFixed(2)}
+                {service.name}:{" "}
+                {service.name === "Vacina"
+                  ? "preço a combinar"
+                  : `${lang === "pt" ? "R" : ""}$${service.price} × ${
+                      reservationObject.services.find(
+                        (r) => r.service_id === service.tag,
+                      )?.amount || 0
+                    } = ${lang === "pt" ? "R" : ""}$${
+                      service.price *
+                      (reservationObject.services.find(
+                        (r) => r.service_id === service.tag,
+                      )?.amount || 0)
+                    }`}
               </p>
             ))}
           </section>
           <section className="totalInfo">
             <p>
-              <b>Total:</b> ${(servicesPrice + reservationPrice).toFixed(2)}{" "}
+              <b>Total:</b> {lang === "pt" ? "R" : ""}$
+              {servicesPrice + reservationPrice}{" "}
             </p>
           </section>
         </div>

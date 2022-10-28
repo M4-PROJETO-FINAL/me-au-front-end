@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
+import { useReservationContext } from "../../../contexts/ReservationContext";
 import { InputGlobal, InputSelectGlobal } from "../../Input";
 import {
   AddServicesContainer,
@@ -17,19 +18,20 @@ import {
   DivSelect,
 } from "./styles";
 
-interface IFormSchemaAddServices {
-  vacinacao: string | boolean;
-  banho: number;
-  natacao: number;
-  tosaCompleta: number;
-  massagem: number;
-  racaoPremium: number;
+export interface IReservationServicesAmounts {
+  vaccine: string | boolean;
+  bath: number;
+  swimming: number;
+  grooming: number;
+  massage: number;
+  premiumFood: number;
 }
 
 const AddicionalServices = () => {
   const { t } = useTranslation();
 
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
+  const { setServices } = useReservationContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_INVALID_MESSAGE = t("AddServices.Campo inválido");
@@ -47,28 +49,28 @@ const AddicionalServices = () => {
   ];
 
   const formSchema = yup.object().shape({
-    vacinacao: yup.string().notRequired(),
-    banho: yup
+    vaccine: yup.string().notRequired(),
+    bath: yup
       .number()
       .nullable()
       .positive()
       .transform((_, val) => (val !== "" ? Number(val) : null)),
-    natacao: yup
+    swimming: yup
       .number()
       .nullable()
       .positive()
       .transform((_, val) => (val !== "" ? Number(val) : null)),
-    tosaCompleta: yup
+    grooming: yup
       .number()
       .nullable()
       .positive()
       .transform((_, val) => (val !== "" ? Number(val) : null)),
-    massagem: yup
+    massage: yup
       .number()
       .nullable()
       .positive()
       .transform((_, val) => (val !== "" ? Number(val) : null)),
-    racaoPremium: yup
+    premiumFood: yup
       .number()
       .nullable()
       .positive()
@@ -79,13 +81,16 @@ const AddicionalServices = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormSchemaAddServices>({ resolver: yupResolver(formSchema) });
+  } = useForm<IReservationServicesAmounts>({
+    resolver: yupResolver(formSchema),
+  });
 
-  const onSubmitFunction = (data: IFormSchemaAddServices) => {
+  const onSubmitFunction = (data: IReservationServicesAmounts) => {
     const newData = { ...data };
-    newData.vacinacao = data.vacinacao === "yes" ? true : false;
+    newData.vaccine = data.vaccine === "yes" ? true : false;
     // Neste momento que será passado como um objeto para a próxima page
     console.log(newData);
+    setServices(newData);
   };
 
   return (
@@ -107,9 +112,9 @@ const AddicionalServices = () => {
                     <span>(A combinar)</span>
                   </p>
                   <InputSelectGlobal
-                    error={!!errors.vacinacao}
+                    error={!!errors.vaccine}
                     label="Sel."
-                    registerName="vacinacao"
+                    registerName="vaccine"
                     register={register}
                     options={optionsYesAndNo}
                     fontSize={13}
@@ -122,11 +127,11 @@ const AddicionalServices = () => {
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.banho}
+                    error={!!errors.bath}
                     type="number"
                     label="Qtd."
                     register={register}
-                    registerName="banho"
+                    registerName="bath"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -137,11 +142,11 @@ const AddicionalServices = () => {
                     <span>(R$50,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.natacao}
+                    error={!!errors.swimming}
                     type="number"
                     label="Qtd."
                     register={register}
-                    registerName="natacao"
+                    registerName="swimming"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -153,11 +158,11 @@ const AddicionalServices = () => {
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.tosaCompleta}
+                    error={!!errors.grooming}
                     type="number"
                     label="Qtd."
                     register={register}
-                    registerName="tosaCompleta"
+                    registerName="grooming"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -167,25 +172,25 @@ const AddicionalServices = () => {
                     <span>(R$60,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.massagem}
+                    error={!!errors.massage}
                     type="number"
                     label="Qtd."
                     register={register}
-                    registerName="massagem"
+                    registerName="massage"
                     fontSize={13}
                   />
                 </DivSelect>
                 <DivSelect>
                   <p>
                     Ração Premium
-                    <span>(R$60,00)</span>
+                    <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.racaoPremium}
+                    error={!!errors.premiumFood}
                     type="number"
                     label="Qtd."
                     register={register}
-                    registerName="racaoPremium"
+                    registerName="premiumFood"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -200,10 +205,10 @@ const AddicionalServices = () => {
                     <span>(A combinar)</span>
                   </p>
                   <InputSelectGlobal
-                    error={!!errors.vacinacao}
-                    errorMessage={errors?.vacinacao?.message}
+                    error={!!errors.vaccine}
+                    errorMessage={errors?.vaccine?.message}
                     label="Sel."
-                    registerName="vacinacao"
+                    registerName="vaccine"
                     register={register}
                     options={optionsYesAndNo}
                     fontSize={13}
@@ -216,12 +221,12 @@ const AddicionalServices = () => {
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.banho}
+                    error={!!errors.bath}
                     type="number"
                     label={t("AddServices.Quantidade")}
-                    errorMessage={errors?.banho?.message}
+                    errorMessage={errors?.bath?.message}
                     register={register}
-                    registerName="banho"
+                    registerName="bath"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -232,12 +237,12 @@ const AddicionalServices = () => {
                     <span>(R$50,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.natacao}
+                    error={!!errors.swimming}
                     type="number"
                     label={t("AddServices.Quantidade")}
-                    errorMessage={errors?.natacao?.message}
+                    errorMessage={errors?.swimming?.message}
                     register={register}
-                    registerName="natacao"
+                    registerName="swimming"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -249,12 +254,12 @@ const AddicionalServices = () => {
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.tosaCompleta}
+                    error={!!errors.grooming}
                     type="number"
                     label={t("AddServices.Quantidade")}
-                    errorMessage={errors?.tosaCompleta?.message}
+                    errorMessage={errors?.grooming?.message}
                     register={register}
-                    registerName="tosaCompleta"
+                    registerName="grooming"
                     fontSize={13}
                   />
                 </DivSelect>
@@ -264,27 +269,27 @@ const AddicionalServices = () => {
                     <span>(R$60,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.massagem}
+                    error={!!errors.massage}
                     type="number"
                     label={t("AddServices.Quantidade")}
-                    errorMessage={errors?.massagem?.message}
+                    errorMessage={errors?.massage?.message}
                     register={register}
-                    registerName="massagem"
+                    registerName="massage"
                     fontSize={13}
                   />
                 </DivSelect>
                 <DivSelect>
                   <p>
                     Ração Premium
-                    <span>(R$60,00)</span>
+                    <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
-                    error={!!errors.racaoPremium}
+                    error={!!errors.premiumFood}
                     type="number"
                     label={t("AddServices.Quantidade")}
-                    errorMessage={errors?.racaoPremium?.message}
+                    errorMessage={errors?.premiumFood?.message}
                     register={register}
-                    registerName="racaoPremium"
+                    registerName="premiumFood"
                     fontSize={13}
                   />
                 </DivSelect>

@@ -56,7 +56,10 @@ const Header = () => {
     >
       <AppBar sx={{ backgroundColor: "#FFF5EF" }} position="sticky">
         <Container maxWidth="lg">
-          <Toolbar disableGutters>
+          <Toolbar
+            disableGutters
+            style={isTablet ? { justifyContent: "space-between" } : {}}
+          >
             <Avatar
               className={styles.margin}
               onClick={() => navigate("/")}
