@@ -80,6 +80,11 @@
       "Quantidade": "The Amount",
       "Precisa?": "Need?",
       "Campo inválido": "Invalid field"
-    }
+    },
+    "Sim": "Yes",
+    "Não": "No",
+    "Cadastrar um novo pet": "Register new pet",
+    "Qual o tipo?": "Type?",
+    "Qual a idade?": "Age?"
   }
 }
