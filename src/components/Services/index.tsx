@@ -1,10 +1,7 @@
-import React, { useRef, useState } from "react";
-
 import { useMediaQuery } from "react-responsive";
 
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { StyledSection } from "./styles";
 
 import Banho from "../../assets/ServicesPictures/banho&tosa.png";
 import Massagem from "../../assets/ServicesPictures/massagem.png";
@@ -12,6 +9,7 @@ import Natacao from "../../assets/ServicesPictures/natacao.png";
 import Passeio from "../../assets/ServicesPictures/passeio.png";
 import Recreacao from "../../assets/ServicesPictures/recreacao.png";
 import Vacinacao from "../../assets/ServicesPictures/vacinacao.png";
+import { StyledSection } from "./styles";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -32,7 +30,8 @@ const Services = () => {
         initialSlide={3}
         spaceBetween={50}
         pagination={true}
-        modules={[Pagination]}
+        navigation={true}
+        modules={[Pagination, Navigation]}
       >
         <SwiperSlide>
           <div className="imgContainer">
