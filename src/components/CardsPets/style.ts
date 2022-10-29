@@ -7,6 +7,8 @@ export const ContainerPets = styled(Container)`
   gap: 20px;
   background-color: #fff5ef;
   font-family: "Nunito";
+  border-radius: 15px;
+  padding: 30px;
 
   .card--pets {
     display: flex;
@@ -17,7 +19,10 @@ export const ContainerPets = styled(Container)`
     border-radius: 15px;
     padding: 10px;
     max-width: 700px;
+    min-width: 280px;
+    width: 90%;
     background-color: white;
+    align-self: center;
 
     .header--card {
       display: flex;
@@ -45,7 +50,7 @@ export const ContainerPets = styled(Container)`
       gap: 6px;
 
       @media screen and (min-width: 768px) {
-        width: 33%;
+        width: 45%;
       }
     }
 
