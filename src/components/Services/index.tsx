@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Banho from "../../assets/ServicesPictures/banho&tosa.png";
@@ -31,7 +30,8 @@ const Services = () => {
         initialSlide={3}
         spaceBetween={50}
         pagination={true}
-        modules={[Pagination]}
+        navigation={true}
+        modules={[Pagination, Navigation]}
       >
         <SwiperSlide>
           <div className="imgContainer">
