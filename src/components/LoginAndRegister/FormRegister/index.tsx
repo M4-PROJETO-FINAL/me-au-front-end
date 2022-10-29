@@ -6,13 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
+import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
 import { InputGlobal } from "../../Input";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { ButtonBackLogin, CenterDiv, RegisterContainer } from "./styles";
-
-interface IFormRegister {
-  showLoginForm: () => void;
-}
 
 interface IFormSchemaRegister {
   name: string;
@@ -22,8 +19,9 @@ interface IFormSchemaRegister {
   passwordConfirm: string;
 }
 
-const FormRegister = ({ showLoginForm }: IFormRegister) => {
+const FormRegister = () => {
   const { t } = useTranslation();
+  const { showLoginForm } = useModalFormLoginAndRegister();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");

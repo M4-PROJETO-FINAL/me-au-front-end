@@ -1,20 +1,18 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
 import Logo from "../../../assets/logoMeAuBGCWhite.png";
+import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
 import { useUserContext } from "../../../contexts/UserContext";
 import { InputGlobal } from "../../Input";
 import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { LoginContainer } from "./styles";
-
-interface IPropsFormLogin {
-  showRegisterForm: () => void;
-}
 
 interface IFormLogin {
   name: string;
@@ -24,10 +22,12 @@ interface IFormLogin {
   passwordConfirm: string;
 }
 
-const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
+const FormLogin = () => {
   const { t } = useTranslation();
 
   const { loginUser } = useUserContext();
+  const { showRegisterForm, showForgotPasswordForm } =
+    useModalFormLoginAndRegister();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
@@ -43,7 +43,7 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
     formState: { errors },
   } = useForm<IFormLogin>({ resolver: yupResolver(formSchema) });
 
-  const onSubmitFunction = (data) => {
+  const onSubmitFunction = (data: IFormLogin) => {
     loginUser(data);
     // Aqui chama o contexto da api de login.. E loga!
   };
@@ -72,7 +72,13 @@ const FormLogin = ({ showRegisterForm }: IPropsFormLogin) => {
             registerName="password"
           />
         </FormInputs>
-        <p className="forgot__password">{t("Esqueceu sua senha?")}</p>
+        <button
+          className="forgot__password"
+          type="button"
+          onClick={() => showForgotPasswordForm()}
+        >
+          {t("Esqueceu sua senha?")}
+        </button>
         <Button
           type="submit"
           fullWidth
