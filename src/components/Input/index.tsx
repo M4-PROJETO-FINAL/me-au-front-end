@@ -12,6 +12,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   registerName: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
+  isFullWidth?: boolean;
 }
 
 interface IOption {
@@ -36,6 +37,7 @@ export const InputGlobal = ({
   errorMessage,
   registerName,
   type,
+  isFullWidth,
   maxLength,
 }: IInput) => {
   return (
@@ -46,7 +48,8 @@ export const InputGlobal = ({
       maxLength={maxLength}
       variant="outlined"
       id={registerName}
-      InputLabelProps={{ style: { fontSize: 17 } }}
+      fullWidth={isFullWidth ? true : false}
+      InputLabelProps={{ style: { fontSize: `${isFullWidth ? 17 : 20}` } }}
       helperText={error ? errorMessage : " "}
       {...register(registerName)}
       InputProps={{

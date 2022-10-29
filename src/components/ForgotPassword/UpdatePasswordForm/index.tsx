@@ -1,11 +1,17 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { IoChevronBack } from "react-icons/io5";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import Button from "@mui/material/Button";
 import * as yup from "yup";
 
+import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
 import { InputGlobal } from "../../Input";
+import { ButtonBackLogin } from "../../LoginAndRegister/FormRegister/styles";
 import { Title } from "../../LoginAndRegister/styles";
+import { ForgotPasswordContainer, TextMessage } from "../styles";
+import { FormUpdatePassword } from "./styles";
 
 interface IFormUpdatePassword {
   password: string;
@@ -14,6 +20,7 @@ interface IFormUpdatePassword {
 
 const UpdatePasswordForm = () => {
   const { t } = useTranslation();
+  const { showVerifyEmailForm } = useModalFormLoginAndRegister();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_PASSWORD_MIN = t("Senha oito caracteres");
@@ -48,16 +55,20 @@ const UpdatePasswordForm = () => {
   };
 
   return (
-    <div>
+    <ForgotPasswordContainer>
+      <ButtonBackLogin onClick={showVerifyEmailForm}>
+        <IoChevronBack />
+      </ButtonBackLogin>
       <Title>Redefinir senha</Title>
-      <span>
+      <TextMessage>
         Sua nova senha deve ser diferente das senhas usadas anteriormente
-      </span>
-      <form onSubmit={handleSubmit(updatePassword)}>
+      </TextMessage>
+      <FormUpdatePassword onSubmit={handleSubmit(updatePassword)}>
         <InputGlobal
           error={!!errors.password}
           label={t("Senha *")}
           type="password"
+          isFullWidth={true}
           errorMessage={errors?.password?.message}
           register={register}
           registerName="password"
@@ -66,12 +77,22 @@ const UpdatePasswordForm = () => {
           error={!!errors.passwordConfirm}
           label={t("Confirmar senha")}
           type="password"
+          isFullWidth={true}
           errorMessage={errors?.passwordConfirm?.message}
           register={register}
           registerName="passwordConfirm"
         />
-      </form>
-    </div>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ fontWeight: "bold", fontSize: 16 }}
+        >
+          Confirmar
+        </Button>
+      </FormUpdatePassword>
+    </ForgotPasswordContainer>
   );
 };
 
