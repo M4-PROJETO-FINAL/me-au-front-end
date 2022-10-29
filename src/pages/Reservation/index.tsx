@@ -17,8 +17,9 @@ import catToyPng from "../../assets/Icons/catToy.png";
 import dogToyPng from "../../assets/Icons/dogToy.png";
 import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
+import { useReservationContext } from "../../contexts/ReservationContext";
 import { useUserContext } from "../../contexts/UserContext";
-import { IRoom } from "../Accommodations";
+import { IRoom } from "../../interfaces/Reservations";
 import { StyledRoomSection, DialogInner } from "./styles";
 
 interface IReservationProps {
@@ -34,9 +35,15 @@ const Reservation = ({ room }: IReservationProps) => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isCatRoom = room.tag === "cats";
-  const { user, openFormLogin } = useUserContext();
-  const { handleCloseCartModal, isOpenCartModal, handleOpenCartModal } =
-    useUserContext();
+  const {
+    user,
+    openFormLogin,
+    handleCloseCartModal,
+    isOpenCartModal,
+    handleOpenCartModal,
+  } = useUserContext();
+  const { petsAmount, setPetsAmount } = useReservationContext();
+
   const [openTooltip, setOpenTooltip] = useState(false);
   const checkLoginAndOpenModal = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,6 +93,8 @@ const Reservation = ({ room }: IReservationProps) => {
                   label="Quantos pets?"
                   type="number"
                   InputProps={{ style: { width: "280px" } }}
+                  value={petsAmount || ""}
+                  onChange={(e) => setPetsAmount(+e.target.value)}
                 />
                 <button className="reservationBtn">Agende agora mesmo!</button>
               </form>
