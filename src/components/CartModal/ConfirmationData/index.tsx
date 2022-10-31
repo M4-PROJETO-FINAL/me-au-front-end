@@ -18,9 +18,7 @@ interface IReservationRequest {
 }
 
 const ConfirmationData = () => {
-  const {
-    i18n: { language },
-  } = useTranslation();
+  const { t } = useTranslation();
 
   const reservationObject: IReservationRequest = {
     checkin: "2022-10-22",
@@ -70,7 +68,7 @@ const ConfirmationData = () => {
 
   return (
     <StyledConfirmationData>
-      <h2 className="confirmationTitle">Confirmação dos dados</h2>
+      <h2 className="confirmationTitle">{t("Confirmação dos dados")}</h2>
       <div className="mainInfo">
         <div className="leftInfo">
           <img className="roomImg" src={room.urlImage} alt="" />
@@ -78,22 +76,23 @@ const ConfirmationData = () => {
         <div className="rightInfo">
           <section className="roomReservationInfo">
             <p>
-              Tipo de quarto: <span>{room.title}</span>{" "}
+              {t("Tipo de quarto")}: <span>{room.title}</span>{" "}
             </p>
             <p>
-              Data de checkin: <span>{reservationObject.checkin}</span>{" "}
+              {t("Data de checkin")}: <span>{reservationObject.checkin}</span>{" "}
             </p>
             <p>
-              Data de checkout: <span>{reservationObject.checkout}</span>{" "}
+              {t("Data de checkout")}: <span>{reservationObject.checkout}</span>{" "}
             </p>
             <p>
-              Nº de pets: <span>{reservationObject.pets_rooms.length}</span>
+              {t("Nº de pets")}:{" "}
+              <span>{reservationObject.pets_rooms.length}</span>
             </p>
             <p>
-              Nº de noites: <span>{diffInDays}</span>
+              {t("Nº de noites")}: <span>{diffInDays}</span>
             </p>
             <p>
-              Total diária: <span> ${reservationPrice.toFixed(2)}</span>{" "}
+              {t("Total diária")}: <span> ${reservationPrice.toFixed(2)}</span>{" "}
             </p>
           </section>
           <section className="servicesInfo">

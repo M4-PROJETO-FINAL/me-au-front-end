@@ -58,6 +58,8 @@
     "Meu perfil": "Meu perfil",
     "Meus pets": "Meus pets",
     "Minhas reservas": "Minhas reservas",
+    "Confirmação dos dados": "Confirmação dos dados",
+    "Tipo de quarto": "Tipo de quarto",
     "Cadastrar pet": {
       "Escolha o seu pet": "Escolha o seu pet",
       "Cadastre o seu pet": "Cadastre o seu pet",
@@ -76,6 +78,7 @@
     },
     "AddServices": {
       "Vacinação": "Vacinação",
+      "Vacina": "Vacina",
       "Banho": "Banho",
       "Natação": "Natação",
       "Tosa Completa": "Tosa Completa",
@@ -87,7 +90,9 @@
       "Escolha os serviços adicionais!": "Escolha os serviços adicionais!",
       "Quantidade": "Quantidade",
       "Precisa?": "Precisa?",
-      "Campo inválido": "Campo inválido"
+      "Campo inválido": "Campo inválido",
+      "Concluir adicionais!": "Concluir adicionais!",
+      "(A combinar)": "(A combinar)"
     }
   }
 }
