@@ -20,7 +20,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import DrawerComp from "../Drawer";
 import LoginAndRegister from "../LoginAndRegister";
-import { Bandeiras } from "./styles";
+import { Bandeiras, Links } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -70,24 +70,8 @@ const Header = () => {
               <DrawerComp />
             ) : (
               <>
-                <Link
-                  className={styles.margin}
-                  color="textPrimary"
-                  variant="button"
-                  underline="none"
-                  href="/accommodations/all"
-                >
-                  {t("Acomodações")}
-                </Link>
-                <Link
-                  className={styles.margin}
-                  color="textPrimary"
-                  variant="button"
-                  underline="none"
-                  href="/contact"
-                >
-                  {t("Contato")}
-                </Link>
+                <Links to={"/accommodations/all"}>{t("Acomodações")}</Links>
+                <Links to={"/contact"}>{t("Contato")}</Links>
 
                 <Bandeiras className={styles.margin}>
                   <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
