@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next";
 import Customer1 from "../../assets/CustomerPictures/customer1.png";
 import Review from "./Review";
 import { IReview } from "./Review";
 import { StyledSection } from "./styles";
 
 const CustomerReviews = () => {
+  const {t} = useTranslation();
+
   const reviews: IReview[] = [
     {
       customerName: "Rafael Mendes",
@@ -36,7 +39,7 @@ const CustomerReviews = () => {
 
   return (
     <StyledSection>
-      <h3>Avaliações dos nossos clientes</h3>
+      <h3>{t("Avaliações dos nossos clientes")}</h3>
       <ul>
         {reviews.map((review, idx) => (
           <Review key={idx} reviewData={review} />
