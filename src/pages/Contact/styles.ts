@@ -47,6 +47,11 @@ export const About = styled.div`
     margin: 3rem;
   }
 
+  .sc-dIfARi {
+    width: 100%;
+    max-width: 35rem;
+  }
+
   .sc-bjfHbI {
     width: 100%;
     max-width: 35rem;

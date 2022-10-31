@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import { Pagination } from "swiper";
@@ -15,15 +14,17 @@ import { StyledSection } from "./styles";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const isTablet = useMediaQuery({ query: "(min-width: 700px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   return (
     <StyledSection>
-      <h3>Serviços</h3>
+      <h3>{t("Serviços")}</h3>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -38,7 +39,7 @@ const Services = () => {
             <img src={Banho} alt="" />
           </div>
           <div className="cardBackground">
-            <h5>Banho</h5>
+            <h5>{t("AddServices.Banho")}</h5>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -46,7 +47,7 @@ const Services = () => {
             <img src={Massagem} />
           </div>
           <div className="cardBackground">
-            <h5>Massagem</h5>
+            <h5>{t("AddServices.Massagem")}</h5>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -54,7 +55,7 @@ const Services = () => {
             <img src={Natacao} />
           </div>
           <div className="cardBackground">
-            <h5>Natação</h5>
+            <h5>{t("AddServices.Natação")}</h5>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -62,7 +63,7 @@ const Services = () => {
             <img src={Passeio} />
           </div>
           <div className="cardBackground">
-            <h5>Passeio</h5>
+            <h5>{t("AddServices.Passeio")}</h5>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -70,7 +71,7 @@ const Services = () => {
             <img src={Recreacao} />
           </div>
           <div className="cardBackground">
-            <h5>Recreação</h5>
+            <h5>{t("AddServices.Recreação")}</h5>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -78,7 +79,7 @@ const Services = () => {
             <img src={Vacinacao} />
           </div>
           <div className="cardBackground">
-            <h5>Vacinação</h5>
+            <h5>{t("AddServices.Vacinação")}</h5>
           </div>
         </SwiperSlide>
       </Swiper>
