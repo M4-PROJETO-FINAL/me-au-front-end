@@ -99,5 +99,10 @@
       "Concluir adicionais!": "Finish purchase!",
       "(A combinar)": "(Price upon arrival)"
     }
+    "Sim": "Yes",
+    "Não": "No",
+    "Cadastrar um novo pet": "Register new pet",
+    "Qual o tipo?": "Type?",
+    "Qual a idade?": "Age?"
   }
 }

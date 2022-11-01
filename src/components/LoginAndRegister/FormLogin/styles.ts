@@ -27,6 +27,10 @@ export const LoginContainer = styled.div`
   .forgot__password {
     text-align: end;
     padding-bottom: 0.5rem;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
+    background-color: transparent;
+    width: 100%;
   }
   & > .login__register-container {
     display: flex;

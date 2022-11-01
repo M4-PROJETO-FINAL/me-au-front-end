@@ -8,6 +8,7 @@ import { Avatar } from "@mui/material";
 import Gui from "../../assets/Developers/Gui.png";
 // import { useUserContext } from "../../contexts/UserContext";
 import { MenuContainer, MenuTabs, ProfileTab, Paragraph } from "./styles";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   // const { user } = useUserContext();
@@ -15,26 +16,30 @@ const Menu = () => {
 
   return (
     <MenuContainer>
-      <ProfileTab>
-        <Avatar
-          variant="circular"
-          sx={{
-            height: "55px",
-            width: "54px",
-          }}
-          src={Gui}
-          alt="Cat Logo"
-        />
-        <div>
-          <p>{t("Olá")}, Guilherme!</p>
-          <p>{t("Esta é sua conta")} :)</p>
-        </div>
-      </ProfileTab>
+      <Link to="/dashboard/">
+        <ProfileTab>
+          <Avatar
+            variant="circular"
+            sx={{
+              height: "55px",
+              width: "54px",
+            }}
+            src={Gui}
+            alt="Cat Logo"
+          />
+          <div>
+            <p>{t("Olá")}, Guilherme!</p>
+            <p>{t("Esta é sua conta")} :)</p>
+          </div>
+        </ProfileTab>
+      </Link>
 
-      <MenuTabs>
-        <AccountCircleIcon />
-        <Paragraph>{t("Meu perfil")}</Paragraph>
-      </MenuTabs>
+      <Link to="/dashboard/profile">
+        <MenuTabs>
+          <AccountCircleIcon />
+          <Paragraph>{t("Meu perfil")}</Paragraph>
+        </MenuTabs>
+      </Link>
 
       <MenuTabs>
         <PetsIcon />

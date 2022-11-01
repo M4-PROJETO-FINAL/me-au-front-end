@@ -62,7 +62,10 @@ const Header = () => {
         position="sticky"
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters>
+          <Toolbar
+            disableGutters
+            style={isTablet ? { justifyContent: "space-between" } : {}}
+          >
             <Avatar
               className={styles.margin}
               onClick={() => navigate("/")}

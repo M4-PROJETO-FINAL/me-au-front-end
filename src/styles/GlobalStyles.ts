@@ -8,7 +8,7 @@ export const swiperStyle = css`
     position: relative;
     overflow: hidden;
     list-style: none;
-    padding: 30px;
+    padding: 1.875rem;
     /* Fix of Webkit flickering */
     z-index: 1;
     height: 25rem;
@@ -594,8 +594,6 @@ body {
 
     width: 100vw;
     height: 100vh;
-
-    transition: all 0.25s linear;
 
     background: rgba(var(--bodyBackground), 1);
 }
