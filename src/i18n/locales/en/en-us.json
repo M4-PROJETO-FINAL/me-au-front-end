@@ -61,10 +61,10 @@
     "Confirmação dos dados": "Confirm purchase details",
     "Tipo de quarto": "Room type",
     "Data de checkin": "Checkin Date",
-"Data de checkout": "Checkout Date",
-"Nº de pets": "Nº of pets",
-"Nº de noites": "Nº of nights",
-"Total diária": "",
+    "Data de checkout": "Checkout Date",
+    "Nº de pets": "Nº of pets",
+    "Nº de noites": "Nº of nights",
+    "Total diária": "Daily rate",
     "Cadastrar pet": {
       "Escolha o seu pet": "Choose your pet",
       "Cadastre o seu pet": "Register your pet",
@@ -98,7 +98,7 @@
       "Campo inválido": "Invalid field",
       "Concluir adicionais!": "Finish purchase!",
       "(A combinar)": "(Price upon arrival)"
-    }
+    },
     "Sim": "Yes",
     "Não": "No",
     "Cadastrar um novo pet": "Register new pet",
