@@ -1,17 +1,25 @@
 import { Avatar, Box } from "@mui/material";
 
-import Amanda from "../../assets/Developers/Amanda.png";
-import Daniel from "../../assets/Developers/Daniel.png";
-import Gui from "../../assets/Developers/Gui.png";
-import Higor from "../../assets/Developers/Higor.png";
-import Nat from "../../assets/Developers/Nat2.0.jpeg";
-import Nicholas from "../../assets/Developers/Nicholas.png";
+import Amanda from "../../assets/Developers/ama2.0.jpeg";
+import Daniel from "../../assets/Developers/dan2.0.png";
+import Gui from "../../assets/Developers/gui2.0.jpeg";
+import Higor from "../../assets/Developers/hig2.0.jpeg";
+import Nat from "../../assets/Developers/nat2.0.jpeg";
+import Nicholas from "../../assets/Developers/nic2.0.jpeg";
 import DevInfoOnHover from "../DevInfoOnHover";
 import { Container } from "./styles";
 
 const Developers = () => {
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-evenly", width: "90%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        width: "90%",
+        marginTop: "3rem",
+        marginBottom: "2rem",
+      }}
+    >
       <Container>
         <Avatar
           variant="circular"
@@ -25,8 +33,8 @@ const Developers = () => {
 
         <div className="IconsOnHover">
           <DevInfoOnHover
-            github="https://github.com/ahmandi"
-            linkedin="https://www.linkedin.com/in/arsamanda/"
+            github="https://github.com/guiwustro"
+            linkedin="https://www.linkedin.com/in/guilhermewustro/"
           />
         </div>
       </Container>
@@ -71,8 +79,8 @@ const Developers = () => {
         />
         <div className="IconsOnHover">
           <DevInfoOnHover
-            github="https://github.com/ahmandi"
-            linkedin="https://www.linkedin.com/in/arsamanda/"
+            github="https://github.com/nicholas1301"
+            linkedin="https://www.linkedin.com/in/nicholas-engelbert/"
           />
         </div>
       </Container>
@@ -86,8 +94,8 @@ const Developers = () => {
         />
         <div className="IconsOnHover">
           <DevInfoOnHover
-            github="https://github.com/ahmandi"
-            linkedin="https://www.linkedin.com/in/arsamanda/"
+            github="https://github.com/danmatuoka"
+            linkedin="https://www.linkedin.com/in/danielmatuoka/"
           />
         </div>
       </Container>
@@ -101,8 +109,8 @@ const Developers = () => {
         />
         <div className="IconsOnHover">
           <DevInfoOnHover
-            github="https://github.com/ahmandi"
-            linkedin="https://www.linkedin.com/in/arsamanda/"
+            github="https://github.com/HigorSkw"
+            linkedin="https://www.linkedin.com/in/higorskw/"
           />
         </div>
       </Container>

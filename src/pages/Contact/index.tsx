@@ -56,6 +56,7 @@ const Contact = () => {
         </div>
         <Box
           component="form"
+          className="formWidth"
           sx={{
             "& .MuiTextField-root": { width: "100%" },
           }}
