@@ -1,7 +1,15 @@
+import { Outlet } from "react-router-dom";
+
 import Menu from "../../components/Menu";
+import { ContainerDashboard } from "./styles";
 
 const Dashboard = () => {
-  return <Menu />;
+  return (
+    <ContainerDashboard>
+      <Menu />
+      <Outlet />
+    </ContainerDashboard>
+  );
 };
 
 export default Dashboard;
