@@ -14,12 +14,9 @@ import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { LoginContainer } from "./styles";
 
-interface IFormLogin {
-  name: string;
-  cpf?: string;
+export interface IUserLogin {
   email: string;
   password: string;
-  passwordConfirm: string;
 }
 
 const FormLogin = () => {
@@ -41,9 +38,9 @@ const FormLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormLogin>({ resolver: yupResolver(formSchema) });
+  } = useForm<IUserLogin>({ resolver: yupResolver(formSchema) });
 
-  const onSubmitFunction = (data: IFormLogin) => {
+  const onSubmitFunction = (data: IUserLogin) => {
     loginUser(data);
     // Aqui chama o contexto da api de login.. E loga!
   };

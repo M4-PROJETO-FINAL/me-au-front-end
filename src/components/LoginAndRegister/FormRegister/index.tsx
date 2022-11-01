@@ -7,11 +7,12 @@ import Button from "@mui/material/Button";
 import * as yup from "yup";
 
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
+import { useUserContext } from "../../../contexts/UserContext";
 import { InputGlobal } from "../../Input";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { ButtonBackLogin, CenterDiv, RegisterContainer } from "./styles";
 
-interface IFormSchemaRegister {
+export interface IUserRegister {
   name: string;
   cpf?: string;
   email: string;
@@ -22,6 +23,7 @@ interface IFormSchemaRegister {
 const FormRegister = () => {
   const { t } = useTranslation();
   const { showLoginForm } = useModalFormLoginAndRegister();
+  const { createUser, user } = useUserContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
@@ -32,6 +34,7 @@ const FormRegister = () => {
   const ERROR_PASSWORD_UPPER_CASE = t("Senha letra maiuscula");
   const ERROR_PASSWORD_SPECIAL_CHARACTER = t("Senha caracter especial");
   const ERROR_CONFIRM_PASSWORD = t("Campos nao coincidem");
+  console.log(user);
 
   const cpfRegExp = /(^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$)/;
 
@@ -57,9 +60,9 @@ const FormRegister = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormSchemaRegister>({ resolver: yupResolver(formSchema) });
-
-  const onSubmitFunction = (data: IFormSchemaRegister) => {
+  } = useForm<IUserRegister>({ resolver: yupResolver(formSchema) });
+  const onSubmitFunction = (data: IUserRegister) => {
+    createUser(data);
     // Aqui chama o contexto da api de registro..!
   };
   // Seria interessante fazer um inputmask para o cpf... ao invés de usar o yup form, dessa forma o campo já viria validado!
