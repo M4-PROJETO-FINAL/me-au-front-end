@@ -12,22 +12,10 @@ import DevInfoOnHover from "../DevInfoOnHover";
 import { Container } from "./styles";
 
 const Developers = () => {
-  const [isHovering, setIsHovering] = useState(false);
-
-  const handleMouseOver = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  };
-
   return (
     <Box sx={{ display: "flex", justifyContent: "space-evenly", width: "90%" }}>
       <Container>
         <Avatar
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
           variant="circular"
           sx={{
             height: "105px",
@@ -37,99 +25,88 @@ const Developers = () => {
           alt="Cat Logo"
         />
 
-        {isHovering && (
-          <div>
-            <DevInfoOnHover
-              github="https://github.com/ahmandi"
-              linkedin="https://www.linkedin.com/in/arsamanda/"
-            />
-          </div>
-        )}
+        <div className="IconsOnHover">
+          <DevInfoOnHover
+            github="https://github.com/ahmandi"
+            linkedin="https://www.linkedin.com/in/arsamanda/"
+          />
+        </div>
       </Container>
 
       <Container>
         <Avatar
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
           variant="circular"
           sx={{ height: "105px", width: "103px" }}
           src={Nat}
           alt="Cat Logo"
         />
-        {isHovering && (
+
+        <div className="IconsOnHover">
           <DevInfoOnHover
             github="https://github.com/ahmandi"
             linkedin="https://www.linkedin.com/in/arsamanda/"
           />
-        )}
+        </div>
       </Container>
 
       <Container>
         <Avatar
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
           variant="circular"
           sx={{ height: "105px", width: "103px" }}
           src={Amanda}
           alt="Cat Logo"
         />
-        {isHovering && (
+        <div className="IconsOnHover">
           <DevInfoOnHover
             github="https://github.com/ahmandi"
             linkedin="https://www.linkedin.com/in/arsamanda/"
           />
-        )}
+        </div>
       </Container>
 
       <Container>
         <Avatar
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
           variant="circular"
           sx={{ height: "105px", width: "103px" }}
           src={Nicholas}
           alt="Cat Logo"
         />
-        {isHovering && (
+        <div className="IconsOnHover">
           <DevInfoOnHover
             github="https://github.com/ahmandi"
             linkedin="https://www.linkedin.com/in/arsamanda/"
           />
-        )}
+        </div>
       </Container>
 
       <Container>
         <Avatar
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
           variant="circular"
           sx={{ height: "105px", width: "103px" }}
           src={Daniel}
           alt="Cat Logo"
         />
-        {isHovering && (
+        <div className="IconsOnHover">
           <DevInfoOnHover
             github="https://github.com/ahmandi"
             linkedin="https://www.linkedin.com/in/arsamanda/"
           />
-        )}
+        </div>
       </Container>
 
       <Container>
         <Avatar
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
           variant="circular"
           sx={{ height: "105px", width: "103px" }}
           src={Higor}
           alt="Cat Logo"
         />
-        {isHovering && (
+        <div className="IconsOnHover">
           <DevInfoOnHover
             github="https://github.com/ahmandi"
             linkedin="https://www.linkedin.com/in/arsamanda/"
           />
-        )}
+        </div>
       </Container>
     </Box>
   );

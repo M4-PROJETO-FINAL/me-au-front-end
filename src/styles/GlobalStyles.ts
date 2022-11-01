@@ -552,9 +552,11 @@ const GlobalStyle = createGlobalStyle`
     --bodyBackground: 247, 246, 243; // #f7f6f3
     --backgroundTransparent: 0, 0, 0, 0.32;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -580,6 +582,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
     -webkit-font-smoothing: antialiased;
