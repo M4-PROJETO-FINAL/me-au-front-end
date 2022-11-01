@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
 import { Box, Container, Typography } from "@mui/material";
@@ -10,6 +11,7 @@ import { ContainerDb, ImgDb, ImgPetIco } from "./styles";
 
 const BannerDashboard = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
+  const { t } = useTranslation();
 
   return (
     <ContainerDb>
@@ -37,19 +39,20 @@ const BannerDashboard = () => {
             variant="h4"
             sx={{ color: lightTheme.colors.aquaLight }}
           >
-            Nós estamos aqui para cuidar do seu{" "}
+            {t("Nós estamos aqui para cuidar do seu")}{" "}
             <Typography
               className="title--db"
               component="span"
               variant="h4"
               sx={{ color: lightTheme.colors.orange }}
             >
-              animal de estimação
+              {t("animal de estimação")}
             </Typography>
           </Typography>
           <Typography className="subtitle--db" variant="h6">
-            Fazemos nossos clientes felizes oferecendo o tratamento e a estadia
-            que seu pet merece
+            {t(
+              "Fazemos nossos clientes felizes oferecendo o tratamento e a estadia que seu pet merece",
+            )}
           </Typography>
           <Box sx={{ display: "flex" }}>
             <Box className="box--btn">
@@ -63,7 +66,7 @@ const BannerDashboard = () => {
                 fontWeight="600"
                 borderRadius="0.6rem"
               >
-                Reserve um horário
+                {t("Reserve um horário")}
               </Button>
               <Button
                 className="btn--bg border"
@@ -75,7 +78,7 @@ const BannerDashboard = () => {
                 fontWeight="600"
                 borderRadius="0.6rem"
               >
-                Confira nossos preços
+                {t("Confira nossos preços")}
               </Button>
             </Box>
             {isMobile && (
