@@ -6,17 +6,7 @@ export const logo = {
   color: "rgba(var(--logoOrange), 1)",
 };
 
-interface IContainerProps {
-  isOpenMenuTranslate: boolean;
-}
-
-export const FixPaddingRightBody = styled.div<IContainerProps>`
-  body {
-    box-sizing: ${({ isOpenMenuTranslate }) =>
-      isOpenMenuTranslate && "content-box"};
-  }
-`;
-export const Container = styled.div<IContainerProps>`
+export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
