@@ -12,6 +12,7 @@ import { StyledConfirmationData } from "./styles";
 
 const ConfirmationData = () => {
   const {
+    t,
     i18n: { language: lang },
   } = useTranslation();
   const { generateRequestObject, selectedRoomType } = useReservationContext();
@@ -47,7 +48,7 @@ const ConfirmationData = () => {
 
   return (
     <StyledConfirmationData>
-      <h2 className="confirmationTitle">Confirmação dos dados</h2>
+      <h2 className="confirmationTitle">{t("Confirmação dos dados")}</h2>
       <div className="mainInfo">
         <div className="leftInfo">
           <img className="roomImg" src={room.urlImage} alt="" />
@@ -55,26 +56,27 @@ const ConfirmationData = () => {
         <div className="rightInfo">
           <section className="roomReservationInfo">
             <p>
-              Tipo de quarto: <span>{room.title}</span>{" "}
+              {t("Tipo de quarto")}: <span>{room.title}</span>{" "}
             </p>
             <p>
-              Data de checkin:{" "}
+              {t("Data de checkin")}:{" "}
               <span>{dayjs(reservationObject.checkin).format(dateFormat)}</span>{" "}
             </p>
             <p>
-              Data de checkout:{" "}
+              {t("Data de checkout")}:{" "}
               <span>
                 {dayjs(reservationObject.checkout).format(dateFormat)}
               </span>{" "}
             </p>
             <p>
-              Nº de pets: <span>{reservationObject.pets_rooms.length}</span>
+              {t("Nº de pets")}:{" "}
+              <span>{reservationObject.pets_rooms.length}</span>
             </p>
             <p>
-              Nº de noites: <span>{diffInDays}</span>
+              {t("Nº de noites")}: <span>{diffInDays}</span>
             </p>
             <p>
-              Total diária:{" "}
+              {t("Total diária")}:{" "}
               <span>
                 {" "}
                 {lang === "pt" ? "R" : ""}${reservationPrice}

@@ -16,6 +16,10 @@ export const MenuContainer = styled.div`
   cursor: pointer;
 
   background-color: #e6c5b2;
+
+  @media screen and (max-width: 768px) {
+    height: 16.813rem;
+  }
 `;
 
 export const ProfileTab = styled.div`

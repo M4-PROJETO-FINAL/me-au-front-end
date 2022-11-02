@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Avatar, Container } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
@@ -19,8 +18,10 @@ import Logo from "../../assets/Group 22.svg";
 import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import DrawerComp from "../Drawer";
+// import LanguageOnScroll from "../LanguageScroll";
+// import LanguageScrollOption from "../LanguageScroll/LanguageScrollOption";
 import LoginAndRegister from "../LoginAndRegister";
-import { Bandeiras } from "./styles";
+import { Bandeiras, Links } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -38,6 +39,8 @@ const Header = () => {
   const { openFormLogin, logout, user } = useUserContext();
   const isTablet = useMediaQuery("(max-width:768px)");
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
+  // const [labelLanguage, setLabelLanguage] = useState("PT-BR");
+  // const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     changeLanguage(selectedLanguage);
@@ -54,7 +57,10 @@ const Header = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <AppBar sx={{ backgroundColor: "#FFF5EF" }} position="sticky">
+      <AppBar
+        sx={{ backgroundColor: "#FFF5EF", width: "100%" }}
+        position="sticky"
+      >
         <Container maxWidth="lg">
           <Toolbar
             disableGutters
@@ -73,30 +79,13 @@ const Header = () => {
               <DrawerComp />
             ) : (
               <>
-                <Link
-                  className={styles.margin}
-                  color="textPrimary"
-                  variant="button"
-                  underline="none"
-                  href="/accommodations/all"
-                >
-                  {t("Acomodações")}
-                </Link>
-                <Link
-                  className={styles.margin}
-                  color="textPrimary"
-                  variant="button"
-                  underline="none"
-                  href="/contact"
-                >
-                  {t("Contato")}
-                </Link>
+                <Links to={"/accommodations/all"}>{t("Acomodações")}</Links>
+                <Links to={"/contact"}>{t("Contato")}</Links>
 
                 <Bandeiras className={styles.margin}>
                   <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                     <Select
-                      labelId="demo-select-small"
-                      id="demo-select-small"
+                      inputProps={{ MenuProps: { disableScrollLock: true } }}
                       value={selectedLanguage}
                       onChange={handleChange}
                     >

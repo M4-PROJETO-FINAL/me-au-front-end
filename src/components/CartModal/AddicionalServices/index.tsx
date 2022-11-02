@@ -35,8 +35,8 @@ const AddicionalServices = () => {
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_INVALID_MESSAGE = t("AddServices.Campo inválido");
-
   const ERROR_MESSAGE_NUMBER = t("AddServices.Apenas números");
+
   const optionsYesAndNo = [
     {
       value: "yes",
@@ -108,7 +108,7 @@ const AddicionalServices = () => {
               <LeftSideColumn>
                 <DivSelect>
                   <p>
-                    Vacina
+                    {t("AddServices.Vacina")}
                     <span>(A combinar)</span>
                   </p>
                   <InputSelectGlobal
@@ -123,7 +123,7 @@ const AddicionalServices = () => {
 
                 <DivSelect>
                   <p>
-                    Banho
+                    {t("AddServices.Banho")}
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
@@ -138,7 +138,7 @@ const AddicionalServices = () => {
 
                 <DivSelect>
                   <p>
-                    Natação
+                    {t("AddServices.Natação")}
                     <span>(R$50,00)</span>
                   </p>
                   <InputGlobal
@@ -154,7 +154,7 @@ const AddicionalServices = () => {
               <RightSideColumn>
                 <DivSelect>
                   <p>
-                    Tosa Completa
+                    {t("AddServices.Tosa Completa")}
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
@@ -168,7 +168,7 @@ const AddicionalServices = () => {
                 </DivSelect>
                 <DivSelect>
                   <p>
-                    Massagem
+                    {t("AddServices.Massagem")}
                     <span>(R$60,00)</span>
                   </p>
                   <InputGlobal
@@ -182,7 +182,7 @@ const AddicionalServices = () => {
                 </DivSelect>
                 <DivSelect>
                   <p>
-                    Ração Premium
+                  {t("AddServices.Ração Premium")}
                     <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
@@ -201,8 +201,8 @@ const AddicionalServices = () => {
               <LeftSideColumn>
                 <DivSelect>
                   <p>
-                    Vacina
-                    <span>(A combinar)</span>
+                    {t("AddServices.Vacina")}
+                    <span>{t("AddServices.(A combinar)")}</span>
                   </p>
                   <InputSelectGlobal
                     error={!!errors.vaccine}
@@ -217,7 +217,7 @@ const AddicionalServices = () => {
 
                 <DivSelect>
                   <p>
-                    Banho
+                    {t("AddServices.Banho")}
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
@@ -233,7 +233,7 @@ const AddicionalServices = () => {
 
                 <DivSelect>
                   <p>
-                    Natação
+                    {t("AddServices.Natação")}
                     <span>(R$50,00)</span>
                   </p>
                   <InputGlobal
@@ -250,7 +250,7 @@ const AddicionalServices = () => {
               <RightSideColumn>
                 <DivSelect>
                   <p>
-                    Tosa Completa
+                    {t("AddServices.Tosa Completa")}
                     <span>(R$30,00)</span>
                   </p>
                   <InputGlobal
@@ -265,7 +265,7 @@ const AddicionalServices = () => {
                 </DivSelect>
                 <DivSelect>
                   <p>
-                    Massagem
+                    {t("AddServices.Massagem")}
                     <span>(R$60,00)</span>
                   </p>
                   <InputGlobal
@@ -280,7 +280,7 @@ const AddicionalServices = () => {
                 </DivSelect>
                 <DivSelect>
                   <p>
-                    Ração Premium
+                  {t("AddServices.Ração Premium")}
                     <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
@@ -304,7 +304,7 @@ const AddicionalServices = () => {
           color="primary"
           sx={{ fontWeight: "bold", fontSize: 16, marginTop: 3 }}
         >
-          Concluir adicionais!
+          {t("AddServices.Concluir adicionais!")}
         </Button>
       </FormServiceContainer>
     </AddServicesContainer>

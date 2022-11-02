@@ -47,7 +47,7 @@ export const About = styled.div`
     margin: 3rem;
   }
 
-  .sc-bjfHbI {
+  .formWidth {
     width: 100%;
     max-width: 35rem;
   }

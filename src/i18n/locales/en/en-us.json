@@ -25,6 +25,12 @@
     "Senha caracter especial": "The password must contain at least one special character",
     "Senha digito": "The password must contain at least one digit",
     "Senha oito caracteres": "Password must contain at least 8 characters",
+    "Nós estamos aqui para cuidar do seu": "We're here to take care of your",
+    "animal de estimação": "pet",
+    "Fazemos nossos clientes felizes oferecendo o tratamento e a estadia que seu pet merece": "We make our clients happy by offering a top treatment and stay that your pet deserves",
+    "Reserve um horário": "Book now!",
+    "Confira nossos preços": "Check our prices",
+    "Avaliações dos nossos clientes": "Customer reviews",
     "Nome dos quartos": {
       "shared": "Shared room",
       "cats": "Private room (cats)",
@@ -51,7 +57,14 @@
     "Esta é sua conta": "This is your account",
     "Meu perfil": "My profile",
     "Meus pets": "My pets",
-    "Minhas reservas": "My reservations",
+    "Minhas reservas": "My bookings",
+    "Confirmação dos dados": "Confirm purchase details",
+    "Tipo de quarto": "Room type",
+    "Data de checkin": "Checkin Date",
+    "Data de checkout": "Checkout Date",
+    "Nº de pets": "Nº of pets",
+    "Nº de noites": "Nº of nights",
+    "Total diária": "Daily rate",
     "Cadastrar pet": {
       "Escolha o seu pet": "Choose your pet",
       "Cadastre o seu pet": "Register your pet",
@@ -70,16 +83,26 @@
     },
     "AddServices": {
       "Vacinação": "Vaccination",
+      "Vacina": "Vaccine",
       "Banho": "Shower",
       "Natação": "Swimming",
-      "Tosa Completa": "Complete Clipping",
+      "Tosa Completa": "Grooming",
       "Massagem": "Massage",
+      "Passeio": "Dog Walking",
+      "Recreação": "Day Care",
       "Ração Premium": "Premium Feed",
       "Apenas números": "Only Numbers",
       "Escolha os serviços adicionais!": "Choose additional services!",
       "Quantidade": "The Amount",
       "Precisa?": "Need?",
-      "Campo inválido": "Invalid field"
-    }
+      "Campo inválido": "Invalid field",
+      "Concluir adicionais!": "Finish purchase!",
+      "(A combinar)": "(Price upon arrival)"
+    },
+    "Sim": "Yes",
+    "Não": "No",
+    "Cadastrar um novo pet": "Register new pet",
+    "Qual o tipo?": "Type?",
+    "Qual a idade?": "Age?"
   }
 }

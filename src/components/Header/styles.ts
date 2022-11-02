@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 export const logo = {
@@ -52,4 +54,12 @@ export const Container = styled.div`
 export const Bandeiras = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const Links = styled(Link)`
+  margin-right: auto;
+
+  font-family: "Public Sans";
+  font-weight: 400;
+  font-size: 16px;
 `;
