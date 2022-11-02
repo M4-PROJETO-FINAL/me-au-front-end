@@ -8,8 +8,7 @@ export const MenuContainer = styled.div`
   gap: 1rem;
   padding: 2rem;
 
-  width: 19.688rem;
-  height: 52.813rem;
+  width: 100%;
 
   border-radius: 15px;
 
@@ -17,12 +16,12 @@ export const MenuContainer = styled.div`
 
   background-color: #e6c5b2;
 
-  @media screen and (max-width: 768px) {
-    height: 16.813rem;
+  @media screen and (max-width: 426px) {
+    padding: 2rem 0.5rem;
   }
 `;
 
-export const ProfileTab = styled.div`
+export const ProfileTab = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -36,6 +35,10 @@ export const ProfileTab = styled.div`
     background-color: #ffddca;
   }
 
+  &:focus {
+    background-color: #ffddca;
+  }
+
   border-radius: 15px;
 
   div {
@@ -46,7 +49,7 @@ export const ProfileTab = styled.div`
 
     &:nth-child(2) {
       font-family: "Nunito";
-      font-weight: 200;
+      font-weight: 300;
     }
 
     display: flex;
@@ -54,7 +57,7 @@ export const ProfileTab = styled.div`
   }
 `;
 
-export const MenuTabs = styled.div`
+export const MenuTabs = styled.button`
   display: flex;
   align-items: center;
 
@@ -68,6 +71,11 @@ export const MenuTabs = styled.div`
 
   gap: 1rem;
 
+  transition: all 250ms;
+
+  font-family: "Nunito";
+  font-weight: 700;
+
   background-color: #fff5ef;
 
   svg {
@@ -77,8 +85,30 @@ export const MenuTabs = styled.div`
   &:hover {
     background-color: #ffddca;
   }
+
+  &:focus {
+    background-color: #ffddca;
+  }
 `;
 
 export const Paragraph = styled.p`
   padding-left: 1rem;
+`;
+
+export const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  @media screen and (max-width: 426px) {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    gap: 0.5rem;
+  }
 `;
