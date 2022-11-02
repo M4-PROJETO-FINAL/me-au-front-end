@@ -35,7 +35,7 @@ const Header = () => {
   const styles = useStyles();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { openFormLogin } = useUserContext();
+  const { openFormLogin, logout, user } = useUserContext();
   const isTablet = useMediaQuery("(max-width:768px)");
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
 

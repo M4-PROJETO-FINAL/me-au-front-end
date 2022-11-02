@@ -22,8 +22,9 @@ interface IUserContext {
   isOpenCartModal: boolean;
   handleOpenCartModal: () => void;
   handleCloseCartModal: () => void;
-  createUser: (data: IUserRegister) => void;
+  createUser: (data: IUserRegister, goToLoginForm: (() => void) | null) => void;
   setIsReservationBtnPressed: Dispatch<SetStateAction<boolean>>;
+  logout: () => void;
 }
 
 interface ILoginRes {
@@ -55,25 +56,30 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     setIsOpenFormLogin(false);
   };
 
-  const createUser = (data: IUserRegister) => {
+  const createUser = (data: IUserRegister, goToLoginForm) => {
     console.log(data);
     api
       .post("/users", data)
       .then(() => {
+        // actionAfterRegister = Go To Login Form
+        goToLoginForm ? goToLoginForm() : setIsOpenFormLogin(false);
+
         toast.success("Conta criada com sucesso.");
       })
-      .catch((err: any) => {
-        console.log(err);
+      .catch(() => {
         toast.error("Não foi possível realizar o cadastro.");
       });
   };
 
   const loginUser = (data: IUserLogin) => {
-    api.post("/login", data).then((res: ILoginRes) => {
-      localStorage.setItem("@me-au:token", res.data.token);
-      api.defaults.headers.authorization = `Bearer ${res.data.token}`;
-    });
-    console.log(user);
+    api
+      .post("/login", data)
+      .then((res: ILoginRes) => {
+        localStorage.setItem("@me-au:token", res.data.token);
+        api.defaults.headers.authorization = `Bearer ${res.data.token}`;
+        closeFormLogin();
+      })
+      .catch(() => toast.error("Não foi possível realizar o login"));
     //caso for sucesso
     if (isReservationBtnPressed) {
       closeFormLogin();
@@ -82,10 +88,22 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   };
 
   useEffect(() => {
-    api.get("/users").then((res: IUserRes) => setUser(res.data));
+    const token = localStorage.getItem("@me-au:token");
+    api.defaults.headers.authorization = `Bearer ${token}`;
+    if (token) {
+      api
+        .get("/users")
+        .then((res: IUserRes) => setUser(res.data))
+        .catch((err) => console.log(err));
+    }
   }, []);
 
-  // atualiza o valor do isReservation quando os mais estão fechados
+  const logout = () => {
+    setUser(undefined);
+    localStorage.removeItem("@me-au:token");
+  };
+
+  // atualiza o valor do isReservationBtnPressed quando os modais estão fechados
   useEffect(() => {
     if (!isOpenFormLogin && !isOpenCartModal) setIsReservationBtnPressed(false);
   }, [isOpenFormLogin, isOpenCartModal]);
@@ -103,6 +121,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
         handleCloseCartModal,
         createUser,
         setIsReservationBtnPressed,
+        logout,
       }}
     >
       {children}
