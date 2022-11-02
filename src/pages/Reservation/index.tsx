@@ -96,23 +96,31 @@ const Reservation = ({ room }: IReservationProps) => {
                   value={petsAmount || ""}
                   onChange={(e) => setPetsAmount(+e.target.value)}
                 />
-                <button className="reservationBtn">Agende agora mesmo!</button>
+                <button className="reservationBtn">
+                  {t("Agende agora mesmo!")}
+                </button>
               </form>
             </div>
             <div className="bottom">
               <div className="col left">
                 <p>
-                  Acomoda até{" "}
-                  {`${room.capacity} ${isCatRoom ? "gatos" : "cães"}`}
+                  {t("Acomoda até")}{" "}
+                  {`${room.capacity} ${
+                    isCatRoom ? `${t("gatos")}` : `${t("cães")}`
+                  }`}
                 </p>
                 {isCatRoom ? <Ball /> : <Bone />}
               </div>
               <div className="col mid">
-                <p>Check-in às 07h e {"\n"} checkout às 17h</p>
+                <p>
+                  Check-in {t("às")} 07h {t("e")} {"\n"} checkout {t("às")} 17h
+                </p>
                 {isCatRoom ? <Ball /> : <Bone />}
               </div>
               <div className="col right">
-                <p>Incluso: {room.includedService}</p>
+                <p>
+                  {t("Incluso")}: {room.includedService}
+                </p>
                 {isCatRoom ? <Ball /> : <Bone />}
               </div>
             </div>
@@ -139,14 +147,21 @@ const Reservation = ({ room }: IReservationProps) => {
               />
             </div>
             <p>
-              Acomoda até {`${room.capacity} ${isCatRoom ? "gatos" : "cães"}`}
+              {t("Acomoda até")}{" "}
+              {`${room.capacity} ${
+                isCatRoom ? `${t("gatos")}` : `${t("cães")}`
+              }`}
             </p>
             {isCatRoom ? <Ball /> : <Bone />}
 
-            <p>Check-in às 07h e {"\n"} checkout às 17h</p>
+            <p>
+              Check-in {t("às")} 07h {t("e")} {"\n"} checkout {t("às")} 17h
+            </p>
             {isCatRoom ? <Ball /> : <Bone />}
 
-            <p>Incluso: {room.includedService}</p>
+            <p>
+              {t("Incluso")}: {room.includedService}
+            </p>
           </DialogInner>
         </Dialog>
       )}
