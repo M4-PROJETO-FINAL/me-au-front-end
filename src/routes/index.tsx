@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
+import CardsPets from "../components/CardsPets";
 import MyProfile from "../components/MyProfile";
 import Accommodations from "../pages/Accommodations";
 import Contact from "../pages/Contact";
@@ -11,7 +12,8 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />}>
-        <Route path="profile" element={<MyProfile />} />
+        <Route index path="profile" element={<MyProfile />} />
+        <Route path="pets" element={<CardsPets />} />
       </Route>
       <Route path="/accommodations/:tag" element={<Accommodations />} />
       <Route path="/contact" element={<Contact />} />

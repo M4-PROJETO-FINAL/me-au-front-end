@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
-import Logo from "../../../assets/logoMeAuBGCWhite.png";
+import Logo from "../../../assets/logo.svg";
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
 import { useUserContext } from "../../../contexts/UserContext";
 import { InputGlobal } from "../../Input";

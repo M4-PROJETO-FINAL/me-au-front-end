@@ -18,8 +18,8 @@ import { useTranslation } from "react-i18next";
 
 const Services = () => {
   const { t } = useTranslation();
-  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
-  const isTablet = useMediaQuery({ query: "(min-width: 700px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width: 1200px)" });
+  const isTablet = useMediaQuery({ query: "(min-width: 850px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   return (

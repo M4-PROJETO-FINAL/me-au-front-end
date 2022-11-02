@@ -17,7 +17,7 @@ export const styleModalProfile = {
   width: "85%",
   maxWidth: 400,
   height: "80%",
-  maxHeight: 450,
+  maxHeight: 430,
 
   bgcolor: "background.paper",
   boxShadow: 24,
