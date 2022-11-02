@@ -21,9 +21,9 @@ import DrawerComp from "../Drawer";
 // import LanguageOnScroll from "../LanguageScroll";
 // import LanguageScrollOption from "../LanguageScroll/LanguageScrollOption";
 import LoginAndRegister from "../LoginAndRegister";
-import { Bandeiras, Links, FixPaddingRightBody } from "./styles";
+import { Bandeiras, Links } from "./styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   margin: {
     marginRight: "auto",
     fontFamily: "Public Sans",
@@ -85,20 +85,8 @@ const Header = () => {
 
                 <Bandeiras className={styles.margin}>
                   <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                    <FixPaddingRightBody
-                      isOpenMenuTranslate={isOpenMenuTranslate}
-                    />
                     <Select
-                      style={{
-                        boxSizing: "content-box",
-                      }}
                       onOpen={() => setIsOpenMenuTranslate(true)}
-                      inputProps={{
-                        MenuProps: {
-                          // disableScrollLock: true,
-                          disableClearable: true,
-                        },
-                      }}
                       value={selectedLanguage}
                       onChange={handleChange}
                     >

@@ -32,7 +32,6 @@ const CartModal = () => {
           },
         }}
         style={bgBlur}
-        disableScrollLock={true}
       >
         <Fade in={isOpenCartModal}>
           <Box sx={isDesktop ? style : styleDesktop}>
