@@ -8,6 +8,7 @@ export const StyledSection = styled.section`
   h3 {
     font-weight: bold;
     font-size: 30px;
+    text-align: center;
     margin-bottom: 2rem;
     @media screen and (max-width: 768px) {
       font-size: 24px;

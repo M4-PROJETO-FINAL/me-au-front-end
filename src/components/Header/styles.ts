@@ -6,7 +6,17 @@ export const logo = {
   color: "rgba(var(--logoOrange), 1)",
 };
 
-export const Container = styled.div`
+interface IContainerProps {
+  isOpenMenuTranslate: boolean;
+}
+
+export const FixPaddingRightBody = styled.div<IContainerProps>`
+  body {
+    box-sizing: ${({ isOpenMenuTranslate }) =>
+      isOpenMenuTranslate && "content-box"};
+  }
+`;
+export const Container = styled.div<IContainerProps>`
   display: flex;
   justify-content: space-between;
 
@@ -16,7 +26,9 @@ export const Container = styled.div`
   height: 4.251rem;
 
   background: rgba(var(--logoOrange), 1);
-
+  body {
+    overflow-y: scroll !important;
+  }
   & > img {
     width: 249px;
     height: 91px;

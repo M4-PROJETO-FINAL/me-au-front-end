@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Avatar } from "@mui/material";
 
-import Gui from "../../assets/Developers/Gui.png";
+import Gui from "../../assets/Developers/gui.png";
 // import { useUserContext } from "../../contexts/UserContext";
 import { MenuContainer, MenuTabs, ProfileTab, Paragraph } from "./styles";
-import { Link } from "react-router-dom";
 
 const Menu = () => {
   // const { user } = useUserContext();
