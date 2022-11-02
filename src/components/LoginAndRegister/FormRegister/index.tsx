@@ -1,43 +1,46 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { IoChevronBack } from "react-icons/io5";
+import InputMask from "react-input-mask";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
+import { useUserContext } from "../../../contexts/UserContext";
 import { InputGlobal } from "../../Input";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { ButtonBackLogin, CenterDiv, RegisterContainer } from "./styles";
 
-interface IFormSchemaRegister {
+export interface IUserRegister {
   name: string;
-  cpf?: string;
   email: string;
   password: string;
-  passwordConfirm: string;
+  profile_image?: string;
+  cpf?: string;
+  passwordConfirm?: string;
 }
 
 const FormRegister = () => {
   const { t } = useTranslation();
   const { showLoginForm } = useModalFormLoginAndRegister();
+  const { createUser, user } = useUserContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
-  const INVALID_CPF_MESSAGE = t("CPF inválido");
   const ERROR_PASSWORD_MIN = t("Senha oito caracteres");
   const ERROR_PASSWORD_DIGIT = t("Senha digito");
   const ERROR_PASSWORD_LOWER_CASE = t("Senha letra minuscula");
   const ERROR_PASSWORD_UPPER_CASE = t("Senha letra maiuscula");
   const ERROR_PASSWORD_SPECIAL_CHARACTER = t("Senha caracter especial");
   const ERROR_CONFIRM_PASSWORD = t("Campos nao coincidem");
-
-  const cpfRegExp = /(^\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}$)/;
+  console.log(user);
 
   const formSchema = yup.object().shape({
     name: yup.string().required(ERROR_MESSAGE),
-    cpf: yup.string().matches(cpfRegExp, INVALID_CPF_MESSAGE),
+    cpf: yup.string(),
     email: yup.string().required(ERROR_MESSAGE).email(INVALID_EMAIL_MESSAGE),
     password: yup
       .string()
@@ -57,13 +60,12 @@ const FormRegister = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormSchemaRegister>({ resolver: yupResolver(formSchema) });
+  } = useForm<IUserRegister>({ resolver: yupResolver(formSchema) });
 
-  const onSubmitFunction = (data: IFormSchemaRegister) => {
-    // Aqui chama o contexto da api de registro..!
+  const onSubmitFunction = (data: IUserRegister) => {
+    createUser(data, showLoginForm);
   };
-  // Seria interessante fazer um inputmask para o cpf... ao invés de usar o yup form, dessa forma o campo já viria validado!
-  // https://codesandbox.io/s/h00r3?file=/src/MaskedTextField.tsx
+
   return (
     <RegisterContainer>
       <ButtonBackLogin onClick={showLoginForm}>
@@ -79,14 +81,22 @@ const FormRegister = () => {
             register={register}
             registerName="name"
           />
-          <InputGlobal
-            error={!!errors.cpf}
-            label="CPF"
-            type="tel"
-            errorMessage={errors?.cpf?.message}
+          <InputMask
+            mask="999.999.999-99"
             register={register}
             registerName="cpf"
-          />
+          >
+            {() => (
+              <TextField
+                id={"CPF"}
+                label={"CPF"}
+                style={{
+                  height: "78.91px",
+                  paddingBottom: "19.99px",
+                }}
+              />
+            )}
+          </InputMask>
           <InputGlobal
             error={!!errors.email}
             label="E-mail"

@@ -1,25 +1,50 @@
-import { createContext, useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { toast } from "react-toastify";
 
-import { IProviderProps } from "../../interfaces/User";
+import { IUserLogin } from "../../components/LoginAndRegister/FormLogin";
+import { IUserRegister } from "../../components/LoginAndRegister/FormRegister";
+import { IProviderProps, IUser } from "../../interfaces/User";
+import { api } from "../../services";
 
 interface IUserContext {
-  user: any;
+  user?: IUser;
   isOpenFormLogin: boolean;
   openFormLogin: () => void;
   closeFormLogin: () => void;
-  loginUser: (data) => void;
+  loginUser: (data: IUserLogin) => void;
   isOpenCartModal: boolean;
   handleOpenCartModal: () => void;
   handleCloseCartModal: () => void;
+  createUser: (data: IUserRegister, goToLoginForm: (() => void) | null) => void;
+  setIsReservationBtnPressed: Dispatch<SetStateAction<boolean>>;
+  logout: () => void;
+}
+
+interface ILoginRes {
+  data: {
+    token: string;
+  };
+  status: number;
+}
+
+interface IUserRes {
+  data: IUser;
 }
 
 const UserContext = createContext({} as IUserContext);
 
 export const UserContextProvider = ({ children }: IProviderProps) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<IUser>();
   const [isOpenFormLogin, setIsOpenFormLogin] = useState(false);
   const [isOpenCartModal, setIsOpenCartModal] = useState(false);
+  const [isReservationBtnPressed, setIsReservationBtnPressed] = useState(false);
   const handleOpenCartModal = () => setIsOpenCartModal(true);
   const handleCloseCartModal = () => setIsOpenCartModal(false);
 
@@ -30,15 +55,58 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const closeFormLogin = () => {
     setIsOpenFormLogin(false);
   };
-  const actualPage = useLocation().pathname;
 
-  const loginUser = (data) => {
+  const createUser = (data: IUserRegister, goToLoginForm) => {
+    console.log(data);
+    api
+      .post("/users", data)
+      .then(() => {
+        // actionAfterRegister = Go To Login Form
+        goToLoginForm ? goToLoginForm() : setIsOpenFormLogin(false);
+
+        toast.success("Conta criada com sucesso.");
+      })
+      .catch(() => {
+        toast.error("Não foi possível realizar o cadastro.");
+      });
+  };
+
+  const loginUser = (data: IUserLogin) => {
+    api
+      .post("/login", data)
+      .then((res: ILoginRes) => {
+        localStorage.setItem("@me-au:token", res.data.token);
+        api.defaults.headers.authorization = `Bearer ${res.data.token}`;
+        closeFormLogin();
+      })
+      .catch(() => toast.error("Não foi possível realizar o login"));
     //caso for sucesso
-    if (actualPage.includes("accommodations")) {
-      handleOpenCartModal();
+    if (isReservationBtnPressed) {
       closeFormLogin();
+      handleOpenCartModal();
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("@me-au:token");
+    api.defaults.headers.authorization = `Bearer ${token}`;
+    if (token) {
+      api
+        .get("/users")
+        .then((res: IUserRes) => setUser(res.data))
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
+  const logout = () => {
+    setUser(undefined);
+    localStorage.removeItem("@me-au:token");
+  };
+
+  // atualiza o valor do isReservationBtnPressed quando os modais estão fechados
+  useEffect(() => {
+    if (!isOpenFormLogin && !isOpenCartModal) setIsReservationBtnPressed(false);
+  }, [isOpenFormLogin, isOpenCartModal]);
 
   return (
     <UserContext.Provider
@@ -51,6 +119,9 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
         isOpenCartModal,
         handleOpenCartModal,
         handleCloseCartModal,
+        createUser,
+        setIsReservationBtnPressed,
+        logout,
       }}
     >
       {children}

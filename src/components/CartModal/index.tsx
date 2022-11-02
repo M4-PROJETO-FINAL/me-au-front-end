@@ -7,29 +7,22 @@ import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
 import Modal from "@mui/material/Modal";
 
+import { useUserContext } from "../../contexts/UserContext";
 import TimeStepper from "./Stepper";
 import { style, styleDesktop, bgBlur, ButtonCloseModal } from "./style";
 
-interface IPropsCartModal {
-  openCartModal: boolean;
-  handleClose: () => void;
-  handleOpen: () => void;
-}
-const CartModal = ({
-  openCartModal,
-  handleClose,
-  handleOpen,
-}: IPropsCartModal) => {
+const CartModal = () => {
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
-
+  const { handleCloseCartModal, isOpenCartModal, handleOpenCartModal } =
+    useUserContext();
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpenCartModal}>Open modal</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={openCartModal}
-        onClose={handleClose}
+        open={isOpenCartModal}
+        onClose={handleCloseCartModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -41,9 +34,9 @@ const CartModal = ({
         style={bgBlur}
         disableScrollLock={true}
       >
-        <Fade in={openCartModal}>
+        <Fade in={isOpenCartModal}>
           <Box sx={isDesktop ? style : styleDesktop}>
-            <ButtonCloseModal onClick={handleClose}>
+            <ButtonCloseModal onClick={handleCloseCartModal}>
               <IoMdArrowBack />
             </ButtonCloseModal>
             <TimeStepper />

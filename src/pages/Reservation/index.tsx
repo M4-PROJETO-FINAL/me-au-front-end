@@ -38,15 +38,15 @@ const Reservation = ({ room }: IReservationProps) => {
   const {
     user,
     openFormLogin,
-    handleCloseCartModal,
-    isOpenCartModal,
     handleOpenCartModal,
+    setIsReservationBtnPressed,
   } = useUserContext();
   const { petsAmount, setPetsAmount } = useReservationContext();
 
   const [openTooltip, setOpenTooltip] = useState(false);
   const checkLoginAndOpenModal = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsReservationBtnPressed(true);
     // Verificar se tem data e checkin selecionados --- pegar o contexto dessa data e checkin ( não consegui fazer form yup nesse calendar)
     if (user) {
       handleOpenCartModal();
@@ -126,11 +126,7 @@ const Reservation = ({ room }: IReservationProps) => {
           </div>
         </div>
       </StyledRoomSection>
-      <CartModal
-        openCartModal={isOpenCartModal}
-        handleClose={handleCloseCartModal}
-        handleOpen={handleOpenCartModal}
-      />
+      <CartModal />
       {openTooltip && isMobile && (
         <Dialog open={openTooltip} onClose={() => setOpenTooltip(false)}>
           <DialogInner>

@@ -21,7 +21,7 @@ import DrawerComp from "../Drawer";
 // import LanguageOnScroll from "../LanguageScroll";
 // import LanguageScrollOption from "../LanguageScroll/LanguageScrollOption";
 import LoginAndRegister from "../LoginAndRegister";
-import { Bandeiras, Links } from "./styles";
+import { Bandeiras, Links, FixPaddingRightBody } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -35,8 +35,9 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const styles = useStyles();
   const navigate = useNavigate();
+  const [isOpenMenuTranslate, setIsOpenMenuTranslate] = useState(false);
   const { t } = useTranslation();
-  const { openFormLogin } = useUserContext();
+  const { openFormLogin, logout, user } = useUserContext();
   const isTablet = useMediaQuery("(max-width:768px)");
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   // const [labelLanguage, setLabelLanguage] = useState("PT-BR");
@@ -84,8 +85,20 @@ const Header = () => {
 
                 <Bandeiras className={styles.margin}>
                   <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                    <FixPaddingRightBody
+                      isOpenMenuTranslate={isOpenMenuTranslate}
+                    />
                     <Select
-                      inputProps={{ MenuProps: { disableScrollLock: true } }}
+                      style={{
+                        boxSizing: "content-box",
+                      }}
+                      onOpen={() => setIsOpenMenuTranslate(true)}
+                      inputProps={{
+                        MenuProps: {
+                          // disableScrollLock: true,
+                          disableClearable: true,
+                        },
+                      }}
                       value={selectedLanguage}
                       onChange={handleChange}
                     >
