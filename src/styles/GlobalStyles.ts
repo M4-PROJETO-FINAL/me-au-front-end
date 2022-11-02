@@ -555,7 +555,9 @@ const GlobalStyle = createGlobalStyle`
 
 * {
     box-sizing: border-box;
+
 }
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -596,6 +598,9 @@ body {
     height: 100vh;
 
     background: rgba(var(--bodyBackground), 1);
+    // used because material UI modals add 17px in the body when they are oppened.
+    padding-right: 0px !important;  
+
 }
 ol, ul {
 	list-style: none;

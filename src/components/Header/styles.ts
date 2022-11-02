@@ -16,7 +16,9 @@ export const Container = styled.div`
   height: 4.251rem;
 
   background: rgba(var(--logoOrange), 1);
-
+  body {
+    overflow-y: scroll !important;
+  }
   & > img {
     width: 249px;
     height: 91px;

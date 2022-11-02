@@ -38,6 +38,11 @@ export interface IReservationRequest {
   services: IServiceAmount[];
 }
 
+export interface IReservation extends IReservationRequest {
+  id: string;
+  created_at: string;
+  updated_at: string;
+}
 export interface IService {
   id: string;
   name: string;

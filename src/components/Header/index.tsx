@@ -23,7 +23,7 @@ import DrawerComp from "../Drawer";
 import LoginAndRegister from "../LoginAndRegister";
 import { Bandeiras, Links } from "./styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   margin: {
     marginRight: "auto",
     fontFamily: "Public Sans",
@@ -35,8 +35,9 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const styles = useStyles();
   const navigate = useNavigate();
+  const [isOpenMenuTranslate, setIsOpenMenuTranslate] = useState(false);
   const { t } = useTranslation();
-  const { openFormLogin } = useUserContext();
+  const { openFormLogin, logout, user } = useUserContext();
   const isTablet = useMediaQuery("(max-width:768px)");
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   // const [labelLanguage, setLabelLanguage] = useState("PT-BR");
@@ -85,7 +86,7 @@ const Header = () => {
                 <Bandeiras className={styles.margin}>
                   <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                     <Select
-                      inputProps={{ MenuProps: { disableScrollLock: true } }}
+                      onOpen={() => setIsOpenMenuTranslate(true)}
                       value={selectedLanguage}
                       onChange={handleChange}
                     >

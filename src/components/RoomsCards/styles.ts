@@ -106,7 +106,7 @@ export const RoomSection = styled.section`
           font-family: Public Sans;
           font-size: 25px;
           font-weight: 600;
-          line-height: 29px;
+          line-height: 1.2rem;
           letter-spacing: 0em;
           text-align: left;
         }

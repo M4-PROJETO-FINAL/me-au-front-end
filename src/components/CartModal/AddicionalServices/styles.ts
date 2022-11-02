@@ -11,13 +11,14 @@ export const AddServicesContainer = styled.div`
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 10px !important;
     background-color: #f5f5f5;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #fff;
+
     background-image: -webkit-linear-gradient(top, #9fd4d1 50%, #65c1bc 100%);
   }
 `;

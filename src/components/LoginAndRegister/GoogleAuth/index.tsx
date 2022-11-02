@@ -1,6 +1,9 @@
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 
+import { useUserContext } from "../../../contexts/UserContext";
+import { IUserRegister } from "../FormRegister";
+
 interface IUserInfoGmail {
   email: string;
   sub: string;
@@ -9,23 +12,18 @@ interface IUserInfoGmail {
 }
 
 export const GoogleAuthLogin = () => {
-  //   const { loginUser, registerUser, setUser } = useAuthUserContext();
+  const { loginUser, createUser } = useUserContext();
 
   const responseGmail = (userInfo: IUserInfoGmail) => {
-    // A tipagem <any> será substituida pela tipagem do User
-
-    const userInfoFixed: any = {
+    const userInfoFixed: IUserRegister = {
       email: userInfo.email,
       password: userInfo.sub,
-      avatar: userInfo.picture,
+      profile_image: userInfo.picture,
       name: userInfo.name,
-      isAdmin: false,
     };
-    console.log(userInfo);
-    console.log(userInfoFixed);
-    // setUser(userInfoFixed);
-    // registerUser(userInfoFixed);
-    // loginUser(userInfoFixed);
+
+    createUser(userInfoFixed, null);
+    loginUser(userInfoFixed);
   };
 
   return (
