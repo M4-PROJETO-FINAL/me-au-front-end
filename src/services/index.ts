@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://me-au-db.herokuapp.com",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

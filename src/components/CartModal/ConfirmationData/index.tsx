@@ -16,7 +16,6 @@ const ConfirmationData = () => {
     i18n: { language: lang },
   } = useTranslation();
   const { generateRequestObject, selectedRoomType } = useReservationContext();
-
   const reservationObject: IReservationRequest = generateRequestObject();
   console.log(reservationObject);
 

@@ -8,7 +8,6 @@ import Reservation from "../Reservation";
 
 const Accommodations = () => {
   const { tag } = useParams();
-
   return (
     <ReservationContextProvider>
       <TitleRooms />
