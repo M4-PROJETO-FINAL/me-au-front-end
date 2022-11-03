@@ -90,9 +90,9 @@
       "Idade": "Idade",
       "Cachorro": "Cachorro",
       "Gato": "Gato",
-      "É vacinado": "É vacinado?",
-      "É castrado": "É castrado?",
-      "É dócil": "É dócil?",
+      "É vacinado": "Vacinado",
+      "É castrado": "Castrado",
+      "É dócil": "Dócil",
       "Sim": "Sim",
       "Não": "Não",
       "Selecione uma opção": "Selecione uma opção",
@@ -121,7 +121,7 @@
     "Sim": "Yes",
     "Não": "No",
     "Cadastrar um novo pet": "Register new pet",
-    "Qual o tipo?": "Type?",
-    "Qual a idade?": "Age?"
+    "Qual o tipo?": "Tipo",
+    "Qual a idade?": "Idade"
   }
 }

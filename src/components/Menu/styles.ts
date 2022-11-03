@@ -12,8 +12,6 @@ export const MenuContainer = styled.div`
 
   border-radius: 15px;
 
-  cursor: pointer;
-
   background-color: #e6c5b2;
 
   @media screen and (max-width: 426px) {

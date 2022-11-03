@@ -20,6 +20,7 @@ import { Button } from "../Button/style";
 import DrawerComp from "../Drawer";
 // import LanguageOnScroll from "../LanguageScroll";
 // import LanguageScrollOption from "../LanguageScroll/LanguageScrollOption";
+import LoggedInDrawerComp from "../Drawer/LoggedInDrawer";
 import LoginAndRegister from "../LoginAndRegister";
 import { Bandeiras, Links } from "./styles";
 
@@ -35,10 +36,10 @@ const useStyles = makeStyles(() => ({
 const Header = () => {
   const styles = useStyles();
   const navigate = useNavigate();
-  const [isOpenMenuTranslate, setIsOpenMenuTranslate] = useState(false);
   const { t } = useTranslation();
-  const { openFormLogin, logout, user } = useUserContext();
   const isTablet = useMediaQuery("(max-width:768px)");
+  const { openFormLogin, logout, user } = useUserContext();
+  const [isOpenMenuTranslate, setIsOpenMenuTranslate] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
   // const [labelLanguage, setLabelLanguage] = useState("PT-BR");
   // const [isOpen, setIsOpen] = useState(false);
@@ -104,20 +105,24 @@ const Header = () => {
                   </FormControl>
                 </Bandeiras>
 
-                <div className="button--container">
-                  <Button
-                    backgroundColor="rgba(var(--aquaLight), 1)"
-                    color="rgba(var(--white), 1)"
-                    height="2.5rem"
-                    width="9.1875rem"
-                    fontSize=".875rem"
-                    fontWeight="600"
-                    borderRadius=".9375rem"
-                    onClick={() => openFormLogin()}
-                  >
-                    {t("Login ou registro")}
-                  </Button>
-                </div>
+                {user ? (
+                  <LoggedInDrawerComp />
+                ) : (
+                  <div className="button--container">
+                    <Button
+                      backgroundColor="rgba(var(--aquaLight), 1)"
+                      color="rgba(var(--white), 1)"
+                      height="2.5rem"
+                      width="9.1875rem"
+                      fontSize=".875rem"
+                      fontWeight="600"
+                      borderRadius=".9375rem"
+                      onClick={() => openFormLogin()}
+                    >
+                      Login ou Registro
+                    </Button>
+                  </div>
+                )}
                 <LoginAndRegister />
               </>
             )}

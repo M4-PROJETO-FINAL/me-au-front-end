@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import BedIcon from "@mui/icons-material/Bed";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
@@ -9,7 +9,6 @@ import {
   Drawer,
   IconButton,
   List,
-  Link,
   ListItem,
   ListItemText,
 } from "@mui/material";
@@ -85,11 +84,7 @@ const DrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link
-                sx={{ color: "common.white" }}
-                variant="button"
-                underline="none"
-                href="/contact"
+              <Link to={"/contact"}
               >
                 {t("Contato")}
               </Link>
@@ -107,11 +102,7 @@ const DrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link
-                sx={{ color: "common.white" }}
-                variant="button"
-                underline="none"
-                href="/accommodations/all"
+              <Link to="/accommodations/all"
               >
                 {t("Acomodações")}
               </Link>
