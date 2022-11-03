@@ -15,6 +15,7 @@ const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
   const { setSelectedRoomType } = useReservationContext();
   const navigate = useNavigate();
   const { t } = useTranslation();
+
   return (
     <RoomSection>
       <ul>

@@ -7,7 +7,7 @@
     "Entrar": "Entrar",
     "Senha *": "Senha *",
     "Ainda não tem uma conta?": "Ainda não tem uma conta?",
-    "Registre-se aqui": "Registre-se aqui",
+    "Cadastre-se aqui": "Registre-se aqui",
     "Ou entre com": "Ou entre com",
     "E-mail inválido": "E-mail inválido",
     "Acomodações e Quartos": "Acomodações e Quartos",
@@ -52,6 +52,13 @@
     "Venha nos visitar!": "Venha nos visitar!",
     "Inscreva-se para receber nossas promoções e novidades": "Inscreva-se para receber nossas promoções e novidades",
     "Nossas redes": "Nossas redes",
+    "Agende agora mesmo!": "Agende agora mesmo!",
+    "Acomoda até": "Acomoda até",
+    "às": "às",
+    "e": "e",
+    "gatos": "gatos",
+    "cães": "cães",
+    "Incluso": "Incluso",
     "Site desenvolvido por": "Site desenvolvido por",
     "Olá": "Olá",
     "Esta é sua conta": "Esta é sua conta",
@@ -60,6 +67,21 @@
     "Minhas reservas": "Minhas reservas",
     "Confirmação dos dados": "Confirmação dos dados",
     "Tipo de quarto": "Tipo de quarto",
+    "Data de checkin": "Data de checkin",
+    "Data de checkout": "Data de checkout",
+    "Nº de pets": "Nº de pets",
+    "Nº de noites": "Nº de noites",
+    "Total diária": "Total diária",
+    "RoomServices": {
+      "Quarto Compartilhado": "Shared room",
+      "passeios diários": "Daily walks",
+      "Quarto Privativo (cães)": "Private room (dogs)",
+      "Quarto Privativo (gatos)": "Private room (cats)",
+      "1 petisco por dia": "1 snack a day",
+      "Ótimo custo benefício, essa opção é ideal para você que deseja que o seu pet interaja com outros catioros!": "Great cost-benefit, this option is ideal for you who wants your pet to interact with other doggies!",
+      "Busca conforto e privacidade para o seu cãozinho? O quarto privativo é a opção ideal!": "Looking for comfort and privacy for your doggie? The private room is the right choice!",
+      "Quarto privativo de alto padrão para o seu felino aproveitar com classe!": "Luxury private room for your cat to enjoy with elegance!"
+    },
     "Cadastrar pet": {
       "Escolha o seu pet": "Escolha o seu pet",
       "Cadastre o seu pet": "Cadastre o seu pet",
@@ -85,6 +107,8 @@
       "Massagem": "Massagem",
       "Passeio": "Passeio",
       "Recreação": "Recreação",
+      "Ração": "Ração",
+      "Tosa": "Tosa",
       "Ração Premium": "Ração Premium",
       "Apenas números": "Apenas números",
       "Escolha os serviços adicionais!": "Escolha os serviços adicionais!",
@@ -93,6 +117,11 @@
       "Campo inválido": "Campo inválido",
       "Concluir adicionais!": "Concluir adicionais!",
       "(A combinar)": "(A combinar)"
-    }
+    },
+    "Sim": "Yes",
+    "Não": "No",
+    "Cadastrar um novo pet": "Register new pet",
+    "Qual o tipo?": "Type?",
+    "Qual a idade?": "Age?"
   }
 }
