@@ -6,12 +6,22 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Avatar } from "@mui/material";
 
+
 import Gui from "../../assets/Developers/Gui.png";
 // import { useUserContext } from "../../contexts/UserContext";
-import { MenuContainer, MenuTabs, ProfileTab, Paragraph } from "./styles";
+
+import { useUserContext } from "../../contexts/UserContext";
+import {
+  MenuContainer,
+  MenuTabs,
+  ProfileTab,
+  Paragraph,
+  MobileContainer,
+} from "./styles";
+
 
 const Menu = () => {
-  // const { user } = useUserContext();
+  const { user } = useUserContext();
   const { t } = useTranslation();
 
   return (
@@ -24,22 +34,26 @@ const Menu = () => {
               height: "55px",
               width: "54px",
             }}
-            src={Gui}
-            alt="Cat Logo"
-          />
+            src={user?.profile_img}
+            alt="User Avatar"
+          >
+            {user?.name.charAt(0)}
+          </Avatar>
           <div>
-            <p>{t("Olá")}, Guilherme!</p>
+            <p>
+              {t("Olá")}, {user?.name}!
+            </p>
             <p>{t("Esta é sua conta")} :)</p>
           </div>
         </ProfileTab>
       </Link>
 
-      <Link to="/dashboard/profile">
-        <MenuTabs>
-          <AccountCircleIcon />
-          <Paragraph>{t("Meu perfil")}</Paragraph>
-        </MenuTabs>
-      </Link>
+      <MobileContainer>
+        <Link to="/dashboard/profile">
+          <MenuTabs>
+            <AccountCircleIcon />
+            <Paragraph>{t("Meu perfil")}</Paragraph>
+          </MenuTabs>
 
       <Link to="/dashboard/pets">
         <MenuTabs>
@@ -48,10 +62,11 @@ const Menu = () => {
         </MenuTabs>
       </Link>
 
-      <MenuTabs>
-        <CalendarMonthIcon />
-        <p>{t("Minhas reservas")}</p>
-      </MenuTabs>
+        <MenuTabs>
+          <CalendarMonthIcon />
+          <p>{t("Minhas reservas")}</p>
+        </MenuTabs>
+      </MobileContainer>
     </MenuContainer>
   );
 };

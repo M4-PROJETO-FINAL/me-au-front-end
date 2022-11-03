@@ -1,4 +1,4 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar } from "@mui/material";
 
 import Amanda from "../../assets/Developers/ama2.0.jpeg";
 import Daniel from "../../assets/Developers/dan2.0.png";
@@ -7,19 +7,11 @@ import Higor from "../../assets/Developers/hig2.0.jpeg";
 import Nat from "../../assets/Developers/Nat2.0.jpeg";
 import Nicholas from "../../assets/Developers/nic2.0.jpeg";
 import DevInfoOnHover from "../DevInfoOnHover";
-import { Container } from "./styles";
+import { Box, Container } from "./styles";
 
 const Developers = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        width: "90%",
-        marginTop: "3rem",
-        marginBottom: "2rem",
-      }}
-    >
+    <Box>
       <Container>
         <Avatar
           variant="circular"

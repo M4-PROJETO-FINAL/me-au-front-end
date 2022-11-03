@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
 import { Pagination, Navigation } from "swiper";
@@ -14,7 +15,6 @@ import { StyledSection } from "./styles";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { useTranslation } from "react-i18next";
 
 const Services = () => {
   const { t } = useTranslation();
