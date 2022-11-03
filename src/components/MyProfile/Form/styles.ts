@@ -10,7 +10,7 @@ export const ContainerForm = styled.div`
   h3 {
     font-weight: 700;
     font-size: 1.5625rem;
-    margin: 0.9375rem;
+    margin-bottom: 1.9375rem;
 
     @media screen and (max-width: 450px) {
       font-size: 1.25rem;

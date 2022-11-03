@@ -4,7 +4,7 @@ import Amanda from "../../assets/Developers/ama2.0.jpeg";
 import Daniel from "../../assets/Developers/dan2.0.png";
 import Gui from "../../assets/Developers/gui2.0.jpeg";
 import Higor from "../../assets/Developers/hig2.0.jpeg";
-import Nat from "../../assets/Developers/nat2.0.jpeg";
+import Nat from "../../assets/Developers/Nat2.0.jpeg";
 import Nicholas from "../../assets/Developers/nic2.0.jpeg";
 import DevInfoOnHover from "../DevInfoOnHover";
 import { Box, Container } from "./styles";
