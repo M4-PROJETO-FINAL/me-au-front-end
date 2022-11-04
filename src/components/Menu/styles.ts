@@ -8,7 +8,7 @@ export const MenuContainer = styled.div`
   gap: 1rem;
   padding: 2rem;
 
-  width: 100%;
+  width: 19.688rem;
 
   border-radius: 15px;
 

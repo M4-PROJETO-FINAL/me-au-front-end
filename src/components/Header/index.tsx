@@ -105,7 +105,7 @@ const Header = () => {
                   </FormControl>
                 </Bandeiras>
 
-                {user ? (
+                {user || (user && isTablet) ? (
                   <LoggedInDrawerComp />
                 ) : (
                   <div className="button--container">
