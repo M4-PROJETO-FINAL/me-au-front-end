@@ -34,7 +34,7 @@ export interface IServiceAmount {
 export interface IReservationRequest {
   checkin: string;
   checkout: string;
-  pets_rooms: IPetRoom[];
+  pet_rooms: IPetRoom[];
   services: IServiceAmount[];
 }
 

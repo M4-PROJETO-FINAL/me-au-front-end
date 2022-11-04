@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
 import clickRoom from "../../assets/clickRoom.svg";
-import { useReservationContext } from "../../contexts/ReservationContext";
+import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
 import { IRoom } from "../../interfaces/Reservations";
 import { Button } from "../Button/style";
 import { RoomSection } from "./styles";
@@ -46,6 +46,7 @@ const SectionRooms = ({ rooms }: ISectionRoomsProps) => {
                 fontSize=".875rem"
                 fontWeight="600"
                 borderRadius=".9375rem"
+                colorHover="rgba(var(--aquaDark), 1)"
                 onClick={() => setSelectedRoomType(room.tag)}
               >
                 <Link to={`/accommodations/${room.tag}`}>

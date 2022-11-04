@@ -7,7 +7,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
-import { useReservationContext } from "../../../contexts/ReservationContext";
+import { useReservationContext } from "../../../contexts/ReservationsContext/ReservationCreateContext";
 import AddicionalServices from "../AddicionalServices/";
 import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";

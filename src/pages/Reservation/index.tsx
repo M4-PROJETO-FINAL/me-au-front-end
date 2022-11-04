@@ -17,7 +17,7 @@ import catToyPng from "../../assets/Icons/catToy.png";
 import dogToyPng from "../../assets/Icons/dogToy.png";
 import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
-import { useReservationContext } from "../../contexts/ReservationContext";
+import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
 import { useUserContext } from "../../contexts/UserContext";
 import { IRoom } from "../../interfaces/Reservations";
 import { StyledRoomSection, DialogInner } from "./styles";

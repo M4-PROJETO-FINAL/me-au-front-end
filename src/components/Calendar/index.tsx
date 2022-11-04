@@ -9,7 +9,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, { Dayjs } from "dayjs";
 
 import "dayjs/locale/pt-br";
-import { useReservationContext } from "../../contexts/ReservationContext";
+import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
 
 const Calendar = () => {
   const { t } = useTranslation();

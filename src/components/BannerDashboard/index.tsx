@@ -65,6 +65,7 @@ const BannerDashboard = () => {
                 fontSize=".875rem"
                 fontWeight="600"
                 borderRadius="0.6rem"
+                colorHover="#c0581f"
               >
                 {t("Reserve um horário")}
               </Button>
@@ -77,6 +78,7 @@ const BannerDashboard = () => {
                 fontSize=".875rem"
                 fontWeight="600"
                 borderRadius="0.6rem"
+                colorHover="#fae2d4"
               >
                 {t("Confira nossos preços")}
               </Button>

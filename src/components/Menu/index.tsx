@@ -53,6 +53,7 @@ const Menu = () => {
             <Paragraph>{t("Meu perfil")}</Paragraph>
           </MenuTabs>
         </Link>
+
         <Link to="/dashboard/pets">
           <MenuTabs>
             <PetsIcon />
@@ -60,10 +61,12 @@ const Menu = () => {
           </MenuTabs>
         </Link>
 
-        <MenuTabs>
-          <CalendarMonthIcon />
-          <p>{t("Minhas reservas")}</p>
-        </MenuTabs>
+        <Link to="/dashboard/reservations">
+          <MenuTabs>
+            <CalendarMonthIcon />
+            <p>{t("Minhas reservas")}</p>
+          </MenuTabs>
+        </Link>
       </MobileContainer>
     </MenuContainer>
   );
