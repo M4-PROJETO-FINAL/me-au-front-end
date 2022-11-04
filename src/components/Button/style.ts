@@ -8,6 +8,7 @@ interface IButtonProps {
   fontSize: string;
   borderRadius: string;
   fontWeight: string;
+  colorHover: string;
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -22,4 +23,8 @@ export const Button = styled.button<IButtonProps>`
   font-family: "Public Sans";
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.colorHover};
+  }
 `;

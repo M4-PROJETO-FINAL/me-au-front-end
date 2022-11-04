@@ -9,6 +9,7 @@ export const ContainerPets = styled(Container)`
   font-family: "Nunito";
   border-radius: 15px;
   padding: 30px;
+  box-shadow: 0px 0px 7px 1px rgb(0 0 0 / 20%);
 
   .card--pets {
     display: flex;
@@ -23,6 +24,7 @@ export const ContainerPets = styled(Container)`
     width: 90%;
     background-color: white;
     align-self: center;
+    box-shadow: 0px 0px 7px 1px rgb(0 0 0 / 20%);
 
     .header--card {
       display: flex;

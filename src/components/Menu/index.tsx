@@ -24,27 +24,25 @@ const Menu = () => {
 
   return (
     <MenuContainer>
-      <Link to="/dashboard/">
-        <ProfileTab>
-          <Avatar
-            variant="circular"
-            sx={{
-              height: "55px",
-              width: "54px",
-            }}
-            src={user?.profile_img}
-            alt="User Avatar"
-          >
-            {user?.name.charAt(0)}
-          </Avatar>
-          <div>
-            <p>
-              {t("Olá")}, {user?.name}!
-            </p>
-            <p>{t("Esta é sua conta")} :)</p>
-          </div>
-        </ProfileTab>
-      </Link>
+      <ProfileTab>
+        <Avatar
+          variant="circular"
+          sx={{
+            height: "55px",
+            width: "54px",
+          }}
+          src={user?.profile_img}
+          alt="User Avatar"
+        >
+          {user?.name.charAt(0)}
+        </Avatar>
+        <div>
+          <p>
+            {t("Olá")}, {user?.name}!
+          </p>
+          <p>{t("Esta é sua conta")} :)</p>
+        </div>
+      </ProfileTab>
 
       <MobileContainer>
         <Link to="/dashboard/profile">
@@ -53,6 +51,7 @@ const Menu = () => {
             <Paragraph>{t("Meu perfil")}</Paragraph>
           </MenuTabs>
         </Link>
+
         <Link to="/dashboard/pets">
           <MenuTabs>
             <PetsIcon />
@@ -60,10 +59,12 @@ const Menu = () => {
           </MenuTabs>
         </Link>
 
-        <MenuTabs>
-          <CalendarMonthIcon />
-          <p>{t("Minhas reservas")}</p>
-        </MenuTabs>
+        <Link to="/dashboard/reservations">
+          <MenuTabs>
+            <CalendarMonthIcon />
+            <p>{t("Minhas reservas")}</p>
+          </MenuTabs>
+        </Link>
       </MobileContainer>
     </MenuContainer>
   );

@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
-import { useReservationContext } from "../../../contexts/ReservationContext";
+import { useReservationContext } from "../../../contexts/ReservationsContext/ReservationCreateContext";
 import { InputGlobal, InputSelectGlobal } from "../../Input";
 import {
   AddServicesContainer,
@@ -182,7 +182,7 @@ const AddicionalServices = () => {
                 </DivSelect>
                 <DivSelect>
                   <p>
-                  {t("AddServices.Ração Premium")}
+                    {t("AddServices.Ração Premium")}
                     <span>(R$10,00)</span>
                   </p>
                   <InputGlobal
@@ -280,7 +280,7 @@ const AddicionalServices = () => {
                 </DivSelect>
                 <DivSelect>
                   <p>
-                  {t("AddServices.Ração Premium")}
+                    {t("AddServices.Ração Premium")}
                     <span>(R$10,00)</span>
                   </p>
                   <InputGlobal

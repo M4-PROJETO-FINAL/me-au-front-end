@@ -65,6 +65,7 @@ const DrawerComp = () => {
                   fontSize=".875rem"
                   fontWeight="600"
                   borderRadius=".9375rem"
+                  colorHover="rgba(var(--aquaDark), 1)"
                   onClick={() => openFormLogin()}
                 >
                   {t("Login ou registro")}

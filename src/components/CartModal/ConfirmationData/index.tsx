@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import dayjs from "dayjs";
 
-import { useReservationContext } from "../../../contexts/ReservationContext";
+import { useReservationContext } from "../../../contexts/ReservationsContext/ReservationCreateContext";
 import {
   rooms,
   services as servicesData,
@@ -69,7 +69,7 @@ const ConfirmationData = () => {
             </p>
             <p>
               {t("Nº de pets")}:{" "}
-              <span>{reservationObject.pets_rooms.length}</span>
+              <span>{reservationObject.pet_rooms.length}</span>
             </p>
             <p>
               {t("Nº de noites")}: <span>{diffInDays}</span>

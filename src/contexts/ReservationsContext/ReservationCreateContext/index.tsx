@@ -4,16 +4,16 @@ import { toast } from "react-toastify";
 
 import dayjs, { Dayjs } from "dayjs";
 
-import { IReservationServicesAmounts } from "../../components/CartModal/AddicionalServices";
+import { IReservationServicesAmounts } from "../../../components/CartModal/AddicionalServices";
 import {
   IPet,
   IPetRoom,
   IReservationRequest,
   IServiceAmount,
   RoomType,
-} from "../../interfaces/Reservations";
-import { IProviderProps } from "../../interfaces/User";
-import { useUserContext } from "../UserContext";
+} from "../../../interfaces/Reservations";
+import { IProviderProps } from "../../../interfaces/User";
+import { useUserContext } from "../../UserContext";
 
 interface IReservationContext {
   selectedRoomType: RoomType | "";
@@ -69,7 +69,7 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
     return {
       checkin: dayjs(checkinDate).format("YYYY-MM-DD"),
       checkout: dayjs(checkoutDate).format("YYYY-MM-DD"),
-      pets_rooms: petsArray,
+      pet_rooms: petsArray,
       services: servicesArray,
     };
   };

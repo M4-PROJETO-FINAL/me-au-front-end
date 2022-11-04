@@ -105,7 +105,8 @@ const Header = () => {
                   </FormControl>
                 </Bandeiras>
 
-                {user ? (
+                {user || (user && isTablet) ? (
+
                   <LoggedInDrawerComp />
                 ) : (
                   <div className="button--container">
@@ -117,9 +118,10 @@ const Header = () => {
                       fontSize=".875rem"
                       fontWeight="600"
                       borderRadius=".9375rem"
+                      colorHover="rgba(var(--aquaDark), 1)"
                       onClick={() => openFormLogin()}
                     >
-                      Login ou Registro
+                      {t("Login ou registro")}
                     </Button>
                   </div>
                 )}

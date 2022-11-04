@@ -7,20 +7,21 @@ import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
 import Modal from "@mui/material/Modal";
 
-import { useUserContext } from "../../contexts/UserContext";
-import TimeStepper from "./Stepper";
-import { style, styleDesktop, bgBlur, ButtonCloseModal } from "./style";
+import { usePetContext } from "../../contexts/PetsContext";
+import RegisterPetModal from "./RegisterPet";
+import { style, styleDesktop, bgBlur, ButtonCloseModal } from "./styles";
 
-const CartModal = () => {
+const PetModal = () => {
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
-  const { handleCloseCartModal, isOpenCartModal } = useUserContext();
+  const { handleClosePetModal, isOpenPetModal } = usePetContext();
+
   return (
     <div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={isOpenCartModal}
-        onClose={handleCloseCartModal}
+        open={isOpenPetModal}
+        onClose={handleClosePetModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -31,12 +32,12 @@ const CartModal = () => {
         }}
         style={bgBlur}
       >
-        <Fade in={isOpenCartModal}>
+        <Fade in={isOpenPetModal}>
           <Box sx={isDesktop ? style : styleDesktop}>
-            <ButtonCloseModal onClick={handleCloseCartModal}>
+            <ButtonCloseModal onClick={handleClosePetModal}>
               <IoMdArrowBack />
             </ButtonCloseModal>
-            <TimeStepper />
+            <RegisterPetModal />
           </Box>
         </Fade>
       </Modal>
@@ -44,4 +45,4 @@ const CartModal = () => {
   );
 };
 
-export default CartModal;
+export default PetModal;

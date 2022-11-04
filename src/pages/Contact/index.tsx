@@ -105,6 +105,7 @@ const Contact = () => {
             fontSize=".875rem"
             fontWeight="600"
             borderRadius=".9375rem"
+            colorHover="#c0581f"
             // onClick={() => handleClickOpen()}
           >
             {t("Enviar")}
