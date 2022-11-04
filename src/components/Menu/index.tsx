@@ -24,27 +24,25 @@ const Menu = () => {
 
   return (
     <MenuContainer>
-      <Link to="/dashboard/">
-        <ProfileTab>
-          <Avatar
-            variant="circular"
-            sx={{
-              height: "55px",
-              width: "54px",
-            }}
-            src={user?.profile_img}
-            alt="User Avatar"
-          >
-            {user?.name.charAt(0)}
-          </Avatar>
-          <div>
-            <p>
-              {t("Olá")}, {user?.name}!
-            </p>
-            <p>{t("Esta é sua conta")} :)</p>
-          </div>
-        </ProfileTab>
-      </Link>
+      <ProfileTab>
+        <Avatar
+          variant="circular"
+          sx={{
+            height: "55px",
+            width: "54px",
+          }}
+          src={user?.profile_img}
+          alt="User Avatar"
+        >
+          {user?.name.charAt(0)}
+        </Avatar>
+        <div>
+          <p>
+            {t("Olá")}, {user?.name}!
+          </p>
+          <p>{t("Esta é sua conta")} :)</p>
+        </div>
+      </ProfileTab>
 
       <MobileContainer>
         <Link to="/dashboard/profile">
