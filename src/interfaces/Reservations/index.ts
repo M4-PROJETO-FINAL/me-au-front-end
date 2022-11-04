@@ -43,6 +43,11 @@ export interface IReservation extends IReservationRequest {
   created_at: string;
   updated_at: string;
 }
+
+export interface IReservationStatus extends IReservation {
+  status: string;
+}
+
 export interface IService {
   id: string;
   name: string;
