@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
+import { usePetContext } from "../../../contexts/PetsContext";
 import { InputGlobal, InputSelectGlobal } from "../../Input";
 import { Title } from "../../LoginAndRegister/styles";
 import ChoosePet from "./ChoosePet";
@@ -21,13 +22,14 @@ export interface IFormSchemaRegisterPet {
   name: string;
   type?: string;
   age: number;
-  isVaccinated: string | boolean;
-  isNeutered: string | boolean;
-  isDocile: string | boolean;
+  vaccinated: string | boolean;
+  neutered: string | boolean;
+  docile: string | boolean;
 }
 
 const RegisterPet = () => {
   const { t } = useTranslation();
+  const { createPet } = usePetContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_INVALID_MESSAGE = t("Cadastrar pet.Campo inválido");
@@ -51,9 +53,9 @@ const RegisterPet = () => {
       .required(ERROR_MESSAGE)
       .min(0, ERROR_INVALID_MESSAGE)
       .max(30, ERROR_INVALID_MESSAGE),
-    isVaccinated: yup.string().required(ERROR_MESSAGE),
-    isNeutered: yup.string().required(ERROR_MESSAGE),
-    isDocile: yup.string().required(ERROR_MESSAGE),
+    vaccinated: yup.string().required(ERROR_MESSAGE),
+    neutered: yup.string().required(ERROR_MESSAGE),
+    docile: yup.string().required(ERROR_MESSAGE),
   });
 
   const {
@@ -64,11 +66,11 @@ const RegisterPet = () => {
 
   const onSubmitFunction = (data: IFormSchemaRegisterPet) => {
     const newData = { ...data };
-    newData.isNeutered = data.isNeutered == "yes" ? true : false;
-    newData.isVaccinated = data.isVaccinated == "yes" ? true : false;
-    newData.isDocile = data.isDocile == "yes" ? true : false;
+    newData.neutered = data.neutered == "yes" ? true : false;
+    newData.vaccinated = data.vaccinated == "yes" ? true : false;
+    newData.docile = data.docile == "yes" ? true : false;
     console.log(newData);
-    // Aqui chama o contexto da api de cadastro de pet..!
+    createPet(newData);
   };
   return (
     <RegisterAndChooseContainer>
@@ -117,26 +119,26 @@ const RegisterPet = () => {
           </LeftSideColumn>
           <RightSideColumn>
             <InputSelectGlobal
-              error={!!errors.isDocile}
-              errorMessage={errors?.isDocile?.message}
+              error={!!errors.docile}
+              errorMessage={errors?.docile?.message}
               label={t("Cadastrar pet.É dócil")}
-              registerName="isDocile"
+              registerName="docile"
               register={register}
               options={optionsYesAndNo}
             />
             <InputSelectGlobal
-              error={!!errors.isNeutered}
-              errorMessage={errors?.isNeutered?.message}
+              error={!!errors.neutered}
+              errorMessage={errors?.neutered?.message}
               label={t("Cadastrar pet.É castrado")}
-              registerName="isNeutered"
+              registerName="neutered"
               register={register}
               options={optionsYesAndNo}
             />
             <InputSelectGlobal
-              error={!!errors.isVaccinated}
-              errorMessage={errors?.isVaccinated?.message}
+              error={!!errors.vaccinated}
+              errorMessage={errors?.vaccinated?.message}
               label={t("Cadastrar pet.É vacinado")}
-              registerName="isVaccinated"
+              registerName="vaccinated"
               register={register}
               options={optionsYesAndNo}
             />

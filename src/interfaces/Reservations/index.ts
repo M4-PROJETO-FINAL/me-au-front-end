@@ -1,11 +1,11 @@
 export interface IPet {
   id: string;
-  age: number;
-  isDocile: boolean;
-  isNeutered: boolean;
-  isVaccinated: boolean;
   name: string;
   type: string;
+  age: number;
+  docile: boolean;
+  neutered: boolean;
+  vaccinated: boolean;
 }
 
 export type RoomType = "dogs" | "cats" | "shared";

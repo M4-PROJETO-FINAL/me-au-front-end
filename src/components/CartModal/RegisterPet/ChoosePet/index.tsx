@@ -4,13 +4,13 @@ import { useMediaQuery } from "react-responsive";
 import { Tooltip, IconButton } from "@mui/material";
 
 import cat from "../../../../assets/PetPictures/cat.png";
-import isDocile from "../../../../assets/PetPictures/docile.png";
+import docile from "../../../../assets/PetPictures/docile.png";
 import dog from "../../../../assets/PetPictures/dog.png";
-import isNeutered from "../../../../assets/PetPictures/neutered.png";
+import neutered from "../../../../assets/PetPictures/neutered.png";
 import isNotDocile from "../../../../assets/PetPictures/notdocile.png";
 import isNotNeutered from "../../../../assets/PetPictures/notneutered.png";
 import isNotVaccinated from "../../../../assets/PetPictures/notvaccinated.png";
-import isVaccinated from "../../../../assets/PetPictures/vaccinated.png";
+import vaccinated from "../../../../assets/PetPictures/vaccinated.png";
 import { useReservationContext } from "../../../../contexts/ReservationContext";
 import { PetItem, PetList, PetIcons, NotPetsContainer } from "./styles";
 
@@ -18,18 +18,18 @@ const PetMocked = [
   {
     id: "20d69669-700d-4a1e-b492-ae1ed6e95b31",
     age: 2,
-    isDocile: true,
-    isNeutered: false,
-    isVaccinated: true,
+    docile: true,
+    neutered: false,
+    vaccinated: true,
     name: "Mimoso",
     type: "cat",
   },
   {
     id: "643468d7-9192-4f6c-922f-c51abbaed3f3",
     age: 2,
-    isDocile: false,
-    isNeutered: true,
-    isVaccinated: false,
+    docile: false,
+    neutered: true,
+    vaccinated: false,
     name: "Doguinho",
     type: "dog",
   },
@@ -64,7 +64,7 @@ const ChoosePet = () => {
             <h3>{pet.name}</h3>
             <PetIcons>
               <Tooltip
-                title={pet.isDocile ? "Vacinado" : "Não é vacinado"}
+                title={pet.docile ? "Vacinado" : "Não é vacinado"}
                 placement="top"
                 arrow
               >
@@ -76,13 +76,13 @@ const ChoosePet = () => {
                   }
                 >
                   <img
-                    src={pet.isVaccinated ? isVaccinated : isNotVaccinated}
+                    src={pet.vaccinated ? vaccinated : isNotVaccinated}
                     className="pet__icon"
                   />
                 </IconButton>
               </Tooltip>
               <Tooltip
-                title={pet.isDocile ? "Dócil" : "Não é dócil"}
+                title={pet.docile ? "Dócil" : "Não é dócil"}
                 placement="top"
                 arrow
               >
@@ -94,13 +94,13 @@ const ChoosePet = () => {
                   }
                 >
                   <img
-                    src={pet.isDocile ? isDocile : isNotDocile}
+                    src={pet.docile ? docile : isNotDocile}
                     className="pet__icon"
                   />
                 </IconButton>
               </Tooltip>
               <Tooltip
-                title={pet.isDocile ? "Castrado" : "Não é castrado"}
+                title={pet.docile ? "Castrado" : "Não é castrado"}
                 placement="top"
                 arrow
               >
@@ -112,7 +112,7 @@ const ChoosePet = () => {
                   }
                 >
                   <img
-                    src={pet.isNeutered ? isNeutered : isNotNeutered}
+                    src={pet.neutered ? neutered : isNotNeutered}
                     className="pet__icon"
                   />
                 </IconButton>
