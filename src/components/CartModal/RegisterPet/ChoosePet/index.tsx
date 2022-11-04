@@ -11,7 +11,7 @@ import isNotDocile from "../../../../assets/PetPictures/notdocile.png";
 import isNotNeutered from "../../../../assets/PetPictures/notneutered.png";
 import isNotVaccinated from "../../../../assets/PetPictures/notvaccinated.png";
 import isVaccinated from "../../../../assets/PetPictures/vaccinated.png";
-import { useReservationContext } from "../../../../contexts/ReservationContext";
+import { useReservationContext } from "../../../../contexts/ReservationsContext/ReservationCreateContext";
 import { PetItem, PetList, PetIcons, NotPetsContainer } from "./styles";
 
 const PetMocked = [

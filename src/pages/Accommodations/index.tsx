@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 import SectionRooms from "../../components/RoomsCards";
 import TitleRooms from "../../components/RoomsTitles";
-import { ReservationContextProvider } from "../../contexts/ReservationContext";
+import { ReservationContextProvider } from "../../contexts/ReservationsContext/ReservationCreateContext";
 import { rooms } from "../../data/roomsAndServices";
 import Reservation from "../Reservation";
 

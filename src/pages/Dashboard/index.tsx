@@ -2,11 +2,10 @@ import { Outlet } from "react-router-dom";
 
 import { Container, useMediaQuery } from "@mui/material";
 
-import CardsPets from "../../components/CardsPets";
 import Menu from "../../components/Menu";
 
 const Dashboard = () => {
-  const isMobile = useMediaQuery("(max-width:600px)");
+  const isMobile = useMediaQuery("(max-width:660px)");
 
   return (
     <Container
