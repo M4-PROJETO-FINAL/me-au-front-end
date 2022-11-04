@@ -18,7 +18,7 @@ export interface IUserRegister {
   name: string;
   email: string;
   password: string;
-  profile_image?: string;
+  profile_img?: string;
   cpf?: string;
   passwordConfirm?: string;
 }

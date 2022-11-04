@@ -45,6 +45,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const [isOpenFormLogin, setIsOpenFormLogin] = useState(false);
   const [isOpenCartModal, setIsOpenCartModal] = useState(false);
   const [isReservationBtnPressed, setIsReservationBtnPressed] = useState(false);
+  const [tokenIsAdd, SetTokenIsAdd] = useState(false);
   const handleOpenCartModal = () => setIsOpenCartModal(true);
   const handleCloseCartModal = () => setIsOpenCartModal(false);
 
@@ -63,11 +64,10 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       .then(() => {
         // actionAfterRegister = Go To Login Form
         goToLoginForm ? goToLoginForm() : setIsOpenFormLogin(false);
-
-        toast.success("Conta criada com sucesso.");
+        // toast.success("Conta criada com sucesso.");
       })
       .catch(() => {
-        toast.error("Não foi possível realizar o cadastro.");
+        // toast.error("Não foi possível realizar o cadastro.");
       });
   };
 
@@ -76,11 +76,19 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       .post("/login", data)
       .then((res: ILoginRes) => {
         localStorage.setItem("@me-au:token", res.data.token);
-        api.defaults.headers.authorization = `Bearer ${res.data.token}`;
+        api.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${res.data.token}`;
+        SetTokenIsAdd(true);
+        api
+          .get("/users")
+          .then((res: IUserRes) => setUser(res.data))
+          .catch((err) => console.log(err));
         closeFormLogin();
       })
-      .catch(() => toast.error("Não foi possível realizar o login"));
+      .catch((e) => console.log(e));
     //caso for sucesso
+
     if (isReservationBtnPressed) {
       closeFormLogin();
       handleOpenCartModal();
@@ -97,6 +105,17 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
         .catch((err) => console.log(err));
     }
   }, []);
+  console.log(tokenIsAdd);
+  useEffect(() => {
+    const token = localStorage.getItem("@me-au:token");
+    api.defaults.headers.authorization = `Bearer ${token}`;
+    if (token) {
+      api
+        .get("/users")
+        .then((res: IUserRes) => setUser(res.data))
+        .catch((err) => console.log(err));
+    }
+  }, [tokenIsAdd]);
 
   const logout = () => {
     setUser(undefined);
