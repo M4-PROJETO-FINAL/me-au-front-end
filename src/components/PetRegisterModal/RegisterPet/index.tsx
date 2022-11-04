@@ -5,9 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
+import { usePetContext } from "../../../contexts/PetsContext";
 import { InputGlobal, InputSelectGlobal } from "../../Input";
-import { Title } from "../../LoginAndRegister/styles";
-import ChoosePet from "./ChoosePet";
 import {
   FormPetContainer,
   LeftSideColumn,
@@ -26,8 +25,9 @@ export interface IFormSchemaRegisterPet {
   isDocile: string | boolean;
 }
 
-const RegisterPet = () => {
+const RegisterPetModal = () => {
   const { t } = useTranslation();
+  const { createPet } = usePetContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_INVALID_MESSAGE = t("Cadastrar pet.Campo inválido");
@@ -68,14 +68,11 @@ const RegisterPet = () => {
     newData.isVaccinated = data.isVaccinated == "yes" ? true : false;
     newData.isDocile = data.isDocile == "yes" ? true : false;
     console.log(newData);
-    // Aqui chama o contexto da api de cadastro de pet..!
+    createPet(newData);
   };
+
   return (
     <RegisterAndChooseContainer>
-      <div>
-        <TitleRegister>Escolha seu pet</TitleRegister>
-        <ChoosePet />
-      </div>
       <div>
         <TitleRegister>{t("Cadastrar pet.Cadastre o seu pet")}</TitleRegister>
       </div>
@@ -156,4 +153,4 @@ const RegisterPet = () => {
   );
 };
 
-export default RegisterPet;
+export default RegisterPetModal;
