@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 
 import ImageContainer from "../../assets/ImageContainer.png";
 import petIcon from "../../assets/petIcon.svg";
 import { lightTheme } from "../../styles/themes";
-import { Button } from "../Button/style";
+// import { Button } from "../Button/style";
 import { ContainerDb, ImgDb, ImgPetIco } from "./styles";
 
 const BannerDashboard = () => {
@@ -56,7 +56,7 @@ const BannerDashboard = () => {
           </Typography>
           <Box sx={{ display: "flex" }}>
             <Box className="box--btn">
-              <Button
+              {/* <Button
                 className="btn--bg"
                 backgroundColor="rgba(var(--orange), 1)"
                 color="rgba(var(--white), 1)"
@@ -68,8 +68,23 @@ const BannerDashboard = () => {
                 colorHover="#c0581f"
               >
                 {t("Reserve um horário")}
-              </Button>
+              </Button> */}
               <Button
+                type="button"
+                variant="contained"
+                color="secondary"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: 16,
+                  marginTop: "0.5rem",
+                  padding: "0.5rem 1.2rem",
+                  color: "white",
+                  borderRadius: "8px",
+                }}
+              >
+                {t("Reserve um horário")}
+              </Button>
+              {/* <Button
                 className="btn--bg border"
                 backgroundColor="rgba(var(--white), 1)"
                 color="rgba(var(---black), 1)"
@@ -81,7 +96,7 @@ const BannerDashboard = () => {
                 colorHover="#fae2d4"
               >
                 {t("Confira nossos preços")}
-              </Button>
+              </Button> */}
             </Box>
             {isMobile && (
               <Box className="db--mobile">
