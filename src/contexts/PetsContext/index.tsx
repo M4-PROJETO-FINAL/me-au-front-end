@@ -7,7 +7,7 @@ import { IProviderProps } from "../../interfaces/User";
 import { api } from "../../services";
 
 interface IPetContext {
-  //pet: IPet;
+  pets?: IPet[];
   createPet: (data: IFormSchemaRegisterPet) => void;
   isOpenPetModal: boolean;
   handleOpenPetModal: () => void;
@@ -15,13 +15,13 @@ interface IPetContext {
 }
 
 interface IPetRes {
-  data: IPet;
+  data: IPet[];
 }
 
 const PetContext = createContext({} as IPetContext);
 
 export const PetContextProvider = ({ children }: IProviderProps) => {
-  const [pet, setPet] = useState<IPet>();
+  const [pets, setPets] = useState<IPet[]>();
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
 
   const handleOpenPetModal = () => setIsOpenPetModal(true);
@@ -45,11 +45,12 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
     if (token) {
       api
         .get("/pets")
-        .then((res: IPetRes) => setPet(res.data))
+        .then((res: IPetRes) => setPets(res.data))
         .catch((err) => console.log(err));
     }
   }, []);
 
+  console.log(pets);
   return (
     <PetContext.Provider
       value={{
@@ -57,6 +58,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
         handleOpenPetModal,
         handleClosePetModal,
         isOpenPetModal,
+        pets,
       }}
     >
       {children}

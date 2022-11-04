@@ -1,9 +1,9 @@
 export interface IPet {
   id: string;
   age: number;
-  isDocile: boolean;
-  isNeutered: boolean;
-  isVaccinated: boolean;
+  docile: boolean;
+  neutered: boolean;
+  vaccinated: boolean;
   name: string;
   type: string;
 }

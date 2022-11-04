@@ -105,17 +105,12 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
         .catch((err) => console.log(err));
     }
   }, []);
-  console.log(tokenIsAdd);
   useEffect(() => {
-    const token = localStorage.getItem("@me-au:token");
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    if (token) {
-      api
-        .get("/users")
-        .then((res: IUserRes) => setUser(res.data))
-        .catch((err) => console.log(err));
-    }
-  }, [tokenIsAdd]);
+    api
+      .get("/users")
+      .then((res: IUserRes) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const logout = () => {
     setUser(undefined);
