@@ -35,7 +35,8 @@ const pet = [
 
 const CardsPets = () => {
   const { t } = useTranslation();
-  const { handleOpenPetModal, handleOpenDeleteModal } = usePetContext();
+  const { handleOpenPetModal, handleOpenDeleteModal, setPetId } =
+    usePetContext();
 
   const handleModal = () => {
     handleOpenPetModal();
@@ -59,7 +60,14 @@ const CardsPets = () => {
               <button className="btn--cardPet">
                 <TbEdit />
               </button>
-              <button className="btn--cardPet" onClick={handleDeleteModal}>
+              <button
+                id={pet.id}
+                className="btn--cardPet"
+                onClick={() => {
+                  setPetId(pet.id);
+                  handleDeleteModal();
+                }}
+              >
                 <FaTrash />
               </button>
             </Box>
