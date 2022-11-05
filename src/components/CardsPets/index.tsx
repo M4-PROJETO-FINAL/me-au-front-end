@@ -3,10 +3,11 @@ import { useTranslation } from "react-i18next";
 import { FaTrash } from "react-icons/fa";
 import { TbEdit } from "react-icons/tb";
 
-import { Box, Typography, Divider } from "@mui/material";
+import { Box, Typography, Divider, Button } from "@mui/material";
 
 import petIcon from "../../assets/petIcon.svg";
 import { usePetContext } from "../../contexts/PetsContext";
+import DeleteModal from "../DeleteModal";
 import PetModal from "../PetRegisterModal";
 import RegisterPetModal from "../PetRegisterModal/RegisterPet";
 import { ContainerPets, fontBold, fontLink } from "./style";
@@ -34,10 +35,15 @@ const pet = [
 
 const CardsPets = () => {
   const { t } = useTranslation();
-  const { handleOpenPetModal } = usePetContext();
+  const { handleOpenPetModal, handleOpenDeleteModal, setPetId } =
+    usePetContext();
 
   const handleModal = () => {
     handleOpenPetModal();
+  };
+
+  const handleDeleteModal = () => {
+    handleOpenDeleteModal();
   };
 
   return (
@@ -54,7 +60,14 @@ const CardsPets = () => {
               <button className="btn--cardPet">
                 <TbEdit />
               </button>
-              <button className="btn--cardPet">
+              <button
+                id={pet.id}
+                className="btn--cardPet"
+                onClick={() => {
+                  setPetId(pet.id);
+                  handleDeleteModal();
+                }}
+              >
                 <FaTrash />
               </button>
             </Box>
@@ -109,6 +122,15 @@ const CardsPets = () => {
       </Box>
 
       <PetModal />
+      <DeleteModal
+        btn1="Cancelar"
+        title="Excluir o pet"
+        description="Tem certeza que deseja excluir o pet?"
+      >
+        <Button variant="contained" color="error">
+          Excluir
+        </Button>
+      </DeleteModal>
     </ContainerPets>
   );
 };

@@ -1,11 +1,16 @@
 import { useMediaQuery } from "react-responsive";
 
+import { Button as ButtonModal } from "@mui/material";
+
 import Quarto from "../../assets/RoomPictures/quartoCat.png";
+import { usePetContext } from "../../contexts/PetsContext";
 import { Button } from "../Button/style";
+import DeleteModal from "../DeleteModal";
 import { ContainerReservations } from "./styles";
 
 const MyReservations = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
+  const { handleOpenDeleteModal } = usePetContext();
 
   const reservations = [
     {
@@ -73,6 +78,7 @@ const MyReservations = () => {
                 fontWeight="500"
                 borderRadius="10px"
                 colorHover="#757373"
+                onClick={handleOpenDeleteModal}
               >
                 Quer cancelar?
               </Button>
@@ -93,6 +99,15 @@ const MyReservations = () => {
           </div>
         </div>
       ))}
+      <DeleteModal
+        title="Cancelar a reserva"
+        description="Tem certeza de que deseja cancelar a reserva?"
+        btn1="Voltar"
+      >
+        <ButtonModal variant="contained" color="error">
+          Cancelar
+        </ButtonModal>
+      </DeleteModal>
     </ContainerReservations>
   );
 };
