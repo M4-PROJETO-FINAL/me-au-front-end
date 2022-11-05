@@ -12,6 +12,9 @@ interface IPetContext {
   isOpenPetModal: boolean;
   handleOpenPetModal: () => void;
   handleClosePetModal: () => void;
+  isOpenDeleteModal: boolean;
+  handleOpenDeleteModal: () => void;
+  handleCloseDeleteModal: () => void;
 }
 
 interface IPetRes {
@@ -23,9 +26,12 @@ const PetContext = createContext({} as IPetContext);
 export const PetContextProvider = ({ children }: IProviderProps) => {
   const [pets, setPets] = useState<IPet[]>();
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const handleOpenPetModal = () => setIsOpenPetModal(true);
   const handleClosePetModal = () => setIsOpenPetModal(false);
+  const handleOpenDeleteModal = () => setIsOpenDeleteModal(true);
+  const handleCloseDeleteModal = () => setIsOpenDeleteModal(false);
 
   const createPet = (data: IFormSchemaRegisterPet) => {
     console.log(data);
@@ -59,6 +65,9 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
         handleClosePetModal,
         isOpenPetModal,
         pets,
+        handleOpenDeleteModal,
+        handleCloseDeleteModal,
+        isOpenDeleteModal,
       }}
     >
       {children}
