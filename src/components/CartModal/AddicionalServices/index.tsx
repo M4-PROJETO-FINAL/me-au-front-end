@@ -53,27 +53,27 @@ const AddicionalServices = () => {
     bath: yup
       .number()
       .nullable()
-      .positive()
+      .moreThan(-1)
       .transform((_, val) => (val !== "" ? Number(val) : null)),
     swimming: yup
       .number()
       .nullable()
-      .positive()
+      .moreThan(-1)
       .transform((_, val) => (val !== "" ? Number(val) : null)),
     grooming: yup
       .number()
       .nullable()
-      .positive()
+      .moreThan(-1)
       .transform((_, val) => (val !== "" ? Number(val) : null)),
     massage: yup
       .number()
       .nullable()
-      .positive()
+      .moreThan(-1)
       .transform((_, val) => (val !== "" ? Number(val) : null)),
     premiumFood: yup
       .number()
       .nullable()
-      .positive()
+      .moreThan(-1)
       .transform((_, val) => (val !== "" ? Number(val) : null)),
   });
 

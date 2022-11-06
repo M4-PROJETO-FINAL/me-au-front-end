@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { toast } from "react-toastify";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -8,6 +9,8 @@ import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 
 import { useReservationContext } from "../../../contexts/ReservationsContext/ReservationCreateContext";
+import { useUserContext } from "../../../contexts/UserContext";
+import { api } from "../../../services";
 import AddicionalServices from "../AddicionalServices/";
 import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";
@@ -19,21 +22,39 @@ const TimeStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set<number>());
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
-  const { generateRequestObject } = useReservationContext();
+  const { generateRequestObject, petsAmount, selectedPets, services } =
+    useReservationContext();
+  const { handleCloseCartModal } = useUserContext();
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (activeStep === 2) {
       const body = generateRequestObject();
-      // await api.post('/reservations', body)
+      try {
+        await api.post("/reservations", body);
+        toast.success("Reserva criada com sucesso!");
+        handleCloseCartModal();
+      } catch (err: any) {
+        toast.error(err.message);
+        console.log(err);
+      }
       return;
     }
 
-    if (activeStep === 1) {
-      // mexer aqui pra fazer com que o botão "próximo" registre os serviços!
+    if (activeStep === 1 && Object.keys(services).length === 0) {
+      toast.warning('Clique em "confirmar serviços" antes de avançar!');
+      return;
+    }
+
+    if (activeStep === 0 && selectedPets.length < petsAmount) {
+      const remaining = petsAmount - selectedPets.length;
+      toast.warning(
+        `Selecione mais ${remaining} pet${remaining > 1 ? "s" : ""}`,
+      );
+      return;
     }
 
     let newSkipped = skipped;
