@@ -71,22 +71,15 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       });
   };
 
-  const loginUser = (data: IUserLogin) => {
-    api
-      .post("/login", data)
-      .then((res: ILoginRes) => {
-        localStorage.setItem("@me-au:token", res.data.token);
-        api.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${res.data.token}`;
-        SetTokenIsAdd(true);
-        api
-          .get("/users")
-          .then((res: IUserRes) => setUser(res.data))
-          .catch((err) => console.log(err));
-        closeFormLogin();
-      })
-      .catch((e) => console.log(e));
+  const loginUser = async (datas: IUserLogin) => {
+    try {
+      const { data }: ILoginRes = await api.post("/login", datas);
+      localStorage.setItem("@me-au:token", data.token);
+      closeFormLogin();
+    } catch (error) {
+      console.log(error);
+    }
+    SetTokenIsAdd(true);
     //caso for sucesso
 
     if (isReservationBtnPressed) {
@@ -95,22 +88,24 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  useEffect(() => {
+  const getUser = async () => {
     const token = localStorage.getItem("@me-au:token");
-    api.defaults.headers.authorization = `Bearer ${token}`;
+
     if (token) {
-      api
-        .get("/users")
-        .then((res: IUserRes) => setUser(res.data))
-        .catch((err) => console.log(err));
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      try {
+        const { data }: IUserRes = await api.get("/users");
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }, []);
+    SetTokenIsAdd(false);
+  };
+
   useEffect(() => {
-    api
-      .get("/users")
-      .then((res: IUserRes) => setUser(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+    getUser();
+  }, [tokenIsAdd]);
 
   const logout = () => {
     setUser(undefined);
