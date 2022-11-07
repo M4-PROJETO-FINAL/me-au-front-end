@@ -48,7 +48,7 @@ export const styleDesktop = {
   transform: "translate(-50%, -50%)",
   width: "95%",
   maxWidth: 800,
-  height: 600,
+  height: 400,
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -68,8 +68,8 @@ export const ButtonCloseModal = styled.button`
   svg {
     font-size: 1rem;
     fill: #000;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
 
     &:hover path {
       fill: ${lightTheme.colors.aquaLight};
