@@ -15,6 +15,7 @@ import { IFormSchemaRegisterPet } from "../../components/CartModal/RegisterPet";
 import { IPet } from "../../interfaces/Reservations";
 import { IProviderProps } from "../../interfaces/User";
 import { api } from "../../services";
+import { useUserContext } from "../UserContext";
 
 interface IPetContext {
   pets: IPet[];
@@ -61,6 +62,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const { user } = useUserContext();
 
   const handleOpenPetModal = () => setIsOpenPetModal(true);
   const handleClosePetModal = () => setIsOpenPetModal(false);
@@ -69,7 +71,12 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
   const handleOpenEditModal = () => setIsOpenEditModal(true);
   const handleCloseEditModal = () => setIsOpenEditModal(false);
 
-  console.log(petId);
+  useEffect(() => {
+    api
+      .get("/pets")
+      .then((res: IPetRes) => setPets(res.data))
+      .catch((err) => console.log(err));
+  }, [user]);
 
   const createPet = (data: IFormSchemaRegisterPet) => {
     console.log(data);

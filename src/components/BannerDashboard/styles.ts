@@ -3,7 +3,6 @@ import styled from "styled-components";
 import bg_dashboard from "../../assets/bg_dashboard.svg";
 
 export const ContainerDb = styled.div`
-  /* height: 50vh; */
   max-width: 100vw;
   padding-top: 1rem;
   display: flex;

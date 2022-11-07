@@ -24,13 +24,26 @@ export const LoginContainer = styled.div`
       padding-bottom: 1.5rem;
     }
   }
-  .forgot__password {
+  .forgot-password__button {
     text-align: end;
     padding-bottom: 0.5rem;
     font-size: 1rem;
     font-family: "Nunito", sans-serif;
     background-color: transparent;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .forgot-password {
+    text-align: end;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
+    background-color: transparent;
     width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
   }
   & > .login__register-container {
     display: flex;

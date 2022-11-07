@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaTrash } from "react-icons/fa";
 import { TbEdit } from "react-icons/tb";
@@ -12,27 +11,6 @@ import PetModal from "../PetRegisterModal";
 import RegisterPetModal from "../PetRegisterModal/RegisterPet";
 import EditPetModal from "./EditPetModal";
 import { ContainerPets, fontBold, fontLink } from "./style";
-
-// const pets = [
-//   {
-//     id: "uuid",
-//     name: "Aika",
-//     age: "2 anos",
-//     type: "dog",
-//     neutered: true,
-//     vaccinated: true,
-//     docile: true,
-//   },
-//   {
-//     id: "uuid2",
-//     name: "Catioro",
-//     age: "2 anos",
-//     type: "cat",
-//     neutered: true,
-//     vaccinated: false,
-//     docile: true,
-//   },
-// ];
 
 const CardsPets = () => {
   const { t } = useTranslation();

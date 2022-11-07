@@ -129,6 +129,7 @@
     "Qual a idade?": "Idade",
     "Clique em confirmar serviços antes de avançar!": "Clique em 'confirmar serviços' antes de avançar!",
     "Proximo": "Próximo",
-    "more": ""
+    "more": "",
+    "invalid info": "E-mail ou senha inválido."
   }
 }

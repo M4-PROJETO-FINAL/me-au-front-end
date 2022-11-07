@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
@@ -8,7 +9,7 @@ import * as yup from "yup";
 import Logo from "../../../assets/logo.svg";
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
 import { useUserContext } from "../../../contexts/UserContext";
-import { InputGlobal } from "../../Input";
+import { InputGlobal, InputGlobalPassword } from "../../Input";
 import { GoogleAuthLogin } from "../GoogleAuth";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { LoginContainer } from "./styles";
@@ -24,6 +25,10 @@ const FormLogin = () => {
   const { loginUser } = useUserContext();
   const { showRegisterForm, showForgotPasswordForm } =
     useModalFormLoginAndRegister();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () =>
+    setShowPassword((showPassword) => !showPassword);
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
@@ -59,22 +64,29 @@ const FormLogin = () => {
             register={register}
             registerName="email"
           />
-          <InputGlobal
+          <InputGlobalPassword
             error={!!errors.password}
             label={t("Senha *")}
             type="password"
             errorMessage={errors?.password?.message}
             register={register}
             registerName="password"
+            showPassword={showPassword}
+            handleTogglePassword={handleTogglePassword}
           />
         </FormInputs>
-        <button
-          className="forgot__password"
-          type="button"
+        <div
+          className="forgot-password"
           onClick={() => showForgotPasswordForm()}
         >
-          {t("Esqueceu sua senha?")}
-        </button>
+          <button
+            className="forgot-password__button"
+            type="button"
+            onClick={() => showForgotPasswordForm()}
+          >
+            {t("Esqueceu sua senha?")}
+          </button>
+        </div>
         <Button
           type="submit"
           fullWidth

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { IoChevronBack } from "react-icons/io5";
@@ -10,7 +11,7 @@ import * as yup from "yup";
 
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
 import { useUserContext } from "../../../contexts/UserContext";
-import { InputGlobal } from "../../Input";
+import { InputGlobal, InputGlobalPassword } from "../../Input";
 import { ButtonLink, FormInputs, FormStyled, Text, Title } from "../styles";
 import { ButtonBackLogin, CenterDiv, RegisterContainer } from "./styles";
 
@@ -27,6 +28,13 @@ const FormRegister = () => {
   const { t } = useTranslation();
   const { showLoginForm } = useModalFormLoginAndRegister();
   const { createUser, user } = useUserContext();
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () =>
+    setShowPassword((showPassword) => !showPassword);
+
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+  const handleTogglePasswordConfirm = () =>
+    setShowPasswordConfirm((showPassword) => !showPassword);
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
@@ -105,21 +113,25 @@ const FormRegister = () => {
             register={register}
             registerName="email"
           />
-          <InputGlobal
+          <InputGlobalPassword
             error={!!errors.password}
             label={t("Senha *")}
             type="password"
             errorMessage={errors?.password?.message}
             register={register}
             registerName="password"
+            handleTogglePassword={handleTogglePassword}
+            showPassword={showPassword}
           />
-          <InputGlobal
+          <InputGlobalPassword
             error={!!errors.passwordConfirm}
             label={t("Confirmar senha")}
             type="password"
             errorMessage={errors?.passwordConfirm?.message}
             register={register}
             registerName="passwordConfirm"
+            handleTogglePassword={handleTogglePasswordConfirm}
+            showPassword={showPasswordConfirm}
           />
         </FormInputs>
         <Button

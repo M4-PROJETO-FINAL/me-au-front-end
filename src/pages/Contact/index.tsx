@@ -22,15 +22,15 @@ const Contact = () => {
       <About>
         <h1>{t("Sobre nós")}</h1>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum
+          Me-au é um pet hotel que se preocupa com o bem-estar do seu pet, nós
+          temos funcionários trabalhando 24/7 para manter a segurança e cuidado
+          dos animaizinhos. Me-au foi fundado em 2022, São Paulo - SP por um
+          pequeno time de empreendedores e cresceu rapidamente devido a
+          excelente competência e atenciosidade de todo o time, Nós oferecemos
+          apenas produtos de alta qualidade e uma equipe altamente treinada que
+          ama os animais, todos os membros possuem credenciais do Pet Caretakers
+          LTDA. Tragam seu pet e nós garantimos dias inesquecíveis ao seu
+          felpudinho!
         </p>
       </About>
       <HappyDog>

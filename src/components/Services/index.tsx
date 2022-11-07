@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Banho from "../../assets/ServicesPictures/banho&tosa.png";
@@ -15,6 +15,7 @@ import { StyledSection } from "./styles";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -33,7 +34,8 @@ const Services = () => {
         spaceBetween={50}
         pagination={true}
         navigation={true}
-        modules={[Pagination, Navigation]}
+        autoplay={true}
+        modules={[Pagination, Navigation, Autoplay]}
       >
         <SwiperSlide>
           <div className="imgContainer">

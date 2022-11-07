@@ -11,7 +11,7 @@ export const styleStepperMob = {
   "& .MuiStepConnector-line": {
     height: "180px",
   },
-}
+};
 
 export const styleStepperDesk = {
   width: "100%",
@@ -20,9 +20,9 @@ export const styleStepperDesk = {
   left: "0",
 
   "& .epMYbE": {
-    marginTop: "8px"
-  }
-}
+    marginTop: "8px",
+  },
+};
 
 export const style = {
   position: "absolute",

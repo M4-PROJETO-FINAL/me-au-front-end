@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 
 import Stack from "@mui/material/Stack";
@@ -6,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 
 import "dayjs/locale/pt-br";
 import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
