@@ -4,12 +4,12 @@ import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 import PawIcon from "../../assets/petIcon.svg";
-import SmilingDog from "../../assets/SmilingDog.svg";
+import SmilingDog from "../../assets/SmilingDog.jpg";
 import Facebook from "../../assets/SocialMediaIcons/facebookIcon.svg";
 import Instagram from "../../assets/SocialMediaIcons/instagramIcon.svg";
 import Twitter from "../../assets/SocialMediaIcons/twitterIcon.svg";
 import Whatsapp from "../../assets/SocialMediaIcons/whatsappIcon.svg";
-import Location from "../../assets/TemporaryLocation.svg";
+import Location from "../../assets/TemporaryLocation.jpg";
 import { Button } from "../../components/Button/style";
 import Developers from "../../components/Devs";
 import { Container, About, HappyDog, Map, SocialIcons } from "./styles";

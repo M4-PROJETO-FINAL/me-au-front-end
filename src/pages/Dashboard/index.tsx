@@ -14,6 +14,7 @@ const Dashboard = () => {
         sx={{
           display: "flex",
           flexDirection: isMobile ? "column" : "row",
+          alignItems: "center",
           gap: "20px",
           marginTop: "30px",
         }}
