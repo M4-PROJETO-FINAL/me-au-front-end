@@ -8,15 +8,17 @@ import {
 } from "react";
 import { toast } from "react-toastify";
 
+import { AxiosError } from "axios";
+
 import { IFormSchemaRegisterPet } from "../../components/CartModal/RegisterPet";
 import { IPet } from "../../interfaces/Reservations";
 import { IProviderProps } from "../../interfaces/User";
 import { api } from "../../services";
 
 interface IPetContext {
-  pets?: IPet[];
+  pets: IPet[];
+  deletePet: () => void;
   setPetId: Dispatch<SetStateAction<string>>;
-  deletePet: (petId: string) => void;
   createPet: (data: IFormSchemaRegisterPet) => void;
   isOpenPetModal: boolean;
   handleOpenPetModal: () => void;
@@ -33,7 +35,7 @@ interface IPetRes {
 const PetContext = createContext({} as IPetContext);
 
 export const PetContextProvider = ({ children }: IProviderProps) => {
-  const [pets, setPets] = useState<IPet[]>();
+  const [pets, setPets] = useState<IPet[]>([]);
   const [petId, setPetId] = useState<string>("");
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
@@ -51,10 +53,16 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
       .post("/pets", data)
       .then(() => {
         toast.success("Pet adicionado!");
+        api
+          .get("/pets")
+          .then((res: IPetRes) => setPets(res.data))
+          .catch((err) => console.log(err));
       })
-      .catch(() => {
+      .catch((err) => {
         toast.error("Não foi possível realizar o cadastro.");
+        console.log(err);
       });
+    handleClosePetModal();
   };
 
   const deletePet = () => {
@@ -62,10 +70,29 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
       .delete(`/pets/${petId}`)
       .then(() => {
         toast.success("Pet excluido!");
+        setPets((oldPets) => {
+          const newPets = [...oldPets];
+          const idx = oldPets.findIndex((pet) => pet.id === petId);
+          newPets.splice(idx, 1);
+          return newPets;
+        });
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err instanceof AxiosError) {
+          if (
+            err.response?.data.message ===
+            "Cannot delete a pet which has already been booked in a reservation"
+          ) {
+            toast.error(
+              "Não é possível excluir um pet para o qual já foi feita uma reserva",
+            );
+            return;
+          }
+        }
         toast.error("Ocorreu algum erro");
+        console.log(err);
       });
+    handleCloseDeleteModal();
   };
 
   useEffect(() => {
