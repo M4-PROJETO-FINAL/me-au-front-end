@@ -152,6 +152,7 @@
     "Sua nova senha deve ser diferente das senhas usadas anteriormente": "Your new password must be different from any previous password",
     "Nome": "Name",
     "Senha": "Password",
-    "Imagem de perfil": "Profile Image"
+    "Imagem de perfil": "Profile Image",
+    "invalid info": "Wrong e-mail or password."
   }
 }
