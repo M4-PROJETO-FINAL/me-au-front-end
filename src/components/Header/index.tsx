@@ -1,28 +1,20 @@
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Avatar, Container } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Toolbar from "@mui/material/Toolbar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion } from "framer-motion";
-import { changeLanguage } from "i18next";
 
-import bandeiraBR from "../../assets/bandeiraBR.png";
-import bandeiraUS from "../../assets/bandeiraUS.png";
 import Logo from "../../assets/Group 22.svg";
 import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import DrawerComp from "../Drawer";
-// import LanguageOnScroll from "../LanguageScroll";
-// import LanguageScrollOption from "../LanguageScroll/LanguageScrollOption";
 import LoggedInDrawerComp from "../Drawer/LoggedInDrawer";
 import LoginAndRegister from "../LoginAndRegister";
-import { Bandeiras, Links } from "./styles";
+import DefaultMenu from "./defaultMenu";
+import UserMenu from "./UserMenu";
 
 const useStyles = makeStyles(() => ({
   margin: {
@@ -35,22 +27,11 @@ const useStyles = makeStyles(() => ({
 
 const Header = () => {
   const styles = useStyles();
-  const navigate = useNavigate();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { user, openFormLogin } = useUserContext();
   const isTablet = useMediaQuery("(max-width:768px)");
-  const { openFormLogin, logout, user } = useUserContext();
-  const [isOpenMenuTranslate, setIsOpenMenuTranslate] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<"pt" | "en">("pt");
-  // const [labelLanguage, setLabelLanguage] = useState("PT-BR");
-  // const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    changeLanguage(selectedLanguage);
-  }, [selectedLanguage]);
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setSelectedLanguage(event.target.value as "en" | "pt");
-  };
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <motion.div
@@ -77,55 +58,43 @@ const Header = () => {
               alt="Cat Logo"
             ></Avatar>
 
-            {isTablet ? (
-              <DrawerComp />
-            ) : (
+            {isDesktop && !user ? (
               <>
-                <Links to={"/accommodations/all"}>{t("Acomodações")}</Links>
-                <Links to={"/contact"}>{t("Contato")}</Links>
+                <DefaultMenu />
 
-                <Bandeiras className={styles.margin}>
-                  <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                    <Select
-                      onOpen={() => setIsOpenMenuTranslate(true)}
-                      value={selectedLanguage}
-                      onChange={handleChange}
-                    >
-                      <MenuItem value="pt">
-                        <img src={bandeiraBR} alt="Bandeira do Brasil" /> PT-BR
-                      </MenuItem>
-                      <MenuItem value="en">
-                        <img
-                          src={bandeiraUS}
-                          alt="Bandeira dos Estados Unidos"
-                        />{" "}
-                        ENG
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
-                </Bandeiras>
-
-                {user || (user && isTablet) ? (
-                  <LoggedInDrawerComp />
-                ) : (
-                  <div className="button--container">
-                    <Button
-                      backgroundColor="rgba(var(--aquaLight), 1)"
-                      color="rgba(var(--white), 1)"
-                      height="2.5rem"
-                      width="9.1875rem"
-                      fontSize=".875rem"
-                      fontWeight="600"
-                      borderRadius=".9375rem"
-                      colorHover="rgba(var(--aquaDark), 1)"
-                      onClick={() => openFormLogin()}
-                    >
-                      {t("Login ou registro")}
-                    </Button>
-                  </div>
-                )}
+                <div className="button--container">
+                  <Button
+                    backgroundColor="rgba(var(--aquaLight), 1)"
+                    color="rgba(var(--white), 1)"
+                    height="2.5rem"
+                    width="9.1875rem"
+                    fontSize=".875rem"
+                    fontWeight="600"
+                    borderRadius=".9375rem"
+                    colorHover="rgba(var(--aquaDark), 1)"
+                    onClick={() => openFormLogin()}
+                  >
+                    {t("Login ou registro")}
+                  </Button>
+                </div>
                 <LoginAndRegister />
               </>
+            ) : (
+              <>
+                {user && isDesktop && (
+                  <>
+                    <DefaultMenu />
+
+                    <UserMenu />
+                  </>
+                )}
+              </>
+            )}
+
+            {isTablet && !user ? (
+              <DrawerComp />
+            ) : (
+              <>{user && isTablet && <LoggedInDrawerComp />}</>
             )}
           </Toolbar>
         </Container>

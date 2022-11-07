@@ -4,14 +4,16 @@ import { Button as ButtonModal } from "@mui/material";
 
 import Quarto from "../../assets/RoomPictures/quartoCat.png";
 import { usePetContext } from "../../contexts/PetsContext";
+import { UseUserReviewContext } from "../../contexts/UserReviewContext";
 import { Button } from "../Button/style";
 import DeleteModal from "../DeleteModal";
+import UserReviewModal from "../UserReviewModal";
 import { ContainerReservations } from "./styles";
 
 const MyReservations = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
   const { handleOpenDeleteModal } = usePetContext();
-
+  const { openReviewModal } = UseUserReviewContext();
   const reservations = [
     {
       id: "uuid",
@@ -26,25 +28,25 @@ const MyReservations = () => {
       status: "Concluída",
     },
     {
-      id: "uuid2",
+      id: "uuid3",
       checkin: new Date(),
       checkout: new Date(),
       status: "Concluída",
     },
     {
-      id: "uuid2",
+      id: "uuid4",
       checkin: new Date(),
       checkout: new Date(),
       status: "Concluída",
     },
     {
-      id: "uuid2",
+      id: "uuid5",
       checkin: new Date(),
       checkout: new Date(),
       status: "Concluída",
     },
     {
-      id: "uuid2",
+      id: "uuid6",
       checkin: new Date(),
       checkout: new Date(),
       status: "Concluída",
@@ -92,6 +94,7 @@ const MyReservations = () => {
                 fontWeight="500"
                 borderRadius="10px"
                 colorHover="#c0581f"
+                onClick={() => openReviewModal(reservation.id)}
               >
                 Nos avalie!
               </Button>
@@ -108,6 +111,7 @@ const MyReservations = () => {
           Cancelar
         </ButtonModal>
       </DeleteModal>
+      <UserReviewModal />
     </ContainerReservations>
   );
 };
