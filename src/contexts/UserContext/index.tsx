@@ -12,7 +12,6 @@ import { IUserLogin } from "../../components/LoginAndRegister/FormLogin";
 import { IUserRegister } from "../../components/LoginAndRegister/FormRegister";
 import { IProviderProps, IUser } from "../../interfaces/User";
 import { api } from "../../services";
-import { usePetContext } from "../PetsContext";
 
 interface IUserContext {
   user?: IUser;
@@ -43,7 +42,6 @@ const UserContext = createContext({} as IUserContext);
 
 export const UserContextProvider = ({ children }: IProviderProps) => {
   const [user, setUser] = useState<IUser>();
-  const { getPet } = usePetContext();
   const [isOpenFormLogin, setIsOpenFormLogin] = useState(false);
   const [isOpenCartModal, setIsOpenCartModal] = useState(false);
   const [isReservationBtnPressed, setIsReservationBtnPressed] = useState(false);
