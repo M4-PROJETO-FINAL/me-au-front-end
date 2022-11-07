@@ -18,7 +18,7 @@ export const GoogleAuthLogin = () => {
     const userInfoFixed: IUserRegister = {
       email: userInfo.email,
       password: userInfo.sub,
-      profile_image: userInfo.picture,
+      profile_img: userInfo.picture,
       name: userInfo.name,
     };
 

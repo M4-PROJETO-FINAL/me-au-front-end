@@ -1,9 +1,9 @@
 export interface IPet {
   id: string;
   age: number;
-  isDocile: boolean;
-  isNeutered: boolean;
-  isVaccinated: boolean;
+  docile: boolean;
+  neutered: boolean;
+  vaccinated: boolean;
   name: string;
   type: string;
 }
@@ -44,8 +44,19 @@ export interface IReservation extends IReservationRequest {
   updated_at: string;
 }
 
-export interface IReservationStatus extends IReservation {
+export interface IReservationComplete extends IReservation {
   status: string;
+  pets_rooms: IReservationRooms[];
+}
+
+interface IReservationRooms {
+  rooms_type_id: string;
+}
+
+export interface IRoomTypes {
+  id: string;
+  title: string;
+  image: string;
 }
 
 export interface IService {

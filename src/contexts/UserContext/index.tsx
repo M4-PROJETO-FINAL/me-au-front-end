@@ -45,6 +45,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const [isOpenFormLogin, setIsOpenFormLogin] = useState(false);
   const [isOpenCartModal, setIsOpenCartModal] = useState(false);
   const [isReservationBtnPressed, setIsReservationBtnPressed] = useState(false);
+  const [tokenIsAdd, SetTokenIsAdd] = useState(false);
   const handleOpenCartModal = () => setIsOpenCartModal(true);
   const handleCloseCartModal = () => setIsOpenCartModal(false);
 
@@ -57,46 +58,53 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   };
 
   const createUser = (data: IUserRegister, goToLoginForm) => {
-    console.log(data);
     api
       .post("/users", data)
       .then(() => {
         // actionAfterRegister = Go To Login Form
         goToLoginForm ? goToLoginForm() : setIsOpenFormLogin(false);
-
-        toast.success("Conta criada com sucesso.");
+        // toast.success("Conta criada com sucesso.");
       })
       .catch(() => {
-        toast.error("Não foi possível realizar o cadastro.");
+        // toast.error("Não foi possível realizar o cadastro.");
       });
   };
 
-  const loginUser = (data: IUserLogin) => {
-    api
-      .post("/login", data)
-      .then((res: ILoginRes) => {
-        localStorage.setItem("@me-au:token", res.data.token);
-        api.defaults.headers.authorization = `Bearer ${res.data.token}`;
-        closeFormLogin();
-      })
-      .catch(() => toast.error("Não foi possível realizar o login"));
+  const loginUser = async (datas: IUserLogin) => {
+    try {
+      const { data }: ILoginRes = await api.post("/login", datas);
+      localStorage.setItem("@me-au:token", data.token);
+      closeFormLogin();
+    } catch (error) {
+      console.log(error);
+    }
+    SetTokenIsAdd(true);
     //caso for sucesso
+
     if (isReservationBtnPressed) {
       closeFormLogin();
       handleOpenCartModal();
     }
   };
 
-  useEffect(() => {
+  const getUser = async () => {
     const token = localStorage.getItem("@me-au:token");
-    api.defaults.headers.authorization = `Bearer ${token}`;
+
     if (token) {
-      api
-        .get("/users")
-        .then((res: IUserRes) => setUser(res.data))
-        .catch((err) => console.log(err));
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      try {
+        const { data }: IUserRes = await api.get("/users");
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }, []);
+    SetTokenIsAdd(false);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, [tokenIsAdd]);
 
   const logout = () => {
     setUser(undefined);

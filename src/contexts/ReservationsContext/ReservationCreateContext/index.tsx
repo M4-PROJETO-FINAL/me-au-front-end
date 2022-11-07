@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import dayjs, { Dayjs } from "dayjs";
@@ -19,7 +19,7 @@ interface IReservationContext {
   selectedRoomType: RoomType | "";
   setSelectedRoomType: React.Dispatch<React.SetStateAction<"" | RoomType>>;
   selectPet: (data: IPet) => void;
-  selectedPets?: IPet[];
+  selectedPets: IPet[];
   checkinDate: dayjs.Dayjs | null;
   checkoutDate: dayjs.Dayjs | null;
   setCheckinDate: React.Dispatch<React.SetStateAction<dayjs.Dayjs | null>>;
@@ -44,10 +44,15 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
   const [selectedPets, setSelectedPets] = useState([] as IPet[]);
   const urlPath = useLocation().pathname;
   const { isOpenCartModal } = useUserContext();
+  const { tag } = useParams();
 
   useEffect(() => {
     setSelectedPets([]);
   }, [isOpenCartModal]);
+
+  useEffect(() => {
+    if (tag) setSelectedRoomType(tag as RoomType);
+  }, []);
 
   const generateRequestObject = (): IReservationRequest => {
     const servicesArray: IServiceAmount[] = Object.keys(services)

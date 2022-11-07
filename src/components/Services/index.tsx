@@ -19,7 +19,7 @@ import "swiper/css/pagination";
 const Services = () => {
   const { t } = useTranslation();
   const isDesktop = useMediaQuery({ query: "(min-width: 1200px)" });
-  const isTablet = useMediaQuery({ query: "(min-width: 850px)" });
+  const isTablet = useMediaQuery({ query: "(min-width: 800px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   return (
@@ -28,7 +28,7 @@ const Services = () => {
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
-        slidesPerView={isDesktop ? 4 : isTablet ? 3 : isMobile ? 1 : 2}
+        slidesPerView={isDesktop ? 3 : isTablet ? 3 : isMobile ? 1 : 2}
         initialSlide={3}
         spaceBetween={50}
         pagination={true}
