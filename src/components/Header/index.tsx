@@ -30,8 +30,8 @@ const Header = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, openFormLogin } = useUserContext();
-  const isTablet = useMediaQuery("(max-width:768px)");
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isTablet = useMediaQuery("(max-width:766px)");
+  const isDesktop = useMediaQuery("(min-width: 767px)");
 
   return (
     <motion.div

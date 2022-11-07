@@ -50,6 +50,10 @@ export const About = styled.div`
   .formWidth {
     width: 100%;
     max-width: 35rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .MuiFormControl-root-cIKZZJ {
