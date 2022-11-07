@@ -83,6 +83,9 @@
       "Quarto privativo de alto padrão para o seu felino aproveitar com classe!": "Luxury private room for your cat to enjoy with elegance!"
     },
     "Cadastrar pet": {
+      "Cadastrar pet": "Cadastrar pet",
+      "Escolha seu pet": "Escolha seu pet",
+      "Cadastre seu pet": "Cadastre seu pet",
       "Escolha o seu pet": "Escolha o seu pet",
       "Cadastre o seu pet": "Cadastre o seu pet",
       "Nome": "Nome",
@@ -116,12 +119,16 @@
       "Precisa?": "Precisa?",
       "Campo inválido": "Campo inválido",
       "Concluir adicionais!": "Confirmar serviços",
-      "(A combinar)": "(A combinar)"
+      "(A combinar)": "(A combinar)",
+      "Serviços adicionais": "Serviços adicionais"
     },
     "Sim": "Yes",
     "Não": "No",
     "Cadastrar um novo pet": "Register new pet",
     "Qual o tipo?": "Tipo",
-    "Qual a idade?": "Idade"
+    "Qual a idade?": "Idade",
+    "Clique em confirmar serviços antes de avançar!": "Clique em 'confirmar serviços' antes de avançar!",
+    "Proximo": "Próximo",
+    "more": ""
   }
 }

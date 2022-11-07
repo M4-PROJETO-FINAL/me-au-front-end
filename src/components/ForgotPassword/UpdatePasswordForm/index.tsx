@@ -59,9 +59,9 @@ const UpdatePasswordForm = () => {
       <ButtonBackLogin onClick={showVerifyEmailForm}>
         <IoChevronBack />
       </ButtonBackLogin>
-      <Title>Redefinir senha</Title>
+      <Title>{t("Redefinir senha")}</Title>
       <TextMessage>
-        Sua nova senha deve ser diferente das senhas usadas anteriormente
+        {t("Sua nova senha deve ser diferente das senhas usadas anteriormente")}
       </TextMessage>
       <FormUpdatePassword onSubmit={handleSubmit(updatePassword)}>
         <InputGlobal
@@ -89,7 +89,7 @@ const UpdatePasswordForm = () => {
           color="primary"
           sx={{ fontWeight: "bold", fontSize: 16 }}
         >
-          Confirmar
+          {t("Confirmar")}
         </Button>
       </FormUpdatePassword>
     </ForgotPasswordContainer>

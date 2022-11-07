@@ -97,7 +97,7 @@ const Reservation = ({ room }: IReservationProps) => {
               <form onSubmit={(e) => checkLoginAndOpenModal(e)}>
                 <Calendar />
                 <TextField
-                  label="Quantos pets?"
+                  label={t("Quantos pets?")}
                   type="number"
                   InputProps={{ style: { width: "280px" } }}
                   value={petsAmount || ""}
