@@ -6,7 +6,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { toast } from "react-toastify";
 
 import { IUserLogin } from "../../components/LoginAndRegister/FormLogin";
 import { IUserRegister } from "../../components/LoginAndRegister/FormRegister";
