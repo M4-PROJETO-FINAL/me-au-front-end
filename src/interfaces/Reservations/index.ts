@@ -50,3 +50,19 @@ export interface IService {
   description: string;
   price: number;
 }
+
+export interface IServiceResponse {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+}
+
+export interface IRoomTypeResponse {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  capacity: number;
+  price: string;
+}
