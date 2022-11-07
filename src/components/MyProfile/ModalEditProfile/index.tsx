@@ -1,16 +1,17 @@
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import Fade from "@mui/material/Fade";
-
 import { IoMdArrowBack } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
+
+import Box from "@mui/material/Box";
+import Fade from "@mui/material/Fade";
+import Modal from "@mui/material/Modal";
+
 import { bgBlur, ButtonCloseModal } from "../../CartModal/style";
+import FormProfile from "../Form";
 import {
   ContainerModalEditProfile,
   styleDesktopModalProfile,
   styleModalProfile,
 } from "./styles";
-import FormProfile from "../Form";
 
 interface IPropsEditModal {
   isOpenEditModal: boolean;

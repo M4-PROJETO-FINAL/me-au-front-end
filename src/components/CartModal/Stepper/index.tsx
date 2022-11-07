@@ -57,7 +57,9 @@ const TimeStepper = () => {
     if (activeStep === 0 && selectedPets.length < petsAmount) {
       const remaining = petsAmount - selectedPets.length;
       toast.warning(
-        `${t("Selecione mais")} ${remaining} ${t("more")} pet${remaining > 1 ? "s" : ""}`,
+        `${t("Selecione mais")} ${remaining} ${t("more")} pet${
+          remaining > 1 ? "s" : ""
+        }`,
       );
       return;
     }

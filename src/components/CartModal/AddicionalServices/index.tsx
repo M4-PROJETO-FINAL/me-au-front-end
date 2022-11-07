@@ -33,10 +33,6 @@ const AddicionalServices = () => {
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
   const { setServices } = useReservationContext();
 
-  const ERROR_MESSAGE = t("Campo obrigatório");
-  const ERROR_INVALID_MESSAGE = t("AddServices.Campo inválido");
-  const ERROR_MESSAGE_NUMBER = t("AddServices.Apenas números");
-
   const optionsYesAndNo = [
     {
       value: "yes",

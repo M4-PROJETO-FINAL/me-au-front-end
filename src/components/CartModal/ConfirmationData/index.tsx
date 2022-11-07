@@ -6,10 +6,7 @@ import {
   useReservationContext,
   serviceNamesRelations,
 } from "../../../contexts/ReservationsContext/ReservationCreateContext";
-import {
-  rooms,
-  services as servicesData,
-} from "../../../data/roomsAndServices";
+import { rooms } from "../../../data/roomsAndServices";
 import { IReservationRequest } from "../../../interfaces/Reservations";
 import { StyledConfirmationData } from "./styles";
 

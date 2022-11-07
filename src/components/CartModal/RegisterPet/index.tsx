@@ -7,7 +7,6 @@ import * as yup from "yup";
 
 import { usePetContext } from "../../../contexts/PetsContext";
 import { InputGlobal, InputSelectGlobal } from "../../Input";
-import { Title } from "../../LoginAndRegister/styles";
 import ChoosePet from "./ChoosePet";
 import {
   FormPetContainer,

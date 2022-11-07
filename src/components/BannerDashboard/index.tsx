@@ -56,19 +56,6 @@ const BannerDashboard = () => {
           </Typography>
           <Box sx={{ display: "flex" }}>
             <Box className="box--btn">
-              {/* <Button
-                className="btn--bg"
-                backgroundColor="rgba(var(--orange), 1)"
-                color="rgba(var(--white), 1)"
-                height="2.5rem"
-                width="100%"
-                fontSize=".875rem"
-                fontWeight="600"
-                borderRadius="0.6rem"
-                colorHover="#c0581f"
-              >
-                {t("Reserve um horário")}
-              </Button> */}
               <Button
                 type="button"
                 variant="contained"
@@ -84,19 +71,6 @@ const BannerDashboard = () => {
               >
                 {t("Reserve um horário")}
               </Button>
-              {/* <Button
-                className="btn--bg border"
-                backgroundColor="rgba(var(--white), 1)"
-                color="rgba(var(---black), 1)"
-                height="2.5rem"
-                width="100%"
-                fontSize=".875rem"
-                fontWeight="600"
-                borderRadius="0.6rem"
-                colorHover="#fae2d4"
-              >
-                {t("Confira nossos preços")}
-              </Button> */}
             </Box>
             {isMobile && (
               <Box className="db--mobile">
