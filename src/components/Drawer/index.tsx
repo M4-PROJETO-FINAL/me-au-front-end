@@ -23,6 +23,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { Button } from "../Button/style";
 import { Bandeiras } from "../Header/styles";
 import LoginAndRegister from "../LoginAndRegister";
+import { Links } from "./styles";
 
 const DrawerComp = () => {
   const { t } = useTranslation();
@@ -85,10 +86,7 @@ const DrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link to={"/contact"}
-              >
-                {t("Contato")}
-              </Link>
+              <Links to={"/contact"}>{t("Contato")}</Links>
             </ListItemText>
           </ListItem>
           <ListItem sx={{ m: "auto" }} onClick={() => setOpen(false)} divider>
@@ -103,10 +101,7 @@ const DrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link to="/accommodations/all"
-              >
-                {t("Acomodações")}
-              </Link>
+              <Links to="/accommodations/all">{t("Acomodações")}</Links>
             </ListItemText>
           </ListItem>
 

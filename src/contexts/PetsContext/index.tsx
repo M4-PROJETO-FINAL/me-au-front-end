@@ -18,6 +18,7 @@ import { api } from "../../services";
 interface IPetContext {
   pets: IPet[];
   deletePet: () => void;
+  getPet: () => void;
   setPetId: Dispatch<SetStateAction<string>>;
   createPet: (data: IFormSchemaRegisterPet) => void;
   isOpenPetModal: boolean;
@@ -101,22 +102,27 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
     handleCloseDeleteModal();
   };
 
-  useEffect(() => {
+  const getPet = async () => {
     const token = localStorage.getItem("@me-au:token");
     //api.defaults.headers.authorization = `Bearer ${token}`;
     if (token) {
-      api
+      await api
         .get("/pets")
         .then((res: IPetRes) => setPets(res.data))
         .catch((err) => console.log(err));
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    getPet()
+  }, [])
 
   console.log(pets);
   return (
     <PetContext.Provider
       value={{
         pets,
+        getPet,
         setPetId,
         createPet,
         deletePet,

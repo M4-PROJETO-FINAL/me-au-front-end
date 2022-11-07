@@ -89,7 +89,7 @@ const ConfirmationData = () => {
           </section>
           <section className="servicesInfo">
             <p>{t("AddServices.Serviços adicionais")}:</p>
-            {reservationObject.services.map((service) => (
+            {reservationObject.services.map((service) => {
               const actualService = allServices.find(
                 (serv) => serv.id === service.service_id,
               );
