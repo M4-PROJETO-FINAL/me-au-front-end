@@ -1,18 +1,18 @@
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 import { Box, Container, Typography, Button } from "@mui/material";
 
 import ImageContainer from "../../assets/ImageContainer.png";
 import petIcon from "../../assets/petIcon.svg";
 import { lightTheme } from "../../styles/themes";
-// import { Button } from "../Button/style";
 import { ContainerDb, ImgDb, ImgPetIco } from "./styles";
 
 const BannerDashboard = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
   return (
     <ContainerDb>
       <Container
@@ -68,6 +68,7 @@ const BannerDashboard = () => {
                   color: "white",
                   borderRadius: "8px",
                 }}
+                onClick={() => navigate("accommodations/all")}
               >
                 {t("Reserve um horário")}
               </Button>
