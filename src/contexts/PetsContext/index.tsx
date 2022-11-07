@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
 
+import { IFormSchemaEditPet } from "../../components/CardsPets/FormEditPet";
 import { IFormSchemaRegisterPet } from "../../components/CartModal/RegisterPet";
 import { IPet } from "../../interfaces/Reservations";
 import { IProviderProps } from "../../interfaces/User";
@@ -30,10 +31,20 @@ interface IPetContext {
   isOpenEditModal: boolean;
   handleOpenEditModal: () => void;
   handleCloseEditModal: () => void;
+  editPet: (data: IFormSchemaEditPet) => void;
+  setPetEdit: Dispatch<SetStateAction<IPetEdit>>;
+  petEdit: IPetEdit;
 }
 
 interface IPetRes {
   data: IPet[];
+}
+
+interface IPetEdit {
+  name: string;
+  docile: boolean;
+  neutered: boolean;
+  vaccinated: boolean;
 }
 
 const PetContext = createContext({} as IPetContext);
@@ -41,6 +52,12 @@ const PetContext = createContext({} as IPetContext);
 export const PetContextProvider = ({ children }: IProviderProps) => {
   const [pets, setPets] = useState<IPet[]>([]);
   const [petId, setPetId] = useState<string>("");
+  const [petEdit, setPetEdit] = useState<IPetEdit>({
+    name: "",
+    docile: true,
+    neutered: true,
+    vaccinated: true,
+  });
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
@@ -114,8 +131,19 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
   };
 
   useEffect(() => {
-    getPet()
-  }, [])
+    getPet();
+  }, []);
+
+  const editPet = (data: IFormSchemaEditPet) => {
+    api
+      .patch(`/pets/${petId}`, data)
+      .then(() => {
+        toast.success("Informações atualizadas");
+        handleCloseEditModal();
+        getPet();
+      })
+      .catch((err) => console.log(err));
+  };
 
   console.log(pets);
   return (
@@ -135,6 +163,9 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
         isOpenEditModal,
         handleOpenEditModal,
         handleCloseEditModal,
+        editPet,
+        setPetEdit,
+        petEdit,
       }}
     >
       {children}

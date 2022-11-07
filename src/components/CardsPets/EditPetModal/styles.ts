@@ -17,7 +17,7 @@ export const styleModalProfile = {
   width: "85%",
   maxWidth: 400,
   height: "80%",
-  maxHeight: 430,
+  maxHeight: 565,
 
   bgcolor: "background.paper",
   boxShadow: 24,
@@ -32,8 +32,7 @@ export const styleDesktopModalProfile = {
   transform: "translate(-50%, -50%)",
   width: "95%",
   maxWidth: 400,
-  height: "80%",
-  maxHeight: 450,
+  maxHeight: 565,
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,

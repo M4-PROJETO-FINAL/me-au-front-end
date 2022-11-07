@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
 import * as yup from "yup";
 
+import { usePetContext } from "../../../contexts/PetsContext";
 import { InputGlobal, InputSelectGlobal } from "../../Input";
 import { ContainerForm } from "../../MyProfile/Form/styles";
 
@@ -17,6 +18,7 @@ export interface IFormSchemaEditPet {
 
 const FormEditPet = () => {
   const { t } = useTranslation();
+  const { editPet, petEdit } = usePetContext();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
 
@@ -44,11 +46,20 @@ const FormEditPet = () => {
     formState: { errors },
   } = useForm<IFormSchemaEditPet>({ resolver: yupResolver(formSchema) });
 
+  const onSubmitFunction = (data: IFormSchemaEditPet) => {
+    const newData = { ...data };
+    newData.neutered = data.neutered == "yes" ? true : false;
+    newData.vaccinated = data.vaccinated == "yes" ? true : false;
+    newData.docile = data.docile == "yes" ? true : false;
+    editPet(newData);
+  };
+
   return (
     <ContainerForm>
       <h3>Edite seu pet</h3>
-      <form>
+      <form onSubmit={handleSubmit(onSubmitFunction)}>
         <InputGlobal
+          defaultValue={petEdit.name}
           error={!!errors.name}
           label={t("Cadastrar pet.Nome")}
           errorMessage={errors?.name?.message}
@@ -81,7 +92,7 @@ const FormEditPet = () => {
         />
 
         <Button
-          type="button"
+          type="submit"
           variant="contained"
           sx={{
             bgcolor: "#65C1BC",

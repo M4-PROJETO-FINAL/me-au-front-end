@@ -14,6 +14,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   isFullWidth?: boolean;
+  defaultValue?: string;
 }
 
 interface IOption {
@@ -42,9 +43,11 @@ export const InputGlobal = ({
   isFullWidth,
   maxLength,
   fontSize,
+  defaultValue,
 }: IInput) => {
   return (
     <TextField
+      defaultValue={defaultValue}
       error={error}
       label={label}
       type={type}

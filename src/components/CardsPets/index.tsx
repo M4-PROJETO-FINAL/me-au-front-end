@@ -43,6 +43,7 @@ const CardsPets = () => {
     setPetId,
     pets,
     deletePet,
+    setPetEdit,
   } = usePetContext();
 
   const handleModal = () => {
@@ -69,7 +70,19 @@ const CardsPets = () => {
               </Typography>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <button className="btn--cardPet" onClick={handleEditModal}>
+              <button
+                className="btn--cardPet"
+                onClick={() => {
+                  setPetId(pet.id);
+                  setPetEdit({
+                    name: pet.name,
+                    docile: pet.docile,
+                    neutered: pet.neutered,
+                    vaccinated: pet.vaccinated,
+                  });
+                  handleEditModal();
+                }}
+              >
                 <TbEdit />
               </button>
               <button
