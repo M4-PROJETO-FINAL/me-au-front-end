@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaTrash } from "react-icons/fa";
 import { TbEdit } from "react-icons/tb";
@@ -5,6 +6,9 @@ import { TbEdit } from "react-icons/tb";
 import { Box, Typography, Divider } from "@mui/material";
 
 import petIcon from "../../assets/petIcon.svg";
+import { usePetContext } from "../../contexts/PetsContext";
+import PetModal from "../PetRegisterModal";
+import RegisterPetModal from "../PetRegisterModal/RegisterPet";
 import { ContainerPets, fontBold, fontLink } from "./style";
 
 const pet = [
@@ -30,6 +34,11 @@ const pet = [
 
 const CardsPets = () => {
   const { t } = useTranslation();
+  const { handleOpenPetModal } = usePetContext();
+
+  const handleModal = () => {
+    handleOpenPetModal();
+  };
 
   return (
     <ContainerPets>
@@ -93,9 +102,13 @@ const CardsPets = () => {
         </Box>
       ))}
       <Box className="footer--card">
-        <Typography style={fontLink}>{t("Cadastrar um novo pet")}</Typography>
+        <Typography style={fontLink} variant="button" onClick={handleModal}>
+          {t("Cadastrar um novo pet")}
+        </Typography>
         <img src={petIcon}></img>
       </Box>
+
+      <PetModal />
     </ContainerPets>
   );
 };
