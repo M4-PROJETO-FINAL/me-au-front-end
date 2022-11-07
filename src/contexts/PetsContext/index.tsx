@@ -1,10 +1,10 @@
 import {
-  createContext,
-  Dispatch,
   SetStateAction,
+  createContext,
   useContext,
   useEffect,
   useState,
+  Dispatch,
 } from "react";
 import { toast } from "react-toastify";
 
@@ -15,15 +15,15 @@ import { api } from "../../services";
 
 interface IPetContext {
   pets?: IPet[];
-  createPet: (data: IFormSchemaRegisterPet) => void;
+  setPetId: Dispatch<SetStateAction<string>>;
   deletePet: (petId: string) => void;
+  createPet: (data: IFormSchemaRegisterPet) => void;
   isOpenPetModal: boolean;
   handleOpenPetModal: () => void;
   handleClosePetModal: () => void;
   isOpenDeleteModal: boolean;
   handleOpenDeleteModal: () => void;
   handleCloseDeleteModal: () => void;
-  setPetId: Dispatch<SetStateAction<string>>;
 }
 
 interface IPetRes {
@@ -34,9 +34,9 @@ const PetContext = createContext({} as IPetContext);
 
 export const PetContextProvider = ({ children }: IProviderProps) => {
   const [pets, setPets] = useState<IPet[]>();
+  const [petId, setPetId] = useState<string>("");
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-  const [petId, setPetId] = useState<string>("");
 
   const handleOpenPetModal = () => setIsOpenPetModal(true);
   const handleClosePetModal = () => setIsOpenPetModal(false);
@@ -83,16 +83,16 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
   return (
     <PetContext.Provider
       value={{
+        pets,
+        setPetId,
         createPet,
         deletePet,
+        isOpenPetModal,
+        isOpenDeleteModal,
         handleOpenPetModal,
         handleClosePetModal,
-        isOpenPetModal,
-        pets,
         handleOpenDeleteModal,
         handleCloseDeleteModal,
-        isOpenDeleteModal,
-        setPetId,
       }}
     >
       {children}

@@ -4,6 +4,7 @@ import { Button as ButtonModal } from "@mui/material";
 
 import { useReservationCancelContext } from "../../../contexts/ReservationsContext/ReservationCancelAndList";
 import { usePetContext } from "../../../contexts/PetsContext";
+import { UseUserReviewContext } from "../../../contexts/UserReviewContext";
 import { Button } from "../../Button/style";
 import DeleteModal from "../../DeleteModal";
 import { ContainerReservations } from "../styles";
@@ -11,6 +12,7 @@ import { ContainerReservations } from "../styles";
 const Reservations = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
   const { handleOpenDeleteModal } = usePetContext();
+  const { openReviewModal } = UseUserReviewContext();
 
   const { reservations, cancelReservation, allRoomTypes } =
     useReservationCancelContext();
@@ -74,6 +76,7 @@ const Reservations = () => {
                 fontWeight="500"
                 borderRadius="10px"
                 colorHover="#c0581f"
+                onClick={() => openReviewModal(reservation.id)}
               >
                 Nos avalie!
               </Button>

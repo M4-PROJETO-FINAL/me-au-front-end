@@ -1,4 +1,3 @@
-import { ReservationCancelContextProvider } from "../../contexts/ReservationsContext/ReservationCancelAndList";
 import Reservations from "./Reservation";
 
 const MyReservations = () => {

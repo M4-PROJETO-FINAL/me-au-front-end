@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { IoChevronBack } from "react-icons/io5";
 
 import { Button, Dialog, TextField } from "@mui/material";
@@ -8,29 +8,44 @@ import HoverRating from "./RatingStars";
 import { ButtonBack, ContainerUserReviewModal } from "./styles";
 
 const UserReviewModal = () => {
-  const { isOpenReviewModal, setIsOpenReviewModal, createReview } =
-    UseUserReviewContext();
+  const {
+    isOpenReviewModal,
+    closeReviewModal,
+    createReview,
+    selectedReservationId,
+  } = UseUserReviewContext();
   const [reviewStars, setReviewStars] = useState<number | null>(2);
-  const [textReview, setTextReview] = useState<string | null>();
+  const [textReview, setTextReview] = useState<string | undefined>(undefined);
+  const [messageError, setMessageError] = useState(false);
 
-  const postReview = (e) => {
+  const postReview = (e: FormEvent<HTMLFormElement>) => {
     //call API Context
     e.preventDefault();
-    const reviewObject = {
-      text_review: textReview,
-      review_stars: reviewStars,
-    };
-    console.log(reviewObject);
+    if (
+      textReview != null &&
+      reviewStars != null &&
+      selectedReservationId != null
+    ) {
+      const reviewObject = {
+        text_review: textReview,
+        stars: reviewStars,
+        reservation_id: selectedReservationId,
+      };
+      createReview(reviewObject);
+      setMessageError(false);
+    } else {
+      setMessageError(true);
+    }
   };
 
   return (
     <Dialog
       open={isOpenReviewModal}
-      onClose={() => setIsOpenReviewModal(false)}
+      onClose={() => closeReviewModal()}
       disableScrollLock={true}
     >
       <ContainerUserReviewModal>
-        <ButtonBack onClick={() => setIsOpenReviewModal(false)}>
+        <ButtonBack onClick={() => closeReviewModal()}>
           <IoChevronBack />
         </ButtonBack>
         <h3 className="review__title">Avalie a sua estadia</h3>
@@ -48,6 +63,7 @@ const UserReviewModal = () => {
             value={textReview}
             onChange={(e) => setTextReview(e.target.value)}
           />
+          {messageError && <p style={{ color: "red" }}>Campo obrigatório</p>}
           <Button
             type="submit"
             fullWidth
