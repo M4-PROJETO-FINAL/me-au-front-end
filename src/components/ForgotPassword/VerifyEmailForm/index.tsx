@@ -1,5 +1,4 @@
 import { FormEvent, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { IoChevronBack } from "react-icons/io5";
 
 import { TextField } from "@mui/material";
@@ -17,8 +16,6 @@ import {
 } from "./styles";
 
 const VerifyEmailForm = () => {
-  const { t } = useTranslation();
-
   const [numOne, setNumOne] = useState("");
   const [numTwo, setNumTwo] = useState("");
   const [numThree, setNumThree] = useState("");
@@ -54,10 +51,9 @@ const VerifyEmailForm = () => {
       <ButtonBackLogin onClick={showForgotPasswordForm}>
         <IoChevronBack />
       </ButtonBackLogin>
-      <Title>{t("Verifique seu e-mail")}</Title>
+      <Title>Verifique seu e-mail</Title>
       <TextMessage>
-        {t("Por favor preencha com o código enviado ao email")}:{" "}
-        gui.wustro@gmail.com
+        Por favor preencha com o código enviado ao email gui.wustro@gmail.com
       </TextMessage>
       <ContainerFormVerifyEmail onSubmit={(e) => verifyCode(e)}>
         <ContainerFormInputs>
@@ -128,7 +124,7 @@ const VerifyEmailForm = () => {
         </ContainerFormInputs>
         {!isValid && (
           <Alert severity="error" style={{ padding: "0 10px" }}>
-            {t("Código incorreto")}
+            Código incorreto
           </Alert>
         )}
         <Button
@@ -138,7 +134,7 @@ const VerifyEmailForm = () => {
           color="primary"
           sx={{ fontWeight: "bold", fontSize: 16 }}
         >
-          {t("Verificar")}
+          Verificar
         </Button>
       </ContainerFormVerifyEmail>
     </ForgotPasswordContainer>

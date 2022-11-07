@@ -53,7 +53,7 @@ const Header = () => {
               className={styles.margin}
               onClick={() => navigate("/")}
               variant="square"
-              sx={{ height: "91px", width: "249px", cursor: "pointer" }}
+              sx={{ height: "91px", width: "249px" }}
               src={Logo}
               alt="Cat Logo"
             ></Avatar>

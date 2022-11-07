@@ -109,7 +109,7 @@ const AddicionalServices = () => {
                 <DivSelect>
                   <p>
                     {t("AddServices.Vacina")}
-                    <span>{t("AddServices.(A combinar)")}</span>
+                    <span>(A combinar)</span>
                   </p>
                   <InputSelectGlobal
                     error={!!errors.vaccine}

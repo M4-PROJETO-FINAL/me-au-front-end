@@ -74,11 +74,11 @@ const RegisterPet = () => {
   return (
     <RegisterAndChooseContainer>
       <div>
-        <TitleRegister>{t("Cadastrar pet.Escolha seu pet")}</TitleRegister>
+        <TitleRegister>Escolha seu pet</TitleRegister>
         <ChoosePet />
       </div>
       <div>
-        <TitleRegister>{t("Cadastrar pet.Cadastre seu pet")}</TitleRegister>
+        <TitleRegister>{t("Cadastrar pet.Cadastre o seu pet")}</TitleRegister>
       </div>
       <FormPetContainer onSubmit={handleSubmit(onSubmitFunction)}>
         <RegisterPetContainer>
@@ -150,7 +150,7 @@ const RegisterPet = () => {
           color="primary"
           sx={{ fontWeight: "bold", fontSize: 16 }}
         >
-          {t("Cadastrar pet.Cadastrar pet")}
+          Cadastrar pet
         </Button>
       </FormPetContainer>
     </RegisterAndChooseContainer>

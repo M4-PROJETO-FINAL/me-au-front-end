@@ -88,8 +88,8 @@ const ConfirmationData = () => {
             </p>
           </section>
           <section className="servicesInfo">
-            <p>{t("AddServices.Serviços adicionais")}:</p>
-            {reservationObject.services.map((service) => (
+            <p>Serviços adicionais:</p>
+            {reservationObject.services.map((service) => {
               const actualService = allServices.find(
                 (serv) => serv.id === service.service_id,
               );
@@ -99,7 +99,7 @@ const ConfirmationData = () => {
                 <p key={service.service_id}>
                   {actualService.name}:{" "}
                   {actualService.name === "Vacina"
-                    ? `${t("AddServices.(A combinar)")}`
+                    ? "preço a combinar"
                     : `${lang === "pt" ? "R" : ""}$${actualService.price} × ${
                         service.amount || 0
                       } = ${lang === "pt" ? "R" : ""}$${

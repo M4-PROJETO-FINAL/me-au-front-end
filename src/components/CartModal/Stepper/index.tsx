@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { toast } from "react-toastify";
 
@@ -17,19 +16,15 @@ import ConfirmationData from "../ConfirmationData";
 import RegisterPet from "../RegisterPet";
 import { styleStepperDesk, styleStepperMob } from "../style";
 
+const steps = ["Cadastro", "Adicionais", "Confirmação"];
+
 const TimeStepper = () => {
-  const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set<number>());
   const isDesktop = useMediaQuery({ query: "(max-width: 768px)" });
   const { generateRequestObject, petsAmount, selectedPets, services } =
     useReservationContext();
   const { handleCloseCartModal } = useUserContext();
-  const steps = [
-    `${t("Cadastro")}`,
-    `${t("Adicionais")}`,
-    `${t("Confirmação")}`,
-  ];
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
@@ -40,7 +35,7 @@ const TimeStepper = () => {
       const body = generateRequestObject();
       try {
         await api.post("/reservations", body);
-        toast.success(`${t("Reserva criada com sucesso!")}`);
+        toast.success("Reserva criada com sucesso!");
         handleCloseCartModal();
       } catch (err: any) {
         toast.error(err.message);
@@ -50,14 +45,14 @@ const TimeStepper = () => {
     }
 
     if (activeStep === 1 && Object.keys(services).length === 0) {
-      toast.warning(`${t("Clique em confirmar serviços antes de avançar!")}`);
+      toast.warning('Clique em "confirmar serviços" antes de avançar!');
       return;
     }
 
     if (activeStep === 0 && selectedPets.length < petsAmount) {
       const remaining = petsAmount - selectedPets.length;
       toast.warning(
-        `${t("Selecione mais")} ${remaining} ${t("more")} pet${remaining > 1 ? "s" : ""}`,
+        `Selecione mais ${remaining} pet${remaining > 1 ? "s" : ""}`,
       );
       return;
     }
@@ -109,7 +104,7 @@ const TimeStepper = () => {
             onClick={handleBack}
             sx={{ mr: 1 }}
           >
-            {t("Voltar")}
+            Voltar
           </Button>
           <Box sx={{ flex: "1 1 auto" }} />
           <Button
@@ -117,9 +112,7 @@ const TimeStepper = () => {
             variant="contained"
             disabled={activeStep === steps.length && true}
           >
-            {activeStep === steps.length - 1
-              ? `${t("Finalizar")}`
-              : `${t("Proximo")}`}
+            {activeStep === steps.length - 1 ? "Finalizar" : "Próximo"}
           </Button>
         </Box>
       </>
