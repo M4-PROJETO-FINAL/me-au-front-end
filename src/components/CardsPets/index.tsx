@@ -123,12 +123,12 @@ const CardsPets = () => {
 
       <PetModal />
       <DeleteModal
-        btn1="Cancelar"
-        title="Excluir o pet"
-        description="Tem certeza que deseja excluir o pet?"
+        btn1={t("Cancelar")}
+        title={t("Excluir o pet")}
+        description={t("Tem certeza que deseja excluir o pet?")}
       >
         <Button variant="contained" color="error">
-          Excluir
+          {t("Excluir")}
         </Button>
       </DeleteModal>
     </ContainerPets>
