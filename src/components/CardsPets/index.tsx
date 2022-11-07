@@ -13,26 +13,26 @@ import RegisterPetModal from "../PetRegisterModal/RegisterPet";
 import EditPetModal from "./EditPetModal";
 import { ContainerPets, fontBold, fontLink } from "./style";
 
-const pet = [
-  {
-    id: "uuid",
-    name: "Aika",
-    age: "2 anos",
-    type: "dog",
-    neutered: true,
-    vaccinated: true,
-    docile: true,
-  },
-  {
-    id: "uuid2",
-    name: "Catioro",
-    age: "2 anos",
-    type: "cat",
-    neutered: true,
-    vaccinated: false,
-    docile: true,
-  },
-];
+// const pets = [
+//   {
+//     id: "uuid",
+//     name: "Aika",
+//     age: "2 anos",
+//     type: "dog",
+//     neutered: true,
+//     vaccinated: true,
+//     docile: true,
+//   },
+//   {
+//     id: "uuid2",
+//     name: "Catioro",
+//     age: "2 anos",
+//     type: "cat",
+//     neutered: true,
+//     vaccinated: false,
+//     docile: true,
+//   },
+// ];
 
 const CardsPets = () => {
   const { t } = useTranslation();
@@ -41,6 +41,8 @@ const CardsPets = () => {
     handleOpenEditModal,
     handleOpenDeleteModal,
     setPetId,
+    pets,
+    deletePet,
   } = usePetContext();
 
   const handleModal = () => {
@@ -58,7 +60,7 @@ const CardsPets = () => {
 
   return (
     <ContainerPets>
-      {pet.map((pet) => (
+      {pets.map((pet) => (
         <Box key={pet.id} className="card--pets">
           <Box className="header--card">
             <Box>
@@ -134,12 +136,12 @@ const CardsPets = () => {
       <PetModal />
       <EditPetModal />
       <DeleteModal
-        btn1="Cancelar"
-        title="Excluir o pet"
-        description="Tem certeza que deseja excluir o pet?"
+        btn1={t("Cancelar")}
+        title={t("Excluir o pet")}
+        description={t("Tem certeza que deseja excluir o pet?")}
       >
-        <Button variant="contained" color="error">
-          Excluir
+        <Button onClick={deletePet} variant="contained" color="error">
+          {t("Excluir")}
         </Button>
       </DeleteModal>
     </ContainerPets>

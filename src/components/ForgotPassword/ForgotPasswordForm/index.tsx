@@ -47,9 +47,11 @@ const ForgotPasswordForm = () => {
       </ButtonBackLogin>
       <FormForgotPassword onSubmit={handleSubmit(sendEmailToUser)}>
         <ContainerGap>
-          <Title>Esqueceu a senha?</Title>
+          <Title>{t("Esqueceu a senha?")}</Title>
           <TextMessage>
-            Para redefinir sua senha preencha o campo abaixo com seu e-mail
+            {t(
+              "Para redefinir sua senha preencha o campo abaixo com seu e-mail",
+            )}
           </TextMessage>
           <div>
             <InputGlobal
@@ -70,7 +72,7 @@ const ForgotPasswordForm = () => {
           color="primary"
           sx={{ fontWeight: "bold", fontSize: 16 }}
         >
-          Enviar
+          {t("Enviar")}
         </Button>
       </FormForgotPassword>
     </ForgotPasswordContainer>

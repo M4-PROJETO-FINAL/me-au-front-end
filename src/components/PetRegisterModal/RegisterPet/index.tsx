@@ -146,7 +146,7 @@ const RegisterPetModal = () => {
           color="primary"
           sx={{ fontWeight: "bold", fontSize: 16 }}
         >
-          Cadastrar pet
+          {t("Cadastrar pet.Cadastrar pet")}
         </Button>
       </FormPetContainer>
     </RegisterAndChooseContainer>

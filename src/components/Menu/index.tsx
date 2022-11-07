@@ -34,7 +34,7 @@ const Menu = () => {
           src={user?.profile_img}
           alt="User Avatar"
         >
-          {user?.name.charAt(0)}
+          {user?.name?.charAt(0)}
         </Avatar>
         <div>
           <p>

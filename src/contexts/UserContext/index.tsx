@@ -58,7 +58,6 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   };
 
   const createUser = (data: IUserRegister, goToLoginForm) => {
-    console.log(data);
     api
       .post("/users", data)
       .then(() => {

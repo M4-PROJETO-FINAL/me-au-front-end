@@ -43,10 +43,42 @@ export interface IReservation extends IReservationRequest {
   created_at: string;
   updated_at: string;
 }
+
+export interface IReservationComplete extends IReservation {
+  status: string;
+  pets_rooms: IReservationRooms[];
+}
+
+interface IReservationRooms {
+  rooms_type_id: string;
+}
+
+export interface IRoomTypes {
+  id: string;
+  title: string;
+  image: string;
+}
+
 export interface IService {
   id: string;
   name: string;
   tag: string;
   description: string;
   price: number;
+}
+
+export interface IServiceResponse {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+}
+
+export interface IRoomTypeResponse {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  capacity: number;
+  price: string;
 }
