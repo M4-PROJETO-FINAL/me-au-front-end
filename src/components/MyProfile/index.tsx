@@ -47,7 +47,6 @@ const MyProfile = () => {
           </div>
           <AnimationCat />
         </div>
-        <UserReviewModal />
         <ModalEditProfile
           isOpenEditModal={isOpenEditModal}
           openModalEditProfile={openModalEditProfile}

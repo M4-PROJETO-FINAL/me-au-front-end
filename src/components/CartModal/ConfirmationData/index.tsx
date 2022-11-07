@@ -2,7 +2,10 @@ import { useTranslation } from "react-i18next";
 
 import dayjs from "dayjs";
 
-import { useReservationContext } from "../../../contexts/ReservationsContext/ReservationCreateContext";
+import {
+  useReservationContext,
+  serviceNamesRelations,
+} from "../../../contexts/ReservationsContext/ReservationCreateContext";
 import {
   rooms,
   services as servicesData,
@@ -15,7 +18,8 @@ const ConfirmationData = () => {
     t,
     i18n: { language: lang },
   } = useTranslation();
-  const { generateRequestObject, selectedRoomType } = useReservationContext();
+  const { generateRequestObject, selectedRoomType, services, allServices } =
+    useReservationContext();
   const reservationObject: IReservationRequest = generateRequestObject();
   console.log(reservationObject);
 
@@ -31,16 +35,17 @@ const ConfirmationData = () => {
     return <></>;
   }
 
-  const services = servicesData.filter((service) =>
-    reservationObject.services.map((s) => s.service_id).includes(service.tag),
-  );
-
   const reservationPrice = room.price * diffInDays;
 
-  const servicesPrice = reservationObject.services.reduce((total, service) => {
-    const serv = services.find((serv) => serv.tag === service.service_id);
-    if (!serv) return total; // impossível
-    return total + serv.price * service.amount;
+  const servicesTotalPrice = Object.keys(services).reduce((total, tag) => {
+    const actualService = allServices.find(
+      (serv) => serv.name === serviceNamesRelations[tag],
+    );
+    if (!services[tag] || !actualService) return total;
+    const price = +actualService.price;
+
+    const amount = services[tag];
+    return total + price * amount;
   }, 0);
 
   const dateFormat = lang === "pt" ? "DD/MM/YYYY" : "MM/DD/YYYY";
@@ -84,28 +89,30 @@ const ConfirmationData = () => {
           </section>
           <section className="servicesInfo">
             <p>{t("AddServices.Serviços adicionais")}:</p>
-            {services.map((service) => (
-              <p key={service.id}>
-                {service.name}:{" "}
-                {service.name === "Vacina"
-                  ? `${t("AddServices.(A combinar)")}`
-                  : `${lang === "pt" ? "R" : ""}$${service.price} × ${
-                      reservationObject.services.find(
-                        (r) => r.service_id === service.tag,
-                      )?.amount || 0
-                    } = ${lang === "pt" ? "R" : ""}$${
-                      service.price *
-                      (reservationObject.services.find(
-                        (r) => r.service_id === service.tag,
-                      )?.amount || 0)
-                    }`}
-              </p>
-            ))}
+            {reservationObject.services.map((service) => (
+              const actualService = allServices.find(
+                (serv) => serv.id === service.service_id,
+              );
+              if (!actualService) return <></>;
+
+              return (
+                <p key={service.service_id}>
+                  {actualService.name}:{" "}
+                  {actualService.name === "Vacina"
+                    ? `${t("AddServices.(A combinar)")}`
+                    : `${lang === "pt" ? "R" : ""}$${actualService.price} × ${
+                        service.amount || 0
+                      } = ${lang === "pt" ? "R" : ""}$${
+                        +actualService.price * service.amount
+                      }`}
+                </p>
+              );
+            })}
           </section>
           <section className="totalInfo">
             <p>
               <b>Total:</b> {lang === "pt" ? "R" : ""}$
-              {servicesPrice + reservationPrice}{" "}
+              {servicesTotalPrice + reservationPrice}{" "}
             </p>
           </section>
         </div>
