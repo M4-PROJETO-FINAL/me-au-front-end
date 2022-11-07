@@ -10,6 +10,7 @@ import { usePetContext } from "../../contexts/PetsContext";
 import DeleteModal from "../DeleteModal";
 import PetModal from "../PetRegisterModal";
 import RegisterPetModal from "../PetRegisterModal/RegisterPet";
+import EditPetModal from "./EditPetModal";
 import { ContainerPets, fontBold, fontLink } from "./style";
 
 const pet = [
@@ -35,8 +36,12 @@ const pet = [
 
 const CardsPets = () => {
   const { t } = useTranslation();
-  const { handleOpenPetModal, handleOpenDeleteModal, setPetId } =
-    usePetContext();
+  const {
+    handleOpenPetModal,
+    handleOpenEditModal,
+    handleOpenDeleteModal,
+    setPetId,
+  } = usePetContext();
 
   const handleModal = () => {
     handleOpenPetModal();
@@ -44,6 +49,11 @@ const CardsPets = () => {
 
   const handleDeleteModal = () => {
     handleOpenDeleteModal();
+  };
+
+  const handleEditModal = () => {
+    handleOpenEditModal();
+    console.log("olá");
   };
 
   return (
@@ -57,7 +67,7 @@ const CardsPets = () => {
               </Typography>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <button className="btn--cardPet">
+              <button className="btn--cardPet" onClick={handleEditModal}>
                 <TbEdit />
               </button>
               <button
@@ -122,6 +132,7 @@ const CardsPets = () => {
       </Box>
 
       <PetModal />
+      <EditPetModal />
       <DeleteModal
         btn1="Cancelar"
         title="Excluir o pet"

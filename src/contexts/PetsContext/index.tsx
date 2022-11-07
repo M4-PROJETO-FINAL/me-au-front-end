@@ -24,6 +24,9 @@ interface IPetContext {
   handleOpenDeleteModal: () => void;
   handleCloseDeleteModal: () => void;
   setPetId: Dispatch<SetStateAction<string>>;
+  isOpenEditModal: boolean;
+  handleOpenEditModal: () => void;
+  handleCloseEditModal: () => void;
 }
 
 interface IPetRes {
@@ -36,12 +39,15 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
   const [pets, setPets] = useState<IPet[]>();
   const [isOpenPetModal, setIsOpenPetModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const [petId, setPetId] = useState<string>("");
 
   const handleOpenPetModal = () => setIsOpenPetModal(true);
   const handleClosePetModal = () => setIsOpenPetModal(false);
   const handleOpenDeleteModal = () => setIsOpenDeleteModal(true);
   const handleCloseDeleteModal = () => setIsOpenDeleteModal(false);
+  const handleOpenEditModal = () => setIsOpenEditModal(true);
+  const handleCloseEditModal = () => setIsOpenEditModal(false);
 
   console.log(petId);
 
@@ -93,6 +99,9 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
         handleCloseDeleteModal,
         isOpenDeleteModal,
         setPetId,
+        isOpenEditModal,
+        handleOpenEditModal,
+        handleCloseEditModal,
       }}
     >
       {children}
