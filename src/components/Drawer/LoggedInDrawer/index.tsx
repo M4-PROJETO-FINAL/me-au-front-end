@@ -22,6 +22,7 @@ import bandeiraUS from "../../../assets/bandeiraUS.png";
 import { useUserContext } from "../../../contexts/UserContext";
 import { Button } from "../../Button/style";
 import { Bandeiras } from "../../Header/styles";
+import { Links } from "../styles";
 
 const LoggedInDrawerComp = () => {
   const { t } = useTranslation();
@@ -86,7 +87,7 @@ const LoggedInDrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link to={"/dashboard"}>Dashboard</Link>
+              <Links to={"/dashboard"}>Dashboard</Links>
             </ListItemText>
           </ListItem>
 
@@ -102,7 +103,7 @@ const LoggedInDrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link to={"/contact"}>{t("Contato")}</Link>
+              <Links to={"/contact"}>{t("Contato")}</Links>
             </ListItemText>
           </ListItem>
           <ListItem sx={{ m: "auto" }} onClick={() => setOpen(false)} divider>
@@ -117,7 +118,7 @@ const LoggedInDrawerComp = () => {
                 fontSize="small"
                 sx={{ color: "common.white", marginRight: "5px" }}
               />
-              <Link to="/accommodations/all">{t("Acomodações")}</Link>
+              <Links to="/accommodations/all">{t("Acomodações")}</Links>
             </ListItemText>
           </ListItem>
 
