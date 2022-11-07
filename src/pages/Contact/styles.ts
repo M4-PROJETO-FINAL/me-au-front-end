@@ -62,6 +62,9 @@ export const About = styled.div`
 `;
 
 export const HappyDog = styled.div`
+  display: flex;
+  justify-content: center;
+
   position: relative;
 
   margin: 2rem 0 2rem 0;
@@ -73,11 +76,11 @@ export const HappyDog = styled.div`
     position: absolute;
 
     top: -3.438rem;
-    left: -3.125rem;
+    left: 5.4rem;
   }
 
   img:nth-child(2) {
-    width: 100%;
+    width: 70%;
   }
 
   @media screen and (max-width: 768px) {
@@ -90,10 +93,23 @@ export const Map = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  position: relative;
+
   margin: 2rem 0 2rem 0;
 
   width: 75%;
   max-width: 50rem;
+
+  img:nth-child(3) {
+    position: absolute;
+    width: 5.813rem;
+    height: 5.5rem;
+
+    bottom: -1.5rem;
+    right: -2.5rem;
+
+    transform: rotate(52deg);
+  }
 
   @media screen and (max-width: 900px) {
     flex-direction: column;

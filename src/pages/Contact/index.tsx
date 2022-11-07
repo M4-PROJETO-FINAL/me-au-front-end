@@ -45,6 +45,7 @@ const Contact = () => {
           <p> Rua dos perdidos, 157</p>
         </div>
         <img src={Location} alt="Google Map" />
+        <img src={PawIcon} alt="Paw Icon" />
       </Map>
       <About className="Gap">
         <h1>{t("Fale Conosco")}</h1>
