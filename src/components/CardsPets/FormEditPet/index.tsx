@@ -57,7 +57,7 @@ const FormEditPet = () => {
   return (
     <ContainerForm>
       <h3>Edite seu pet</h3>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
+      <form style={{ gap: "0px" }} onSubmit={handleSubmit(onSubmitFunction)}>
         <InputGlobal
           defaultValue={petEdit.name}
           error={!!errors.name}
