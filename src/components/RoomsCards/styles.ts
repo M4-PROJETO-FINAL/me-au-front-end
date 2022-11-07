@@ -77,12 +77,15 @@ export const RoomSection = styled.section`
       display: flex;
       align-self: end;
       align-items: center;
-      border-radius: 7px;
-
-      padding: 8px;
+      border-radius: 0.9375rem;
       margin-top: -68px;
       background-color: rgba(var(--aquaLight), 1);
-
+      & > button {
+        padding: 1.5rem 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       span {
         display: none;
       }
@@ -104,11 +107,13 @@ export const RoomSection = styled.section`
           display: initial;
           color: white;
           font-family: Public Sans;
-          font-size: 25px;
+          font-size: 1.2rem;
           font-weight: 600;
-          line-height: 1.2rem;
           letter-spacing: 0em;
           text-align: left;
+          width: 290px;
+          height: 30px;
+          padding: 1rem;
         }
       }
     }

@@ -5,29 +5,56 @@ import {
   useContext,
   useState,
 } from "react";
+import { toast } from "react-toastify";
 
 import { IProviderProps } from "../../interfaces/User";
+import { api } from "../../services";
 
 interface IUserReviewProvider {
-  createReview: (data) => void;
+  createReview: (data: IReviewRequest) => void;
   isOpenReviewModal: boolean;
-  setIsOpenReviewModal: Dispatch<SetStateAction<boolean>>;
+  openReviewModal: (reservationId: string) => void;
+  closeReviewModal: () => void;
+  selectedReservationId?: string;
+}
+
+export interface IReviewRequest {
+  text_review: string;
+  stars: number;
+  reservation_id: string;
 }
 
 const UserReviewContext = createContext({} as IUserReviewProvider);
 
 export const UserReviewContextProvider = ({ children }: IProviderProps) => {
-  const createReview = (data) => {
-    //do the request
-    // make a toast if success;
+  const [selectedReservationId, setSelectedReservationId] = useState<string>();
+  const [isOpenReviewModal, setIsOpenReviewModal] = useState(false);
 
-    return;
+  const createReview = (data: IReviewRequest) => {
+    api
+      .post("/reviews", data)
+      .then(() => toast.success("Avaliação feita com sucesso"))
+      .catch(() => toast.error("Não foi possível realizar a avaliação."));
   };
-  const [isOpenReviewModal, setIsOpenReviewModal] = useState(true);
+
+  const openReviewModal = (reservationId: string) => {
+    setIsOpenReviewModal(true);
+    setSelectedReservationId(reservationId);
+  };
+
+  const closeReviewModal = () => {
+    setIsOpenReviewModal(false);
+  };
 
   return (
     <UserReviewContext.Provider
-      value={{ createReview, setIsOpenReviewModal, isOpenReviewModal }}
+      value={{
+        createReview,
+        closeReviewModal,
+        isOpenReviewModal,
+        openReviewModal,
+        selectedReservationId,
+      }}
     >
       {children}
     </UserReviewContext.Provider>
