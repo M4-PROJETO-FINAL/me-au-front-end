@@ -106,7 +106,6 @@ const Header = () => {
                 </Bandeiras>
 
                 {user || (user && isTablet) ? (
-
                   <LoggedInDrawerComp />
                 ) : (
                   <div className="button--container">

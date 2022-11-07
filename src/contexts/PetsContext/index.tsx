@@ -70,7 +70,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
 
   useEffect(() => {
     const token = localStorage.getItem("@me-au:token");
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    //api.defaults.headers.authorization = `Bearer ${token}`;
     if (token) {
       api
         .get("/pets")
