@@ -1,10 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 import { IProviderProps } from "../../interfaces/User";
@@ -27,14 +22,17 @@ export interface IReviewRequest {
 const UserReviewContext = createContext({} as IUserReviewProvider);
 
 export const UserReviewContextProvider = ({ children }: IProviderProps) => {
+  const { t } = useTranslation();
   const [selectedReservationId, setSelectedReservationId] = useState<string>();
   const [isOpenReviewModal, setIsOpenReviewModal] = useState(false);
 
   const createReview = (data: IReviewRequest) => {
     api
       .post("/reviews", data)
-      .then(() => toast.success("Avaliação feita com sucesso"))
-      .catch(() => toast.error("Não foi possível realizar a avaliação."));
+      .then(() => toast.success(`${t("Avaliação feita com sucesso")}`))
+      .catch(() =>
+        toast.error(`${t("Não foi possível realizar a avaliação.")}`),
+      );
   };
 
   const openReviewModal = (reservationId: string) => {
