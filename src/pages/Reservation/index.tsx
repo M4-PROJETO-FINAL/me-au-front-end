@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
 import { RiCloseCircleFill } from "react-icons/ri";
@@ -7,9 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, Dialog } from "@mui/material";
-import * as yup from "yup";
 
 import { ReactComponent as Ball } from "../../assets/Icons/ball.svg";
 import { ReactComponent as Bone } from "../../assets/Icons/bone.svg";
@@ -26,11 +23,6 @@ interface IReservationProps {
   room: IRoom;
 }
 
-interface IFormDates {
-  checkin: string;
-  checkout: string;
-}
-
 const Reservation = ({ room }: IReservationProps) => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
@@ -41,13 +33,28 @@ const Reservation = ({ room }: IReservationProps) => {
     handleOpenCartModal,
     setIsReservationBtnPressed,
   } = useUserContext();
-  const { petsAmount, setPetsAmount } = useReservationContext();
+  const { petsAmount, setPetsAmount, checkinDate, checkoutDate } =
+    useReservationContext();
 
   const [openTooltip, setOpenTooltip] = useState(false);
+
   const checkLoginAndOpenModal = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsReservationBtnPressed(true);
-    // Verificar se tem data e checkin selecionados --- pegar o contexto dessa data e checkin ( não consegui fazer form yup nesse calendar)
+
+    if (!checkinDate) {
+      toast.warning("Selecione uma data de checkin!");
+      return;
+    }
+    if (!checkoutDate) {
+      toast.warning("Selecione uma data de checkout!");
+      return;
+    }
+    if (!petsAmount) {
+      toast.warning("Informe o número de pets que deseja hospedar!");
+      return;
+    }
+
     if (user) {
       handleOpenCartModal();
       return;

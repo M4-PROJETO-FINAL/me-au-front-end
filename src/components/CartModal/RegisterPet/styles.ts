@@ -59,6 +59,7 @@ export const TitleRegister = styled.h2`
   font-weight: 700;
   font-size: 19px;
   text-align: center;
+  margin: 1rem 0;
   @media screen and (min-width: 768px) {
     font-size: 24px;
   }
