@@ -167,6 +167,10 @@
     "Quer cancelar?": "Cancel reservation",
     "Nos avalie!": "Rate us!",
     "Cancelar a reserva": "Cancel reservation",
-    "Tem certeza de que deseja cancelar a reserva?": "Are you sure you want to cancel the reservation?"
+    "Tem certeza de que deseja cancelar a reserva?": "Are you sure you want to cancel the reservation?",
+    "invalid info": "Wrong e-mail or password.",
+    "Edite o seu perfil": "Edit your profile",
+    "Salvar": "Save",
+    "Imagem": "Image"
   }
 }

@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
+
 import Customer1 from "../../assets/CustomerPictures/customer1.png";
 import Review from "./Review";
 import { IReview } from "./Review";
 import { StyledSection } from "./styles";
 
 const CustomerReviews = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const reviews: IReview[] = [
     {

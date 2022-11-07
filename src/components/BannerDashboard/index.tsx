@@ -1,18 +1,18 @@
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 import { Box, Container, Typography, Button } from "@mui/material";
 
 import ImageContainer from "../../assets/ImageContainer.png";
 import petIcon from "../../assets/petIcon.svg";
 import { lightTheme } from "../../styles/themes";
-// import { Button } from "../Button/style";
 import { ContainerDb, ImgDb, ImgPetIco } from "./styles";
 
 const BannerDashboard = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 425px)" });
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
   return (
     <ContainerDb>
       <Container
@@ -56,19 +56,6 @@ const BannerDashboard = () => {
           </Typography>
           <Box sx={{ display: "flex" }}>
             <Box className="box--btn">
-              {/* <Button
-                className="btn--bg"
-                backgroundColor="rgba(var(--orange), 1)"
-                color="rgba(var(--white), 1)"
-                height="2.5rem"
-                width="100%"
-                fontSize=".875rem"
-                fontWeight="600"
-                borderRadius="0.6rem"
-                colorHover="#c0581f"
-              >
-                {t("Reserve um horário")}
-              </Button> */}
               <Button
                 type="button"
                 variant="contained"
@@ -81,22 +68,10 @@ const BannerDashboard = () => {
                   color: "white",
                   borderRadius: "8px",
                 }}
+                onClick={() => navigate("accommodations/all")}
               >
                 {t("Reserve um horário")}
               </Button>
-              {/* <Button
-                className="btn--bg border"
-                backgroundColor="rgba(var(--white), 1)"
-                color="rgba(var(---black), 1)"
-                height="2.5rem"
-                width="100%"
-                fontSize=".875rem"
-                fontWeight="600"
-                borderRadius="0.6rem"
-                colorHover="#fae2d4"
-              >
-                {t("Confira nossos preços")}
-              </Button> */}
             </Box>
             {isMobile && (
               <Box className="db--mobile">

@@ -4,7 +4,6 @@ import { TbEdit } from "react-icons/tb";
 
 import { useUserContext } from "../../contexts/UserContext";
 import { UserReviewContextProvider } from "../../contexts/UserReviewContext";
-import UserReviewModal from "../UserReviewModal";
 import AnimationCat from "./Animation";
 import ModalEditProfile from "./ModalEditProfile";
 import { ContainerProfile } from "./styles";

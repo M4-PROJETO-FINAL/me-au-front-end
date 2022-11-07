@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 import { IUserLogin } from "../../components/LoginAndRegister/FormLogin";
@@ -18,7 +19,7 @@ interface IUserContext {
   isOpenFormLogin: boolean;
   openFormLogin: () => void;
   closeFormLogin: () => void;
-  loginUser: (data: IUserLogin) => void;
+  loginUser: (data: IUserLogin, type?: "gmail") => void;
   isOpenCartModal: boolean;
   handleOpenCartModal: () => void;
   handleCloseCartModal: () => void;
@@ -48,6 +49,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const [tokenIsAdd, SetTokenIsAdd] = useState(false);
   const handleOpenCartModal = () => setIsOpenCartModal(true);
   const handleCloseCartModal = () => setIsOpenCartModal(false);
+  const { t } = useTranslation();
 
   const openFormLogin = () => {
     setIsOpenFormLogin(true);
@@ -70,12 +72,14 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       });
   };
 
-  const loginUser = async (datas: IUserLogin) => {
+  const loginUser = async (datas: IUserLogin, type = "normal") => {
     try {
       const { data }: ILoginRes = await api.post("/login", datas);
       localStorage.setItem("@me-au:token", data.token);
       closeFormLogin();
     } catch (error) {
+      console.log(error);
+      if (type === "normal") toast.error(t("invalid info"));
       console.log(error);
     }
     SetTokenIsAdd(true);

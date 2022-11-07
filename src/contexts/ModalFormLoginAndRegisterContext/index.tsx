@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 import { IProviderProps } from "../../interfaces/User";
 import { useUserContext } from "../UserContext";

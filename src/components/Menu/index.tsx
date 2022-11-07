@@ -6,9 +6,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Avatar } from "@mui/material";
 
-import Gui from "../../assets/Developers/Gui.png";
-// import { useUserContext } from "../../contexts/UserContext";
-
 import { useUserContext } from "../../contexts/UserContext";
 import {
   MenuContainer,
