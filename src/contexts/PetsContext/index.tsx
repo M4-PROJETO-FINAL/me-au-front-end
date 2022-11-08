@@ -115,9 +115,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
             err.response?.data.message ===
             "Cannot delete a pet which has already been booked in a reservation"
           ) {
-            toast.error(
-              "Não é possível excluir um pet para o qual já foi feita uma reserva",
-            );
+            toast.error(`${("Não é possível excluir um pet para o qual já foi feita uma reserva")}`);
             return;
           }
         }
@@ -146,7 +144,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
     api
       .patch(`/pets/${petId}`, data)
       .then(() => {
-        toast.success("Informações atualizadas");
+        toast.success(`${("Informações atualizadas")}`);
         handleCloseEditModal();
         getPet();
       })
