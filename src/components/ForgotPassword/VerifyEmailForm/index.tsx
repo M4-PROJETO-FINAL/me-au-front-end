@@ -7,6 +7,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
+import { useUserContext } from "../../../contexts/UserContext";
 import { ButtonBackLogin } from "../../LoginAndRegister/FormRegister/styles";
 import { Title } from "../../LoginAndRegister/styles";
 import { ForgotPasswordContainer, TextMessage } from "../styles";
@@ -18,6 +19,7 @@ import {
 
 const VerifyEmailForm = () => {
   const { t } = useTranslation();
+  const { user } = useUserContext();
 
   const [numOne, setNumOne] = useState("");
   const [numTwo, setNumTwo] = useState("");
@@ -35,7 +37,6 @@ const VerifyEmailForm = () => {
   const verifyCode = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const codeNumber = numOne + numTwo + numThree + numFour;
-    console.log(codeNumber.length);
     if (codeNumber.length != 4) {
       setIsValid(false);
 
@@ -56,8 +57,7 @@ const VerifyEmailForm = () => {
       </ButtonBackLogin>
       <Title>{t("Verifique seu e-mail")}</Title>
       <TextMessage>
-        {t("Por favor preencha com o código enviado ao email")}:{" "}
-        gui.wustro@gmail.com
+        {t("Por favor preencha com o código enviado ao email")}: {user?.email}
       </TextMessage>
       <ContainerFormVerifyEmail onSubmit={(e) => verifyCode(e)}>
         <ContainerFormInputs>

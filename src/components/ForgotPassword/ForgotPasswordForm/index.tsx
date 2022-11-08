@@ -35,7 +35,6 @@ const ForgotPasswordForm = () => {
   } = useForm<IFormEmail>({ resolver: yupResolver(formSchema) });
 
   const sendEmailToUser = (data: IFormEmail) => {
-    console.log(data);
     showVerifyEmailForm();
     // Aqui chama o contexto da api de login.. E loga!
   };

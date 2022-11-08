@@ -8,7 +8,6 @@ import petIcon from "../../assets/petIcon.svg";
 import { usePetContext } from "../../contexts/PetsContext";
 import DeleteModal from "../DeleteModal";
 import PetModal from "../PetRegisterModal";
-import RegisterPetModal from "../PetRegisterModal/RegisterPet";
 import EditPetModal from "./EditPetModal";
 import { ContainerPets, fontBold, fontLink } from "./style";
 

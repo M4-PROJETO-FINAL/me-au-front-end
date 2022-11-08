@@ -84,8 +84,6 @@ const AddicionalServices = () => {
   const onSubmitFunction = (data: IReservationServicesAmounts) => {
     const newData = { ...data };
     newData.vaccine = data.vaccine === "yes" ? true : false;
-    // Neste momento que será passado como um objeto para a próxima page
-    console.log(newData);
     setServices(newData);
   };
 

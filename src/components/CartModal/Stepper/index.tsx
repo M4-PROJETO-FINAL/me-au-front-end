@@ -44,7 +44,6 @@ const TimeStepper = () => {
         handleCloseCartModal();
       } catch (err: any) {
         toast.error(err.message);
-        console.log(err);
       }
       return;
     }
