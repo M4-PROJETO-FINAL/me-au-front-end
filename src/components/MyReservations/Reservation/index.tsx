@@ -93,7 +93,7 @@ const Reservations = () => {
         btn1={t("Voltar")}
       >
         <ButtonModal variant="contained" color="error">
-          {t("Cancelar")}
+          {t("Confirmar")}
         </ButtonModal>
       </DeleteModal>
     </ContainerReservations>
