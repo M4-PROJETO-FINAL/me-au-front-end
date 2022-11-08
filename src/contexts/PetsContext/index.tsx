@@ -144,7 +144,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
     api
       .patch(`/pets/${petId}`, data)
       .then(() => {
-        toast.success("Informações atualizadas");
+        toast.success(`${("Informações atualizadas")}`);
         handleCloseEditModal();
         getPet();
       })
