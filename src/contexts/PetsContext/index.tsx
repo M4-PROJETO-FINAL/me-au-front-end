@@ -81,7 +81,6 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
   }, [user]);
 
   const createPet = (data: IFormSchemaRegisterPet) => {
-    console.log(data);
     api
       .post("/pets", data)
       .then(() => {

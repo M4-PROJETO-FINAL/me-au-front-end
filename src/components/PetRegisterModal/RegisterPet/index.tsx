@@ -67,7 +67,6 @@ const RegisterPetModal = () => {
     newData.neutered = data.neutered == "yes" ? true : false;
     newData.vaccinated = data.vaccinated == "yes" ? true : false;
     newData.docile = data.docile == "yes" ? true : false;
-    console.log(newData);
     createPet(newData);
   };
 

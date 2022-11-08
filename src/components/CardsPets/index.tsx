@@ -34,7 +34,6 @@ const CardsPets = () => {
 
   const handleEditModal = () => {
     handleOpenEditModal();
-    console.log("olá");
   };
 
   return (

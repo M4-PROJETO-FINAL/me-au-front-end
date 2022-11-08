@@ -73,6 +73,7 @@ const FormEditPet = () => {
           registerName="docile"
           register={register}
           options={optionsYesAndNo}
+          defaultValue={petEdit.docile ? "yes" : "no"}
         />
         <InputSelectGlobal
           error={!!errors.neutered}
@@ -81,6 +82,7 @@ const FormEditPet = () => {
           registerName="neutered"
           register={register}
           options={optionsYesAndNo}
+          defaultValue={petEdit.neutered ? "yes" : "no"}
         />
         <InputSelectGlobal
           error={!!errors.vaccinated}
@@ -89,6 +91,7 @@ const FormEditPet = () => {
           registerName="vaccinated"
           register={register}
           options={optionsYesAndNo}
+          defaultValue={petEdit.vaccinated ? "yes" : "no"}
         />
 
         <Button
