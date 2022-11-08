@@ -27,7 +27,7 @@ export interface IUserRegister {
 const FormRegister = () => {
   const { t } = useTranslation();
   const { showLoginForm } = useModalFormLoginAndRegister();
-  const { createUser, user } = useUserContext();
+  const { createUser } = useUserContext();
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () =>
     setShowPassword((showPassword) => !showPassword);
@@ -44,7 +44,6 @@ const FormRegister = () => {
   const ERROR_PASSWORD_UPPER_CASE = t("Senha letra maiuscula");
   const ERROR_PASSWORD_SPECIAL_CHARACTER = t("Senha caracter especial");
   const ERROR_CONFIRM_PASSWORD = t("Campos nao coincidem");
-  console.log(user);
 
   const formSchema = yup.object().shape({
     name: yup.string().required(ERROR_MESSAGE),

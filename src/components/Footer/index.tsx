@@ -46,7 +46,7 @@ const Footer = () => {
               src={Logo}
               alt="Cat Logo"
             ></Avatar>
-            <Typography variant="body1">{t("Texto do footer")}</Typography>
+            <Typography>{t("Texto do footer")}</Typography>
           </Box>
           <Box
             sx={{

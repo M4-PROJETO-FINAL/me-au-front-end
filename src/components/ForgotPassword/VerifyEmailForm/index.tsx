@@ -7,6 +7,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 
 import { useModalFormLoginAndRegister } from "../../../contexts/ModalFormLoginAndRegisterContext";
+import { useUserContext } from "../../../contexts/UserContext";
 import { ButtonBackLogin } from "../../LoginAndRegister/FormRegister/styles";
 import { Title } from "../../LoginAndRegister/styles";
 import { ForgotPasswordContainer, TextMessage } from "../styles";
@@ -22,6 +23,7 @@ export interface ICodeConfirm {
 
 const VerifyEmailForm = () => {
   const { t } = useTranslation();
+  const { user } = useUserContext();
 
   const [numOne, setNumOne] = useState("");
   const [numTwo, setNumTwo] = useState("");

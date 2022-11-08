@@ -78,7 +78,6 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       localStorage.setItem("@me-au:token", data.token);
       closeFormLogin();
     } catch (error) {
-      console.log(error);
       if (type === "normal") toast.error(t("invalid info"));
       console.log(error);
     }

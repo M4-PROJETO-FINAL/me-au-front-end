@@ -1,16 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import {
   IReservationComplete,
   IRoomTypes,
 } from "../../../interfaces/Reservations";
 import { api } from "../../../services";
+import { usePetContext } from "../../PetsContext";
 
 interface IReservationCancelContext {
   reservations: IReservationComplete[];
-  cancelReservation: (id: string) => void;
+  cancelReservation: () => void;
   listReservations: () => void;
   allRoomTypes: IRoomTypes[];
+  setSelectedReservationId: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface IProviderProps {
@@ -22,13 +25,18 @@ const ReservationCancelContext = createContext({} as IReservationCancelContext);
 export const ReservationCancelContextProvider = ({
   children,
 }: IProviderProps) => {
-  const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] = useState<IReservationComplete[]>([]);
   const [allRoomTypes, setAllRoomTypes] = useState([]);
+  const [selectedReservationId, setSelectedReservationId] = useState("");
+  const { handleCloseDeleteModal } = usePetContext();
 
   const listReservations = async () => {
     await api
       .get("/reservations")
-      .then((res) => setReservations(res.data))
+      .then((res) => {
+        setReservations(res.data.reverse());
+        console.log(reservations);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -47,8 +55,17 @@ export const ReservationCancelContextProvider = ({
     listRoomTypes();
   }, []);
 
-  const cancelReservation = (id: string) => {
-    api.delete(`/reservations/${id}`).then();
+  const cancelReservation = () => {
+    api
+      .delete(`/reservations/${selectedReservationId}`)
+      .then(() => {
+        listReservations();
+      })
+      .catch((err) => {
+        toast.error("Algo deu errado ao tentar cancelar a reserva");
+        console.log(err);
+      });
+    handleCloseDeleteModal();
   };
 
   return (
@@ -58,6 +75,7 @@ export const ReservationCancelContextProvider = ({
         cancelReservation,
         listReservations,
         allRoomTypes,
+        setSelectedReservationId,
       }}
     >
       {children}

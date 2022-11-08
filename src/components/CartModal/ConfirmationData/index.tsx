@@ -18,7 +18,6 @@ const ConfirmationData = () => {
   const { generateRequestObject, selectedRoomType, services, allServices } =
     useReservationContext();
   const reservationObject: IReservationRequest = generateRequestObject();
-  console.log(reservationObject);
 
   const diffInMs =
     new Date(reservationObject.checkout).getTime() -
