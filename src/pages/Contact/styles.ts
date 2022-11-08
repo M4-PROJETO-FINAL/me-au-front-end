@@ -27,6 +27,7 @@ export const About = styled.div`
   width: 75%;
   max-width: 50rem;
 
+  margin-bottom: 2rem;
   padding: 2rem;
 
   background: rgba(var(--logoOrange), 1);
@@ -67,7 +68,7 @@ export const HappyDog = styled.div`
 
   position: relative;
 
-  margin: 2rem 0 2rem 0;
+  margin: 0 0 2rem 0;
 
   img:nth-child(1) {
     width: 5.813rem;

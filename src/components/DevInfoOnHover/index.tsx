@@ -13,11 +13,11 @@ const DevInfoOnHover = ({ github, linkedin }: ILinks) => {
   return (
     <Container>
       <Link target="_blank" rel="noreferrer" href={github}>
-        <GitHubIcon sx={{ color: "black" }} />
+        <GitHubIcon sx={{ color: "white" }} />
       </Link>
 
       <Link target="_blank" rel="noreferrer" href={linkedin}>
-        <LinkedInIcon sx={{ color: "blue" }} />
+        <LinkedInIcon sx={{ color: "white" }} />
       </Link>
     </Container>
   );
