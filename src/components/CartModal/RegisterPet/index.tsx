@@ -90,7 +90,6 @@ const RegisterPet = () => {
             />
             <InputGlobal
               error={!!errors.age}
-              type="number"
               label={t("Cadastrar pet.Idade")}
               errorMessage={errors?.age?.message}
               register={register}
