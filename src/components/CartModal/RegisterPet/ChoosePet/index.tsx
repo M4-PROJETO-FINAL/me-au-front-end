@@ -23,7 +23,7 @@ const ChoosePet = () => {
   if (!pets || pets.length === 0) {
     return (
       <NotPetsContainer>
-        <h4>Cadastre um pet usando o formulário abaixo</h4>
+        <h4>{t("Cadastre um pet usando o formulário abaixo")}</h4>
       </NotPetsContainer>
     );
   }

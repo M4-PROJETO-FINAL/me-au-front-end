@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -49,6 +50,7 @@ export const serviceNamesRelations = {
 };
 
 export const ReservationContextProvider = ({ children }: IProviderProps) => {
+  const { t } = useTranslation();
   const [selectedRoomType, setSelectedRoomType] = useState<RoomType | "">("");
   const [checkinDate, setCheckinDate] = useState<Dayjs | null>(null);
   const [checkoutDate, setCheckoutDate] = useState<Dayjs | null>(null);
@@ -137,11 +139,11 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
       petData.type === "cat" &&
       (urlPath.includes("dog") || urlPath.includes("shared"))
     ) {
-      toast.error("Não é possível selecionar um gato nesse quarto");
+      toast.error(`${t("Não é possível selecionar um gato nesse quarto")}`);
       return;
     }
     if (petData.type === "dog" && urlPath.includes("cat")) {
-      toast.error("Não é possível selecionar um cachorro nesse quarto");
+      toast.error(`${t("Não é possível selecionar um cachorro nesse quarto")}`);
       return;
     }
     if (selectedPets.map((pet) => pet.id).includes(petData.id)) {
@@ -149,7 +151,7 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
       return;
     }
     if (selectedPets.length === petsAmount) {
-      toast.error(`Você já selecionou ${petsAmount} pets`);
+      toast.error(`${t("Você já selecionou")} ${petsAmount} pets`);
       return;
     }
     setSelectedPets([...selectedPets, petData]);

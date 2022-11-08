@@ -1,15 +1,18 @@
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
 import { Button as ButtonModal } from "@mui/material";
 
-import { useReservationCancelContext } from "../../../contexts/ReservationsContext/ReservationCancelAndList";
 import { usePetContext } from "../../../contexts/PetsContext";
+import { useReservationCancelContext } from "../../../contexts/ReservationsContext/ReservationCancelAndList";
 import { UseUserReviewContext } from "../../../contexts/UserReviewContext";
 import { Button } from "../../Button/style";
 import DeleteModal from "../../DeleteModal";
 import { ContainerReservations } from "../styles";
 
 const Reservations = () => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
   const { handleOpenDeleteModal } = usePetContext();
   const { openReviewModal } = UseUserReviewContext();
@@ -43,7 +46,7 @@ const Reservations = () => {
             />
           </div>
           <div className="card--info">
-            <p>Data:</p>
+            <p>{t("Data")}:</p>
             <span>Out 27-30, 2022</span>
           </div>
           <div className="card--info">
@@ -64,7 +67,7 @@ const Reservations = () => {
                 // onClick={() => cancelReservation(reservation.id)}
                 onClick={handleOpenDeleteModal}
               >
-                Quer cancelar?
+                {t("Quer cancelar?")}
               </Button>
             ) : (
               <Button
@@ -78,19 +81,19 @@ const Reservations = () => {
                 colorHover="#c0581f"
                 onClick={() => openReviewModal(reservation.id)}
               >
-                Nos avalie!
+                {t("Nos avalie!")}
               </Button>
             )}
           </div>
         </div>
       ))}
       <DeleteModal
-        title="Cancelar a reserva"
-        description="Tem certeza de que deseja cancelar a reserva?"
-        btn1="Voltar"
+        title={t("Cancelar a reserva")}
+        description={t("Tem certeza de que deseja cancelar a reserva?")}
+        btn1={t("Voltar")}
       >
         <ButtonModal variant="contained" color="error">
-          Cancelar
+          {t("Cancelar")}
         </ButtonModal>
       </DeleteModal>
     </ContainerReservations>

@@ -6,6 +6,7 @@ import {
   useState,
   Dispatch,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
@@ -51,6 +52,7 @@ interface IPetEdit {
 const PetContext = createContext({} as IPetContext);
 
 export const PetContextProvider = ({ children }: IProviderProps) => {
+  const { t } = useTranslation();
   const [pets, setPets] = useState<IPet[]>([]);
   const [petId, setPetId] = useState<string>("");
   const [petEdit, setPetEdit] = useState<IPetEdit>({
@@ -83,14 +85,14 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
     api
       .post("/pets", data)
       .then(() => {
-        toast.success("Pet adicionado!");
+        toast.success(`${t("Pet adicionado!")}`);
         api
           .get("/pets")
           .then((res: IPetRes) => setPets(res.data))
           .catch((err) => console.log(err));
       })
       .catch((err) => {
-        toast.error("Não foi possível realizar o cadastro.");
+        toast.error(`${t("Não foi possível realizar o cadastro.")}`);
         console.log(err);
       });
     handleClosePetModal();
@@ -100,7 +102,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
     api
       .delete(`/pets/${petId}`)
       .then(() => {
-        toast.success("Pet excluido!");
+        toast.success(`${t("Pet excluido!")}`);
         setPets((oldPets) => {
           const newPets = [...oldPets];
           const idx = oldPets.findIndex((pet) => pet.id === petId);
@@ -120,7 +122,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
             return;
           }
         }
-        toast.error("Ocorreu algum erro");
+        toast.error(`${t("Ocorreu algum erro")}`);
         console.log(err);
       });
     handleCloseDeleteModal();

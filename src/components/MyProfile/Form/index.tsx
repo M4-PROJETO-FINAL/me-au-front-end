@@ -1,16 +1,20 @@
+import { useTranslation } from "react-i18next";
+
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
 import { ContainerForm } from "./styles";
 
 const FormProfile = () => {
+  const { t } = useTranslation();
+
   return (
     <ContainerForm>
-      <h3>Edite o seu perfil</h3>
+      <h3>{t("Edite o seu perfil")}</h3>
       <form>
         <TextField
           id="outlined-basic"
-          label="Nome"
+          label={t("Nome")}
           variant="outlined"
           className="input"
         />
@@ -22,7 +26,7 @@ const FormProfile = () => {
         />
         <TextField
           id="outlined-basic"
-          label="Imagem"
+          label={t("Imagem")}
           variant="outlined"
           className="input"
         />
@@ -39,7 +43,7 @@ const FormProfile = () => {
             width: "100%",
           }}
         >
-          Salvar
+          {t("Salvar")}
         </Button>
       </form>
     </ContainerForm>

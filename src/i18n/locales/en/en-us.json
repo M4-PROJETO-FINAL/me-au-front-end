@@ -153,6 +153,24 @@
     "Nome": "Name",
     "Senha": "Password",
     "Imagem de perfil": "Profile Image",
-    "invalid info": "Wrong e-mail or password."
+    "Cadastre um pet usando o formulário abaixo": "Register a pet using the form below",
+    "Não é possível selecionar um gato nesse quarto": "It's not possible to select a cat for this room",
+    "Não é possível selecionar um cachorro nesse quarto": "It's not possible to select a dog for this room",
+    "Você já selecionou": "You already selected",
+    "Pet adicionado!": "Pet has been added!",
+    "Pet excluido!": "Pet has been deleted!",
+    "Não foi possível realizar o cadastro.": "It was not possible to register.",
+    "Ocorreu algum erro": "Something went wrong!",
+    "Avaliação feita com sucesso": "Your review was successfully added!",
+    "Não foi possível realizar a avaliação.": "It was not possible to add your review.",
+    "Data": "Date",
+    "Quer cancelar?": "Cancel reservation",
+    "Nos avalie!": "Rate us!",
+    "Cancelar a reserva": "Cancel reservation",
+    "Tem certeza de que deseja cancelar a reserva?": "Are you sure you want to cancel the reservation?",
+    "invalid info": "Wrong e-mail or password.",
+    "Edite o seu perfil": "Edit your profile",
+    "Salvar": "Save",
+    "Imagem": "Image"
   }
 }
