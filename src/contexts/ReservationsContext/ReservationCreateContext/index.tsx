@@ -93,7 +93,10 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
         const actualService = allServices.find(
           (service) => service.name === serviceNamesRelations[serviceTag],
         );
-        const amnt = serviceTag === "vaccine" ? 1 : services[serviceTag];
+        let amnt = services[serviceTag];
+        if (serviceTag === "vaccine" && services[serviceTag]) {
+          amnt = 1;
+        }
         return {
           service_id: actualService?.id,
           amount: amnt,
