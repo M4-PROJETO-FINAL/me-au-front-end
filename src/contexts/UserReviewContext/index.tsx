@@ -36,6 +36,7 @@ export const UserReviewContextProvider = ({ children }: IProviderProps) => {
   };
 
   const openReviewModal = (reservationId: string) => {
+    console.log("here");
     setIsOpenReviewModal(true);
     setSelectedReservationId(reservationId);
   };

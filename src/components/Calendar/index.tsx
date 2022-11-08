@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 
 import "dayjs/locale/pt-br";
 import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
+import { useUnvailableDatesContext } from "../../contexts/UnvailableDatesContext";
 
 const Calendar = () => {
   const { t } = useTranslation();
@@ -16,22 +17,17 @@ const Calendar = () => {
     useReservationContext();
 
   dayjs.locale(t("Calendar locale")); // use loaded locale globally
-
-  // Aqui receberemos um array com as datas, e precisaremos trata-las da forma abaixo! Utilizando a biblioteca days.js dá pra dar um .format("DD/MM/YYYY") e fazer um array parecido com o de baixo!;
-  const blackoutDates = [
-    "14/09/2022",
-    "04/10/2022",
-    "15/10/2022",
-    "16/10/2022",
-    "17/10/2022",
-    "25/10/2022",
-  ];
+  const { unvailableDates } = useUnvailableDatesContext();
+  const unvailableDatesFormatted = unvailableDates?.map((date) =>
+    date.slice(0, 10),
+  );
 
   const afterDayCheckin = dayjs(checkinDate).add(1, "day");
-
   const getDisabledDates = (date: dayjs.Dayjs | string) => {
-    date = dayjs(date).format("DD/MM/YYYY");
-    return blackoutDates.includes(date);
+    date = dayjs(date).format("YYYY-MM-DD");
+    if (unvailableDatesFormatted)
+      return unvailableDatesFormatted.includes(date);
+    return false;
   };
 
   return (

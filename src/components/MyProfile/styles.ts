@@ -5,12 +5,10 @@ export const ContainerProfile = styled.div`
   @media screen and (min-width: 768px) {
     width: 600px;
   }
-
   .card-profile {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     margin-top: 30px;
     padding: 10px;
     height: 255px;
