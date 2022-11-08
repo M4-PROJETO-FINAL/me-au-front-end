@@ -21,17 +21,7 @@ const Contact = () => {
     <Container>
       <About>
         <h1>{t("Sobre nós")}</h1>
-        <p>
-          Me-au é um pet hotel que se preocupa com o bem-estar do seu pet, nós
-          temos funcionários trabalhando 24/7 para manter a segurança e cuidado
-          dos animaizinhos. Me-au foi fundado em 2022, São Paulo - SP por um
-          pequeno time de empreendedores e cresceu rapidamente devido a
-          excelente competência e atenciosidade de todo o time, Nós oferecemos
-          apenas produtos de alta qualidade e uma equipe altamente treinada que
-          ama os animais, todos os membros possuem credenciais do Pet Caretakers
-          LTDA. Tragam seu pet e nós garantimos dias inesquecíveis ao seu
-          felpudinho!
-        </p>
+        <p>{t("Texto sobre nós - pagina contato")}</p>
       </About>
       <HappyDog>
         <img src={PawIcon} alt="Paw Icon" />

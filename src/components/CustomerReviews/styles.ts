@@ -27,6 +27,7 @@ export const StyledSection = styled.section`
       align-items: center;
       min-width: 240px;
       max-width: 320px;
+      width: 28%;
 
       img {
         width: 120px;
