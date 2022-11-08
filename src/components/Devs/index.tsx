@@ -16,8 +16,8 @@ const Developers = () => {
         <Avatar
           variant="circular"
           sx={{
-            height: "105px",
-            width: "103px",
+            height: "125px",
+            width: "123px",
           }}
           src={Gui}
           alt="Cat Logo"
@@ -34,7 +34,7 @@ const Developers = () => {
       <Container>
         <Avatar
           variant="circular"
-          sx={{ height: "105px", width: "103px" }}
+          sx={{ height: "125px", width: "123px" }}
           src={Nat}
           alt="Cat Logo"
         />
@@ -50,7 +50,7 @@ const Developers = () => {
       <Container>
         <Avatar
           variant="circular"
-          sx={{ height: "105px", width: "103px" }}
+          sx={{ height: "125px", width: "123px" }}
           src={Amanda}
           alt="Cat Logo"
         />
@@ -65,7 +65,7 @@ const Developers = () => {
       <Container>
         <Avatar
           variant="circular"
-          sx={{ height: "105px", width: "103px" }}
+          sx={{ height: "125px", width: "123px" }}
           src={Nicholas}
           alt="Cat Logo"
         />
@@ -80,7 +80,7 @@ const Developers = () => {
       <Container>
         <Avatar
           variant="circular"
-          sx={{ height: "105px", width: "103px" }}
+          sx={{ height: "125px", width: "123px" }}
           src={Daniel}
           alt="Cat Logo"
         />
@@ -95,7 +95,7 @@ const Developers = () => {
       <Container>
         <Avatar
           variant="circular"
-          sx={{ height: "105px", width: "103px" }}
+          sx={{ height: "125px", width: "123px" }}
           src={Higor}
           alt="Cat Logo"
         />

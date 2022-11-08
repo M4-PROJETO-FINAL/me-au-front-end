@@ -5,7 +5,6 @@ import {
   Avatar,
   Box,
   Button,
-  Chip,
   TextField,
   Typography,
   useMediaQuery,
@@ -47,10 +46,7 @@ const Footer = () => {
               src={Logo}
               alt="Cat Logo"
             ></Avatar>
-            <Typography variant="body1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore.
-            </Typography>
+            <Typography variant="body1">{t("Texto do footer")}</Typography>
           </Box>
           <Box
             sx={{
@@ -124,10 +120,6 @@ const Footer = () => {
             </Box>
           </Box>
         </Box>
-        <Chip
-          className="chip--footer"
-          label={t("Site desenvolvido por")}
-        ></Chip>
       </ContainerFooter>
     </>
   );

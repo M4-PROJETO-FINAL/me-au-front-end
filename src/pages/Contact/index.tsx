@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { Box } from "@mui/material";
+import { Box, Chip } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 import PawIcon from "../../assets/petIcon.svg";
@@ -103,7 +103,7 @@ const Contact = () => {
           </Button>
         </Box>
       </About>
-
+      <Chip className="chip--footer" label={t("Site desenvolvido por")}></Chip>
       <Developers />
     </Container>
   );
