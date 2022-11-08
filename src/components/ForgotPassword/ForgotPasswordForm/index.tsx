@@ -13,14 +13,15 @@ import { Title } from "../../LoginAndRegister/styles";
 import { ForgotPasswordContainer, TextMessage } from "../styles";
 import { ContainerGap, FormForgotPassword } from "./styles";
 
-interface IFormEmail {
+export interface IFormEmail {
   email: string;
 }
 
 const ForgotPasswordForm = () => {
   const { t } = useTranslation();
 
-  const { showVerifyEmailForm, showLoginForm } = useModalFormLoginAndRegister();
+  const { showLoginForm, forgotPassword, setEmail } =
+    useModalFormLoginAndRegister();
   const ERROR_MESSAGE = t("Campo obrigatório");
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
 
@@ -35,9 +36,8 @@ const ForgotPasswordForm = () => {
   } = useForm<IFormEmail>({ resolver: yupResolver(formSchema) });
 
   const sendEmailToUser = (data: IFormEmail) => {
-    console.log(data);
-    showVerifyEmailForm();
-    // Aqui chama o contexto da api de login.. E loga!
+    setEmail(data.email);
+    forgotPassword(data);
   };
 
   return (
