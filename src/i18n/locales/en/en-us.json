@@ -127,7 +127,7 @@
     "Cadastrar um novo pet": "Register new pet",
     "Qual o tipo?": "Type",
     "Qual a idade?": "Age",
-    "Clique em confirmar serviços antes de avançar!": "Click in confirm before proceeding!",
+    "Clique em confirmar serviços antes de avançar!": "Click confirm before proceeding!",
     "Finalizar": "Finish",
     "Proximo": "Next",
     "Voltar": "Back",
@@ -171,6 +171,11 @@
     "invalid info": "Wrong e-mail or password.",
     "Edite o seu perfil": "Edit your profile",
     "Salvar": "Save",
-    "Imagem": "Image"
+    "Imagem": "Image",
+    "Selecione uma data de checkin!": "Select a checkin date!",
+    "Selecione uma data de checkout!": "Select a checkout date!",
+    "Informe o número de pets que deseja hospedar!": "Inform the number of pets that you want to host!",
+    "Faça o login para realizar o agendamento!": "Login in order to book.",
+    "Não é possível excluir um pet para o qual já foi feita uma reserva": "Cannot delete a pet which has already been booked in a reservation."
   }
 }

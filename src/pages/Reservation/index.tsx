@@ -43,15 +43,15 @@ const Reservation = ({ room }: IReservationProps) => {
     setIsReservationBtnPressed(true);
 
     if (!checkinDate) {
-      toast.warning("Selecione uma data de checkin!");
+      toast.warning(`${t("Selecione uma data de checkin!")}`);
       return;
     }
     if (!checkoutDate) {
-      toast.warning("Selecione uma data de checkout!");
+      toast.warning(`${t("Selecione uma data de checkout!")}`);
       return;
     }
     if (!petsAmount) {
-      toast.warning("Informe o número de pets que deseja hospedar!");
+      toast.warning(`${t("Informe o número de pets que deseja hospedar!")}`);
       return;
     }
 
@@ -61,7 +61,7 @@ const Reservation = ({ room }: IReservationProps) => {
     }
 
     // Caso o usuário não estiver logado
-    toast.info("Faça o login para realizar o agendamento!");
+    toast.info(`${t("Faça o login para realizar o agendamento!")}`);
     openFormLogin();
   };
 
