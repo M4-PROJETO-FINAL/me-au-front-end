@@ -64,7 +64,9 @@ const BannerDashboard = () => {
                   fontWeight: "bold",
                   fontSize: isMobile ? 14 : 16,
                   marginTop: "0.5rem",
+
                   padding: isMobile ? "0.3rem 0.7rem" : "0.5rem 1.2rem",
+
                   color: "white",
                   borderRadius: "8px",
                   minWidth: "130px",
