@@ -68,7 +68,6 @@ const RegisterPet = () => {
     newData.vaccinated = data.vaccinated == "yes" ? true : false;
     newData.docile = data.docile == "yes" ? true : false;
     createPet(newData);
-    // Aqui chama o contexto da api de cadastro de pet..!
   };
   return (
     <RegisterAndChooseContainer>

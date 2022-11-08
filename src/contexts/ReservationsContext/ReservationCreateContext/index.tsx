@@ -137,7 +137,6 @@ export const ReservationContextProvider = ({ children }: IProviderProps) => {
   };
 
   const selectPet = (petData: IPet) => {
-    console.log(petData);
     if (
       petData.type === "cat" &&
       (urlPath.includes("dog") || urlPath.includes("shared"))
