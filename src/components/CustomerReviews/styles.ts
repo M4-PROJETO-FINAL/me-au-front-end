@@ -34,6 +34,7 @@ export const StyledSection = styled.section`
         height: 120px;
         border-radius: 50%;
         z-index: 2;
+        object-fit: cover;
       }
 
       .cardBackground {
