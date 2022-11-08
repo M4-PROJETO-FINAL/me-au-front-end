@@ -117,7 +117,7 @@ const Reservations = () => {
           variant="contained"
           color="error"
         >
-          {t("Sim")}
+          {t("Confirmar")}
         </ButtonModal>
       </DeleteModal>
     </ContainerReservations>
