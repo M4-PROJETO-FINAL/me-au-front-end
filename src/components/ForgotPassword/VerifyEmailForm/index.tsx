@@ -17,6 +17,10 @@ import {
   ContainerTextField,
 } from "./styles";
 
+export interface ICodeConfirm {
+  code: number;
+}
+
 const VerifyEmailForm = () => {
   const { t } = useTranslation();
   const { user } = useUserContext();
@@ -31,22 +35,26 @@ const VerifyEmailForm = () => {
   const refNumThree = useRef<HTMLInputElement | null>(null);
   const refNumFour = useRef<HTMLInputElement | null>(null);
 
-  const { showUpdatePasswordForm, showForgotPasswordForm } =
+  const { showForgotPasswordForm, verifyCode, setCode, email } =
     useModalFormLoginAndRegister();
 
-  const verifyCode = (e: FormEvent<HTMLFormElement>) => {
+  const verifyCodePw = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const codeNumber = numOne + numTwo + numThree + numFour;
     if (codeNumber.length != 4) {
       setIsValid(false);
-
-      // erro...
       return;
     }
+
+    const data = {
+      code: +codeNumber,
+    };
+
+    console.log(data);
+
+    setCode(codeNumber);
+    verifyCode(data);
     setIsValid(true);
-
-    showUpdatePasswordForm();
-
     //verify with code from api
   };
 
@@ -57,9 +65,9 @@ const VerifyEmailForm = () => {
       </ButtonBackLogin>
       <Title>{t("Verifique seu e-mail")}</Title>
       <TextMessage>
-        {t("Por favor preencha com o código enviado ao email")}: {user?.email}
+        {t("Por favor preencha com o código enviado ao email")}: {email}
       </TextMessage>
-      <ContainerFormVerifyEmail onSubmit={(e) => verifyCode(e)}>
+      <ContainerFormVerifyEmail onSubmit={(e) => verifyCodePw(e)}>
         <ContainerFormInputs>
           <ContainerTextField>
             <TextField
