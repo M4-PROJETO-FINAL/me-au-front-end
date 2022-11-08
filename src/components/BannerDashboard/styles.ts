@@ -12,6 +12,7 @@ export const ContainerDb = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 460px;
 
   .title--db {
     font-weight: bold;

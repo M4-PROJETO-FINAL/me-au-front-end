@@ -9,9 +9,9 @@ export const ContainerFooter = styled(Container)`
   flex-direction: column;
   align-items: center;
 
-  height: 40vh;
+  height: 480px;
   @media screen and (max-width: 768px) {
-    height: 70vh;
+    height: 80vh;
   }
 
   max-width: 100vw;
