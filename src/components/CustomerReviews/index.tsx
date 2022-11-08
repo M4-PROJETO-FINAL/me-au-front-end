@@ -1,6 +1,9 @@
 import { useTranslation } from "react-i18next";
 
 import Customer1 from "../../assets/CustomerPictures/customer1.png";
+import Customer2 from "../../assets/CustomerPictures/customer2.jpg";
+import Customer3 from "../../assets/CustomerPictures/customer3.jpg";
+import Customer4 from "../../assets/CustomerPictures/customer4.jpg";
 import Review from "./Review";
 import { IReview } from "./Review";
 import { StyledSection } from "./styles";
@@ -14,24 +17,24 @@ const CustomerReviews = () => {
       customerImg: Customer1,
       stars: 4.5,
       reviewText:
-        "Ambiente agradável, boa localização, Ótima equipe, pronta para atender. Indico e pretendo retornar! a área do banho (chuveiro) achei um pouco pequeno o espaço e escorregadio. sinal e qualidade de internet eram excelentes",
+        "Ambiente agradável, boa localização, Ótima equipe, pronta para atender. Indico e pretendo retornar!",
     },
     {
-      customerName: "Gabriela de Oliveira",
-      customerImg: Customer1,
+      customerName: "Elvis the king",
+      customerImg: Customer2,
       stars: 5,
-      reviewText: "Muuuuito bom, amei tudo!",
+      reviewText: "Adorei o meu quartinho, digno de um rei!",
     },
     {
-      customerName: "Guilherme",
-      customerImg: Customer1,
+      customerName: "Julia C.",
+      customerImg: Customer3,
       stars: 4.5,
       reviewText:
-        "A equipe sempre é muito atenciosa com meus pets. Já hospedei meu labrador Dorivaldo e minha gatinha Joana, e os dois amaram a experiência!",
+        "A equipe sempre é muito atenciosa com meus pets. Já hospedei meu labrador Scooby e minha gatinha Jerrys, os dois amaram a experiência!",
     },
     {
       customerName: "João Pedro",
-      customerImg: Customer1,
+      customerImg: Customer4,
       stars: 4,
       reviewText:
         "Com tantos serviços de qualidade (spa, piscina, massagem), o único defeito é não hospedar pessoas!",
