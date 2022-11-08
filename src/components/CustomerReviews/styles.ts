@@ -27,12 +27,14 @@ export const StyledSection = styled.section`
       align-items: center;
       min-width: 240px;
       max-width: 320px;
+      width: 28%;
 
       img {
         width: 120px;
         height: 120px;
         border-radius: 50%;
         z-index: 2;
+        object-fit: cover;
       }
 
       .cardBackground {

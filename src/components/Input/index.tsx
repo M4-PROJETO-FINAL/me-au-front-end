@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, useState } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { RiErrorWarningFill } from "react-icons/ri";
 
@@ -16,6 +16,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   isFullWidth?: boolean;
+  defaultValue?: string;
 }
 
 interface IOption {
@@ -32,6 +33,7 @@ interface ISelectGlobal extends InputHTMLAttributes<HTMLInputElement> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   options: IOption[];
+  defaultValue?: string;
 }
 
 interface InputGlobalPassword extends IInput {
@@ -126,6 +128,7 @@ export const InputSelectGlobal = ({
   registerName,
   options,
   fontSize,
+  defaultValue,
 }: ISelectGlobal) => {
   return (
     <TextField
@@ -133,7 +136,7 @@ export const InputSelectGlobal = ({
       select
       error={error}
       label={label}
-      defaultValue=""
+      defaultValue={defaultValue}
       InputLabelProps={{ style: { fontSize: `${fontSize ? fontSize : 17}px` } }}
       helperText={error ? errorMessage : " "}
       {...register(registerName)}

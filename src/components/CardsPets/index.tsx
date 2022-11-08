@@ -8,16 +8,20 @@ import petIcon from "../../assets/petIcon.svg";
 import { usePetContext } from "../../contexts/PetsContext";
 import DeleteModal from "../DeleteModal";
 import PetModal from "../PetRegisterModal";
+import RegisterPetModal from "../PetRegisterModal/RegisterPet";
+import EditPetModal from "./EditPetModal";
 import { ContainerPets, fontBold, fontLink } from "./style";
 
 const CardsPets = () => {
   const { t } = useTranslation();
   const {
     handleOpenPetModal,
+    handleOpenEditModal,
     handleOpenDeleteModal,
     setPetId,
     pets,
     deletePet,
+    setPetEdit,
   } = usePetContext();
 
   const handleModal = () => {
@@ -26,6 +30,10 @@ const CardsPets = () => {
 
   const handleDeleteModal = () => {
     handleOpenDeleteModal();
+  };
+
+  const handleEditModal = () => {
+    handleOpenEditModal();
   };
 
   return (
@@ -39,7 +47,19 @@ const CardsPets = () => {
               </Typography>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <button className="btn--cardPet">
+              <button
+                className="btn--cardPet"
+                onClick={() => {
+                  setPetId(pet.id);
+                  setPetEdit({
+                    name: pet.name,
+                    docile: pet.docile,
+                    neutered: pet.neutered,
+                    vaccinated: pet.vaccinated,
+                  });
+                  handleEditModal();
+                }}
+              >
                 <TbEdit />
               </button>
               <button
@@ -104,6 +124,7 @@ const CardsPets = () => {
       </Box>
 
       <PetModal />
+      <EditPetModal />
       <DeleteModal
         btn1={t("Cancelar")}
         title={t("Excluir o pet")}
