@@ -13,14 +13,15 @@ import { Title } from "../../LoginAndRegister/styles";
 import { ForgotPasswordContainer, TextMessage } from "../styles";
 import { FormUpdatePassword } from "./styles";
 
-interface IFormUpdatePassword {
-  password: string;
-  passwordConfirm: string;
+export interface IFormUpdatePassword {
+  new_password: string;
+  confirm_password: string;
 }
 
 const UpdatePasswordForm = () => {
   const { t } = useTranslation();
-  const { showVerifyEmailForm } = useModalFormLoginAndRegister();
+  const { showVerifyEmailForm, updatePassword } =
+    useModalFormLoginAndRegister();
 
   const ERROR_MESSAGE = t("Campo obrigatório");
   const ERROR_PASSWORD_MIN = t("Senha oito caracteres");
@@ -31,7 +32,7 @@ const UpdatePasswordForm = () => {
   const ERROR_CONFIRM_PASSWORD = t("Campos nao coincidem");
 
   const formSchema = yup.object().shape({
-    password: yup
+    new_password: yup
       .string()
       .required(ERROR_MESSAGE)
       .min(8, ERROR_PASSWORD_MIN)
@@ -39,10 +40,10 @@ const UpdatePasswordForm = () => {
       .matches(/(?=.*[A-Z])/, ERROR_PASSWORD_UPPER_CASE)
       .matches(/(?=.*[a-z])/, ERROR_PASSWORD_LOWER_CASE)
       .matches(/(?=.*[!$*&@#%])/, ERROR_PASSWORD_SPECIAL_CHARACTER),
-    passwordConfirm: yup
+    confirm_password: yup
       .string()
       .required(ERROR_MESSAGE)
-      .oneOf([yup.ref("password")], ERROR_CONFIRM_PASSWORD),
+      .oneOf([yup.ref("new_password")], ERROR_CONFIRM_PASSWORD),
   });
   const {
     register,
@@ -50,8 +51,9 @@ const UpdatePasswordForm = () => {
     formState: { errors },
   } = useForm<IFormUpdatePassword>({ resolver: yupResolver(formSchema) });
 
-  const updatePassword = () => {
-    // update password ; + modal ?
+  const updateUserPassword = (data: IFormUpdatePassword) => {
+    console.log(data);
+    updatePassword(data);
   };
 
   return (
@@ -63,24 +65,24 @@ const UpdatePasswordForm = () => {
       <TextMessage>
         {t("Sua nova senha deve ser diferente das senhas usadas anteriormente")}
       </TextMessage>
-      <FormUpdatePassword onSubmit={handleSubmit(updatePassword)}>
+      <FormUpdatePassword onSubmit={handleSubmit(updateUserPassword)}>
         <InputGlobal
-          error={!!errors.password}
+          error={!!errors.new_password}
           label={t("Senha *")}
           type="password"
           isFullWidth={true}
-          errorMessage={errors?.password?.message}
+          errorMessage={errors?.new_password?.message}
           register={register}
-          registerName="password"
+          registerName="new_password"
         />
         <InputGlobal
-          error={!!errors.passwordConfirm}
+          error={!!errors.confirm_password}
           label={t("Confirmar senha")}
           type="password"
           isFullWidth={true}
-          errorMessage={errors?.passwordConfirm?.message}
+          errorMessage={errors?.confirm_password?.message}
           register={register}
-          registerName="passwordConfirm"
+          registerName="confirm_password"
         />
         <Button
           type="submit"
