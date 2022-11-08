@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
 import { Button as ButtonModal } from "@mui/material";
+import dayjs from "dayjs";
 
 import { usePetContext } from "../../../contexts/PetsContext";
 import { useReservationCancelContext } from "../../../contexts/ReservationsContext/ReservationCancelAndList";
@@ -12,13 +13,22 @@ import DeleteModal from "../../DeleteModal";
 import { ContainerReservations } from "../styles";
 
 const Reservations = () => {
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language: lang },
+  } = useTranslation();
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
   const { handleOpenDeleteModal } = usePetContext();
   const { openReviewModal } = UseUserReviewContext();
 
-  const { reservations, cancelReservation, allRoomTypes } =
-    useReservationCancelContext();
+  const {
+    reservations,
+    cancelReservation,
+    allRoomTypes,
+    setSelectedReservationId,
+  } = useReservationCancelContext();
+
+  const dateFormat = lang === "pt" ? "DD/MM/YYYY" : "MM/DD/YYYY";
 
   return (
     <ContainerReservations>
@@ -46,8 +56,16 @@ const Reservations = () => {
             />
           </div>
           <div className="card--info">
-            <p>{t("Data")}:</p>
-            <span>Out 27-30, 2022</span>
+            <p>Checkin:</p>
+            <span>
+              {dayjs(reservation.checkin.slice(0, 10)).format(dateFormat)}
+            </span>
+          </div>
+          <div className="card--info">
+            <p>Checkout:</p>
+            <span>
+              {dayjs(reservation.checkout.slice(0, 10)).format(dateFormat)}
+            </span>
           </div>
           <div className="card--info">
             <p>Status:</p>
@@ -65,7 +83,10 @@ const Reservations = () => {
                 borderRadius="10px"
                 colorHover="#757373"
                 // onClick={() => cancelReservation(reservation.id)}
-                onClick={handleOpenDeleteModal}
+                onClick={() => {
+                  setSelectedReservationId(reservation.id);
+                  handleOpenDeleteModal();
+                }}
               >
                 {t("Quer cancelar?")}
               </Button>
@@ -92,8 +113,12 @@ const Reservations = () => {
         description={t("Tem certeza de que deseja cancelar a reserva?")}
         btn1={t("Voltar")}
       >
-        <ButtonModal variant="contained" color="error">
-          {t("Cancelar")}
+        <ButtonModal
+          onClick={cancelReservation}
+          variant="contained"
+          color="error"
+        >
+          {t("Sim")}
         </ButtonModal>
       </DeleteModal>
     </ContainerReservations>
