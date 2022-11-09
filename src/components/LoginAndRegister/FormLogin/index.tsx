@@ -34,7 +34,10 @@ const FormLogin = () => {
   const INVALID_EMAIL_MESSAGE = t("E-mail inválido");
 
   const formSchema = yup.object().shape({
-    email: yup.string().required(ERROR_MESSAGE).email(INVALID_EMAIL_MESSAGE),
+    email: yup
+      .string()
+      .required(t("Campo obrigatório"))
+      .email(INVALID_EMAIL_MESSAGE),
     password: yup.string().required(ERROR_MESSAGE),
   });
 
