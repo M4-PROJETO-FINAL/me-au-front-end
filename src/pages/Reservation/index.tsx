@@ -14,6 +14,7 @@ import catToyPng from "../../assets/Icons/catToy.png";
 import dogToyPng from "../../assets/Icons/dogToy.png";
 import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
+import Footer from "../../components/Footer";
 import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
 import { UnvailableDatesContextProvider } from "../../contexts/UnvailableDatesContext";
 import { useUserContext } from "../../contexts/UserContext";
@@ -175,6 +176,7 @@ const Reservation = ({ room }: IReservationProps) => {
           </DialogInner>
         </Dialog>
       )}
+      <Footer />
     </>
   );
 };

@@ -12,7 +12,11 @@ export const ContainerDb = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 460px;
+  height: 508px;
+
+  @media screen and (max-width: 426px) {
+      height: 320px;
+    }
 
   .title--db {
     font-weight: bold;
