@@ -19,7 +19,7 @@ export const MenuContainer = styled.div`
   }
 `;
 
-export const ProfileTab = styled.button`
+export const ProfileTab = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -29,25 +29,20 @@ export const ProfileTab = styled.button`
 
   background-color: #fff5ef;
 
-  &:hover {
-    background-color: #ffddca;
-  }
-
-  &:focus {
-    background-color: #ffddca;
-  }
-
   border-radius: 15px;
 
   div {
     p:nth-child(1) {
       font-family: "Nunito";
+      font-size: 14px;
       font-weight: 700;
     }
 
     &:nth-child(2) {
       font-family: "Nunito";
+      font-size: 14px;
       font-weight: 300;
+      text-align: center;
     }
 
     display: flex;

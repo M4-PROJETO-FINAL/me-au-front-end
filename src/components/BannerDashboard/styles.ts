@@ -4,18 +4,19 @@ import bg_dashboard from "../../assets/bg_dashboard.svg";
 
 export const ContainerDb = styled.div`
   max-width: 100vw;
-  padding-top: 1rem;
+  padding-top: 3rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-image: url(${bg_dashboard});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 508px;
+  height: 450px;
 
   @media screen and (max-width: 426px) {
       height: 320px;
+      padding-top: 2rem;
     }
 
   .title--db {
