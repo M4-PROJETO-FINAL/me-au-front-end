@@ -43,7 +43,7 @@ const TimeStepper = () => {
         toast.success(`${t("Reserva criada com sucesso!")}`);
         handleCloseCartModal();
       } catch (err: any) {
-        toast.error(err.message);
+        toast.error(err.response.data.message);
       }
       return;
     }
