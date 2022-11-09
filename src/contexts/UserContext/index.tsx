@@ -28,6 +28,7 @@ interface IUserContext {
   createUser: (data: IUserRegister, goToLoginForm: (() => void) | null) => void;
   setIsReservationBtnPressed: Dispatch<SetStateAction<boolean>>;
   logout: () => void;
+  updateUser: (data) => void;
 }
 
 interface ILoginRes {
@@ -133,6 +134,25 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     if (!isOpenFormLogin && !isOpenCartModal) setIsReservationBtnPressed(false);
   }, [isOpenFormLogin, isOpenCartModal]);
 
+  const updateUser = (data) => {
+    const token = localStorage.getItem("@me-au:token");
+
+    if (token) {
+      const userId = jwt_decode<JwtPayloadUser>(token).sub;
+
+      api
+        .patch(`/users/${userId}`, data)
+        .then(() => {
+          toast.success(`${"Usuario atualizado!"}`);
+          getUser();
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`${"Não foi possivel atualizar"}`);
+        });
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -147,6 +167,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
         createUser,
         setIsReservationBtnPressed,
         logout,
+        updateUser,
       }}
     >
       {children}
