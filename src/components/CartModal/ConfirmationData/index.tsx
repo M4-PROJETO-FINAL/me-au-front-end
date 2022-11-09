@@ -31,6 +31,15 @@ const ConfirmationData = () => {
     return <></>;
   }
 
+  const serviceNames = {
+    Tosa: t("AddServices.Tosa"),
+    Banho: t("AddServices.Banho"),
+    Ração: t("AddServices.Ração"),
+    Vacina: t("AddServices.Vacina"),
+    Natação: t("AddServices.Natação"),
+    Massagem: t("AddServices.Massagem"),
+  };
+
   const reservationPrice = room.price * diffInDays;
 
   const servicesTotalPrice = Object.keys(services).reduce((total, tag) => {
@@ -56,7 +65,35 @@ const ConfirmationData = () => {
         <div className="rightInfo">
           <section className="roomReservationInfo">
             <p>
-              {t("Tipo de quarto")}: <span>{room.title}</span>{" "}
+              {t("Tipo de quarto")}:{" "}
+              {(() => {
+                if (room.title === "Quarto Compartilhado") {
+                  return (
+                    <span>
+                      {lang === "pt" && room.title === "Quarto Compartilhado"
+                        ? "Quarto Compartilhado"
+                        : "Shared Room"}
+                    </span>
+                  );
+                } else if (room.title === "Quarto Privativo (cães)") {
+                  return (
+                    <span>
+                      {lang === "pt" && room.title === "Quarto Privativo (cães)"
+                        ? "Quarto Privativo (cães)"
+                        : "Private Room (dogs)"}
+                    </span>
+                  );
+                } else if (room.title === "Quarto Privativo (gatos)") {
+                  return (
+                    <span>
+                      {lang === "pt" &&
+                      room.title === "Quarto Privativo (gatos)"
+                        ? "Quarto Privativo (gatos)"
+                        : "Private Room (cats)"}
+                    </span>
+                  );
+                }
+              })()}
             </p>
             <p>
               {t("Data de checkin")}:{" "}
@@ -93,7 +130,7 @@ const ConfirmationData = () => {
 
               return (
                 <p key={service.service_id}>
-                  {actualService.name}:{" "}
+                  {serviceNames[actualService.name]}:{" "}
                   {actualService.name === "Vacina"
                     ? `${t("AddServices.(A combinar)")}`
                     : `${lang === "pt" ? "R" : ""}$${actualService.price} × ${

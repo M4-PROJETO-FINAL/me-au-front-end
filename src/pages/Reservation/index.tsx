@@ -130,7 +130,7 @@ const Reservation = ({ room }: IReservationProps) => {
               </div>
               <div className="col right">
                 <p>
-                  {t("Incluso")}: {room.includedService}
+                  {t("Incluso")}: {isCatRoom ? `${t("1 petisco por dia")}` : `${t("passeios diários")}`}
                 </p>
                 {isCatRoom ? <Ball /> : <Bone />}
               </div>
@@ -171,7 +171,7 @@ const Reservation = ({ room }: IReservationProps) => {
             {isCatRoom ? <Ball /> : <Bone />}
 
             <p>
-              {t("Incluso")}: {room.includedService}
+              {t("Incluso")}: {isCatRoom ? `${t("1 petisco por dia")}` : `${t("passeios diários")}`}
             </p>
           </DialogInner>
         </Dialog>
