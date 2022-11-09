@@ -45,12 +45,7 @@ const RegisterPet = () => {
   const formSchema = yup.object().shape({
     name: yup.string().required(ERROR_MESSAGE),
     type: yup.string().required(ERROR_MESSAGE),
-    age: yup
-      .number()
-      .typeError(ERROR_MESSAGE)
-      .required(ERROR_MESSAGE)
-      .min(0, ERROR_INVALID_MESSAGE)
-      .max(30, ERROR_INVALID_MESSAGE),
+    age: yup.string().required(ERROR_MESSAGE),
     vaccinated: yup.string().required(ERROR_MESSAGE),
     neutered: yup.string().required(ERROR_MESSAGE),
     docile: yup.string().required(ERROR_MESSAGE),
