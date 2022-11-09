@@ -25,6 +25,7 @@ const Reservations = () => {
     cancelled: t("Cancelado"),
     active: t("Ativo"),
     concluded: t("Concluido"),
+    reserved: t("Reservado"),
   };
 
   const {
@@ -96,7 +97,7 @@ const Reservations = () => {
               >
                 {t("Quer cancelar?")}
               </Button>
-            ) : reservation.status != "cancelled" ? (
+            ) : reservation.status === "concluded" ? (
               <Button
                 backgroundColor="#FF8947"
                 color="rgba(var(--white), 1)"

@@ -9,6 +9,8 @@ import {
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
+import jwt_decode, { JwtPayload } from "jwt-decode";
+
 import { IUserLogin } from "../../components/LoginAndRegister/FormLogin";
 import { IUserRegister } from "../../components/LoginAndRegister/FormRegister";
 import { IProviderProps, IUser } from "../../interfaces/User";
@@ -36,7 +38,11 @@ interface ILoginRes {
 }
 
 interface IUserRes {
-  data: IUser;
+  data: IUser | IUser[];
+}
+
+interface JwtPayloadUser extends JwtPayload {
+  is_adm: boolean;
 }
 
 const UserContext = createContext({} as IUserContext);
@@ -97,7 +103,15 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       try {
         const { data }: IUserRes = await api.get("/users");
-        setUser(data);
+        const userId = jwt_decode<JwtPayload>(token).sub;
+        const userIsAdm = jwt_decode<JwtPayloadUser>(token)?.is_adm;
+
+        if (userIsAdm && Array.isArray(data)) {
+          const user = data.find((e) => e.id === userId);
+          setUser(user);
+        } else if (!Array.isArray(data)) {
+          setUser(data);
+        }
       } catch (error) {
         console.log(error);
       }
