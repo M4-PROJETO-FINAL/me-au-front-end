@@ -180,6 +180,8 @@
     "Informe o número de pets que deseja hospedar!": "Inform the number of pets that you want to host!",
     "Faça o login para realizar o agendamento!": "Login in order to book.",
     "Não é possível excluir um pet para o qual já foi feita uma reserva": "Cannot delete a pet which has already been booked in a reservation.",
-    "Informações atualizadas": "Successfully updated."
+    "Informações atualizadas": "Successfully updated.",
+    "Assunto": "Subject",
+    "Mensagem": "Message"
   }
 }
