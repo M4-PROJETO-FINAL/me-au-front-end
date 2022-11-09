@@ -19,7 +19,7 @@ const Reservations = () => {
   } = useTranslation();
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
   const { handleOpenDeleteModal } = usePetContext();
-  const { openReviewModal } = UseUserReviewContext();
+  const { openReviewModal, isReviewed } = UseUserReviewContext();
 
   const reservationStatus = {
     cancelled: t("Cancelado"),
@@ -97,7 +97,8 @@ const Reservations = () => {
               >
                 {t("Quer cancelar?")}
               </Button>
-            ) : reservation.status === "concluded" ? (
+            ) : reservation.status === "concluded" &&
+              !isReviewed(reservation.id) ? (
               <Button
                 backgroundColor="#FF8947"
                 color="rgba(var(--white), 1)"
@@ -111,7 +112,21 @@ const Reservations = () => {
               >
                 {t("Nos avalie!")}
               </Button>
-            ) : null}
+            ) : (
+              <Button
+                backgroundColor="#FF8947"
+                color="rgba(var(--white), 1)"
+                height={isMobile ? "45px" : "50px"}
+                width={isMobile ? "150px" : "180px"}
+                fontSize={isMobile ? "15px" : "18px"}
+                fontWeight="500"
+                borderRadius="10px"
+                colorHover="#c0581f"
+                disabled={true}
+              >
+                {t("Avaliado")}
+              </Button>
+            )}
           </div>
         </div>
       ))}

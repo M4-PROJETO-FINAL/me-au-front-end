@@ -14,7 +14,7 @@ const UserReviewModal = () => {
     createReview,
     selectedReservationId,
   } = UseUserReviewContext();
-  const [reviewStars, setReviewStars] = useState<number | null>(2);
+  const [reviewStars, setReviewStars] = useState<number | null>(5);
   const [textReview, setTextReview] = useState<string | undefined>(undefined);
   const [messageError, setMessageError] = useState(false);
 
@@ -27,11 +27,12 @@ const UserReviewModal = () => {
       selectedReservationId != null
     ) {
       const reviewObject = {
-        text_review: textReview,
+        review_text: textReview,
         stars: reviewStars,
         reservation_id: selectedReservationId,
       };
       createReview(reviewObject);
+      closeReviewModal();
       setMessageError(false);
     } else {
       setMessageError(true);
