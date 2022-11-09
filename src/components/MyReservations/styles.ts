@@ -22,7 +22,7 @@ export const ContainerReservations = styled.div`
   .card--reservations {
     width: 327px;
     min-width: 228px;
-    height: 327px;
+    height: 340px;
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
@@ -85,6 +85,7 @@ export const ContainerReservations = styled.div`
 
     width: 100%;
     margin-top: 5px;
+    padding-bottom: 8px;
 
     @media screen and (max-width: 768px) {
       font-size: 15px;

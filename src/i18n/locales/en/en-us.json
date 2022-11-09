@@ -191,6 +191,7 @@
     "Regular": "Ok",
     "Bom": "Good",
     "Ótimo": "Great",
-    "Reservado": "Reserved"
+    "Reservado": "Reserved",
+    "Avaliado": "Reviewed"
   }
 }

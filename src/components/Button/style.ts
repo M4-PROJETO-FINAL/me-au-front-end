@@ -19,6 +19,7 @@ export const Button = styled.button<IButtonProps>`
   border-radius: ${(props) => props.borderRadius};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
+  pointer-events: ${(props) => (props.disabled ? "none" : null)};
 
   font-family: "Public Sans";
   border: none;

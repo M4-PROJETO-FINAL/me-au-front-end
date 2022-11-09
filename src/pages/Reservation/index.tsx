@@ -176,7 +176,6 @@ const Reservation = ({ room }: IReservationProps) => {
           </DialogInner>
         </Dialog>
       )}
-      <Footer />
     </>
   );
 };
