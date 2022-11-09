@@ -15,6 +15,7 @@ export const RoomSection = styled.section`
     width: 100%;
     flex-wrap: wrap;
     gap: 2rem;
+    margin-bottom: 80px;
 
     .divRoomCard-item-1 {
       order: 2;
