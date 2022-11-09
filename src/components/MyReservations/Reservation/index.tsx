@@ -112,7 +112,7 @@ const Reservations = () => {
               >
                 {t("Nos avalie!")}
               </Button>
-            ) : (
+            ) : reservation.status !== "active" ? (
               <Button
                 backgroundColor="#FF8947"
                 color="rgba(var(--white), 1)"
@@ -126,7 +126,7 @@ const Reservations = () => {
               >
                 {t("Avaliado")}
               </Button>
-            )}
+            ) : null}
           </div>
         </div>
       ))}
