@@ -56,7 +56,7 @@ const Contact = () => {
           <TextField
             id="outlined-text-input"
             required
-            label="Nome"
+            label={t("Nome")}
             type="text"
           />
 
@@ -70,7 +70,7 @@ const Contact = () => {
           <TextField
             id="outlined-text-input"
             required
-            label="Assunto"
+            label={t("Assunto")}
             type="text"
           />
 
@@ -83,7 +83,7 @@ const Contact = () => {
 
           <TextField
             id="outlined-multiline-static"
-            label="Mensagem"
+            label={t("Mensagem")}
             multiline
             required
             rows={4}
