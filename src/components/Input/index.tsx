@@ -51,9 +51,11 @@ export const InputGlobal = ({
   isFullWidth,
   maxLength,
   fontSize,
+  defaultValue,
 }: IInput) => {
   return (
     <TextField
+      defaultValue={defaultValue}
       error={error}
       label={label}
       type={type}

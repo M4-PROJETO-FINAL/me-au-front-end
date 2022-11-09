@@ -46,7 +46,7 @@ const ModalEditProfile = ({
             <ButtonCloseModal onClick={closeModalEditProfile}>
               <IoMdArrowBack />
             </ButtonCloseModal>
-            <FormProfile />
+            <FormProfile closeModalEditProfile={closeModalEditProfile} />
           </Box>
         </Fade>
       </Modal>
