@@ -14,7 +14,9 @@ import catToyPng from "../../assets/Icons/catToy.png";
 import dogToyPng from "../../assets/Icons/dogToy.png";
 import Calendar from "../../components/Calendar";
 import CartModal from "../../components/CartModal";
+import Footer from "../../components/Footer";
 import { useReservationContext } from "../../contexts/ReservationsContext/ReservationCreateContext";
+import { UnvailableDatesContextProvider } from "../../contexts/UnvailableDatesContext";
 import { useUserContext } from "../../contexts/UserContext";
 import { IRoom } from "../../interfaces/Reservations";
 import { StyledRoomSection, DialogInner } from "./styles";
@@ -95,7 +97,9 @@ const Reservation = ({ room }: IReservationProps) => {
                 alt=""
               />
               <form onSubmit={(e) => checkLoginAndOpenModal(e)}>
-                <Calendar />
+                <UnvailableDatesContextProvider>
+                  <Calendar />
+                </UnvailableDatesContextProvider>
                 <TextField
                   label={t("Quantos pets?")}
                   type="number"
@@ -172,6 +176,7 @@ const Reservation = ({ room }: IReservationProps) => {
           </DialogInner>
         </Dialog>
       )}
+      <Footer />
     </>
   );
 };

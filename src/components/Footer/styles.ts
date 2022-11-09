@@ -8,10 +8,11 @@ export const ContainerFooter = styled(Container)`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 40px;
 
-  height: 40vh;
+  height: 530px;
   @media screen and (max-width: 768px) {
-    height: 70vh;
+    height: 80vh;
   }
 
   max-width: 100vw;

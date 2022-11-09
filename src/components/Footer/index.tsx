@@ -13,7 +13,7 @@ import {
 import FbIcon from "../../assets/FooterIcons/FbIcon.svg";
 import IgIcon from "../../assets/FooterIcons/IgIcon.svg";
 import TwitterIcon from "../../assets/FooterIcons/TwitterIcon.svg";
-import Logo from "../../assets/Group 22.svg";
+import newLogo_footer from "../../assets/newLogo_footer.svg";
 import { lightTheme } from "../../styles/themes";
 import { ContainerFooter } from "./styles";
 
@@ -29,7 +29,7 @@ const Footer = () => {
             display: "flex",
             flexDirection: isTablet ? "column" : "row",
             gap: isTablet ? "30px" : "0",
-            marginTop: isTablet ? "50px" : "0",
+            marginTop: isTablet ? "110px" : "0",
             justifyContent: "space-between",
             alignItems: "baseline",
           }}
@@ -43,7 +43,7 @@ const Footer = () => {
             <Avatar
               variant="square"
               sx={{ height: "91px", width: "249px" }}
-              src={Logo}
+              src={newLogo_footer}
               alt="Cat Logo"
             ></Avatar>
             <Typography>{t("Texto do footer")}</Typography>

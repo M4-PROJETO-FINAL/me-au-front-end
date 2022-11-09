@@ -12,6 +12,7 @@ import Whatsapp from "../../assets/SocialMediaIcons/whatsappIcon.svg";
 import Location from "../../assets/TemporaryLocation.jpg";
 import { Button } from "../../components/Button/style";
 import Developers from "../../components/Devs";
+import Footer from "../../components/Footer";
 import { Container, About, HappyDog, Map, SocialIcons } from "./styles";
 
 const Contact = () => {
@@ -104,6 +105,7 @@ const Contact = () => {
       </About>
       <Chip className="chip--footer" label={t("Site desenvolvido por")}></Chip>
       <Developers />
+      <Footer />
     </Container>
   );
 };

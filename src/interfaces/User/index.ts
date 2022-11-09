@@ -15,4 +15,5 @@ export interface IUser {
   review: IReview;
   pets: IPet[];
   reservations: IReservation[];
+  is_adm: boolean;
 }

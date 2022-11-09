@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 
+import Footer from "../../components/Footer";
 import SectionRooms from "../../components/RoomsCards";
 import TitleRooms from "../../components/RoomsTitles";
 import { ReservationContextProvider } from "../../contexts/ReservationsContext/ReservationCreateContext";
@@ -18,6 +19,7 @@ const Accommodations = () => {
           room={rooms.find((room) => room.tag === tag) || rooms[0]}
         />
       )}
+      <Footer />
     </ReservationContextProvider>
   );
 };

@@ -9,6 +9,7 @@ import { useReservationCancelContext } from "../../../contexts/ReservationsConte
 import { UseUserReviewContext } from "../../../contexts/UserReviewContext";
 import { Button } from "../../Button/style";
 import DeleteModal from "../../DeleteModal";
+import UserReviewModal from "../../UserReviewModal";
 import { ContainerReservations } from "../styles";
 
 const Reservations = () => {
@@ -19,6 +20,13 @@ const Reservations = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 430px)" });
   const { handleOpenDeleteModal } = usePetContext();
   const { openReviewModal } = UseUserReviewContext();
+
+  const reservationStatus = {
+    cancelled: t("Cancelado"),
+    active: t("Ativo"),
+    concluded: t("Concluido"),
+    reserved: t("Reservado"),
+  };
 
   const {
     reservations,
@@ -68,7 +76,7 @@ const Reservations = () => {
           </div>
           <div className="card--info">
             <p>Status:</p>
-            <span>{reservation.status}</span>
+            <span>{reservationStatus[reservation.status]}</span>
           </div>
           <div className="card--button">
             {reservation.status === "reserved" ? (
@@ -89,7 +97,7 @@ const Reservations = () => {
               >
                 {t("Quer cancelar?")}
               </Button>
-            ) : (
+            ) : reservation.status === "concluded" ? (
               <Button
                 backgroundColor="#FF8947"
                 color="rgba(var(--white), 1)"
@@ -103,7 +111,7 @@ const Reservations = () => {
               >
                 {t("Nos avalie!")}
               </Button>
-            )}
+            ) : null}
           </div>
         </div>
       ))}
@@ -117,9 +125,10 @@ const Reservations = () => {
           variant="contained"
           color="error"
         >
-          {t("Sim")}
+          {t("Confirmar")}
         </ButtonModal>
       </DeleteModal>
+      <UserReviewModal />
     </ContainerReservations>
   );
 };

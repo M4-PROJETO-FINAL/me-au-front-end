@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const RoomSection = styled.section`
   width: 95%;
   font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 
   ul {
     display: flex;
@@ -11,6 +15,7 @@ export const RoomSection = styled.section`
     width: 100%;
     flex-wrap: wrap;
     gap: 2rem;
+    margin-bottom: 80px;
 
     .divRoomCard-item-1 {
       order: 2;
@@ -168,8 +173,8 @@ export const RoomSection = styled.section`
       }
 
       @media screen and (min-width: 500px) {
-        width: 430px;
-        height: 631px;
+        width: 20rem;
+        height: 38rem;
       }
     }
   }

@@ -182,6 +182,15 @@
     "Não é possível excluir um pet para o qual já foi feita uma reserva": "Cannot delete a pet which has already been booked in a reservation.",
     "Informações atualizadas": "Successfully updated.",
     "Assunto": "Subject",
-    "Mensagem": "Message"
+    "Mensagem": "Message",
+    "Cancelado": "Cancelled",
+    "Ativo": "Active",
+    "Concluido": "Concluded",
+    "Horrível": "Very bad",
+    "Ruim": "Bad",
+    "Regular": "Ok",
+    "Bom": "Good",
+    "Ótimo": "Great",
+    "Reservado": "Reserved"
   }
 }

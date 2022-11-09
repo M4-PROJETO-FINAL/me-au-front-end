@@ -36,7 +36,6 @@ const ForgotPasswordForm = () => {
   } = useForm<IFormEmail>({ resolver: yupResolver(formSchema) });
 
   const sendEmailToUser = (data: IFormEmail) => {
-    showVerifyEmailForm();
     setEmail(data.email);
     forgotPassword(data);
   };

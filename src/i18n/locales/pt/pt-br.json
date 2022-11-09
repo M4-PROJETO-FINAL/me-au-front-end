@@ -133,6 +133,15 @@
     "Clique em confirmar serviços antes de avançar!": "Clique em 'confirmar serviços' antes de avançar!",
     "Proximo": "Próximo",
     "more": "",
-    "invalid info": "E-mail ou senha inválido."
+    "invalid info": "E-mail ou senha inválido.",
+    "Cancelado": "Cancelado",
+    "Ativo": "Ativo",
+    "Concluido": "Concluído",
+    "Horrível": "Muito ruim",
+    "Ruim": "Ruim",
+    "Regular": "Ok",
+    "Bom": "Bom",
+    "Ótimo": "Muito bom",
+    "Reservado": "Reservado"
   }
 }
