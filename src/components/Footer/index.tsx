@@ -29,9 +29,11 @@ const Footer = () => {
             display: "flex",
             flexDirection: isTablet ? "column" : "row",
             gap: isTablet ? "30px" : "0",
-            marginTop: isTablet ? "110px" : "0",
+            // marginTop: isTablet ? "118px" : "0",
             justifyContent: "space-between",
-            alignItems: "baseline",
+            alignItems: isTablet ? "center" : "baseline",
+            width: "100%",
+            maxWidth: "1200px",
           }}
         >
           <Box
