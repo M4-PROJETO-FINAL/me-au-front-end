@@ -103,7 +103,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       try {
         const { data }: IUserRes = await api.get("/users");
-        const userId = jwt_decode<JwtPayload>(token).sub;
+        const userId = jwt_decode<JwtPayloadUser>(token).sub;
         const userIsAdm = jwt_decode<JwtPayloadUser>(token)?.is_adm;
 
         if (userIsAdm && Array.isArray(data)) {
