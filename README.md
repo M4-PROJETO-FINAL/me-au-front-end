@@ -20,8 +20,6 @@ A aplicação representa um pet hotel, pensado para pais e mães de pets que pre
 - TypeScript;
 - StyledComponents
 
-Além de consumirmos a API Geolocation/DB e uma API com os dados dos restaurantes e seus respectivos menus, no qual utilizamos um servidor "falso" para podermos fazer o consumo de dados, deixando nossa aplicação dinâmica.
-
 <!-- ## Usabilidade -->
 <!-- Colocar um GIF Aquii -->
 <!-- <div align="center">
