@@ -46,7 +46,7 @@ export const ReservationCancelContextProvider = ({
 
   const listRoomTypes = async () => {
     await api
-      .get("/rooms/types")
+      .get("/roomstypes")
       .then((res) => setAllRoomTypes(res.data))
       .catch((err) => console.log(err));
   };
