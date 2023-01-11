@@ -14,7 +14,7 @@ interface IUserInfoGmail {
 export const GoogleAuthLogin = () => {
   const { loginUser, createUser } = useUserContext();
 
-  const responseGmail = (userInfo: IUserInfoGmail) => {
+  const responseGmail = async (userInfo: IUserInfoGmail) => {
     const userInfoFixed: IUserRegister = {
       email: userInfo.email,
       password: userInfo.sub,
@@ -22,7 +22,7 @@ export const GoogleAuthLogin = () => {
       name: userInfo.name,
     };
 
-    createUser(userInfoFixed, null);
+    await createUser(userInfoFixed, null);
     loginUser(userInfoFixed, "gmail");
   };
 

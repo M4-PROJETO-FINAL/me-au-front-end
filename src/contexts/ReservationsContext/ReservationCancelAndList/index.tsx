@@ -34,8 +34,8 @@ export const ReservationCancelContextProvider = ({
     await api
       .get("/reservations")
       .then((res) => {
+        console.log(res.data);
         setReservations(res.data.reverse());
-        console.log(reservations);
       })
       .catch((err) => console.log(err));
   };
@@ -47,7 +47,10 @@ export const ReservationCancelContextProvider = ({
   const listRoomTypes = async () => {
     await api
       .get("/roomstypes")
-      .then((res) => setAllRoomTypes(res.data))
+      .then((res) => {
+        console.log(res.data)
+        setAllRoomTypes(res.data)
+      })
       .catch((err) => console.log(err));
   };
 

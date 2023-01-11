@@ -38,7 +38,7 @@ export const UserReviewContextProvider = ({ children }: IProviderProps) => {
 
   const createReview = (data: IReviewRequest) => {
     api
-      .post("/reviews", data)
+      .post("/reviews/", data)
       .then(() => toast.success(`${t("Avaliação feita com sucesso")}`))
       .catch((e) => {
         console.log(e);
