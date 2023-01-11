@@ -82,7 +82,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
 
   const createPet = (data: IFormSchemaRegisterPet) => {
     api
-      .post("/pets", data)
+      .post("/pets/", data)
       .then(() => {
         toast.success(`${t("Pet adicionado!")}`);
         api
@@ -144,7 +144,7 @@ export const PetContextProvider = ({ children }: IProviderProps) => {
 
   const editPet = (data: IFormSchemaEditPet) => {
     api
-      .patch(`/pets/${petId}`, data)
+      .patch(`/pets/${petId}/`, data)
       .then(() => {
         toast.success(`${"Informações atualizadas"}`);
         handleCloseEditModal();

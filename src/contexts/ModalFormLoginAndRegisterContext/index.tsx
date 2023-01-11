@@ -66,7 +66,7 @@ export const ModalFormLoginAndRegisterProvider = ({
 
   const forgotPassword = async (data: IFormEmail) => {
     try {
-      await api.patch("/forgot", data);
+      await api.patch("/forgot/", data);
       toast.success("Email enviado com sucesso");
       showVerifyEmailForm();
     } catch (error) {
@@ -77,7 +77,7 @@ export const ModalFormLoginAndRegisterProvider = ({
 
   const verifyCode = async (data: ICodeConfirm) => {
     try {
-      await api.post("/forgot/verify", data);
+      await api.post("/forgot/verify/", data);
       showUpdatePasswordForm();
     } catch (error) {
       console.log(error);
@@ -87,7 +87,7 @@ export const ModalFormLoginAndRegisterProvider = ({
 
   const updatePassword = async (data: IFormUpdatePassword) => {
     try {
-      await api.patch(`/forgot/${code}`, data);
+      await api.patch(`/forgot/${code}/`, data);
       toast.success("Senha atualizada com sucesso");
       handleCloseModal();
     } catch (error) {

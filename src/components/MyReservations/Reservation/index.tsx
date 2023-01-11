@@ -37,9 +37,17 @@ const Reservations = () => {
 
   const dateFormat = lang === "pt" ? "DD/MM/YYYY" : "MM/DD/YYYY";
 
+  if (reservations.length > 0) {
+    console.log(reservations[0].pets_rooms[0])
+    console.log(allRoomTypes?.filter(
+      (elem) => elem.id == reservations[0].pets_rooms[0].rooms_type_id,
+    ))
+
+  }
+
   return (
     <ContainerReservations>
-      {reservations?.map((reservation) => (
+      {reservations.length > 0 && reservations?.map((reservation) => (
         <div key={reservation.id} className="card--reservations">
           <div className="card--title">
             {

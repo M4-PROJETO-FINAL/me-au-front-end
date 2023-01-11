@@ -1,11 +1,12 @@
 import { Avatar } from "@mui/material";
-
 import Amanda from "../../assets/Developers/ama2.0.jpeg";
 import Daniel from "../../assets/Developers/dan2.0.png";
 import Gui from "../../assets/Developers/gui2.0.jpeg";
 import Higor from "../../assets/Developers/hig2.0.jpeg";
 import Nat from "../../assets/Developers/Nat2.0.jpeg";
 import Nicholas from "../../assets/Developers/nic2.0.jpeg";
+import Sofia from "../../assets/Developers/Sofia.jpeg";
+import Jasmyne from "../../assets/Developers/Jasmyne.png";
 import DevInfoOnHover from "../DevInfoOnHover";
 import { Box, Container } from "./styles";
 
@@ -103,6 +104,34 @@ const Developers = () => {
           <DevInfoOnHover
             github="https://github.com/HigorSkw"
             linkedin="https://www.linkedin.com/in/higorskw/"
+          />
+        </div>
+      </Container>
+      <Container>
+        <Avatar
+          variant="circular"
+          sx={{ height: "125px", width: "123px" }}
+          src={Jasmyne}
+          alt="Cat Logo"
+        />
+        <div className="IconsOnHover">
+          <DevInfoOnHover
+            github="https://github.com/jasmynels"
+            linkedin="https://www.linkedin.com/in/jasmynelsx/"
+          />
+        </div>
+      </Container>
+      <Container>
+        <Avatar
+          variant="circular"
+          sx={{ height: "125px", width: "123px" }}
+          src={Sofia}
+          alt="Cat Logo"
+        />
+        <div className="IconsOnHover">
+          <DevInfoOnHover
+            github="https://github.com/sofiaalage"
+            linkedin="https://www.linkedin.com/in/sofiaalexandrino/"
           />
         </div>
       </Container>

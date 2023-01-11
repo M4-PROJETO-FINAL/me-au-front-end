@@ -33,7 +33,8 @@ interface IUserContext {
 
 interface ILoginRes {
   data: {
-    token: string;
+    access: string;
+    refresh: string;
   };
   status: number;
 }
@@ -66,23 +67,31 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     setIsOpenFormLogin(false);
   };
 
-  const createUser = (data: IUserRegister, goToLoginForm) => {
-    api
-      .post("/users", data)
-      .then(() => {
+  const createUser = async (data: IUserRegister, goToLoginForm) => {
+    console.log('entrou na createUser')
+    await api
+      .post("/users/", data)
+      .then((res) => {
+        console.log('res:')
+        console.log(res)
         // actionAfterRegister = Go To Login Form
         goToLoginForm ? goToLoginForm() : setIsOpenFormLogin(false);
         // toast.success("Conta criada com sucesso.");
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         // toast.error("Não foi possível realizar o cadastro.");
       });
+    console.log('saiu da createUser')
+
   };
 
   const loginUser = async (datas: IUserLogin, type = "normal") => {
+    console.log('entrou na loginUser')
+
     try {
-      const { data }: ILoginRes = await api.post("/login", datas);
-      localStorage.setItem("@me-au:token", data.token);
+      const { data }: ILoginRes = await api.post("/login/", datas);
+      localStorage.setItem("@me-au:token", data.access);
       closeFormLogin();
     } catch (error) {
       if (type === "normal") toast.error(t("invalid info"));
@@ -95,6 +104,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       closeFormLogin();
       handleOpenCartModal();
     }
+    console.log('saiu da loginUser')
   };
 
   const getUser = async () => {
@@ -141,7 +151,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       const userId = jwt_decode<JwtPayloadUser>(token).sub;
 
       api
-        .patch(`/users/${userId}`, data)
+        .patch(`/users/${userId}/`, data)
         .then(() => {
           toast.success(`${"Usuario atualizado!"}`);
           getUser();

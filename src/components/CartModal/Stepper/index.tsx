@@ -39,7 +39,7 @@ const TimeStepper = () => {
     if (activeStep === 2) {
       const body = generateRequestObject();
       try {
-        await api.post("/reservations", body);
+        await api.post("/reservations/", body);
         toast.success(`${t("Reserva criada com sucesso!")}`);
         handleCloseCartModal();
       } catch (err: any) {

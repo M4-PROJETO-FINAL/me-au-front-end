@@ -26,7 +26,7 @@ export const UnvailableDatesContextProvider = ({
   useEffect(() => {
     // ao abrir/fechar modal, reseta lista de pets selecionados e busca lista de serviços e tipos de quartos
     api
-      .get<IRoomTypeResponse[]>("/rooms/types")
+      .get<IRoomTypeResponse[]>("/roomstypes")
       .then((res) => setAllRoomTypes(res.data))
       .catch((err) => {
         console.log("error fetching rooms types:");
